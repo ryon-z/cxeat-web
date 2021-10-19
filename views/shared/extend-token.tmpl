@@ -1,0 +1,49 @@
+{{ define "shared/extend-token.tmpl" }}
+<script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    var expire = getCookie("expire");
+    // 로그아웃
+    if (expire === null) {
+      Swal.fire("장시간 활동하지 않아 로그아웃되었습니다.").then(function() {
+        location.href = "/web/login";
+      });
+      return;
+    }
+
+    // 로그인 연장
+    var url = "/web/refresh"
+    var method = "GET"
+
+    function failFunc() {
+      Swal.fire("로그인 연장 실패로 다시 로그인해야합니다.").then(function() {
+        location.href = "/web/login";
+      });
+      return;
+    }
+
+    if (isNeededRefresh(expire)) {
+      customRequest(url, method, {}, function(){}, failFunc)
+    }
+  });
+
+  function isNeededRefresh(expire) {
+    // 1 hour
+    var refreshLimitMilSec = 3600000
+
+    var currentUTC = new Date().getTime()
+    var splited = expire.split("+")
+    if (splited.length < 2) {
+      return true
+    }
+
+    var tokenUTC = new Date(`${splited[0]}T${splited[1]}`).getTime()
+
+    var diff = tokenUTC - currentUTC
+    if (diff <= refreshLimitMilSec) {
+      return true
+    }
+
+    return false
+  }
+</script>
+{{ end }}

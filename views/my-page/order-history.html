@@ -1,0 +1,89 @@
+{{ define "my-page/order-history.html"}}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+  <link rel="stylesheet" href="/contents/mypage/css/order_list.css?v={{ .cssRandomVersion }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="/contents/css/common.css?v={{ .cssRandomVersion }}">
+  {{ template "shared/header.tmpl" . }}
+  <script src="https://kit.fontawesome.com/7e24956d25.js" crossorigin="anonymous"></script>
+  {{ template "shared/title.tmpl" . }}
+</head>
+<body>
+  {{ template "shared/nav.tmpl" . }}
+  {{ template "shared/nav-title.tmpl" . }}
+
+  <section class="container">
+    {{ range $i, $elem := .orderInfos }}
+    <section class="order_wrap">
+      <div class="order_date">주문일자 - {{ $elem.RegDate }}</div>
+      <div class="order_box">
+        <div class="myname">
+          <div class="sub_round">
+            <span>{{ $elem.RcvName }}</span>
+            {{ if eq $elem.OrderType "SUBS" }}
+              <span>({{ $elem.OrderRound }}차)</span>
+            {{ end }}
+          </div>
+          <div>
+            <div class="order_more_button" onclick="handleSelectOrder({{ $elem.OrderNo }})">주문상세</div>
+          </div>
+        </div>
+        <div class="order_history_info">
+          <div class="product_list_p margin0" id="item-category-{{ $i }}">
+            {{ range $elem2 := $elem.CateTypeLabels }}
+              <div class="product_list">#{{ $elem2 }}</div> 
+            {{ end }}
+          </div>
+          <div class="order_history_space">
+            <div>구독상품</div>
+            <div class="order_cost" id="box-size-label-{{ $i }}">
+              <span>{{$elem.BoxLabel }}</span>
+              (<span class="order-price">{{ minus $elem.OrderPrice $elem.DiscountPrice }}</span>)
+            </div>
+          </div>
+          <div class="order_history_space">
+            <div>상태</div>
+            <div id="order-status-label-{{ $i }}">{{ $elem.OrderStatus }}</div>
+          </div>
+        </div>
+        {{ if eq $elem.StatusCode "done" }}
+        <!-- <div class="delivery_div">
+          <button class="delivery_tracking">배송조회</button>
+        </div> -->
+        {{ end }}
+      </div>
+    </section>
+  {{ end }}
+  </section>
+  {{ template "shared/footer.tmpl" . }}
+
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function() {
+      // 가격에 소수점 3자리 콤마 붙이기
+      var orderPriceElems = document.querySelectorAll(".order-price")
+      for (var i=0; i<orderPriceElems.length; i++) {
+        var orderPrice = orderPriceElems[i].innerHTML
+        orderPriceElems[i].innerHTML = Number(orderPrice).toLocaleString("en")
+      }
+    })
+  
+    function handleBack() {
+      location.href = "/web/my-page/main"
+    }
+  
+    function handleSelectOrder(orderID) {
+      var orderDetailPath = "/web/my-page/order/detail"
+      setCookie("orderNo", orderID, "", 3600, orderDetailPath)
+      location.href = orderDetailPath
+    }
+  
+  </script>
+  
+  {{ template "shared/extend-token.tmpl" . }}
+</body>
+</html>
+
+{{ end }}

@@ -1,0 +1,40 @@
+$bold: 700;
+$medium: 500;
+$regular: 400;
+$mainColor: #ffe54d;
+$mainColor2: #ffc600;
+
+$DefaultFontColor: #232323;
+$subFontColor: #6d6d6d;
+$footerFontColor: #656565;
+$borderColor: #b7b7b7;
+
+@mixin flexMiddle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+@mixin flexCenter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+@mixin flexColumn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}

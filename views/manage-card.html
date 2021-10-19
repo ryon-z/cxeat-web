@@ -1,0 +1,137 @@
+{{ define "manage-card.html" }}
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <link rel="stylesheet" href="/contents/mypage/css/mypage.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="/contents/css/common.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="/contents/mypage/css/sass.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    {{ template "shared/header.tmpl" . }}
+    <script src="https://kit.fontawesome.com/7e24956d25.js" crossorigin="anonymous"></script>
+    <script src="/contents/js/main.js?v={{ .cssRandomVersion }}" defer></script>
+    {{ template "shared/title.tmpl" . }}
+  </head>
+  <body class="gray_bg">
+    {{ template "shared/nav.tmpl" . }}
+    {{ template "shared/nav-title.tmpl" . }}
+    
+    <section class="mypage">
+      <section class="card_info">
+        <img src="/contents/mypage/images/card_info.svg" />구독결제중인 카드는 <span>삭제</span>되지
+        않습니다.
+      </section>
+      <section class="card_manage_section">
+        <button class="delivery_add" onclick="location.href='/web/card/insert'">
+          <img src="/contents/mypage/images/card_icon.svg" />카드 추가하기
+        </button>
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            {{ range .cards }}
+            <div class="swiper-slide">
+              {{ if ge .NumSubs 1 }} 
+                <button class="green_bg">
+                  <img src="/contents/mypage/images/product_style.svg" alt="" />구독중
+                </button>
+              {{ else }}
+                <button onclick="handleDeleteCard({{ . }})">
+                  <img src="/contents/mypage/images/delect_icon.svg">삭제
+                </button>
+              {{ end }}
+              <div class="card_design shinhan">
+                <div>
+                  <span>{{ .CardName }}({{ .CardNickName }})</span>
+                  <span><img src="/contents/survey/images/card_ic.svg" alt="" /></span>
+                  <span>{{ .CardNumber }}</span>
+                </div>
+              </div>
+            </div>
+            {{ end }}
+          </div>
+          <!-- Add Pagination -->
+          <div class="swiper-pagination"></div>
+        </div>
+        <!-- <section class="yello_div_button mt3rem"><button class="yello_button">저장하기</button></section> -->
+      </section>
+    </section>
+  </section>
+  {{ template "shared/footer.tmpl" . }}
+
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+      pagination: {
+        el: '.swiper-pagination',
+      },
+    });
+  </script>
+
+  <script type="text/javascript">
+    function handleDeleteCard(cardInfo) {
+      var numSubs = cardInfo["NumSubs"]
+      if (numSubs > 1) {
+        Swal.fire("현재 이 카드가 사용된\n 다른 구독이 있어\n 삭제할 수 없습니다.")
+        return;
+      }
+      function successFunc() {
+        Swal.fire(
+            "삭제 완료",
+            "선택하신 카드정보가 삭제되었습니다.",
+            "success"
+        ).then(function() {
+          location.href = "/web/card/manage"
+        })
+      }
+      function failFunc() {
+        Swal.fire("시스템 오류로 삭제 실패")
+        return
+      }
+
+      Swal.fire({
+        title: "카드 삭제",
+        text: `${cardInfo["CardNickName"]}, ${cardInfo["CardName"]}, ${cardInfo["CardNumber"]}`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "삭제",
+        cancelButtonText: "취소"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          requestForDeletingCard(cardInfo, successFunc, failFunc)
+        }
+      })
+
+    }
+
+    function requestForDeletingCard(cardInfo, successFunc, failFunc) {
+      var url = "/card/remove";
+      var method = "POST"
+
+      var data = {
+        CardRegNo: cardInfo["CardRegNo"],
+        IsBasic: cardInfo["IsBasic"],
+      }
+      customRequest(url, method, data, successFunc, failFunc)
+    }
+
+    function handleBack() {
+      var previousMngCardPage = getCookie("previousMngCardPage")
+      removeCookie("previousMngCardPage", "", "/web/card/manage")
+
+      if (previousMngCardPage === null) {
+        location.href = "/web/my-page/main"
+        return
+      }
+
+      location.href = previousMngCardPage
+    }
+  </script>
+
+  {{ template "shared/extend-token.tmpl" . }}
+  </body>
+</html>
+
+{{ end }}

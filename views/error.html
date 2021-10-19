@@ -1,0 +1,48 @@
+{{ define "error.html" }}
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <link rel="stylesheet" href="/contents/css/common.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="/contents/mypage/css/mypage.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/contents/mypage/css/sass.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="/contents/mypage/css/theme.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="/contents/mypage/css/star-rating.css?v={{ .cssRandomVersion }}">
+    {{ template "shared/header.tmpl" . }}
+    <script src="https://kit.fontawesome.com/7e24956d25.js" crossorigin="anonymous"></script>
+    <title>에러</title>
+</head>
+<body>
+    {{ template "shared/nav.tmpl" . }}
+    <!-- {{ template "shared/nav-title.tmpl" . }} -->
+    
+    <section class="error">
+      <div>
+        <img src="/contents/mypage/images/error.png" alt="">
+      </div>
+      <div id="error-message" class="error_message"></div>
+      {{ if .errorCode }}
+        <div id="error-code" style="display: none;">{{ .errorCode }}</div>
+      {{ end }}
+      {{ if eq .activeRedirectLogout "yes"}}
+        <button id="redirect-login-button" class="error_redirect_button error_home_button" onclick="locateKakaoLogout({{ .kakaoClientID }})">카카오 로그아웃</button>
+      {{ else }}
+        <button class="error_redirect_button error_home_button" onclick="location.href='/web/main'">홈으로 이동</button>
+      {{ end }}
+    </section>
+    {{ template "shared/footer.tmpl" . }}
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", function() {
+        {{ if .errorMessage }}
+          var message = {{ .errorMessage }}
+          var elem = document.querySelector("#error-message")
+          applyNewLine(elem, message, {{ .newLineSymbol }}, false)
+        {{ end }}
+      })
+    </script>
+</body>
+</html>
+
+{{ end }}

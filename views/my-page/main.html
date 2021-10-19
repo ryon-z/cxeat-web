@@ -1,0 +1,114 @@
+{{ define "my-page/main.html" }}
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <link rel="stylesheet" href="/contents/css/common.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="/contents/mypage/css/mypage.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="/contents/mypage/css/sass.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    {{ template "shared/header.tmpl" . }}
+    <script src="https://kit.fontawesome.com/7e24956d25.js" crossorigin="anonymous"></script>
+    {{ template "shared/title.tmpl" . }}
+  </head>
+  <body>
+    {{ template "shared/nav.tmpl" . }}
+
+    <section class="title_name">
+      <div class="wrapper">
+       {{ .navTitle }}
+      </div>
+    </section>
+    <!-- <section class="qna">
+      <img src="/contents/mypage/images/qna.png" alt="" />
+      자주 묻는 질문이에요
+    </section> -->
+    <section class="mypage">
+      <section class="my_box">
+        <div class="myname">
+          <div class="myname_sub">
+            <span>{{ .userInfo.UserName }}</span>님
+            <!--
+            {{ if eq .userInfo.UserType "kakao" }}
+            <span class="kakaologin">
+              <img src="/contents/survey/images/kakao_ico.svg" />
+            {{ else }}
+            <span class="naverlogin">
+              <img src="/contents/survey/images/naver_ico.svg" />
+            {{ end }}
+              <span>로그인</span>
+            </span>
+            -->
+          </div>
+          <button class="more_button" onclick="location.href='/web/my-page/user/info'">
+            정보수정
+          </button>
+        </div>
+        <!--<div class="myinfo">
+          <div><img src="/contents/mypage/images/mobile_ico.svg" />휴대전화번호</div>
+          <div>{{ .userInfo.UserPhone }}</div>
+        </div>-->
+        <div class="my_manage">
+          <div class="shipping_manage">            
+            <a href="/web/delivery/manage">
+              <img src="/contents/mypage/images/address_ico.svg" alt="" />
+              <div>배송지 관리</div>
+            </a>
+          </div>
+          <div class="card_manage">
+            <a href="/web/card/manage">
+              <img src="/contents/mypage/images/card_icon.svg" alt="" />
+              <div>카드관리</div>
+            </a>
+          </div>
+        </div>
+      </section>
+      <section class="home_menu">
+        <a href="/web/my-page/subs/list">
+          <div class="mypage_title">
+            <div>
+              <img src="/contents/mypage/images/yellobox.svg" />
+              <div>구독 정보</div>
+            </div>
+            <!-- <div>
+                    <div class="more_button">더보기</div>
+                </div> -->
+          </div>
+        </a>
+      </section>
+      <section class="home_menu">
+        <a href="/web/my-page/order/history">
+          <div class="mypage_title">
+            <div>
+              <img src="/contents/mypage/images/purchase_history.svg" />
+              <div>주문 내역</div>
+            </div>
+            <!-- <div>
+                    <div class="more_button">더보기</div>
+                </div> -->
+          </div>
+        </a>
+      </section>
+      <section class="home_menu">
+        <a href="/web/my-page/review/list">
+          <div class="mypage_title">
+            <div>
+              <img src="/contents/mypage/images/starpoint.svg" />
+              <div>나의 리뷰</div>
+            </div>
+            <!-- <div>
+                        <div class="more_button">더보기</div>
+                    </div> -->
+          </div>
+        </a>
+      </section>
+    </section>
+    {{ template "shared/footer.tmpl" . }}
+
+    {{ template "shared/extend-token.tmpl" . }}
+
+  </body>
+</html>
+
+{{ end }}

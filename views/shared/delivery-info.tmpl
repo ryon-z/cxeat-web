@@ -1,0 +1,68 @@
+{{ define "shared/delivery-info.tmpl" }}
+
+<section class="shipping_select_section">
+  <div class="shipping_select_title">
+    <div>배송 정보</div>
+    {{ if not .isOrderAndDelivery }}
+      <button class="move-manage-delivery" onclick="location.href='/web/delivery/manage'">배송지관리</button>
+    {{ end }}
+  </div>
+  <ul>
+    {{ range $i, $elem := .userAddresses }}
+    <!-- handleSelectAddress는 이 tmpl를 참조하는 html에서 정의한 함수 -->
+    <li class="box_final" onclick="handleSelectAddressInModal({{ $elem.AddressNo }}, {{ $i }}, handleSelectAddress)"
+    >
+      <div>
+        <div class="customer">
+          <div class="name">
+            <input type="radio" id="delivery-manage-input-{{ $i }}" name="candidateAddress" />
+            <label for="delivery-manage-input-{{ $i }}" class="checkbox">
+              <span>{{ $elem.RcvName }}</span>
+            </label>
+          </div>
+          <div class="phone">{{ $elem.ContactNo }}</div>
+          <div class="address">
+            (<span>{{ $elem.PostNo }}</span>) {{ $elem.RoadAddress }} {{ $elem.SubAddress }}
+          </div>
+          <div class="shipping_option modal_shipping_option">
+            {{ $elem.ReqMsg }}
+          </div>
+        </div>
+      </div>
+    </li>
+    {{ end }}
+  </ul>
+</section>
+
+<script type="text/javascript">
+  function checkedDefaultDelivery(index) {
+    var inputDeliveryElem = document.querySelector(`#delivery-manage-input-${index}`)
+    inputDeliveryElem.checked = true
+  }
+
+  function handleSelectAddressInModal(addressID, index, handleSelectAddressFunc=null) {
+    var currentPath = window.location.pathname+window.location.search
+    setCookie("addressNo", addressID, "", 3600, currentPath)
+    checkedDefaultDelivery(index)
+    // handleSelectAddressFunc는 이 tmpl를 참조하는 html에서 정의한 함수
+    if (handleSelectAddressFunc !== null) {
+      handleSelectAddressFunc()
+    }
+  }
+
+  function handleCloseAddressModal() {
+    var closeModal = document.querySelector("a.close-modal")
+    if (closeModal !== null) {
+      closeModal.click();
+    }
+  }
+
+  function resetSelectedAddressRadio() {
+    var checkedElem = document.querySelector("input[type=radio][name=candidateAddress]:checked")
+    if (checkedElem !== null) {
+      checkedElem.checked = false
+    }
+  }
+</script>
+
+{{ end }}

@@ -1,0 +1,144 @@
+{{ define "my-page/order-detail.html" }}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+  <link rel="stylesheet" href="/contents/css/common.css?v={{ .cssRandomVersion }}">
+  <link rel="stylesheet" href="/contents/mypage/css/order_list.css?v={{ .cssRandomVersion }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  {{ template "shared/header.tmpl" . }}
+  <script src="https://kit.fontawesome.com/7e24956d25.js" crossorigin="anonymous"></script>
+  {{ template "shared/title.tmpl" . }}
+</head>
+<body class="gray_bg">
+  {{ template "shared/nav.tmpl" . }}
+  {{ template "shared/nav-title.tmpl" . }}
+
+  <section class="container">
+    <section class="order_wrap">
+      <div class="order_date">상품정보</div>
+      <div class="wh_box">
+        <div class="detail_title">배송희망일 - {{ .orderInfo.ReqDelivDate }} 
+          {{ if eq .orderInfo.OrderType "SUBS" }}
+            ({{ .orderInfo.OrderRound }}회차)
+          {{ end }}
+        </div>
+        <div class="boxinfo_p">
+          <div class="box_info_detail">
+            <div class="box_detail">
+              <span id="box-size-label">{{ .orderInfo.BoxLabel }}</span>
+            </div>
+            <div class="order_number">
+              <span>주문번호</span>
+              <span>{{ .orderInfo.OrderNo}}</span>
+            </div>
+          </div>
+          <div class="detail_product">
+            <div class="product_list_p" id="item-category">
+                  {{ range $i, $elem := .orderInfo.CateTypeLabels }}
+                    <div class="product_list">#{{ $elem }}</div> 
+                  {{ end }}
+            </div>
+          </div>
+          {{ $length := len .orderDetails }}
+          <div class="list_button_p">
+            {{ if ne $length 0 }}
+              <button>자세히 보기</button>
+            {{ end }}
+          </div>
+          <div class="order_product_list">
+            <div class="prduct_list_title">
+              <div>상품정보</div>
+              <div>수량</div>
+            </div>
+            {{ range $i, $elem := .orderDetails }}
+            <div class="product_info">
+              <div class="product_name">
+                <div><img src="" /></div>
+                <div>{{ $elem.DpName }}</div>
+              </div>
+              <div class="product_Quantity">{{ $elem.ItemCnt }}</div>
+            </div>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </section>
+    {{ if .orderInfo.PaymentPrice }}
+    <section class="order_wrap">
+      <div class="order_date">결제정보</div>
+      <div class="wh_box">
+        <div class="pay_info_detail">
+          <div class="box_detail">
+            <span>결제일자
+              {{ if .orderInfo.PaymentDate }}
+                <span> - {{ .orderInfo.PaymentDate }}</span>
+              {{ end }}
+            </span>
+          </div>
+          <div class="pay_date">
+            <span>{{ .orderInfo.StatusCode }}</span>
+          </div>
+        </div>
+        <div class="pay_card">
+          <div class="card_title">{{ .orderInfo.CardNickName }}</div>
+          <div class="pay_card_info">
+            <div>
+              <div>{{ .orderInfo.CardName }}</div>
+              <div class="pay_card_number">{{ .orderInfo.CardNumber }}</div>
+            </div>
+            <div>
+              <span class="order-price">{{ .orderInfo.PaymentPrice }}</span>
+              <span>원</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    {{ end }}
+    <section class="order_wrap">
+      <div class="order_date">배송정보</div>
+      <div class="wh_box">
+        <div class="detail_title">{{ .orderInfo.RcvName }}</div>
+        <div class="pay_shipping">
+          <span class="pay_zipcode">{{ .orderInfo.PostNo }}</span>
+          <span>{{ .orderInfo.MainAddress }}</span> <span>{{ .orderInfo.SubAddress }}</span>
+          <div class="pay_phonenumber">{{ .orderInfo.ContactNo }}</div>
+          {{ if and .orderInfo.DelivCo .orderInfo.DelivInvoiceNo }}
+            {{ if ne .delivURL "" }}
+            <div>
+              <span>송장번호: </span>
+              <a href="{{ .delivURL }}" target="_blank">{{ .orderInfo.DelivInvoiceNo }}</a>
+            </div>
+            {{ end }}
+          {{ end }}
+        </div>
+      </div>
+    </section>
+  </section>
+  {{ template "shared/footer.tmpl" . }}
+
+  <script src="/contents/mypage/js/accodion.js?v={{ .cssRandomVersion }}"></script>
+
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function() {
+      // 가격에 소수점 3자리 콤마 붙이기
+      var orderPriceElems = document.querySelectorAll(".order-price")
+      for (var i=0; i<orderPriceElems.length; i++) {
+        var orderPrice = orderPriceElems[i].innerHTML
+        orderPriceElems[i].innerHTML = Number(orderPrice).toLocaleString("en")
+      }
+    })
+  
+    function handleBack() {
+      removeCookie("orderNo", "","/web/my-page/order/detail")
+      location.href = "/web/my-page/main"
+    }
+  </script>
+  
+  {{ template "shared/extend-token.tmpl" . }}
+</body>
+</html>
+
+{{ end }}

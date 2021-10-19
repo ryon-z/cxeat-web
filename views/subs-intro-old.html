@@ -1,0 +1,377 @@
+{{ define "subs-intro-old.html" }}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css"
+    />
+    <link rel="stylesheet" href="/contents/css/common.css?v={{ .cssRandomVersion }}" />
+    <link rel="stylesheet" href="/contents/css/style.css?v={{ .cssRandomVersion }}" />
+    <link rel="stylesheet" href="/contents/css/slick.css?v={{ .cssRandomVersion }}" />
+    <link rel="stylesheet" href="/contents/css/style_renew.css?v={{ .cssRandomVersion }}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    {{ template "shared/header.tmpl" . }}
+    <script
+      src="https://kit.fontawesome.com/7e24956d25.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/contents/js/main.js?v={{ .cssRandomVersion }}" defer></script>
+    <script src="/contents/js/slick.min.js?v={{ .cssRandomVersion }}"></script>
+    {{ template "shared/title.tmpl" . }}
+  </head>
+  <body>
+      <div class="header_event">
+      <div class="header_event_img">
+        <img src="/contents/images/header_icon.svg" alt="">
+      </div >
+      큐잇 카톡 간편가입하고<span class="red_text fw900 header_event_position">20% 할인받기</span>
+    </div>
+    {{ template "shared/nav.tmpl" . }}
+    <section class="cueat_visual">
+      <div class="slide_title">
+        <div>
+          합리적이고 편리한<br />
+          <span class="cueat_title_bold">큐잇 정기구독</span>
+        </div>
+        <div >
+         매번 구매하는 번거로움은 큐잇에게 맡기고<br>
+삶의 또 다른 즐거움을 찾아보세요.
+        </div>
+        <div class="main__visual">
+          <button
+            type="button"
+            onclick="location.href='/web/survey/main'"
+            class="plus_button"
+          >
+            큐잇 시작하기
+          </button>
+        </div>
+      </div>
+      <div class="slide_img1"></div>
+    </section>
+    <section>
+      <div class="wrapper">
+        <div class="cueat_ver01_title_p">
+        <div class="cueat_ddak">큐잇을<br>경험하세요</div>
+           <div class="cueat_ver01_title_img">
+            <img src="/contents/images/cueatimg2.jpg" alt="">
+          </div>
+           <div class="cueat_circle_p">
+            <div class="symbol_ani">
+             <img src="/contents/images/loading.gif">
+             </div>
+            <div class="cueat_ver01_cirlce"><img src="/contents/images/curation_circle.png" alt=""></div>
+          </div>
+          <div class="cueat_ver01_title">
+           큐잇 정기구독 상품의 모든 요금제는<br>
+큐잇이 매주 선정하는 잇템(Eat Item)을 포함하여<br>
+쌀, 과일, 채소 등 최소 
+            <span class="bold_text">5가지 이상의 농산물이 담겨요</span>
+          </div>
+        </div>
+      </div>
+      <div class="box_cost_table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>요금제</th>
+                    <th>구독료</th>
+                    <th>상품종류</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>싱글</th>
+                    <td>36,000원</td>
+                    <td>5~6종</td>
+                  </tr>
+                  <tr>
+                    <th>싱글<span class="plus_color">+</span></th>
+                    <td>43,200원</td>
+                    <td>6~8종</td>
+                  </tr>
+                  <tr>
+                    <th>레귤러</th>
+                    <td>49,000원</td>
+                    <td>5~6종</td>
+                  </tr>
+                       <tr>
+                    <th>레귤러<span class="plus_color">+</span></th>
+                    <td>56,300원</td>
+                    <td>6~8종</td>
+                  </tr>
+                       <tr>
+                    <th>라지</th>
+                    <td>71,000원</td>
+                    <td>5~6종</td>
+                  </tr>
+                       <tr>
+                    <th>라지<span class="plus_color">+</span></th>
+                    <td>78,100원</td>
+                    <td>6~8종</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="cueat_subscribe_text">
+                <p>큐잇의 요금제는 주 단위 구독료이며<br/>
+                  이용 주기는 1주부터 4주까지 선택할 수 있습니다
+                </p>
+              </div>
+               <div class="cueat_ver01_text">
+                요금제는 종류가 아닌 양의 차이이며<br>
+                큐잇의 큐레이션 프로그램에 기반하여<br>
+                고객 개개인마다 조금씩 다르게 구성됩니다</span></span>
+              </div>
+            </div>
+    </section>
+    <section class="cueat_plan_item">
+      <div class="cueat_title">
+        <div class="cueat_title_en">SINGLE</div>
+        <div class="cueat_title_ko">
+          <span class="cueat_bold">1~2인 가구나 집에서 식사 빈도가 적은 가구</span>
+         <span class="mobile_none">의 고객님께 추천 드리는 사이즈에요</span>
+        </div>
+      </div>
+      <div class="cueat_product_div">
+        <div class="cueat_product">
+          <div class="cueat_product_img sub_cueat_product">
+          <div class="cueat_product_sub">싱글</div>
+            <img src="/contents/images/singlebox_n_0713.jpg" alt="">
+          </div>
+          <div class="cueat_product_price">
+            <span>주 1회</span>
+            <span>36,000원</span>
+            <div class="cueat_product_description">
+              <ul>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">스테비아 방울토마토 250g</p></li>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">레이니어 체리 250g</p></li>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">무지개 망고 1개</p></li>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">애플수박 1개</p></li>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">신비복숭아 2개</p></li>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">바나나 2개</p></li>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">사과 1개</p></li>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">아보카도 1개</p></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="cueat_product">
+          <div class="cueat_product_img sub_cueat_product">
+            <div class="cueat_product_sub">싱글 +</div>
+            <div class="sub_product_imgContainer">
+              <img src="/contents/images/singlebox_p_0713.jpg" alt="" class="sub_product_imgContainer">
+              <p class="cueat_plan_notice_sub">단순예시(6월 2주차 기준)이며 <br>고객의 라이프스타일에 따라 구성이 변경됩니다</p>
+            </div>
+          </div>
+          <div class="cueat_product_price">
+            <span>주 1회</span>
+            <span>43,200원</span>
+            <div class="cueat_product_description">
+              <ul>
+                <li><i class="product_icon product_icon_rice"></i><p class="cueat_product_p2">유기농 골드퀸 3호 1kg</p></li>
+                <li><i class="product_icon product_icon_rice"></i><p class="cueat_product_p2">혼합 15곡 800g</p></li>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">스테비아 방울토마토 250g</p></li>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">머스크 멜론(6수) 1개</p></li>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">레이니어 체리 250g</p></li>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">골드키위 2개</p></li>
+                <li><i class="product_icon product_icon_brocol"></i><p class="cueat_product_p3">꼬깔양배추 1개</p></li>
+                <li><i class="product_icon product_icon_brocol"></i><p class="cueat_product_p3">가지 2개</p></li>
+                <li><i class="product_icon product_icon_brocol"></i><p class="cueat_product_p3">깐마늘 100g</p></li>
+                <li><i class="product_icon product_icon_brocol"></i><p class="cueat_product_p3">표고버섯 200g</p></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cueat_product_text">
+        마트에서 파는 대용량 농산물이 부담스러우신 분들은<span>
+더 다양한 농산물을 더 합리적인 비용으로 만나보실 수 있어요</span>
+      </div>
+    </section>
+    <section class="cueat_plan_item">
+      <div class="cueat_title">
+        <div class="cueat_title_en">REGULAR</div>
+        <div class="cueat_title_ko">
+          <span class="cueat_bold">집밥을 즐기는 2~4인 가구</span>
+         <span class="mobile_none">에게 알맞은 사이즈에요</span>
+        </div>
+      </div>
+      <div class="cueat_product_div">
+        <div class="cueat_product ">
+          <div class="cueat_product_img sub_cueat_product">
+            <div class="cueat_product_sub">레귤러</div>
+            <img src="/contents/images/double_n_0713.jpg" alt="">
+          </div>
+          <div class="cueat_product_price">
+            <span>주 1회</span>
+            <span>49,000원</span>
+            <div class="cueat_product_description">
+              <ul>
+                <li><i class="product_icon product_icon_rice"></i> <p class="cueat_product_p2">유기농 골드퀸 3호 2kg</p></li>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">머스크 멜론(6수) 1개</p></li>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">애플수박 1개</p></li>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">스테비아 방울토마토 500g</p></li>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">레이니어 체리 400g</p></li>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">바나나 2개</p></li>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">무지개 망고 1개</p></li>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">사과 1개</p></li>
+                <li><i class="product_icon product_icon_brocol"></i><p class="cueat_product_p3">단호박 1개</p></li>
+                <li><i class="product_icon product_icon_brocol"></i><p class="cueat_product_p3">미니 파프리카 250g</p></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="cueat_product">
+          <div class="cueat_product_img sub_cueat_product">
+            <div class="cueat_product_sub">레귤러 +</div>
+            <div class="sub_product_imgContainer">
+            <img src="/contents/images/double_p_0713.jpg" alt="">
+            <p class="cueat_plan_notice_sub">단순 예시(6월 2주차 기준)이며 <br>고객의 라이프스타일에 따라 구성이 변경됩니다</p>
+            </div>
+          </div>
+          <div class="cueat_product_price">
+            <span>주 1회</span>
+            <span>56,300원</span>
+            <div class="cueat_product_description">
+              <ul>
+                <li><i class="product_icon product_icon_rice"></i> <p class="cueat_product_p2">유기농 골드퀸 3호 1kg</p></li>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">사과 2개</p></li>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">골드키위점보 2개</p></li>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">신비복숭아 4개</p></li>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">스테비아 방울토마토 250g</p></li>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">대추 방울토마토 250g</p></li>
+                <li><i class="product_icon product_icon_brocol"></i><p class="cueat_product_p3">꼬깔양배추 1개</p></li>
+                <li><i class="product_icon product_icon_brocol"></i><p class="cueat_product_p3">아스파라거스 100g</p></li>
+                <li><i class="product_icon product_icon_brocol"></i><p class="cueat_product_p3">미니파프리카 250g</p></li>
+                <li><i class="product_icon product_icon_brocol"></i><p class="cueat_product_p3">깐마늘 100g</p></li>
+                <li><i class="product_icon product_icon_brocol"></i><p class="cueat_product_p3">깐양파 1개</p></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cueat_product_text">
+        제철의 과일은 물론,자주 구매해야 하는 쌀이나 기본 채소들을<span>
+필요한 만큼만 매주 받아볼 수 있어 더 신선하게 이용하실 수 있어요</span>
+
+      </div>
+    </section>
+    <section class="cueat_plan_item">
+      <div class="cueat_title">
+        <div class="cueat_title_en">LARGE</div>
+        <div class="cueat_title_ko">
+          <span class="cueat_bold">식사량이 많은 3~4인 가구</span>
+         <span class="mobile_none">를 위한 추천 사이즈에요</span>
+        </div>
+      </div>
+      <div class="cueat_product_div">
+        <div class="cueat_product">
+          <div class="cueat_product_img sub_cueat_product">
+            <div class="cueat_product_sub">라지</div>
+            <img src="/contents/images/large_n_0713.jpg" alt="">
+          </div>
+          <div class="cueat_product_price">
+            <span>주 1회</span>
+            <span>71,000원</span>
+            <div class="cueat_product_description">
+              <ul>
+                <li><i class="product_icon product_icon_rice"></i> <p class="cueat_product_p2">유기농 골드퀸 3호 2kg</p></li>
+                <li><i class="product_icon product_icon_rice"></i> <p class="cueat_product_p2">골드키위점보 2개</p></li>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">신비복숭아 4개</p></li>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">골드망고 2개</p></li>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">바나나(스위티오) 4개</p></li>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">사과2개</p></li>
+                <li><i class="product_icon product_icon_brocol"></i><p class="cueat_product_p3">파프리카(빨강) 1개</p></li>
+                <li><i class="product_icon product_icon_brocol"></i><p class="cueat_product_p3">파프리카(노랑) 1개</p></li>
+                <li><i class="product_icon product_icon_brocol"></i><p class="cueat_product_p3">꼬깔양배추 1개</p></li>
+                <li><i class="product_icon product_icon_brocol"></i><p class="cueat_product_p3">브로컬리 1개</p></li>
+                <li><i class="product_icon product_icon_brocol"></i><p class="cueat_product_p3">당근 1개</p></li>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">스테비아 토마토 500g</p></li>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">대추방울토마토 500g</p></li>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">초당옥수수 4개</p></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="cueat_product">
+          
+          <div class="cueat_product_img sub_cueat_product">
+            <div class="cueat_product_sub">라지 +</div>
+            <div class="sub_product_imgContainer">
+            <img src="/contents/images/large_p_0713.jpg" alt="">
+            <p class="cueat_plan_notice_sub">단순 예시(6월 2주차 기준)이며 <br>고객의 라이프스타일에 따라 구성이 변경됩니다</p>
+            </div>
+          </div>
+          <div>
+          </div>
+          <div>
+          </div>
+          <div class="cueat_product_price">
+            <span>주 1회</span>
+            <span>78,100원</span>
+            <div class="cueat_product_description">
+              <ul>
+                <li><i class="product_icon product_icon_rice"></i> <p class="cueat_product_p2">유기농 하이아미 2kg</p></li>
+                <li><i class="product_icon product_icon_rice"></i> <p class="cueat_product_p2">혼합 15곡</p></li>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">망고수박 1개</p></li>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">골드키위점보 2개</p></li>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">골드망고 2개</p></li>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">사과 3개</p></li>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">신비복숭아 4개</p></li>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">바나나(스위티오) 6개</p></li>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">초당옥수수 4개</p></li>
+                <li><i class="product_icon product_icon_brocol"></i><p class="cueat_product_p3">파프리카(빨강) 1개</p></li>
+                <li><i class="product_icon product_icon_brocol"></i><p class="cueat_product_p3">파프리카(노랑) 1개</p></li>
+                <li><i class="product_icon product_icon_brocol"></i><p class="cueat_product_p3">당근 1개</p></li>
+                <li><i class="product_icon product_icon_brocol"></i><p class="cueat_product_p3">단호박 1개</p></li>
+                <li><i class="product_icon product_icon_brocol"></i><p class="cueat_product_p3">절단 대파 200g</p></li>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">노랑 대추방울토마토 500g</p></li>
+                <li><i class="product_icon product_icon_apple"></i><p class="cueat_product_p1">스테비아 방울토마토 500g</p></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cueat_product_text">
+        빈번하게 구매해야 하는 농산물에 대한 걱정을 줄이고<span></span> 품질 좋은 농산물을
+정기적으로 받아보는 것만으로도 <span>일상이 훨씬 여유롭고 풍요로워질 거에요</span>
+
+      </div>
+    </section>
+    <section class="yello_banner_p">
+      <div class="yello_banner">
+        <div class="wrapper">
+          <div class="yello_banner_text">
+            <div>나에게 딱 맞는 농산물을 만나보세요</div>
+            <button onclick="location.href='/web/survey/main'">
+              큐잇 시작하기
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    {{ template "shared/footer.tmpl" . }}
+    <script type="text/javascript">
+      const acc = document.getElementsByClassName("accordion");
+      let i;
+
+      for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+          this.classList.toggle("active");
+          const panel = this.nextElementSibling;
+          if (panel.style.display === "block") {
+            panel.style.display = "none";
+          } else {
+            panel.style.display = "block";
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
+
+{{ end }}

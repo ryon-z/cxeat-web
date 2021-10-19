@@ -1,0 +1,44 @@
+{{ define "my-page/withdrawal.html" }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <link rel="stylesheet" href="/contents/mypage/css/mypage.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="/contents/css/common.css?v={{ .cssRandomVersion }}">
+    {{ template "shared/header.tmpl" . }}
+    <script src="/contents/js/main.js?v={{ .cssRandomVersion }}" defer></script>
+    <title>회원탈퇴</title>
+</head>
+<body>
+  {{ template "shared/nav.tmpl" . }}
+  {{ template "shared/nav-title.tmpl" . }}
+
+  <section class="withdrawal">
+    <img src="/contents/mypage/images/slide01.png">
+    <div class="withdrawal_notice">
+      <div class="withdrawal_title"><span class="red_text">(필독)</span>회원 탈퇴시 주의 사항</div>
+      <ul>
+        <li>탈퇴전에 진행중인 모든 정기구독을 해지하셔야 합니다</li>
+        <li>주문 정보는 3개월간 보관후 삭제합니다.</li>
+      </ul>
+    </div>
+    <div class="subscription_confirm">
+      <div>
+        <div><span>이용중인 정기구독</span><span>1건</span></div>
+        <button>정기구독관리</button>
+      </div>
+      <div>이용중인 정기 구독이 있습니다.</div>
+    </div>
+    <div class="withdrawal_agree">
+      <p>
+        그래도 탈퇴하시겠어요?
+      </p>
+      <div class="withdrawal_button">
+        <button>취소</button>
+        <button>탈퇴하기</button>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
+{{ end }}

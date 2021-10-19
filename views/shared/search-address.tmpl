@@ -1,0 +1,171 @@
+{{ define "shared/search-address.tmpl" }}
+
+<section class="search_address">
+  <div class="">
+    <div class="zipcode_title pb1rem">우편번호 검색</div>
+    <div class="zipcode_div">
+      <input id="search-address-keyword" placeholder="도로명+건물번호,건물명,지번" autocomplete="off" />
+      <button class="search_ico" onclick="searchAddress()">
+        <img src="/contents/survey/images/search_ico_blue.png" />
+      </button>
+    </div>
+  </div>
+  <div class="result-search-address"></div>
+</section>
+
+<script type="text/javascript">
+  function addHowToUse() {
+    var resultElem = document.querySelector("div.result-search-address");
+    resultElem.innerHTML = ""
+    var howToUsePlainText = " \
+        <div class='box_final'> \
+            <div class='name pb1rem'>우편번호 통합검색<span>Tip</span></div> \
+            <ul class='zipcode_tip'> \
+            <li>도로명 + 건물번호<span>(예: 봉은사로 69)</span></li> \
+            <li>동/읍/면/리 + 번지<span>(예: 봉은사동 1-12</span></li> \
+            <li>건물명,아파트명<span>(예:부일빌딩)</span></li> \
+            </ul> \
+        </div> \
+    "
+    resultElem.insertAdjacentHTML("afterbegin", howToUsePlainText)
+  }
+
+  // initSearchAddress : 초기화
+  function initSearchAddress() {
+    searchInput.value = ""
+    searchInput.focus();
+    addHowToUse();
+  }
+
+  // searchInput 엔터 입력 시 searchButton 클릭과 동일한 동작
+  var searchInput = document.querySelector("#search-address-keyword");
+  callFuncIfPressEnter(searchInput, searchAddress);
+
+  // getExposedJibunAddr : 노출 지번 주소 획득
+  function getExposedJibunAddr(roadAddr, jibunAddr) {
+    var splitedRoadAddr = roadAddr.split(" ");
+    var splitedJibunAddr = jibunAddr.split(" ");
+    for (var i = 0; i < splitedJibunAddr.length; i++) {
+      if (splitedJibunAddr[i] === splitedRoadAddr[i]) {
+        continue;
+      }
+      break;
+    }
+
+    return splitedJibunAddr.slice(i, splitedJibunAddr.length).join(" ");
+  }
+
+  // searchAddress : 주소 검색
+  function searchAddress() {
+    var xhr = new XMLHttpRequest();
+
+    // Keyword validation 체크
+    var keyword = document.querySelector("#search-address-keyword").value;
+    if (keyword.length < 2) {
+      Swal.fire("검색어는 두 글자 이상 입력해주세요.")
+      return false
+    }
+
+    // 요청
+    var url = "/address/search";
+    xhr.open("GET", `${url}?keyword=${keyword}`);
+    xhr.setRequestHeader("Content-type", "application/json");
+    xhr.send();
+
+    xhr.onreadystatechange = function (e) {
+      // readyStates는 XMLHttpRequest의 상태(state)를 반환
+      // readyState: 4 => DONE(서버 응답 완료)
+      if (xhr.readyState !== XMLHttpRequest.DONE) return;
+
+      // status는 response 상태 코드를 반환 : 200 => 정상 응답
+      if (xhr.status === 200) {
+        renderResultSearched(xhr.responseText);
+      } else {
+        console.log("Error!");
+      }
+    };
+  }
+
+  // RenderResultSearched : 검색 결과 렌더
+  function renderResultSearched(response) {
+    var data = JSON.parse(response)["data"];
+    if (data.length === 0) return;
+
+    var resultElem = document.querySelector("div.result-search-address");
+    resultElem.innerHTML = "";
+    for (var i = 0; i < data.length; i++) {
+      var row = document.createElement("div");
+
+      // 도로명주소
+      var ul = document.createElement("ul");
+      var roadLi = document.createElement("li");
+      var roadAddr = document.createElement("div");
+      roadAddr.className = "roadAddr";
+      roadAddr.innerHTML = data[i]["RoadAddr"];
+      roadAddr.id = `roadAddr-${i}`;
+      roadLi.appendChild(roadAddr);
+
+      // 지번주소
+      var jibunLi = document.createElement("li");
+      var jibunSpan = document.createElement("span");
+      jibunSpan.innerHTML = "지번";
+      jibunSpan.className = "jibun"
+      var jibunAddr = document.createElement("div");
+      jibunAddr.innerHTML = data[i]["JibunAddr"];
+      jibunAddr.id = `jibunAddr-${i}`;
+      jibunAddr.className = "jibunAddr";
+      jibunAddr.style.cssText = "display: none;";
+
+      // 노출되는 지번주소
+      var exposedJibunAddr = document.createElement("div");
+      exposedJibunAddr.innerHTML = getExposedJibunAddr(
+        data[i]["RoadAddr"],
+        data[i]["JibunAddr"]
+      );
+      exposedJibunAddr.id = `exposedJibunAddr-${i}`;
+      exposedJibunAddr.className = "jibunAddr";
+
+      // 우편번호
+      var postNo = document.createElement("span");
+      postNo.className = "add_zipcode";
+      postNo.innerHTML = data[i]["ZipNo"];
+      postNo.id = `postNo-${i}`;
+
+      jibunLi.appendChild(jibunSpan);
+      jibunLi.appendChild(jibunAddr);
+      jibunLi.appendChild(exposedJibunAddr);
+      jibunLi.appendChild(postNo);
+
+      ul.appendChild(roadLi);
+      ul.appendChild(jibunLi);
+
+      row.className = "address_div resultRow";
+      row.id = `resultRow-${i}`;
+
+      row.appendChild(ul);
+      resultElem.appendChild(row);
+
+      row.setAttribute("onclick", `registrateAddress(event, ${i})`)
+    }
+  }
+
+  // registrateAddress : 주소 등록
+  function registrateAddress(e, index) {
+    e.stopPropagation();
+
+    var jibunAddr = document.querySelector(`#jibunAddr-${index}`).innerHTML;
+    var roadAddr = document.querySelector(`#roadAddr-${index}`).innerHTML;
+    var postNo = document.querySelector(`#postNo-${index}`).innerHTML;
+
+    // 주소 그리는 함수가 존재하면 실행
+    if (typeof expressAddress === "function") {
+      expressAddress(jibunAddr, roadAddr, postNo);
+    }
+
+    // 뒤로가기
+    var closeModal = document.querySelector(".close-modal")
+    closeModal.click();
+  }
+</script>
+
+{{ end }}

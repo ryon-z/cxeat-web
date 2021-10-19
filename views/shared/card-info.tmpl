@@ -1,0 +1,47 @@
+{{ define "shared/card-info.tmpl" }}
+
+<section class="shipping_select_section">
+  <div class="shipping_select_title">
+    <div>카드 정보</div>
+    {{ if not .isOrderAndDelivery }}
+      <button class="move-manage-card" onclick="location.href='/web/card/manage'">카드관리</button>
+    {{ end }}
+  </div>
+  <ul>
+    {{ range $i, $elem := .userCards }}
+    <li class="box_final" onclick="handleSelectCardInModal({{ .CardRegNo }}, {{ $i }})">
+      <div>
+        <div class="customer">
+          <div class="name">
+            <input type="radio" id="card-manage-input-{{ $i }}" name="chk_info1" />
+            <label for="card-manage-input-{{ $i }}" class="checkbox">
+              <span>{{ $elem.CardName }}({{ $elem.CardNickName }})</span>
+            </label>
+          </div>
+          <div class="phone">{{ $elem.CardNumber }}</div>
+        </div>
+      </div>
+    </li>
+    {{ end }}
+  </ul>
+</section>
+
+<script type="text/javascript">
+  function checkedDefaultCard(index) {
+    var inputCardElem = document.querySelector(`#card-manage-input-${index}`)
+    inputCardElem.checked = true
+  }
+
+  function handleSelectCardInModal(cardRegNo, index) {
+    var currentPath = window.location.pathname+window.location.search
+    setCookie("cardRegNo", cardRegNo, "", 3600, currentPath)
+    checkedDefaultCard(index)
+
+    var closeModal = document.querySelector(".close-modal")
+    if (closeModal !== null) {
+      closeModal.click();
+    }
+  }
+</script>
+
+{{ end }}

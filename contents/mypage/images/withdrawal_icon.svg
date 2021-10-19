@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="레이어_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	 y="0px" viewBox="0 0 30.6 27.6" style="enable-background:new 0 0 30.6 27.6;" xml:space="preserve">
+<style type="text/css">
+	.st0{display:none;}
+	.st1{display:inline;fill:#1DD8B4;}
+	.st2{display:inline;}
+	.st3{clip-path:url(#SVGID_2_);fill:#007C64;}
+	.st4{fill:#FFFFFF;}
+	.st5{display:inline;fill:#4881E7;}
+	.st6{fill:#A2CEFF;}
+	.st7{fill:#4881E7;}
+	.st8{fill:#7C6400;}
+	.st9{fill:#FFD200;}
+	.st10{fill:#333333;}
+</style>
+<g class="st0">
+	<path class="st1" d="M25.4,23.4H5.1c-1.1,0-2-0.9-2-2V5.3c0-1.1,0.9-2,2-2h20.3c1.1,0,2,0.9,2,2v16.1
+		C27.4,22.5,26.5,23.4,25.4,23.4z"/>
+	<g class="st2">
+		<g>
+			<defs>
+				<path id="SVGID_1_" d="M25.4,23.4H5.1c-1.1,0-2-0.9-2-2V5.3c0-1.1,0.9-2,2-2h20.3c1.1,0,2,0.9,2,2v16.1
+					C27.4,22.5,26.5,23.4,25.4,23.4z"/>
+			</defs>
+			<clipPath id="SVGID_2_">
+				<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+			</clipPath>
+			<rect x="0.8" y="1.5" class="st3" width="29.2" height="5"/>
+		</g>
+	</g>
+	<g class="st2">
+		<g>
+			<rect x="6.9" y="8.1" class="st4" width="3.3" height="3.3"/>
+			<rect x="13.6" y="8.1" class="st4" width="3.3" height="3.3"/>
+			<rect x="20.3" y="8.1" class="st4" width="3.3" height="3.3"/>
+		</g>
+		<g>
+			<rect x="6.9" y="13.1" class="st4" width="3.3" height="3.3"/>
+			<rect x="13.6" y="13.1" class="st4" width="3.3" height="3.3"/>
+			<rect x="20.3" y="13.1" class="st4" width="3.3" height="3.3"/>
+		</g>
+		<g>
+			<rect x="6.9" y="18.2" class="st4" width="3.3" height="3.3"/>
+			<rect x="13.6" y="18.2" class="st4" width="3.3" height="3.3"/>
+			<rect x="20.3" y="18.2" class="st4" width="3.3" height="3.3"/>
+		</g>
+	</g>
+</g>
+<g class="st0">
+	<circle class="st5" cx="15.3" cy="13.3" r="12.6"/>
+	<g class="st2">
+		<ellipse class="st6" cx="15.3" cy="13.3" rx="10.4" ry="11"/>
+	</g>
+	<g class="st2">
+		<g>
+			<path class="st7" d="M7.6,9.7h2.3l2.1,7l2.3-7h1.9l2.3,7l2.1-7H23l-3.1,9.5h-2.5l-2.1-6.3l-2.1,6.3h-2.5L7.6,9.7z"/>
+		</g>
+		<rect x="7.1" y="12.7" class="st7" width="16.4" height="1.6"/>
+	</g>
+</g>
+<path class="st8" d="M16.37,22.06H1.85c-0.48,0-0.86-0.39-0.86-0.86V4.24c0-0.48,0.39-0.86,0.86-0.86h14.51
+	c0.48,0,0.86,0.39,0.86,0.86V21.2C17.23,21.67,16.84,22.06,16.37,22.06z"/>
+<path class="st9" d="M9.57,24.88l-8.1-2.91c-0.3-0.17-0.48-0.32-0.48-0.83V4.33c0-0.88,0.6-1.18,1.43-0.83l8.1,2.91
+	c0.3,0.17,0.48,0.49,0.48,0.83v16.81C10.99,24.79,10.2,25.25,9.57,24.88z"/>
+<circle class="st10" cx="8.81" cy="15.31" r="0.96"/>
+<path class="st10" d="M26.61,12.98l-2.23-2.41c-0.45-0.49-1.18-0.49-1.63,0c-0.45,0.49-0.45,1.27,0,1.76l0.63,0.68h-8.12
+	c-0.47,0-0.85,0.41-0.85,0.91c0,0.51,0.38,0.91,0.85,0.91h8.03l-0.54,0.58c-0.45,0.49-0.45,1.27,0,1.76c0.45,0.49,1.18,0.49,1.63,0
+	l2.23-2.41c0.23-0.25,0.34-0.57,0.33-0.9C26.95,13.55,26.84,13.23,26.61,12.98z"/>
+</svg>

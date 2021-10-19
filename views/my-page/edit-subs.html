@@ -1,0 +1,266 @@
+{{ define "my-page/edit-subs.html" }}
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <link rel="stylesheet" href="/contents/mypage/css/mypage.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/contents/css/common.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="/contents/mypage/css/sass.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="/contents/survey/css/survey.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="/contents/survey/css/survey_new.css?v={{ .cssRandomVersion }}">
+    {{ template "shared/header.tmpl" . }}
+    <script src="https://kit.fontawesome.com/7e24956d25.js" crossorigin="anonymous"></script>
+    {{ template "shared/title.tmpl" . }}
+  </head>
+  <body>
+    {{ template "shared/nav.tmpl" . }}
+    {{ template "shared/nav-title.tmpl" . }}
+
+    <section class="mypage mt5rem">
+    <form method="get" action="/web/my-page/subs/info" onsubmit="handleEditSubsSubmit(event)">
+      <div class="result_size">
+        <div class="result_title">사이즈</div>
+        <div class="flex_row_m_column">
+        {{ $lastIndex := minus (len .boxInfos) 1}}
+        {{ range $i, $elem := .boxInfos }} 
+        {{ if and (eq $i 0) (modZero $i 2) }}
+          <div class="flex_row">
+        {{ else if (modZero $i 2)}}
+          </div>
+          <div class="flex_row">
+        {{ end }}
+            <div class="result_radio">
+              <input
+                id="box-info-{{ $i }}"
+                type="radio"
+                name="boxInfo"
+                onchange="updateSubsPrice({{ $elem.CodeValue }})"
+                value={{ $elem.CodeValue }}
+              />
+              <label for="box-info-{{ $i }}">{{ $elem.CodeLabel }}(<span class="subs-price">{{ $elem.CodeValue }}</span>)</label>
+            </div>
+        {{ if eq $i $lastIndex}}
+          </div>
+        {{ end }}
+        {{ end }}
+      </div>
+
+      <div class="result_composition">
+        <div class="result_title">구성</div>
+        <div class="preference">
+          {{ range $i, $elem := .itemCategoryExps }} 
+            <div class="agree_check">
+              <input
+                id="item-category-exp-{{ $i }}"
+                type="checkbox"
+                name="itemCategoryExp"
+                class="health_check"
+                value={{ $elem.CodeKey }}
+              />
+              <label for="item-category-exp-{{ $i }}" class="checkbox float_left">
+                <span>{{ $elem.CodeLabel }}</span>
+              </label>
+            </div>
+          {{ end }}
+          </div>
+        </div>
+      </div>
+
+      <div class="shipping_cycle bordertop">
+        <div class="result_title">배송주기</div>
+        <div class="result_radio">
+          {{ range $i, $elem := .deliveryPeriods }} 
+            <input
+              id="delivery-period-{{ $i }}"
+              class="delivery-period"
+              type="radio"
+              name="deliveryPeriod"
+              value={{ $elem.CodeKey }}
+            />
+            <label for="delivery-period-{{ $i }}">{{ $elem.CodeLabel }}</label>
+          {{ end }}
+        </div>
+      </div>
+
+      <div class="shipping_date">
+        <div class="result_title">배송요일</div>
+        <div class="result_radio">
+          {{ range $i, $elem := .deliveryDows }} 
+            <input
+              id="delivery-dow-{{ $i }}"
+              class="delivery-dow"
+              type="radio"
+              name="deliveryDow"
+              onchange="handleChangeDow()"
+              value={{ $elem.CodeKey }}
+            />
+            <label for="delivery-dow-{{ $i }}">{{ $elem.CodeLabel }}</label>
+          {{ end }}
+        </div>
+      </div>
+
+      <div class="desire_div">
+        <div class="desired-delivery-date">희망배송일</div>
+        <select name="desiredDeliveryDate"></select>
+      </div>
+
+      <div class="edit_price"><span class="subs-price" id="result-subs-price">{{ .subsInfo.SubsPrice }}</span>원</div>
+
+      <div class="yello_div_button">
+        <input type="submit" class="yello_button" value="저장하기"/>
+      </div>
+    </form>
+    </section>
+  {{ template "shared/footer.tmpl" . }}
+
+  <script type="text/javascript">
+    // 최초 돔 로드 시 희망 배송일 갱신
+    document.addEventListener("DOMContentLoaded", function(e) {
+      checkedPreviousSubs()
+      handleChangeDow()
+  
+      // 가격에 소수점 3자리 콤마 붙이기
+      var subsPriceElems = document.querySelectorAll(".subs-price")
+      for (var i=0; i<subsPriceElems.length; i++) {
+        var subsPrice = subsPriceElems[i].innerHTML
+        subsPriceElems[i].innerHTML = Number(subsPrice).toLocaleString("en")
+      }
+    })
+  
+    // 기존 구독 항목을 미리 표시
+    function checkedPreviousSubs() {
+      var itemCategoryExpElems = document.querySelectorAll(`input[name=itemCategoryExp]`)
+      var cateTypes = "{{ .subsInfo.CateType}}".split("|")
+      for (var i=0; i<itemCategoryExpElems.length; i++) {
+        var itemElem = itemCategoryExpElems[i]
+        if (cateTypes.includes(itemElem.value)) {
+          itemElem.checked = true
+        }
+      }
+  
+      var preBoxInfoElem = document.querySelector(`input[name=boxInfo][value='{{ .subsInfo.SubsPrice }}']`)
+      preBoxInfoElem.checked = true
+      var preDeliveryPeriodElem = document.querySelector(`input[name=deliveryPeriod][value='{{ .subsInfo.PeriodDay }}']`)
+      preDeliveryPeriodElem.checked = true
+      var preDeliveryDowElem = document.querySelector(`input[name=deliveryDow][value='{{ .subsDayOfWeek }}']`)
+      preDeliveryDowElem.checked = true
+    }
+  
+    // 박스인포 변경 시 표시 가격 변경
+    function updateSubsPrice(price) {
+      var subsPriceElem = document.querySelector("#result-subs-price")
+      priceString = Number(price).toLocaleString("en")
+      subsPriceElem.innerHTML = priceString
+    }
+  
+    // 배송 요일 변경 시 희망배송일 변경
+    function handleChangeDow() {
+      var dowElem = document.querySelector(`input[type=radio][name=deliveryDow]:checked`);
+      if (dowElem === null) {
+        Swal.fire("배송요일을 선택하지 않으셨습니다.")
+        return false
+      }
+      var selectedDow = dowElem.value
+      var reverseDowMap = {{ .reverseDowMap }}
+  
+      var desiredDeliveryDateElem = document.querySelector("select[name=desiredDeliveryDate]")
+      desiredDeliveryDateElem.innerHTML = null;
+  
+      {{ range $elem := .desiredDeliveryDates }}
+        var dow = "{{ $elem.Dow }}"
+        var dates = "{{ $elem.Dates }}".split(",")
+        var dowLabel = reverseDowMap[dow]
+  
+        if (dow === selectedDow) {
+          for (var i=0; i<dates.length; i++) {
+            var opt = document.createElement("option");
+            opt.value = dates[i];
+            opt.innerHTML = `${dates[i]}(${dowLabel})`;
+            desiredDeliveryDateElem.appendChild(opt);
+          }
+        }
+      {{ end }}
+    }
+  
+    // submit 요청 시 처리
+    function handleEditSubsSubmit(e) {
+      e.preventDefault()
+      var url = "/subs/edit"
+      var method = "POST"
+  
+      var boxInfoElem = document.querySelector("input[name=boxInfo]:checked")
+      var boxInfoLabel = document.querySelector(`input[id=${boxInfoElem.id}] + label`).textContent;
+      var boxInfoType = getSelectedGoArg({{ .boxInfos }}, boxInfoElem).CodeKey
+      
+      var itemCategoryExpElem = document.querySelectorAll("input[name=itemCategoryExp]:checked")
+      var itemCategoryExps = []
+      for (var i=0; i<itemCategoryExpElem.length; i++) {
+        itemCategoryExps.push(itemCategoryExpElem[i].value)
+      }
+  
+      var deliveryPeriodElem = document.querySelector("input[name=deliveryPeriod]:checked")
+      var deliveryPeriodLabel = document.querySelector(`input[id=${deliveryPeriodElem.id}] + label`).textContent;
+  
+      var deliveryDowElem = document.querySelector("input[name=deliveryDow]:checked")
+      var deliveryDowLabel = document.querySelector(`input[id=${deliveryDowElem.id}] + label`).textContent;
+      
+      var subsItemCategories = {{ .itemCategories }}
+                            .filter(x => itemCategoryExps.includes(x.CodeKey))
+                            .map(x => x.CodeLabel)
+  
+      var selectedSubs =  `${boxInfoLabel}, [${subsItemCategories.join(",")}], ${deliveryPeriodLabel}, ${deliveryDowLabel}`
+  
+      var desiredDeliveryDateElem = document.querySelector("select[name=desiredDeliveryDate]")
+  
+      var data = {
+        SubsNo: {{ .subsInfo.SubsNo }},
+        CateType: itemCategoryExps.join("|"),
+        BoxType: boxInfoType,
+        SubsPrice: parseInt(boxInfoElem.value, 10),
+        PeriodDay: parseInt(deliveryPeriodElem.value, 10),
+        NextDate: desiredDeliveryDateElem.value,
+      }
+  
+      if (itemCategoryExps.length < 1) {
+        Swal.fire("하나 이상의 상품구성을 선택해야합니다.")
+        return;
+      }
+  
+      function successFunc() {
+        Swal.fire('변경 성공', selectedSubs,'success')
+          .then((confirmed) =>{
+            location.href = "/web/my-page/subs/info"
+          })
+      }
+  
+      function failFunc() {
+        Swal.fire('에러 발생')
+        console.log(xhr.responseText)
+      }
+  
+      // 알람
+      Swal.fire({
+        title: '아래 내용으로 변경합니다.',
+        text: selectedSubs,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '네, 변경합니다.',
+        cancelButtonText: '취소'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          customRequest(url, method, data, successFunc, failFunc)
+        }
+      })
+    }
+  </script>
+  
+  {{ template "shared/extend-token.tmpl" . }}
+
+  </body>
+</html>
+
+{{ end }}

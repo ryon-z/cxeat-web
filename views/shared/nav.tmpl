@@ -1,0 +1,108 @@
+{{ define "shared/nav.tmpl" }}
+
+<div class="cueat-header">
+  <div class="cueat-header-event">
+  <div>
+    <img
+      src="/contents/newMain_image/header_kakaoIcon.png"
+      alt="메인 이벤트 카카오 아이콘"
+    />
+  </div>
+  <div>
+   <!--<a href="/web/survey/main"><span>리뉴얼 기념</span> 첫 배송 <span>50% 할인 받기</span></a>-->
+    <a href="/web/survey/main"><span>큐잇 카톡</span> 간편가입하고 <span>20% 할인받기</span></a>
+    </div>
+  </div>
+  <div class="cueat-header-nav">
+    <div class="cueat-mobileMenu-list">
+      <ul class="cueat-menu-group">
+        <li class="cueat-menu">
+        <a
+         href="https://blog.naver.com/pandacorp?utm_source=homepage&utm+medium=cta&utm_campaign=cueat_homepage_top"
+         target="_blank"
+          >큐잇 스토리</a
+        >
+          </li>
+        <li class="cueat-menu">
+            <a
+              href="/web/story"
+            >
+              브랜드 스토리
+            </a>
+          </li>
+        <li class="cueat-menu">
+          <a href="/web/subs/intro">요금제 안내</a>
+        </li>
+      {{ if eq .loggedIn "yes" }}
+        <li class="cueat-menu">
+          <a href="/web/my-page/main">마이페이지</a>
+        </li>
+        <li class="cueat-menu">
+          <a id="header-logout-link" onclick="locateKakaoLogout({{ .kakaoClientID }})">로그아웃</a>
+        </li>
+      {{ else }}
+        <li class="cueat-menu">
+          <span class="linkToLogin">로그인/회원가입</span>
+        </li>
+      {{ end }}
+      </ul>
+    </div>
+    <div class="cueat-nav-container">
+      <div class="cueat-logo">
+        <a href="/"
+          ><img
+            src="/contents/newMain_image/main_logo.png"
+            alt="큐잇 메인 로고"
+        /></a>
+      </div>
+      <div class="cueat-mobile-menu">
+        <a
+         href="https://blog.naver.com/pandacorp?utm_source=homepage&utm+medium=cta&utm_campaign=cueat_homepage_top"
+         target="_blank"
+          >큐잇 스토리</a
+        >
+        <img
+          id="navMenuToggle"
+          src="/contents/newMain_image/hamburger_icon.png"
+          alt="메인페이지 모바일 메뉴버튼"
+        />
+      </div>
+      <div class="cueat-menu-list">
+        <ul class="cueat-menu-group"> 
+          <li class="cueat-menu">
+            <a
+              href="https://blog.naver.com/pandacorp?utm_source=homepage&utm+medium=cta&utm_campaign=cueat_homepage_top"
+              target="_blank"
+            >
+              큐잇 스토리
+            </a>
+          </li>
+          <li class="cueat-menu">
+            <a
+              href="/web/story"
+            >
+              브랜드 스토리
+            </a>
+          </li>
+          <li class="cueat-menu">
+            <a href="/web/subs/intro">요금제 안내</a>
+          </li>
+          {{ if eq .loggedIn "yes" }}
+            <li class="cueat-menu">
+              <a href="/web/my-page/main">마이페이지</a>
+            </li>
+            <li class="cueat-menu">
+                <a id="header-logout-link" onclick="locateKakaoLogout({{ .kakaoClientID }})">로그아웃</a>
+            </li>
+          {{ else }}
+            <li class="cueat-menu">
+              <span class="linkToLogin">로그인/회원가입</span>
+            </li>
+          {{ end }}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{ end }}

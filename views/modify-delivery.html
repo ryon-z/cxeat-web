@@ -1,0 +1,84 @@
+{{ define "modify-delivery.html" }}
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <link rel="stylesheet" href="/contents/css/common.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="/contents/mypage/css/mypage.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="/contents/survey/css/survey.css?v={{ .cssRandomVersion }}">
+    {{ template "shared/header.tmpl" . }}
+    <script src="https://kit.fontawesome.com/7e24956d25.js" crossorigin="anonymous"></script>
+    {{ template "shared/title.tmpl" . }}
+  </head>
+  <body>
+    {{ template "shared/nav.tmpl" . }}
+    {{ template "shared/nav-title.tmpl" . }}
+
+    </section>
+    <section class="mypage">
+      {{ template "shared/input-delivery.tmpl" . }}
+      <section class="yello_div_button mt3rem">
+        <button class="yello_button" onclick="handleModifyDelivery()">수정하기</button>
+        <button class="del_button" onclick="handleDeleteDelivery()">삭제하기</button>
+      </section>
+    </section>
+    
+    {{ template "shared/footer.tmpl" . }}
+    
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", function() {
+        initDeliveryContents()
+        preloadDeliveryInputs()
+      })
+    
+      function handleModifyDelivery(mode) {
+        if (!(isInputDeliveryValid())) {
+          return
+        }
+    
+        function successFunc() {
+          removeCookie("addressNo", "", "/web/delivery/modify")
+          
+          // 뒤로가기
+          location.href = "/web/delivery/manage"
+        }
+        function failFunc() {
+          Swal.fire("시스템 오류로 삭제 실패")
+          return
+        }
+    
+        var usedAddressOtherSubs = {{ .usedAddressOtherSubs }}
+        if (usedAddressOtherSubs) {
+          requestForAddingNewAddress(successFunc, failFunc)
+        } else {
+          requestForModifyingAddress(successFunc, failFunc)
+        }
+      }
+    
+      function handleDeleteDelivery(mode) {
+        var usedAddressOtherSubs = {{ .usedAddressOtherSubs }}
+        if (usedAddressOtherSubs) {
+          Swal.fire("이 주소는 다른 구독에서 사용 중이므로 삭제할 수 없습니다.")
+          return;
+        }
+    
+        function successFunc() {
+          // 뒤로가기
+          location.href = "/web/delivery/manage"
+        }
+        function failFunc() {
+          Swal.fire("시스템 오류로 삭제 실패")
+          return
+        }
+    
+        requestForDeletingAddress(successFunc, failFunc)
+      }
+    </script>
+    
+    {{ template "shared/extend-token.tmpl" . }}
+  </body>
+</html>
+
+{{ end }}

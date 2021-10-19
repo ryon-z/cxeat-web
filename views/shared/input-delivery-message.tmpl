@@ -1,0 +1,37 @@
+{{ define "shared/input-delivery-message.tmpl" }}
+
+<div class="shipping_option_div">
+  <div class="order_subtitle">배송 요청 사항</div>
+  <select id="select-delivery-req-msg" class="shipping_select" onchange="handleShippingSelect()">
+    <option value="직접 받고 부재 시 문 앞에 놓아주세요" selected>직접 받고 부재 시 문 앞에 놓아주세요</option>
+    <option value="문 앞에 놓아주세요">문 앞에 놓아주세요</option>
+    <option value="경비실에 맡겨주세요">경비실에 맡겨주세요</option>
+    <option value="택배함에 넣어주세요">택배함에 넣어주세요</option>
+    <option value="직접 입력하기">직접 입력하기</option>
+  </select>
+  <textarea 
+    id="contents-delivery-req-msg"
+    rows="8" 
+    cols="85" 
+    class="shipping_input" 
+    disabled 
+    placeholder="내용을 입력하세요" />
+  </textarea>
+</div>
+
+
+<script type="text/javascript">
+  function handleShippingSelect() {
+    var selectElem = document.querySelector("#select-delivery-req-msg")
+    var inputElem = document.querySelector("#contents-delivery-req-msg")
+    if (selectElem.value === "직접 입력하기") {
+      inputElem.removeAttribute("disabled")
+      inputElem.focus()
+    } else {
+      inputElem.setAttribute("disabled", true)
+      inputElem.value = ""
+    }
+  }
+</script>
+
+{{ end }}

@@ -1,0 +1,213 @@
+{{ define "shared/input-card.tmpl" }}
+
+<div class="card_enrollment open" id="input-card-container">
+  <div>
+    <div class="card_nickname">
+      <label for="" class="card_label">카드 닉네임</label>
+      <div>
+        <input class="card-nick-name" onfocus="clearCardNumInput(event)" placeholder="카드 닉네임" />
+      </div>
+    </div>
+    <div class="card_number">
+      <label for="cardNum" class="card_label">카드번호</label>
+      <div>
+        <input class="card-number-1" type="number" inputmode="numeric" pattern="[0-9]*" oninput="handleAutoFocusInput(event, 'input.card-number-2', 4)" onfocus="clearCardNumInput(event)" placeholder="****" />
+        <input class="card-number-2" type="password" inputmode="numeric" pattern="[0-9]*" oninput="handleAutoFocusInput(event, 'input.card-number-3', 4)" onfocus="clearCardNumInput(event)" placeholder="****" />
+        <input class="card-number-3" type="password" inputmode="numeric" pattern="[0-9]*" oninput="handleAutoFocusInput(event, 'input.card-number-4', 4)" onfocus="clearCardNumInput(event)" placeholder="****" />
+        <input class="card-number-4" type="number" inputmode="numeric" pattern="[0-9]*" oninput="handleLimitedInput(event, 4)" onfocus="clearCardNumInput(event)" placeholder="****" />
+      </div>
+    </div>
+    <div class="card_date">
+      <label for="" class="card_label">만료일(month/year)</label>
+      <div>
+        <input class="expiry-month" type="password" inputmode="numeric" pattern="[0-9]*" oninput="handleAutoFocusInput(event, 'input.expiry-year', 2)" onfocus="clearCardNumInput(event)" placeholder="mm. 예)12" />
+        <span>/</span>
+        <input class="expiry-year" type="password" inputmode="numeric" pattern="[0-9]*" oninput="handleLimitedInput(event, 2)" onfocus="clearCardNumInput(event)" placeholder="yy. 예)24" />
+      </div>
+    </div>
+    <div class="card_birth">
+      <label for="" class="card_label">생년월일(사업자번호)</label>
+      <input class="birth-date" type="number" pattern="[0-9]*" onfocus="clearCardNumInput(event)" placeholder="생년월일 yymmdd. 또는 사업자등록번호 10자리" />
+      <ul>
+        <li>법인카드는 소유자의 생년월일 6자리를 입력해주세요</li>
+        <li>무기명 법인카드는 사업자 등록번호를 입력해주세요</li>
+      </ul>
+    </div>
+    <div class="card_password">
+      <label for="" class="card_label">비밀번호 앞2자리</label>
+      <input class="password-digit-2" type="password" inputmode="numeric" pattern="[0-9]*" oninput="handleLimitedInput(event, 2)" onfocus="clearCardNumInput(event)" placeholder="비밀번호 앞 2자리를 입력해주세요." />
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var cardNickName = document.querySelector("input.card-nick-name")
+  var cardNumber1 = document.querySelector("input.card-number-1")
+  var cardNumber2 = document.querySelector("input.card-number-2")
+  var cardNumber3 = document.querySelector("input.card-number-3")
+  var cardNumber4 = document.querySelector("input.card-number-4")
+  var expiryYear = document.querySelector("input.expiry-year")
+  var expiryMonth = document.querySelector("input.expiry-month")
+  var birthDate = document.querySelector("input.birth-date")
+  var passwordDigit2 = document.querySelector("input.password-digit-2")
+  var hasBasicCard = "{{ .basicCard }}" === "" ? false : true
+  var isBasic = hasBasicCard ? 0 : 1
+
+  function clearCardNumInput(event) {
+    event.target.value = ""
+  }
+
+  function handleAutoFocusInput(event, nextElemSelector, limitLen) {
+    var nextElem = document.querySelector(nextElemSelector)
+    if (event.target.value.length === limitLen && nextElem !== null) {
+      nextElem.value = ""
+      nextElem.focus()
+    }
+
+    handleLimitedInput(event, limitLen)
+  }
+
+  function isInputCardValid() {
+    var candidates = {
+      cardNickName: {
+        len: 1,
+        label: "카드 닉네임을",
+        value: cardNickName.value,
+        isNumber: false,
+        isRequired: true
+      },
+      cardNumber1: {
+        len: 4,
+        label: "첫 번째 카드번호를",
+        value: cardNumber1.value,
+        isNumber: true,
+        isRequired: true
+      },
+      cardNumber2: {
+        len: 4,
+        label: "두 번째 카드번호를",
+        value: cardNumber2.value,
+        isNumber: true,
+        isRequired: true
+      },
+      cardNumber3: {
+        len: 4,
+        label: "세 번째 카드번호를",
+        value: cardNumber3.value,
+        isNumber: true,
+        isRequired: true
+      },
+      cardNumber4: {
+        len: 2,
+        label: "네 번째 카드번호를",
+        value: cardNumber4.value,
+        isNumber: true,
+        isRequired: true
+      },
+      expiryYear: {
+        len: 2,
+        label: "만료년도 뒷 자리를",
+        value: expiryYear.value,
+        isNumber: true,
+        isRequired: true
+      },
+      expiryMonth: {
+        len: 2,
+        label: "만료월을",
+        value: expiryMonth.value,
+        isNumber: true,
+        isRequired: true
+      },
+      passwordDigit2: {
+        len: 2,
+        label: "카드 비밀번호 앞 두자리를",
+        value: passwordDigit2.value,
+        isNumber: true,
+        isRequired: true
+      },
+    }
+
+    var keys = Object.keys(candidates)
+    for (var i=0; i<keys.length; i++) {
+      var target = candidates[keys[i]]
+      
+      if (target.isRequired && target.value === "") {
+        Swal.fire(`${target.label} 선택하지 않으셨습니다.`)
+        return false
+      }
+
+      if (target.isNumber && !isNumber(target.value, target.isNumber)) {
+        console.log("come in here?")
+        Swal.fire(`${target.label} 잘못 입력하셨습니다(숫자만 허용)`)
+        return false
+      }
+
+      if (target.value.length < target.len) {
+        Swal.fire(`${target.label} 다 입력하지 않았습니다.`)
+        return false
+      }
+    }
+
+    // 생년월일 유효성 체크
+    if (birthDate.value === "") {
+      Swal.fire("생년월일(사업자번호) 미입력하셨습니다.")
+      return false
+    }
+
+    if (birthDate.value.length != 10 && birthDate.value.length != 6) {
+      Swal.fire("생년월일(사업자번호)가 유효하지 않습니다. (생년월일-6자리, 사업자번호-10자리)")
+      return false
+    }
+
+    return true
+  }
+
+  function requestForAddingNewCard(successFunc, failFunc, isAsync=true) {
+    var url = "/card/add"
+    var method = "POST"
+
+    var cardNumbers = [cardNumber1.value, cardNumber2.value, cardNumber3.value, cardNumber4.value]
+    var cardNumber = cardNumbers.join("-")
+    var expiryFrontYear = "20"
+    var expiryYearMonth = [expiryFrontYear+expiryYear.value, expiryMonth.value]
+    var expiry = expiryYearMonth.join("-")
+    console.log("expiry", expiry)
+    var data = {
+      CardNickName: cardNickName.value,
+      CardNumber: cardNumber,
+      Birth: birthDate.value,
+      Expiry: expiry,
+      Pwd2Digit: passwordDigit2.value,
+      IsBasic: isBasic,
+    }
+    customRequest(url, method, data, successFunc, failFunc, isAsync)
+  }
+
+  function failToInsertCardFunc(responseText, useReload=false) {
+    var msg = "[카드 등록 실패] "
+    if (responseText.includes("유효하지않은 카드번호") 
+      || responseText.includes("카드번호오류")) {
+      msg += "유효하지 않은 카드 번호를 입력하셨습니다."
+    } else if (responseText.includes("비밀번호틀림")) {
+      msg += "잘못된 비밀번호를 입력하셨습니다(5회 이상 실패 시 이용제한)."
+    } else if (responseText.includes("유효기간오류")) {
+      msg += "잘못된 유효기간을 입력하셨습니다."
+    } else if (responseText.includes("비밀번호 회수초과")) {
+      msg += "하루 허용된 비밀번호 횟수를 초과하였습니다."
+    } else if (responseText.includes("this card is duplicated")) {
+      msg += "이미 등록된 카드입니다."
+    }
+      
+    if (useReload) {
+      Swal.fire(msg)
+      .then(function() {
+        window.location.reload()
+      })
+    } else {
+      Swal.fire(msg)
+      return;
+    }
+  }
+</script>
+
+{{ end }}

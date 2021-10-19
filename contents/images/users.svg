@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+<style type="text/css">
+	.st0{display:none;}
+	.st1{display:inline;}
+	.st2{display:inline;fill:#FFFFFF;}
+	.st3{font-family:'NotoSansCJKkr-Black-KSCpc-EUC-H';}
+	.st4{font-size:300px;}
+	.st5{fill:#101010;}
+</style>
+<g id="Bold" class="st0">
+	<circle class="st1" cx="256" cy="257" r="229"/>
+	<text transform="matrix(1 0 0 1 158.8317 391)" class="st2 st3 st4">5</text>
+	<rect x="363.1" y="142" class="st2" width="18.9" height="53"/>
+	<rect x="363.1" y="142" transform="matrix(-1.836970e-16 1 -1 -1.836970e-16 541 -204)" class="st2" width="18.9" height="53"/>
+</g>
+<g id="레이어_2">
+	<g>
+		<ellipse class="st5" cx="256" cy="198.3" rx="45.8" ry="50.3"/>
+		<path class="st5" d="M362.7,299.9c0-21.1-17.1-38.1-38.1-38.1H187.4c-21.1,0-38.1,17.1-38.1,38.1v41.4h213.4V299.9z"/>
+		<ellipse class="st5" cx="106.7" cy="198.3" rx="45.8" ry="50.3"/>
+		<path class="st5" d="M405.3,248.6c25.3,0,45.8-22.5,45.8-50.3c0-27.8-20.5-50.3-45.8-50.3c-25.3,0-45.8,22.5-45.8,50.3
+			C359.5,226.1,380,248.6,405.3,248.6z"/>
+		<path class="st5" d="M115.4,299.9c0-14,4-27.1,11-38.1H38.1C17.1,261.7,0,278.8,0,299.9v41.4h115.4V299.9z"/>
+		<path class="st5" d="M512,299.9c0-21.1-17.1-38.1-38.1-38.1h-88.2c6.9,11.1,11,24.1,11,38.1v41.4H512V299.9z"/>
+	</g>
+</g>
+</svg>

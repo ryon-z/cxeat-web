@@ -1,0 +1,19 @@
+{{ define "shared/nav-title.tmpl" }}
+
+<section class="title_name">
+<div class="wrapper">
+    {{ if eq .needNavBack "yes" }}
+        <button class="back" onclick="handleBack()">
+            <img src="/contents/mypage/images/backarrow.svg">
+        </button>
+    {{ end }}
+    {{ .navTitle }}
+</div>
+</section>
+<script type="text/javascript">
+  function handleBack() {
+    window.history.back()
+  }
+</script>
+
+{{ end }}

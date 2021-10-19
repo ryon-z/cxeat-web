@@ -1,0 +1,57 @@
+- 웹 에러
+W0001|controllers.GetOwnedUserCard(c) 실행 실패
+W0002|controllers.GetOwnedUserAddress(c) 실행 실패
+W0003|controllers.GetOwnedBasicUserCard(c) 실행 실패
+W0004|controllers.GetOwnedBasicUserAddress(c) 실행 실패
+W0005|controllers.GetOwnedUserAddressUnit(c) 실행 실패
+W0006|controllers.GetOwnedUserAddressUnit(c)의 실행 결과가 1개 이상입니다.
+W0007|GetSubsMstUsingAddress()의 실행 실패
+W0008|mixin.List()를 활용하여 orderNo로 orderMst를 조회 실패
+W0009|GetOwnedUserCardWithNumSubs(userNo) 실행 실패
+W0010|controllers.GetSubsItemsState(4) 실행 실패
+W0011|controllers.GetOwnedSubsMstUnit(c) 실행 실패
+W0012|utils.GetEngDow() 실행 실패
+W0013|controllers.GetOwnedUser(c) 실행 실패
+W0014|GetExposedOrderUnit(c) 실행 실패
+W0015|controllers.MakeCateTypeLabelString() 실행 실패
+W0016|controllers.GetCodeLabelFromCache() 실행 실패
+W0017|GetExposedOrderDetail(c) 실행 실패
+W0018|controllers.GetCodesFromCache() 실행 실패
+W0019|GetExposedOrders(c) 실행 실패
+W0020|GetExposedSubsUnit(c) 실행 실패
+W0022|utils.GetKorDow() 실행 실패
+W0023|GetExposedSubs(c) 실행 실패
+W0024|GetOwnedTags(c) 실행 실패
+W0025|getScoreSourceMap(tags) 실행 실패
+W0026|GetReviewDetailState(c) 실행 실패
+W0027|GetExposedAlrimTalkInfoOnce() 실행 실패
+W0028|GetReviewDetailState() 실행 실패
+W0029|GetReviewItems(userNo, exposedOrderInfo.OrderNo) 실행 실패
+W0030|GlobalState 조회 실패
+W0031|GetOwnedReviewMstUnit(c, reviewNo) 실행 실패
+
+- 로그인 관련 에러
+1001|json stringify(marshal) 실패
+1002|json unstringify(unmarshal) 실패
+1022|request 실패
+2001|UserMst 테이블 조회 실패
+2002|UserMst 테이블 삽입 실패
+2003|UserMst 테이블 수정 실패
+3002|카드 등록 실패
+5000|탈퇴일 조회 실패
+5001|재가입 허용일 전 회원가입 시도
+5002|leaveDate 파싱 실패
+9001|카카오 auth token 발행 실패
+9002|카카오 access Token 발행 실패
+9003|카카오 유저 정보 획득 실패
+9004|카카오 유저 정보에서 휴대폰 정보 없음
+9005|중복된 카카오 유저 ID가 존재
+9006|카카오 유저 정보에 등록된 휴대폰 정보가 유효하지 않음
+9011|네이버 auth token 발행 실패
+9012|네이버 access token 발행 실패
+9013|네이버 유저 정보 획득 실패
+9014|네이버 유저 정보에 휴대폰 정보 없음
+9016|네이버 유저 정보에 등록된 휴대폰 정보가 유효하지 않음
+9930|GlobalState 조회 실패
+9998|jwt auth 만료 시간이 숫자가 아님
+9999|response에서 AccessToken 구조체로 파싱 실패

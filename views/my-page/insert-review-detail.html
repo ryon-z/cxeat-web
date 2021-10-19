@@ -1,0 +1,108 @@
+{{ define "my-page/insert-review-detail.html" }}
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <link rel="stylesheet" href="/contents/css/common.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="/contents/mypage/css/mypage.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/contents/mypage/css/sass.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="/contents/mypage/css/theme.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="/contents/mypage/css/star-rating.css?v={{ .cssRandomVersion }}">
+    {{ template "shared/header.tmpl" . }}
+    <script src="https://kit.fontawesome.com/7e24956d25.js" crossorigin="anonymous"></script>
+    {{ template "shared/title.tmpl" . }}
+  </head>
+  <body>
+    {{ template "shared/review-detail.tmpl" . }}
+
+    <script type="text/javascript">
+      var editElem = document.querySelector("#edit-review-button")
+      var saveElem = document.querySelector("#save-review-button")
+
+      $(document).ready(function () {
+        $(".kv-ltr-theme-svg-star").rating({
+          hoverOnClear: false,
+          theme: "krajee-svg",
+          showCaption: false,
+          readonly: false,
+          min: 0,
+          step: 0.5,
+          max: 5,
+        });
+
+        // 수정하기 버튼 숨기기
+        if (editElem !== null) {
+          editElem.style.display = "none"
+        }
+
+        // 저장하기 버튼 드러내기
+        if (saveElem !== null) {
+          saveElem.style.display = ""
+        }
+
+        checkDuplicateInsertReview()
+      });
+
+      function checkDuplicateInsertReview() {
+        {{ if eq .isDuplicated "yes"}}
+          Swal.fire("이미 등록된 리뷰입니다.")
+          .then(function() {
+            location.href = "/web/main"
+          })
+          return
+        {{ end }}
+      }
+
+      var reviewNo;
+      if (saveElem !== null) {
+        saveElem.addEventListener("click", function() {
+          const minDescLength = 10
+          const descCorrect = isReviewDescCorrect(minDescLength) 
+          if (!descCorrect) {
+            Swal.fire(`리뷰는 최소 ${minDescLength}자 이상 입력해야합니다.`)
+            return
+          }
+
+          function reviewItemSuccessFunc() {
+            Swal.fire("리뷰 등록 완료")
+              .then(function() {
+                location.href = "/web/main"
+              })
+          }
+
+          function reviewItemFailFunc(responseText) {
+            Swal.fire("시스템 에러 발생")
+            return
+          }
+
+          function reviewSuccessFunc(responseText) {
+            var parsed = JSON.parse(responseText)
+            reviewNo = parseInt(parsed["data"], 10)
+            requestForManipulateItemReview(reviewNo, reviewItemSuccessFunc, reviewItemFailFunc, true, "create")
+          }
+
+          function reviewFailFunc(responseText) {
+            var parsed = JSON.parse(responseText)
+            var condition = parsed["error"] === "this review is already registrated"
+            if (condition) {
+              Swal.fire("이미 등록된 리뷰입니다.")
+              .then(function() {
+                location.href = "/web/main"
+              })
+          return
+            } else {
+              Swal.fire("시스템 에러 발생")
+              return
+            }
+          }
+
+          requestForManipulateReview(reviewSuccessFunc, reviewFailFunc, true, "create")
+        })
+      }
+    </script>
+  </body>
+</html>
+
+{{ end }}

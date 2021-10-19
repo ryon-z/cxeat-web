@@ -1,0 +1,541 @@
+{{ define "subs-intro.html" }}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta
+      content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=no"
+      name="viewport"
+    />
+    <meta name="description" content="큐잇 요금제" />
+    <link rel="icon" type="images/png" href="/contents/images/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css"
+    />
+    <link rel="stylesheet" href="/contents/css/sub_intro/sub_intro.css" />
+    <script
+      src="https://kit.fontawesome.com/7e24956d25.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="/contents/js/main_func.js?v={{ .cssRandomVersion }}"
+      defer
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    {{ template "shared/header.tmpl" . }} 
+    {{ template "shared/title.tmpl" . }}
+  </head>
+  <body>
+    {{ template "shared/nav.tmpl" . }}
+
+    <main class="ratePlan-wrapper">
+      <div class="ratePlan-container">
+        <div class="ratePlan-body">
+          <div class="ratePlanMain-container">
+            <div class="ratePlanMain-title">
+              <h2>
+                <span class="regular">큐잇 정기구독은</span><br />
+                합리적이고 편리합니다
+              </h2>
+              <p>
+                매번 구매하는 번거로움은 큐잇에게 맡기고<br />
+                삶의 또 다른 즐거움을 찾아보세요
+              </p>
+              <div class="mainBtn-container">
+                <a href="/web/survey/main">큐잇 시작하기 </a>
+              </div>
+            </div>
+          </div>
+          <div class="ratePlanInfo-container">
+            <div class="ratePlanInfo-title">
+              <h2>요금제 안내</h2>
+            </div>
+            <div class="ratePlanInfo-subtitle">
+              <h3>
+                큐잇 정기구독 상품의 모든 요금제는<br />
+                큐잇이
+                <span class="bold"
+                  >매주 선정하는 잇템(Eat Item)을 포함하여<br />
+                  쌀, 과일, 채소 등 최소 5가지 이상의 농산물</span
+                >이 담겨요
+              </h3>
+            </div>
+            <div class="ratePlanInfo-body">
+              <table class="ratePlan-table">
+                <thead>
+                  <tr>
+                    <th><span>정기구독</span></th>
+                    <th><span>구독료</span></th>
+                    <th><span>배송비</span></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span>싱글</span></td>
+                    <td>36,000원</td>
+                    <td>무료</td>
+                  </tr>
+                  <tr>
+                    <td><span>싱글+</span></td>
+                    <td>43,200원</td>
+                    <td>무료</td>
+                  </tr>
+                  <tr>
+                    <td><span>레귤러</span></td>
+                    <td>49,000원</td>
+                    <td>무료</td>
+                  </tr>
+                  <tr>
+                    <td><span>레귤러+</span></td>
+                    <td>56,300원</td>
+                    <td>무료</td>
+                  </tr>
+                  <tr>
+                    <td><span>라지</span></td>
+                    <td>71,000원</td>
+                    <td>무료</td>
+                  </tr>
+                  <tr>
+                    <td><span>라지+</span></td>
+                    <td>78,100원</td>
+                    <td>무료</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="ratePlanInfo-notice">
+              <h3>
+                큐잇의 요금제는
+                <span class="point-color">주 단위 구독료</span>이며<br />
+                이용 주기는
+                <span class="point-color">1주부터 4주까지</span>
+                선택할 수 있습니다
+              </h3>
+            </div>
+          </div>
+          <div class="ratePlanRecommend-container">
+            <div class="ratePlanRecommend-title">
+              <h2>
+                나에게 맞는 요금제를<br class="mobile-newline" />
+                추천 받으세요
+              </h2>
+              <h3>
+                요금제는 이용하시는 소비량에 따라 추천 드리며<br />
+                큐잇의 큐레이션 프로그램에 기반하여<br />
+                <span class="bold">고객님마다 모두 다르게 맞춤형으로 구성</span
+                >됩니다
+              </h3>
+            </div>
+            <div class="ratePlanRecommend-body">
+              <div class="ratePlanRecommend-box">
+                <img
+                  src="/contents/images/sub_intro/sub_intro_icon.png"
+                  alt="요금제페이지 요금추천 아이콘"
+                />
+                <h4>소비량에 따라</h4>
+                  <div class="ratePlanRecommend-text">
+                  <p>
+                    무조건 인원 수에 따라 추천해 드리지 않아요<br />
+                    소비량을 판단해서 요금제를 제안합니다
+                  </p>
+                </div>
+              </div>
+              <div class="ratePlanRecommend-box">
+                <img
+                  src="/contents/images/sub_intro/sub_intro_icon2.png"
+                  alt="요금제페이지 요금추천 아이콘"
+                />
+                <h4>품목 수에 따라</h4>
+                <div class="ratePlanRecommend-text">
+                <p>
+                  과일만 이용하시는 분과<br />
+                  쌀, 과일, 채소를 이용하시는 분은<br />
+                  요금제가 달라질 수 있어요
+                </p>
+                </div>
+              </div>
+            </div>
+            <div class="ratePlanRecommend-title">
+              <h2>
+                <span class="regular">지금 큐레이션 받고</span><br />
+                나에게 딱 맞는 요금제를<br class="mobile-newline" />
+                확인해 보세요!
+              </h2>
+              <p>추천 결과를 보고 요금제나 품목을<br class="mobile-newline" /> 직접 변경할 수도 있습니다</p>
+            </div>
+            <div class="surveyBtn-container">
+              <a href="/web/survey/main">요금제 추천 받기</a>
+            </div>
+          </div>
+
+          <div class="ratePlanExample-container">
+            <div class="ratePlanExample-title">
+              <h2>요금제 구성예시</h2>
+            </div>
+            <div class="ratePlanExample-body">
+              <div class="ratePlanExample-boxGroup">
+                <div class="ratePlanExample-box">
+                  <span>싱글</span>
+                  <img
+                    src="/contents/images/sub_intro/sub_ratePlan.png"
+                    alt="요금제 사진"
+                  />
+                  <div class="ratePlanExample-info">
+                    <div class="ratePlan-hash">
+                      <span>#과일</span>
+                    </div>
+                    <h3>36,000원</h3>
+                  </div>
+                </div>
+                <div class="ratePlanExample-box">
+                  <span class="ratePlan-label label-active" id="ratePlan-label1"
+                    >싱글+</span
+                  >
+                  <img
+                    src="/contents/images/sub_intro/sub_ratePlan2.png"
+                    alt="요금제 사진"
+                  />
+                  <div class="ratePlanExample-info">
+                    <div class="ratePlan-hash">
+                      <span>#쌀</span>
+                      <span>#잡곡</span>
+                      <span>#과일</span>
+                      <span>#채소</span>
+                    </div>
+                    <h3>43,200원</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="ratePlanExample-boxGroup">
+                <div class="ratePlanExample-box">
+                  <span>레귤러</span>
+                  <img
+                    src="/contents/images/sub_intro/sub_ratePlan3.png"
+                    alt="요금제 사진"
+                  />
+                  <div class="ratePlanExample-info">
+                    <div class="ratePlan-hash">
+                      <span>#쌀</span>
+                      <span>#과일</span>
+                      <span>#채소</span>
+                    </div>
+                    <h3>49,000원</h3>
+                  </div>
+                </div>
+                <div class="ratePlanExample-box">
+                  <span>레귤러+</span>
+                  <img
+                    src="/contents/images/sub_intro/sub_ratePlan4.png"
+                    alt="요금제 사진"
+                  />
+                  <div class="ratePlanExample-info">
+                    <div class="ratePlan-hash">
+                      <span>#쌀</span>
+                      <span>#과일</span>
+                      <span>#채소</span>
+                    </div>
+                    <h3>56,300원</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="ratePlanExample-boxGroup">
+                <div class="ratePlanExample-box">
+                  <span>라지</span>
+                  <img
+                    src="/contents/images/sub_intro/sub_ratePlan5.png"
+                    alt="요금제 사진"
+                  />
+                  <div class="ratePlanExample-info">
+                    <div class="ratePlan-hash">
+                      <span>#쌀</span>
+                      <span>#과일</span>
+                      <span>#채소</span>
+                    </div>
+                    <h3>71,000원</h3>
+                  </div>
+                </div>
+                <div class="ratePlanExample-box">
+                  <span>라지+</span>
+                  <img
+                    src="/contents/images/sub_intro/sub_ratePlan6.png"
+                    alt="요금제 사진"
+                  />
+                  <div class="ratePlanExample-info">
+                    <div class="ratePlan-hash">
+                      <span>#쌀</span>
+                      <span>#잡곡</span>
+                      <span>#과일</span>
+                      <span>#채소</span>
+                    </div>
+                    <h3>78,100원</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="ratePlan-select-wrapper">
+                <div class="ratePlan-select-container">
+                  <div class="ratePlanSelect-slide ratePlanSelect-active">
+                    <span id="ratePlanBtn1">싱글</span>
+                  </div>
+                  <div class="ratePlanSelect-slide">
+                    <span id="ratePlanBtn2">싱글 +</span>
+                  </div>
+                  <div class="ratePlanSelect-slide">
+                    <span id="ratePlanBtn3">레귤러</span>
+                  </div>
+                  <div class="ratePlanSelect-slide">
+                    <span id="ratePlanBtn4">레귤러 +</span>
+                  </div>
+                  <div class="ratePlanSelect-slide">
+                    <span id="ratePlanBtn5">라지</span>
+                  </div>
+                  <div class="ratePlanSelect-slide">
+                    <span id="ratePlanBtn6">라지 +</span>
+                  </div>
+                </div>
+              </div>
+              <div class="ratePlan-slide-wrapper">
+                <div class="swiper-container ratePlan-swiper">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide ratePlan-slide">
+                      <span
+                        class="ratePlan-label label-active"
+                        id="ratePlan-label1"
+                        >싱글</span
+                      >
+                      <img
+                        src="/contents/images/sub_intro/sub_ratePlan.png"
+                        alt="요금제 사진"
+                      />
+                      <div class="ratePlanExample-info">
+                        <div class="ratePlan-hash">
+                          <span>#과일</span>
+                        </div>
+                        <h3>36,000원</h3>
+                      </div>
+                    </div>
+                    <div class="swiper-slide ratePlan-slide">
+                      <span class="ratePlan-label" id="ratePlan-label2"
+                        >싱글+</span
+                      >
+                      <img
+                        src="/contents/images/sub_intro/sub_ratePlan2.png"
+                        alt="요금제 사진"
+                      />
+                      <div class="ratePlanExample-info">
+                        <div class="ratePlan-hash">
+                          <span>#쌀</span>
+                          <span>#잡곡</span>
+                          <span>#과일</span>
+                          <span>#채소</span>
+                        </div>
+                        <h3>43,200원</h3>
+                      </div>
+                    </div>
+                    <div class="swiper-slide ratePlan-slide">
+                      <span class="ratePlan-label" id="ratePlan-label3"
+                        >레귤러</span
+                      >
+                      <img
+                        src="/contents/images/sub_intro/sub_ratePlan3.png"
+                        alt="요금제 사진"
+                      />
+                      <div class="ratePlanExample-info">
+                        <div class="ratePlan-hash">
+                          <span>#쌀</span>
+                          <span>#과일</span>
+                          <span>#채소</span>
+                        </div>
+                        <h3>49,000원</h3>
+                      </div>
+                    </div>
+                    <div class="swiper-slide ratePlan-slide">
+                      <span class="ratePlan-label" id="ratePlan-label4"
+                        >레귤러+</span
+                      >
+                      <img
+                        src="/contents/images/sub_intro/sub_ratePlan4.png"
+                        alt="요금제 사진"
+                      />
+                      <div class="ratePlanExample-info">
+                        <div class="ratePlan-hash">
+                          <span>#쌀</span>
+                          <span>#과일</span>
+                          <span>#채소</span>
+                        </div>
+                        <h3>56,300원</h3>
+                      </div>
+                    </div>
+                    <div class="swiper-slide ratePlan-slide">
+                      <span class="ratePlan-label" id="ratePlan-label5"
+                        >라지</span
+                      >
+                      <img
+                        src="/contents/images/sub_intro/sub_ratePlan5.png"
+                        alt="요금제 사진"
+                      />
+                      <div class="ratePlanExample-info">
+                        <div class="ratePlan-hash">
+                          <span>#쌀</span>
+                          <span>#과일</span>
+                          <span>#채소</span>
+                        </div>
+                        <h3>71,000원</h3>
+                      </div>
+                    </div>
+                    <div class="swiper-slide ratePlan-slide">
+                      <span class="ratePlan-label" id="ratePlan-label6"
+                        >라지+</span
+                      >
+                      <img
+                        src="/contents/images/sub_intro/sub_ratePlan6.png"
+                        alt="요금제 사진"
+                      />
+                      <div class="ratePlanExample-info">
+                        <div class="ratePlan-hash">
+                          <span>#쌀</span>
+                          <span>#잡곡</span>
+                          <span>#과일</span>
+                          <span>#채소</span>
+                        </div>
+                        <h3>78,100원</h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-button-next ratePlan-swiper-next"></div>
+                <div class="swiper-button-prev ratePlan-swiper-prev"></div>
+              </div>
+              <div class="ratePlanExample-notice">
+                <p>
+                  이미지는 6월 2주차 기준으로<br />
+                  이용 품목과 소비량에 따라 달라지는<br
+                    class="mobile-newline"
+                  />
+                  구성을 보여 드리기 위한 단순 예시입니다
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="ratePlanLifestyle-container">
+            <div class="ratePlanLifestyle-title">
+              <h2>
+                같은 요금제라도<br />
+                고객님마다 구성이 달라져요
+              </h2>
+              <h3>
+                개인 취향과 <br class="mobile-newline" />
+                라이프스타일에 따라 <br class="mobile-newline" />다르게
+              </h3>
+            </div>
+            <div class="ratePlanLifestyle-body">
+              <div class="ratePlanLifestyle-boxGroup">
+                <div class="ratePlanLifestyle-box">
+                  <div class="ratePlanLifestyle-img">
+                    <img
+                      src="/contents/images/sub_intro/sub_lifeStyle.png"
+                      alt="큐잇 요금제 라이프스타일"
+                    />
+                  </div>
+                  <h4>미세한 입맛까지 반영해요</h4>
+                  <div class="ratPlanLifestyle-text">
+                    <p>
+                      일괄적으로 보내 드리는 랜덤박스가 아니예요<br />
+                      내 취향을 반영한 나만의 맞춤박스로 구성돼요
+                    </p>
+                    <p>
+                      달콤파, 새콤파 미세한 입맛도 고려한 구성!<br />
+                      좋아하는 것만 담아서 보내 드릴게요
+                    </p>
+                  </div>
+                </div>
+                <div class="ratePlanLifestyle-box">
+                  <div class="ratePlanLifestyle-img">
+                    <img
+                      src="/contents/images/sub_intro/sub_lifeStyle2.png"
+                      alt="큐잇 요금제 라이프스타일"
+                    />
+                  </div>
+                  <h4>관심있는 건강정보를 반영해요</h4>
+                  <div class="ratPlanLifestyle-text">
+                    <p>
+                      알레르기, 다이어트, 성인병 등<br />
+                      알려주신 건강정보도 최대한 고려하여 반영해요
+                    </p>
+                    <p>나쁜 건 피하고, 좋은 건 챙겨 드릴게요</p>
+                  </div>
+                </div>
+              </div>
+              <div class="ratePlanLifestyle-title">
+                <h3>매번 다른 구성</h3>
+              </div>
+              <div class="ratePlanLifestyle-boxGroup">
+                <div class="ratePlanLifestyle-box">
+                  <div class="ratePlanLifestyle-img">
+                    <img
+                      src="/contents/images/sub_intro/sub_lifeStyle3.png"
+                      alt="큐잇 요금제 라이프스타일"
+                    />
+                  </div>
+                  <h4>잇템의 즐거움</h4>
+                  <div class="ratPlanLifestyle-text">
+                    <p>
+                      매주 가장 제철 상품이나 새로운 품종을<br />
+                      잇템(Eat Item)으로 선정합니다
+                    </p>
+                    <p>
+                      이번 주는 어떤 잇템(Eat Item)이 담겨있을지<br />
+                      기대해 보세요!
+                    </p>
+                  </div>
+                </div>
+                <div class="ratePlanLifestyle-box">
+                  <div class="ratePlanLifestyle-img">
+                    <img
+                      src="/contents/images/sub_intro/sub_lifeStyle4.png"
+                      alt="큐잇 요금제 라이프스타일"
+                    />
+                  </div>
+                  <h4>지난 주와 겹치지 않게</h4>
+                  <div class="ratPlanLifestyle-text">
+                    <p>
+                      아무리 맛있는 것도 두 번은 지겹죠<br />
+                      최대한 이전 배송과 겹치지 않게 구성합니다
+                    </p>
+                    <p>
+                      특별히 만족스러웠던 품목이 있다면<br />
+                      한 번 더 보내 드릴 수도 있어요!
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ratePlanCueat-container">
+            <div class="ratePlanCueat-title">
+              <h2>
+                <span class="regular">여전히 잘 모르겠다면?</span>
+              </h2>
+              <h2> 지금 바로 큐잇을 <br class="mobile-newline" />
+                경험해 보세요!</h2>
+              <h3>첫 배송 20% 할인</h3>
+            </div>
+            <div class="surveyWhiteBtn-container">
+              <a href="/web/survey/main">큐잇 시작하기</a>
+            </div>
+          </div>
+        </div>
+        {{ template "shared/footer.tmpl" }}
+      </div>
+    </main>
+  </body>
+</html>
+
+{{ end }}

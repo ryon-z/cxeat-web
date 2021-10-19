@@ -1,0 +1,230 @@
+{{ define "my-page/user-info.html" }}
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css"
+    />
+    <link rel="stylesheet" href="/contents/css/common.css?v={{ .cssRandomVersion }}" />
+    <link rel="stylesheet" href="/contents/mypage/css/mypage.css?v={{ .cssRandomVersion }}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    {{ template "shared/header.tmpl" . }}
+    <script
+      src="https://kit.fontawesome.com/7e24956d25.js"
+      crossorigin="anonymous"
+    ></script>
+    {{ template "shared/title.tmpl" . }}
+  </head>
+  <body>
+    {{ template "shared/nav.tmpl" . }}
+    {{ template "shared/nav-title.tmpl" . }}
+    
+    <section class="mypage">
+      <section>
+        <div class="input_title">
+          <div>내 정보</div>
+        </div>
+        <div class="mypage_modify">
+          <div class="input_field">
+            <div>닉네임</div>
+            <input
+              name="userName"
+              type="text"
+              class="width_input"
+              placeholder="이름을 입력하세요"
+              oninput="handleUserNameInput(event)"
+              required=""
+              value="{{ .userInfo.UserName }}"
+            />
+          </div>
+          <div class="input_field">
+            <div>이메일</div>
+            <input
+              name="email"
+              type="email" 
+              class="width_input"
+              placeholder="예)id@google.com"
+              required=""
+              {{ if not .userInfo.UserEmail }}
+                value=""                
+              {{ else}}
+                value="{{ .userInfo.UserEmail }}"
+              {{ end }}
+            />
+          </div>
+          <!-- TEMPORARY 휴대폰번호 비활성화 -->
+          <!--
+          <div class="input_field">
+            <div>연락처</div>
+            <input
+              name="contactNo"
+              type="text"
+              class="width_input"
+              placeholder="휴대폰번호를 입력하세요"
+              required=""
+              value="{{ .userInfo.UserPhone }}"
+            />
+          </div>
+          -->
+          <div class="input_field">
+            <div>생년월일</div>
+            <input
+              name="birth"
+              type="number" 
+              inputmode="numeric" 
+              pattern="[0-9]*"
+              class="width_input"
+              onInput="handleLimitedInput(event, 8)"
+              required=""
+              {{ if not .userInfo.BirthDay }}
+                value=""                
+              {{ else}}
+                value="{{ .userInfo.BirthDay }}"
+              {{ end }}
+            />
+          </div>
+          <div class="input_field">
+            <div>성별</div>
+            <div class="gender_radio_div">
+              <input
+                name="gender"
+                type="radio"
+                id="male"
+                class="gender_radio"
+                value="male"
+              /><label for="male">남</label>
+              <input
+                name="gender"
+                type="radio"
+                id="female"
+                class="gender_radio"
+                value="female"
+              /><label for="female">여</label>
+              <input
+                name="gender"
+                type="radio"
+                id="unknown"
+                class="gender_radio"
+                value="unknown"
+              /><label for="unknown">알리고 싶지 않음</label>
+            </div>
+          </div>
+        </div>
+        <div class="maketing_agree">
+          <div>
+            마케팅 수신동의 {{ if eq .userInfo.IsMktAgree 1 }}
+            <button class="subscribe_toggle active">
+              <div class="handle"></div>
+            </button>
+            {{ else }}
+            <button class="subscribe_toggle">
+              <div class="handle"></div>
+            </button>
+            {{ end }}
+          </div>
+        </div>
+        <!-- TEMPORARY 탈퇴하기 비활성화 -->
+        <!-- <div
+          class="secession_button"
+          onclick="location.href='Withdrawal.html' "
+        >
+          <span
+            ><img src="/contents/mypage/images/withdrawal_icon.svg" alt="" />
+            <span>탈퇴하기</span>
+          </span>
+        </div> -->
+      </section>
+      <section class="yello_div_button mt3rem">
+        <button class="yello_button" onclick="handleChangeUserInfo()">
+          저장하기
+        </button>
+      </section>
+    </section>
+    {{ template "shared/footer.tmpl" . }}
+    <script src="/contents/mypage/js/toggle.js?v={{ .cssRandomVersion }}"></script>
+
+    <script type="text/javascript">
+      document.addEventListener('DOMContentLoaded', function() {
+        // 성별 라디오 버튼 default 값 설정
+        var genderElem = document.querySelectorAll("input.gender_radio")
+        var userGender = {{ .userInfo.UserGender }}
+        if (userGender === "male") {
+          var man = document.querySelector("#male")
+          man.checked = true
+        } else if (userGender === "female") {
+          var woman = document.querySelector("#female")
+          woman.checked = true
+        } else {
+          var unknown = document.querySelector("#unknown")
+          unknown.checked = true
+        }
+      })
+
+      // 4 byte emoji 입력 금지
+      function handleUserNameInput(event) {
+        event.target.value = remove4byteEmoji(event.target.value)
+      }
+
+      function handleChangeUserInfo() {
+        var userNameElem = document.querySelector("input[name=userName]")
+        var contactNoElem = document.querySelector("input[name=contactNo]")
+        var birthElem = document.querySelector("input[name=birth]")
+        var emailElem = document.querySelector("input[name=email]")
+        var genderElem = document.querySelector("input[name=gender]:checked")
+        var isMktAgreeElem = document.querySelector("button.subscribe_toggle.active")
+        var isMktAgree = isMktAgreeElem === null ? 0 : 1
+    
+        var url = "/user/edit"
+        var method = "POST"
+        var data = {
+          UserName: userNameElem.value,
+          // TEMPORARY 휴대폰번호 비활성화
+          // UserPhone: contactNoElem.value,
+          UserGender: genderElem.value,
+          IsMktAgree: isMktAgree,
+        }
+        if (birthElem !== null && birthElem.value !== "") {
+          if (!checkBirthDateValid(birthElem.value)) {
+            Swal.fire("잘못된 생년월일을 입력하셨습니다.")
+            return
+          }
+          var year = birthElem.value.slice(0,4)
+          var month = birthElem.value.slice(4,6)
+          var day = birthElem.value.slice(6,8)
+          data["BirthDay"] = `${year}-${month}-${day}`
+        }
+        if (emailElem !== null) {
+          var re = /^[^\s@]+@([^\s@.,]+\.)+[^\s@.,]{2,}$/
+          if (!re.test(emailElem.value)) {
+            Swal.fire("잘못된 이메일을 입력하셨습니다.")
+            return
+          }
+          data["UserEmail"] = emailElem.value
+        }
+
+        console.log("data", data)
+    
+        function successFunc() {
+          location.href = "/web/my-page/main"
+          return;
+        }
+    
+        function failFunc() {
+          Swal.fire("시스템 에러로 내 정보 수정 실패")
+          return;
+        }
+    
+        customRequest(url, method, data, successFunc, failFunc)
+      }
+    </script>
+    
+    {{ template "shared/extend-token.tmpl" . }}
+  </body>
+</html>
+
+{{ end }}

@@ -1,0 +1,31 @@
+{{ define "shared/naver-script.tmpl" }}
+
+<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+
+{{ if .priceForTracking }}
+<script type="text/javascript">
+  // 구매완료
+  var _nasa={};
+  _nasa["cnv"] = wcs.cnv("1","{{ .priceForTracking }}");
+</script>
+{{ end }}
+
+{{ if .isSignup }}
+<script type="text/javascript">
+  // 회원가입
+  var _nasa={};
+  _nasa["cnv"] = wcs.cnv("2","1");
+</script>
+{{ end }}
+
+<script type="text/javascript">
+  if(!wcs_add) var wcs_add = {};
+  wcs_add["wa"] = "s_15f9b809ce2e"; 
+  if (!_nasa) var _nasa={};
+  wcs.inflow("cueat.kr"); 
+
+  wcs_do(_nasa); 
+</script>
+
+{{ end }}
+

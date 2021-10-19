@@ -1,0 +1,1370 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+//변수 선언
+$bold: 700;
+$medium: 500;
+$regular: 400;
+$textPointColor: #ff9800;
+$elementPointColor: #ffe54d;
+$borderColor: #b7b7b7;
+@mixin h2 {
+  font-size: 48px;
+  font-weight: $bold;
+  letter-spacing: -0.025em;
+  line-height: 58px;
+  .medium {
+    font-weight: $medium;
+  }
+  .regular {
+    font-weight: $regular;
+  }
+  @media all and (min-width: 768px) and (max-width: 1320px) {
+    font-size: 42px;
+  }
+}
+@mixin h3 {
+  font-size: 24px;
+  font-weight: $regular;
+  letter-spacing: -0.025em;
+  line-height: 34px;
+  .bold {
+    font-weight: $bold;
+  }
+  .point-color {
+    color: $textPointColor;
+    font-weight: $bold;
+  }
+  @media all and (min-width: 768px) and (max-width: 1320px) {
+    font-size: 18px;
+    line-height: 28px;
+  }
+}
+@mixin h4 {
+  font-size: 40px;
+  font-weight: $bold;
+  letter-spacing: -0.025em;
+  line-height: 55px;
+  color: $textPointColor;
+  margin-bottom: 40px;
+  @media all and (min-width: 768px) and (max-width: 1320px) {
+    font-size: 34px;
+  }
+}
+@mixin paragraphText {
+  font-size: 20px;
+  font-weight: $medium;
+  letter-spacing: -0.025em;
+  line-height: 28px;
+  @media all and (min-width: 768px) and (max-width: 1320px) {
+    font-size: 16px;
+  }
+}
+@mixin flexCenter() {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+@mixin flexMiddle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+@mixin flexColum {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+@mixin containerConfig {
+  width: 1200px;
+  padding-bottom: 200px;
+  margin-top: 200px;
+  border-bottom: 1px solid $borderColor;
+  @media all and (min-width: 768px) and (max-width: 1320px) {
+    width: 100%;
+  }
+  @media all and (max-width: 768px) {
+    width: 90%;
+    margin-top: 95px;
+    padding-bottom: 100px;
+  }
+}
+
+body {
+  font-family: "Noto Sans KR";
+  width: 100%;
+  height: 100%;
+  color: #232323;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  .ratePlan-wrapper {
+    width: 100%;
+    .ratePlan-container {
+      .ratePlan-body {
+        @include flexColum();
+        margin-top: 131px;
+        .ratePlanMain-container {
+          @include flexColum();
+          position: relative;
+          background-image: url("/contents/newMain_image/subs_intro/subs_introMain.jpg");
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: cover;
+          width: 100%;
+          min-height: 800px;
+          .ratePlanMain-title {
+            position: absolute;
+            top: 100px;
+            left: 50%;
+            -webkit-transform: translate(-50%, 0);
+            -ms-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
+            text-align: center;
+            h2 {
+              @include h2();
+              margin-bottom: 15px;
+            }
+            p {
+              @include paragraphText();
+              margin-bottom: 30px;
+            }
+            .mainBtn-container {
+              @include flexCenter();
+              a {
+                @include flexMiddle();
+                width: 253px;
+                height: 64px;
+                background-color: #ff9800;
+                color: #fefefe;
+                border: none;
+                border-radius: 10px;
+                text-decoration: none;
+                font-size: 20px;
+                font-weight: $medium;
+                letter-spacing: -0.005em;
+                line-height: 29px;
+              }
+            }
+          }
+        }
+        .ratePlanInfo-container {
+          @include flexColum();
+          @include containerConfig();
+          .ratePlanInfo-title {
+            margin-bottom: 40px;
+            h2 {
+              @include h2();
+            }
+          }
+          .ratePlanInfo-subtitle {
+            text-align: center;
+            margin-bottom: 95px;
+            h3 {
+              @include h3();
+            }
+          }
+          .ratePlanInfo-body {
+            width: 790px;
+            margin-bottom: 60px;
+            .ratePlan-table {
+              display: table;
+              width: 100%;
+              table-layout: fixed;
+              thead {
+                width: 100%;
+                height: 70px;
+                background-color: $elementPointColor;
+                tr {
+                  th {
+                    @include paragraphText();
+                    vertical-align: middle;
+                    line-height: 55px;
+                    span {
+                      width: 75px;
+                    }
+                  }
+                }
+              }
+              tbody {
+                tr {
+                  td {
+                    @include paragraphText();
+                    text-align: center;
+                    padding-bottom: 35px;
+                    color: #6d6d6d;
+                  }
+                  td:nth-of-type(1) {
+                    display: -webkit-box;
+                    display: -ms-flexbox;
+                    display: flex;
+                    -webkit-box-pack: center;
+                    -ms-flex-pack: center;
+                    justify-content: center;
+                    span {
+                      width: 75px;
+                      text-align: start;
+                    }
+                  }
+                  td:nth-of-type(2) {
+                    color: #232323;
+                  }
+                  td:nth-of-type(3) {
+                    color: $textPointColor;
+                  }
+                }
+                tr:nth-of-type(1) {
+                  td {
+                    padding-top: 45px;
+                  }
+                }
+              }
+            }
+          }
+          .ratePlanInfo-notice {
+            text-align: center;
+            h3 {
+              @include h3();
+            }
+          }
+        }
+        .ratePlanRecommend-container {
+          @include flexColum();
+          @include containerConfig();
+          .ratePlanRecommend-title {
+            text-align: center;
+            margin-bottom: 115px;
+            h2 {
+              @include h2();
+              margin-bottom: 40px;
+              .mobile-newline {
+                display: none;
+              }
+            }
+            p {
+              @include paragraphText();
+              font-size: 16px;
+              font-weight: $regular;
+              color: #6d6d6d;
+            }
+            h3 {
+              @include h3();
+            }
+            .mobile-newline {
+              display: none;
+            }
+          }
+          .ratePlanRecommend-body {
+            @include flexCenter();
+            width: 100%;
+            margin-bottom: 180px;
+            .ratePlanRecommend-box {
+              @include flexColum();
+              justify-content: flex-start;
+              width: 50%;
+              img {
+                margin-bottom: 20px;
+              }
+              h4 {
+                @include h4();
+              }
+              .ratePlanRecommend-text {
+                @include flexMiddle();
+                height: 100px;
+                text-align: center;
+
+                p {
+                  @include paragraphText();
+                }
+              }
+            }
+          }
+          .surveyBtn-container {
+            a {
+              @include flexMiddle();
+              width: 253px;
+              height: 64px;
+              background-color: $elementPointColor;
+              font-size: 20px;
+              font-weight: $medium;
+              text-decoration: none;
+              color: #464646;
+              border-radius: 10px;
+            }
+            a:hover {
+              background-color: #ffeb4f;
+            }
+          }
+        }
+        .ratePlanExample-container {
+          @include flexColum();
+          @include containerConfig();
+          .ratePlanExample-title {
+            margin-bottom: 95px;
+            h2 {
+              @include h2();
+            }
+          }
+          .ratePlanExample-body {
+            @include flexColum();
+            width: 100%;
+            .ratePlanExample-boxGroup {
+              @include flexCenter();
+              -ms-flex-pack: distribute;
+              justify-content: space-around;
+              width: 875px;
+              .ratePlanExample-box {
+                @include flexColum();
+                width: 350px;
+                margin-bottom: 95px;
+                > span {
+                  @include flexMiddle();
+                  width: 65px;
+                  height: 65px;
+                  background-color: $elementPointColor;
+                  border-radius: 50%;
+                  font-size: 16px;
+                  font-weight: $medium;
+                  letter-spacing: -0.025em;
+                  line-height: 41px;
+                  margin-bottom: 15px;
+                }
+                img {
+                }
+                .ratePlanExample-info {
+                  @include flexMiddle();
+                  width: 100%;
+                  -webkit-box-pack: justify;
+                  -ms-flex-pack: justify;
+                  justify-content: space-between;
+                  margin-top: 10px;
+                  .ratePlan-hash {
+                    span {
+                      @include paragraphText();
+                      font-size: 16px;
+                      color: $textPointColor;
+                      background-color: #fefefe;
+                      border: 1px solid $textPointColor;
+                      border-radius: 20px;
+                      padding: 0px 10px;
+                      margin-right: 4px;
+                    }
+                  }
+                  h3 {
+                    font-size: 20px;
+                    font-weight: $bold;
+                  }
+                }
+              }
+            }
+            .ratePlan-select-wrapper {
+              display: none;
+            }
+            .ratePlan-slide-wrapper {
+              display: none;
+            }
+          }
+          .ratePlanExample-notice {
+            p {
+              text-align: center;
+              font-size: 16px;
+              font-weight: $regular;
+              letter-spacing: -0.025em;
+              line-height: 24px;
+              color: #6d6d6d;
+              .mobile-newline {
+                display: none;
+              }
+            }
+          }
+        }
+        .ratePlanLifestyle-container {
+          @include flexColum();
+          @include containerConfig();
+          border-bottom: none;
+          .ratePlanLifestyle-title {
+            text-align: center;
+            margin-bottom: 115px;
+            h2 {
+              @include h2();
+              margin-bottom: 95px;
+            }
+            h3 {
+              @include h3();
+              font-size: 40px;
+              .mobile-newline {
+                display: none;
+              }
+            }
+          }
+          .ratePlanLifestyle-title:nth-of-type(2) {
+            margin: 115px 0 115px;
+          }
+          .ratePlanLifestyle-body {
+            @include flexColum();
+            width: 100%;
+            .ratePlanLifestyle-boxGroup {
+              @include flexCenter();
+              -webkit-box-align: start;
+              -ms-flex-align: start;
+              align-items: flex-start;
+              width: 100%;
+              .ratePlanLifestyle-box {
+                @include flexColum();
+                width: 50%;
+                .ratePlanLifestyle-img {
+                  height: 100px;
+                  margin-bottom: 20px;
+                  img {
+                  }
+                }
+                h4 {
+                  @include h4();
+                }
+                .ratPlanLifestyle-text {
+                  @include flexColum();
+                  height: 150px;
+                  p {
+                    @include paragraphText();
+                    text-align: center;
+                  }
+                  p:nth-of-type(1) {
+                    margin-bottom: 10px;
+                  }
+                }
+              }
+            }
+          }
+        }
+        .ratePlanCueat-container {
+          @include flexColum();
+          width: 100%;
+          background-color: $elementPointColor;
+          padding: 185px 0 200px;
+          .ratePlanCueat-title {
+            text-align: center;
+            margin-bottom: 105px;
+            h2 {
+              @include h2();
+              span {
+                display: block;
+                // margin-bottom: 50px;
+              }
+              .mobile-newline {
+                display: none;
+              }
+            }
+            h2:nth-of-type(2) {
+              margin-bottom: 20px;
+            }
+            h3 {
+              font-size: 40px;
+              font-weight: $bold;
+              letter-spacing: -0.025em;
+              line-height: 55px;
+              color: #ff7800;
+            }
+          }
+          .surveyWhiteBtn-container {
+            a {
+              @include flexMiddle();
+              width: 253px;
+              height: 64px;
+              background-color: #fefefe;
+              font-size: 20px;
+              font-weight: $medium;
+              line-height: 29px;
+              text-decoration: none;
+              border-radius: 10px;
+              color: #606060;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1320px) {
+  body {
+    font-family: "Noto Sans KR";
+    width: 100%;
+    height: 100%;
+    color: #232323;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    .ratePlan-wrapper {
+      .ratePlan-container {
+        .ratePlan-body {
+          width: 100%;
+          .ratePlanInfo-container {
+            .ratePlanInfo-title {
+              h2 {
+              }
+            }
+            .ratePlanInfo-subtitle {
+              h3 {
+              }
+            }
+            .ratePlanInfo-body {
+              width: 70%;
+              .ratePlan-table {
+                thead {
+                  tr {
+                    th {
+                    }
+                  }
+                }
+                tbody {
+                  tr {
+                    td {
+                    }
+                    td:nth-of-type(2) {
+                    }
+                    td:nth-of-type(3) {
+                    }
+                  }
+                  tr:nth-of-type(1) {
+                    td {
+                    }
+                  }
+                }
+              }
+            }
+            .ratePlanInfo-notice {
+              h3 {
+                @include h3();
+              }
+            }
+          }
+          .ratePlanRecommend-container {
+            .ratePlanRecommend-title {
+              h2 {
+              }
+              p {
+              }
+              h3 {
+              }
+            }
+            .ratePlanRecommend-body {
+              .ratePlanRecommend-box {
+                img {
+                }
+                h4 {
+                }
+                p {
+                }
+              }
+            }
+            .surveyBtn-container {
+              a {
+              }
+              a:hover {
+              }
+            }
+          }
+          .ratePlanExample-container {
+            width: 95%;
+            .ratePlanExample-title {
+              h2 {
+              }
+            }
+            .ratePlanExample-body {
+              .ratePlanExample-boxGroup {
+                width: 100%;
+                .ratePlanExample-box {
+                  > span {
+                  }
+                  img {
+                  }
+                  .ratePlanExample-info {
+                    .ratePlan-hash {
+                      span {
+                      }
+                    }
+                    h3 {
+                    }
+                  }
+                }
+              }
+            }
+            .ratePlanExample-notice {
+              p {
+              }
+            }
+          }
+          .ratePlanLifestyle-container {
+            .ratePlanLifestyle-title {
+              h2 {
+              }
+              h3 {
+                font-size: 28px;
+              }
+            }
+            .ratePlanLifestyle-title:nth-of-type(2) {
+            }
+            .ratePlanLifestyle-body {
+              .ratePlanLifestyle-boxGroup {
+                .ratePlanLifestyle-box {
+                  .ratePlanLifestyle-img {
+                    img {
+                    }
+                  }
+                  h4 {
+                    font-size: 28px;
+                  }
+                  p {
+                  }
+                  p:nth-of-type(1) {
+                  }
+                }
+              }
+            }
+          }
+          .ratePlanCueat-container {
+            .ratePlanCueat-title {
+              h2 {
+              }
+              h3 {
+              }
+            }
+            .surveyWhiteBtn-container {
+              a {
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 768px) {
+  @mixin mobileText {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  body {
+    font-family: "Noto Sans KR";
+    width: 100%;
+    height: 100%;
+    color: #232323;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    .ratePlan-wrapper {
+      .ratePlan-container {
+        .ratePlan-body {
+          width: 100%;
+          margin-top: 102px;
+          .ratePlanMain-container {
+            @include flexColum();
+            background-image: url("/contents/newMain_image/subs_intro/m_subs_introMain.jpg");
+            min-height: 569px;
+            .ratePlanMain-title {
+              position: absolute;
+              top: 55px;
+              left: 50%;
+              -webkit-transform: translate(-50%, 0);
+              -ms-transform: translate(-50%, 0);
+              transform: translate(-50%, 0);
+              text-align: center;
+              width: 100%;
+              h2 {
+                font-size: 32px;
+                line-height: 40px;
+              }
+              p {
+                @include paragraphText();
+                @include mobileText();
+              }
+              .mainBtn-container {
+                a {
+                  width: 180px;
+                  height: 46px;
+                  @include mobileText();
+                }
+              }
+            }
+          }
+          .ratePlanInfo-container {
+            .ratePlanInfo-title {
+              margin-bottom: 25px;
+              h2 {
+                font-size: 28px;
+              }
+            }
+            .ratePlanInfo-subtitle {
+              margin-bottom: 55px;
+              h3 {
+                @include mobileText();
+              }
+            }
+            .ratePlanInfo-body {
+              width: 90%;
+              margin-bottom: 30px;
+              .ratePlan-table {
+                thead {
+                  tr {
+                    th {
+                      font-size: 14px;
+                      line-height: 55px;
+                    }
+                  }
+                }
+                tbody {
+                  tr {
+                    td {
+                      font-size: 14px;
+                      line-height: 28px;
+                      padding-bottom: 20px;
+                    }
+                    td:nth-of-type(1) {
+                      span {
+                        width: 50px;
+                      }
+                    }
+                    td:nth-of-type(2) {
+                    }
+                    td:nth-of-type(3) {
+                    }
+                  }
+                  tr:nth-of-type(1) {
+                    td {
+                      padding-top: 25px;
+                      span {
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            .ratePlanInfo-notice {
+              h3 {
+                @include mobileText();
+              }
+            }
+          }
+          .ratePlanRecommend-container {
+            .ratePlanRecommend-title {
+              margin-bottom: 55px;
+
+              h2 {
+                font-size: 28px;
+                line-height: 38px;
+                .mobile-newline {
+                  display: block;
+                }
+              }
+              h3 {
+                @include mobileText();
+              }
+              p {
+                @include mobileText();
+              }
+              .mobile-newline {
+                display: block;
+              }
+            }
+            .ratePlanRecommend-body {
+              -webkit-box-orient: vertical;
+              -webkit-box-direction: normal;
+              -ms-flex-direction: column;
+              flex-direction: column;
+              -webkit-box-align: center;
+              -ms-flex-align: center;
+              align-items: center;
+              margin-bottom: 0px;
+              .ratePlanRecommend-box {
+                width: 100%;
+                margin-bottom: 55px;
+                img {
+                  margin-bottom: 24px;
+                }
+                h4 {
+                  font-size: 24px;
+                  line-height: 1;
+                  margin-bottom: 24px;
+                }
+                .ratePlanRecommend-text {
+                  text-align: center;
+                  height: 100%;
+                  p {
+                    @include mobileText();
+                    font-size: 14px;
+                  }
+                }
+              }
+            }
+            .surveyBtn-container {
+              a {
+                width: 180px;
+                height: 46px;
+                font-size: 14px;
+                line-height: 20px;
+              }
+              a:hover {
+              }
+            }
+          }
+          .ratePlanExample-container {
+            .ratePlanExample-title {
+              margin-bottom: 45px;
+              h2 {
+                font-size: 28px;
+                line-height: 58px;
+              }
+            }
+            .ratePlanExample-body {
+              .ratePlanExample-boxGroup {
+                display: none;
+                .ratePlanExample-box {
+                  > span {
+                  }
+                  img {
+                  }
+                  .ratePlanExample-info {
+                    .ratePlan-hash {
+                      span {
+                      }
+                    }
+                    h3 {
+                    }
+                  }
+                }
+              }
+              .ratePlan-select-wrapper {
+                display: block;
+                width: 90%;
+                margin-bottom: 45px;
+                .ratePlan-select-container {
+                  width: 100%;
+                  @include flexCenter();
+                  -webkit-box-pack: justify;
+                  -ms-flex-pack: justify;
+                  justify-content: space-between;
+                  width: 100%;
+
+                  .ratePlanSelect-slide {
+                    span {
+                      position: relative;
+                      font-size: 14px;
+                      line-height: 28px;
+                      width: 100%;
+                    }
+                    // span:hover:after {
+                    //   content: "";
+                    //   position: absolute;
+                    //   left: 50%;
+                    //   bottom: -7.5px;
+                    //   -webkit-transform: translate(-50%, 0);
+                    //   -ms-transform: translate(-50%, 0);
+                    //   transform: translate(-50%, 0);
+                    //   width: 35px;
+                    //   height: 2px;
+                    //   background-color: $textPointColor;
+                    // }
+                  }
+
+                  .ratePlanSelect-active {
+                    span {
+                      color: $textPointColor;
+                      font-weight: $bold;
+                    }
+                    span:after {
+                      content: "";
+                      position: absolute;
+                      left: 50%;
+                      bottom: -7.5px;
+                      -webkit-transform: translate(-50%, 0);
+                      -ms-transform: translate(-50%, 0);
+                      transform: translate(-50%, 0);
+                      width: 48px;
+                      height: 2px;
+                      background-color: $textPointColor;
+                    }
+                  }
+                }
+              }
+              .ratePlan-slide-wrapper {
+                display: block;
+                width: 100%;
+                position: relative;
+                .ratePlan-swiper {
+                  .swiper-wrapper {
+                    .ratePlan-slide {
+                      @include flexColum();
+                      width: 300px;
+                      margin-right: 0px;
+                      margin-bottom: 50px;
+                      .ratePlan-label {
+                        @include flexMiddle();
+                        width: 65px;
+                        height: 65px;
+                        background-color: $elementPointColor;
+                        border-radius: 50%;
+                        font-size: 14px;
+                        font-weight: $medium;
+                        letter-spacing: -0.025em;
+                        line-height: 41px;
+                        margin-bottom: 15px;
+                        &.label-active {
+                          background-color: #ff9800;
+                          color: #fefefe;
+                        }
+                      }
+                      img {
+                        width: 250px;
+                        height: 250px;
+                      }
+                      .ratePlanExample-info {
+                        @include flexMiddle();
+                        width: 300px;
+                        -webkit-box-pack: justify;
+                        -ms-flex-pack: justify;
+                        justify-content: space-between;
+                        margin-top: 10px;
+                        .ratePlan-hash {
+                          span {
+                            @include paragraphText();
+                            font-size: 14px;
+                            font-weight: $medium;
+                            color: $textPointColor;
+                            background-color: #fefefe;
+                            border: 1px solid $textPointColor;
+                            border-radius: 20px;
+                            padding: 0px 10px;
+                            margin-right: 4px;
+                          }
+                        }
+                        h3 {
+                          font-size: 14px;
+                          font-weight: $bold;
+                        }
+                      }
+                    }
+                  }
+                }
+                .swiper-button-next:after {
+                  color: transparent;
+                }
+                .swiper-button-next:focus {
+                  -webkit-user-select: none;
+                  -moz-user-select: none;
+                  -ms-user-select: none;
+                  user-select: none;
+                }
+                .swiper-button-prev:after {
+                  color: transparent;
+                }
+                .ratePlan-swiper-next {
+                  position: absolute;
+                  top: 50%;
+                  right: 0%;
+                  display: block;
+                  background: url("/contents/newMain_image/m_swiper_next.png")
+                    no-repeat;
+                  width: 18px;
+                  height: 34px;
+                  z-index: 1;
+                  -webkit-user-select: none;
+                  -moz-user-select: none;
+                  -ms-user-select: none;
+                  user-select: none;
+                  outline: none;
+                  -webkit-tap-highlight-color: transparent;
+                }
+                .ratePlan-swiper-prev {
+                  position: absolute;
+                  top: 50%;
+                  left: 0%;
+                  display: block;
+                  background: url("/contents/newMain_image/m_swiper_prev.png")
+                    no-repeat;
+                  width: 18px;
+                  height: 34px;
+                  z-index: 1;
+                  -webkit-user-select: none;
+                  -moz-user-select: none;
+                  -ms-user-select: none;
+                  user-select: none;
+                  outline: none;
+                  -webkit-tap-highlight-color: transparent;
+                }
+              }
+            }
+            .ratePlanExample-notice {
+              p {
+                font-size: 14px;
+                line-height: 20px;
+                .mobile-newline {
+                  display: block;
+                }
+              }
+            }
+          }
+          .ratePlanLifestyle-container {
+            .ratePlanLifestyle-title {
+              margin-bottom: 55px;
+              h2 {
+                font-size: 27px;
+                line-height: 38px;
+                margin-bottom: 55px;
+              }
+              h3 {
+                font-size: 24px;
+                line-height: 34px;
+                color: #6d6d6d;
+                .mobile-newline {
+                  display: block;
+                }
+              }
+            }
+            .ratePlanLifestyle-title:nth-of-type(2) {
+              margin: 0 0 55px;
+            }
+            .ratePlanLifestyle-body {
+              .ratePlanLifestyle-boxGroup {
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                flex-direction: column;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                align-items: center;
+                .ratePlanLifestyle-box {
+                  width: 100%;
+                  margin-bottom: 55px;
+                  .ratePlanLifestyle-img {
+                    margin-bottom: 24px;
+                    height: auto;
+                    img {
+                    }
+                  }
+                  h4 {
+                    font-size: 24px;
+                    line-height: 24px;
+                    margin-bottom: 24px;
+                  }
+                  .ratPlanLifestyle-text {
+                    height: auto;
+                    margin-bottom: 0px;
+                    p {
+                      font-size: 14px;
+                      font-weight: $medium;
+                      line-height: 20px;
+                    }
+                    p:nth-of-type(1) {
+                      margin-bottom: 15px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+          .ratePlanCueat-container {
+            padding: 93px 0 100px;
+            .ratePlanCueat-title {
+              margin-bottom: 76px;
+              h2 {
+                font-size: 28px;
+                line-height: 38px;
+                margin-bottom: 0;
+                // span {
+                //   display: block;
+                //   margin-bottom: 64px;
+                //   font-size: 24px;
+                // }
+                .mobile-newline {
+                  display: block;
+                }
+              }
+              h2:nth-of-type(1) {
+                margin-bottom: 67px;
+              }
+              h2:nth-of-type(2) {
+                margin-bottom: 67px;
+              }
+              h3 {
+                font-size: 24px;
+                line-height: 24px;
+              }
+            }
+            .surveyWhiteBtn-container {
+              a {
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 360px){
+  @mixin mobileText {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  body {
+    .ratePlan-wrapper {
+      .ratePlan-container {
+        .ratePlan-body {
+          .ratePlanMain-container {
+            .ratePlanMain-title {
+              h2 {
+              }
+              p {
+              }
+              .mainBtn-container {
+                a {
+                }
+              }
+            }
+          }
+          .ratePlanInfo-container {
+            width: 95%;
+            .ratePlanInfo-title {
+              h2 {
+              }
+            }
+            .ratePlanInfo-subtitle {
+              h3 {
+              }
+            }
+            .ratePlanInfo-body {
+              .ratePlan-table {
+                thead {
+                  tr {
+                    th {
+                    }
+                  }
+                }
+                tbody {
+                  tr {
+                    td {
+                    }
+                    td:nth-of-type(1) {
+                      span {
+                      }
+                    }
+                    td:nth-of-type(2) {
+                    }
+                    td:nth-of-type(3) {
+                    }
+                  }
+                  tr:nth-of-type(1) {
+                    td {
+                      span {
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            .ratePlanInfo-notice {
+              h3 {
+              }
+            }
+          }
+          .ratePlanRecommend-container {
+            width: 95%;
+            .ratePlanRecommend-title {
+              h2 {
+                .mobile-newline {
+                }
+              }
+              h3 {
+                @include mobileText();
+              }
+              p {
+                @include mobileText();
+              }
+              .mobile-newline {
+              }
+            }
+            .ratePlanRecommend-body {
+              .ratePlanRecommend-box {
+                img {
+                }
+                h4 {
+                }
+                .ratePlanRecommend-text {
+                  p {
+                  }
+                }
+              }
+            }
+            .surveyBtn-container {
+              a {
+              }
+              a:hover {
+              }
+            }
+          }
+          .ratePlanExample-container {
+            width: 95%;
+            .ratePlanExample-title {
+              h2 {
+              }
+            }
+            .ratePlanExample-body {
+              .ratePlanExample-boxGroup {
+                .ratePlanExample-box {
+                  > span {
+                  }
+                  img {
+                  }
+                  .ratePlanExample-info {
+                    .ratePlan-hash {
+                      span {
+                      }
+                    }
+                    h3 {
+                    }
+                  }
+                }
+              }
+              .ratePlan-select-wrapper {
+                .ratePlan-select-container {
+                  .ratePlanSelect-slide {
+                    span {
+                    }
+                    // span:hover:after {
+                    //   content: "";
+                    //   position: absolute;
+                    //   left: 50%;
+                    //   bottom: -7.5px;
+                    //   -webkit-transform: translate(-50%, 0);
+                    //   -ms-transform: translate(-50%, 0);
+                    //   transform: translate(-50%, 0);
+                    //   width: 35px;
+                    //   height: 2px;
+                    //   background-color: $textPointColor;
+                    // }
+                  }
+
+                  .ratePlanSelect-active {
+                    span {
+                    }
+                    span:after {
+                    }
+                  }
+                }
+              }
+              .ratePlan-slide-wrapper {
+                .ratePlan-swiper {
+                  .swiper-wrapper {
+                    .ratePlan-slide {
+                      .ratePlan-label {
+                        &.label-active {
+                        }
+                      }
+                      img {
+                      }
+                      .ratePlanExample-info {
+                        .ratePlan-hash {
+                          span {
+                          }
+                        }
+                        h3 {
+                        }
+                      }
+                    }
+                  }
+                }
+                .swiper-button-next:after {
+                }
+                .swiper-button-next:focus {
+                }
+                .swiper-button-prev:after {
+                }
+                .ratePlan-swiper-next {
+                }
+                .ratePlan-swiper-prev {
+                }
+              }
+            }
+            .ratePlanExample-notice {
+              p {
+                .mobile-newline {
+                }
+              }
+            }
+          }
+          .ratePlanLifestyle-container {
+            width: 95%;
+            .ratePlanLifestyle-title {
+              h2 {
+              }
+              h3 {
+                .mobile-newline {
+                }
+              }
+            }
+            .ratePlanLifestyle-title:nth-of-type(2) {
+            }
+            .ratePlanLifestyle-body {
+              .ratePlanLifestyle-boxGroup {
+                .ratePlanLifestyle-box {
+                  .ratePlanLifestyle-img {
+                    img {
+                    }
+                  }
+                  h4 {
+                  }
+                  .ratPlanLifestyle-text {
+                    p {
+                    }
+                    p:nth-of-type(1) {
+                    }
+                  }
+                }
+              }
+            }
+          }
+          .ratePlanCueat-container {
+            .ratePlanCueat-title {
+              h2 {
+                // span {
+                //   display: block;
+                //   margin-bottom: 64px;
+                //   font-size: 24px;
+                // }
+                .mobile-newline {
+                }
+              }
+              h2:nth-of-type(1) {
+              }
+              h2:nth-of-type(2) {
+              }
+              h3 {
+              }
+            }
+            .surveyWhiteBtn-container {
+              a {
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

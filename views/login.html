@@ -1,0 +1,61 @@
+{{ define "login.html" }}
+
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+  <link rel="stylesheet" href="/contents/survey/css/login.css?v={{ .cssRandomVersion }}">
+  <link rel="stylesheet" href="/contents/css/common.css?v={{ .cssRandomVersion }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  {{ template "shared/header.tmpl" . }}
+  <script src="/contents/js/main.js?v={{ .cssRandomVersion }}" defer></script>
+  <script src="https://kit.fontawesome.com/7e24956d25.js" crossorigin="anonymous"></script>
+  {{ template "shared/title.tmpl" . }}
+</head>
+
+<body>
+  {{ template "shared/nav.tmpl" . }}
+
+  <section class="login_cotents">
+    <div class="content">
+      <h3>
+        <span>1초 간편 로그인으로</span>
+        <span>나만의 큐잇을 시작해 보세요</span>
+      </h3>
+      <button
+        class="kakao__login"
+        onclick="handleKakaoLogin()"
+      >
+        <span><img src="/contents/survey/images/kakao_ico.svg" alt="" /></span
+        ><span>카카오톡으로 로그인</span>
+      </button>
+      <!-- TEMPORARY -->
+      <!-- <button class="naver__login" onclick="handleNaverLogin()">
+        <span><img src="/contents/survey/images/naver_ico.svg" alt="" /></span
+        ><span>네이버로 로그인</span>
+      </button> -->
+    </div>
+  </section>
+  {{ template "shared/footer.tmpl" . }}
+
+  <script type="text/javascript">
+    function handleKakaoLogin() {
+      var origin = window.location.origin
+      var clientID = {{ .kakaoClientID }}
+      location.href = "https://kauth.kakao.com/oauth/authorize?client_id=" + clientID + "&redirect_uri=" + origin + "/web/login/kakao&response_type=code"
+    }
+
+    function handleNaverLogin() {
+      var clientID = {{ .naverClientID }}
+      var origin = window.location.origin
+      location.href = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=" + clientID + "&redirect_uri=" + origin + "/web/login/naver"
+    }
+  </script>
+
+  {{ template "shared/naver-script.tmpl" . }}
+
+</body>
+</html>
+
+{{ end }}

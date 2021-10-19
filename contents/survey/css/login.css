@@ -1,0 +1,451 @@
+/* global */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+:root {
+  /* color */
+  --color-bg-white: #ffffff;
+  --color-black: #333333;
+  --color-red-color: #ff5959;
+  --color-green-color: #4eac62;
+  --color-bg-gray: #efefef;
+  /* font size */
+
+  /* font weight */
+}
+
+/* universal tags */
+* {
+  box-sizing: border-box;
+}
+/* typography */
+html,
+body {
+  max-width: 100%;
+  height: 100%;
+  font-size: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: "Noto Sans KR", sans-serif;
+}
+section {
+  width: 80rem;
+  margin: 0 auto;
+}
+h1 {
+  color: var(--color-red-color);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  font-size: 15vw;
+  text-align: center;
+}
+h2 {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+}
+/* layout */
+.inner {
+  width: 120rem;
+  margin: 0 auto;
+}
+/* 패딩 */
+.pb1rem {
+  padding-bottom: 1rem;
+}
+.pt1rem {
+  padding-top: 1rem;
+}
+/* 백그라운드 */
+.main__survey {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 7rem);
+  margin-top: 7rem;
+  padding: 3rem;
+}
+.circle {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.circle > div:nth-child(1) {
+  position: absolute;
+  top: 15%;
+  left: 4%;
+  width: 2rem;
+  height: 2rem;
+  background: #4eac62;
+  border-radius: 50%;
+  animation: mymove 2s ease-out infinite;
+}
+.circle > div:nth-child(2) {
+  position: absolute;
+  top: 30%;
+  right: 15%;
+  width: 4rem;
+  height: 4rem;
+  background: #fff;
+  border-radius: 50%;
+  border: 1.2rem solid #ff4200;
+  animation: mymove2 2500ms ease-out infinite;
+}
+.circle > div:nth-child(3) {
+  position: absolute;
+  top: 70%;
+  left: 2%;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: #330972;
+  border-radius: 50%;
+  animation: mymove3 3300ms ease-out infinite;
+}
+.circle > div:nth-child(4) {
+  position: absolute;
+  bottom: 20%;
+  right: 2%;
+  width: 7rem;
+  height: 7rem;
+  background: #f98700;
+  border-radius: 50%;
+  animation: mymove4 2800ms ease-out infinite;
+}
+@keyframes mymove {
+  0% {
+    left: 4%;
+  }
+  50% {
+    left: 1%;
+    top: 20%;
+    transform: scale(1.2);
+  }
+  100% {
+    left: 4%;
+  }
+}
+
+@keyframes mymove2 {
+  0% {
+    right: 15%;
+  }
+  50% {
+    right: 18%;
+    top: 28%;
+  }
+  100% {
+    right: 15%;
+  }
+}
+@keyframes mymove3 {
+  0% {
+    left: 2%;
+  }
+  30% {
+    left: 4%;
+    top: 75%;
+  }
+  60% {
+    left: 6%;
+    top: 68;
+  }
+  100% {
+    left: 2%;
+  }
+}
+@keyframes mymove4 {
+  0% {
+    right: 3%;
+  }
+  50% {
+    right: 0%;
+    bottom: 17%;
+  }
+  100% {
+    right: 3%;
+  }
+}
+.nav_x {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  width: 5rem;
+  height: 5rem;
+  justify-content: center;
+  align-items: center;
+}
+.nav_x > span:nth-child(1) {
+  position: absolute;
+  transform: rotate(45deg);
+  display: block;
+  width: 50%;
+  height: 0.5rem;
+  background: #333;
+  border-radius: 1rem;
+}
+.nav_x > span:nth-child(2) {
+  position: absolute;
+  transform: rotate(-45deg);
+  display: block;
+  width: 50%;
+  height: 0.5rem;
+  background: #333;
+  border-radius: 1rem;
+}
+.main__survey .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  width: 100%;
+}
+.main__survey .content .desc {
+  margin-bottom: 10%;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  letter-spacing: -0.1rem;
+}
+.main__survey .content .desc__deco {
+  font-size: 1.2rem;
+  margin-bottom: 10%;
+  color: #999;
+}
+.yello__start {
+  position: absolute;
+  width: 100%;
+  bottom: 0%;
+  padding: 1.5rem;
+  border-radius: 30rem;
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  letter-spacing: -0.1rem;
+  font-weight: 700;
+  background: #ffcd27;
+}
+/* 로그인영역 */
+.login_cotents {
+  width: 100%;
+  height: 100%;
+  background-size: 30% auto;
+}
+.login_cotents .content {
+  max-width: 80rem;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+  position: absolute;
+  top: 50vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.login_cotents .content h3 {
+  color: #333;
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin-bottom: 10%;
+  line-height: 1.5;
+  letter-spacing: -0.2rem;
+}
+/* .login_cotents .content h3 span:last-child {
+  font-weight: 700;
+} */
+.login_cotents .content h3 span {
+  display: block;
+}
+.login_cotents .content h4 {
+  font-size: 5rem;
+  font-weight: 700;
+  margin-bottom: 20%;
+  line-height: 1.2;
+  letter-spacing: -0.2rem;
+  word-break: keep-all;
+}
+.login_cotents .content h4 span {
+  display: block;
+}
+.login_cotents .content p {
+  display: inline-block;
+  margin: 0 auto;
+  font-size: 1.6rem;
+  color: #999;
+  margin-bottom: 3rem;
+}
+.kakao__login,
+.naver__login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 50rem;
+  margin: 0 auto;
+  width: 100%;
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: "Noto Sans KR", sans-serif;
+  border-radius: 30rem;
+  vertical-align: middle;
+  border: none;
+}
+.kakao__login {
+  margin-bottom: 1.5rem;
+  padding: 1.5rem 2rem;
+  background: #fae300;
+  color: #391b1b;
+}
+.kakao__login span,
+.naver__login span {
+  display: flex;
+}
+.naver__login {
+  padding: 1rem 2rem;
+  background: #01c73c;
+  color: #fff;
+}
+
+.login_cotents > .content > button span:nth-child(1) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1rem;
+}
+.login_cotents > .content > button span:nth-child(2) {
+  text-align: left;
+}
+.kakao__login img {
+  width: 2.5rem;
+}
+.naver__login img {
+  width: 1.8rem;
+}
+
+footer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 1.2rem;
+  text-align: left;
+}
+footer > div > img {
+  padding-bottom: 2rem;
+  position: relative;
+  width: 30%;
+}
+footer > div > p {
+  line-height: 1.5;
+}
+.celebration {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 120rem;
+  width: 100%;
+ top:50%;
+ height:100%;
+ left:0;
+ transform: translate(0,-50%);
+  position: relative;
+  z-index: 1;
+  line-height: 1.2;
+}
+.cel_mt0{margin:0;}
+.cel_title {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #333;
+}
+.cel_title span:nth-child(1) {
+  color: #ffcd27;
+}
+.cel_title span:nth-child(2) {
+  color: #333;
+  font-size: 3rem;
+}
+.cel_p {
+  margin-top: 2rem;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #999;
+}
+#confetti {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+/* 모바일 */
+@media screen and (max-width: 480px) {
+  /* 로그인 */
+  .login_cotents {
+    position: relative;
+    top: 5rem;;
+    width: 100%;
+    min-height:80%;
+    height: auto;
+    }
+  .login_cotents .content {
+    position: absolute;
+    top:50%;
+    left:0;;
+    transform: translate(0, -50%);
+    padding: 2rem;
+    text-align: center;
+    width: 100%;
+  }
+  .login_cotents .content h3 {
+    font-size: 2rem;
+  }
+  .login_cotents .content h3 span {
+    display: block;
+    word-break: keep-all;
+  }
+
+  .kakao__login,
+  .naver__login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 2rem;
+    padding: 1.5rem;
+    font-weight: 700;
+    font-family: "Noto Sans KR", sans-serif;
+    border-radius: 30rem;
+    vertical-align: middle;
+    border: none;
+    z-index: 10;
+  }
+  .login_cotents .content p span {
+    display: block;
+  }
+  .celebration
+  {position: relative;
+    width:100%;
+    top:6rem;
+    transform: translate(0,0);
+    min-height:100%;
+    height:100vh;
+    padding-bottom:8rem;}
+    .cel_title{font-size:3rem;}
+    .cel_p{font-size:1.4rem;}
+    .yello_button{display:inline-block;width:80vw;padding:1rem 3rem;font-size:1.4rem;max-width:90%;;}
+  /* 풋터 */
+  footer{position: relative !important}
+}
+@media screen and (max-width: 1024px) {
+  html {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 350px) {
+  html {
+    font-size: 8px;
+  }
+}

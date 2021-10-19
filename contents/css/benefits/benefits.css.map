@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "benefits.scss",
+        "../designTemplate.scss"
+    ],
+    "names": [],
+    "file": "benefits.css"
+}

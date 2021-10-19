@@ -1,0 +1,9 @@
+{{ define "shared/title.tmpl" }}
+
+{{ if .isMain }}
+    <title>큐잇</title>
+{{ else }}
+    <title>{{ .navTitle }}{{ .titleSuffix }}</title>
+{{ end }}
+
+{{ end }}

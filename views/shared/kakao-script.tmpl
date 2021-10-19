@@ -1,0 +1,30 @@
+{{ define "shared/kakao-script.tmpl" }}
+
+{{ if .isMain }}
+<script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/adfit/static/kp.js"></script>
+<script type="text/javascript">
+  // 메인
+  kakaoPixel('39634174983949450').pageView('main');
+</script>
+{{ end }}
+
+{{ if .isSignup }}
+<script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/adfit/static/kp.js"></script>
+<script type="text/javascript">
+  // 회원 가입 완료
+  kakaoPixel('39634174983949450').pageView();  
+  kakaoPixel('39634174983949450').completeRegistration('completeSignup');
+</script>
+{{ end }}
+
+{{ if .priceForTracking }} 
+<script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/adfit/static/kp.js"></script>
+<script type="text/javascript">
+  // 구매 완료
+  kakaoPixel('39634174983949450').pageView();
+  kakaoPixel('39634174983949450').purchase('orderComplete');
+</script>
+{{ end }}
+
+
+{{ end }}

@@ -1,0 +1,330 @@
+@import "../designTemplate.scss";
+
+@mixin storyH1 {
+  font-size: 17px;
+  font-weight: $bold;
+  color: $DefaultFontColor;
+  letter-spacing: 0.01em;
+  .regular {
+    font-weight: $regular;
+  }
+}
+@mixin storyH2 {
+  font-size: 14px;
+  font-weight: $bold;
+  letter-spacing: -0.025em;
+  line-height: 24px;
+  color: $DefaultFontColor;
+  .regular {
+    font-weight: $regular;
+  }
+}
+
+@mixin bodyText {
+  font-size: 14px;
+  letter-spacing: -0.025em;
+  line-height: 24px;
+  font-weight: $regular;
+  color: #484848;
+}
+@mixin sectionConfig {
+  width: 1020px;
+  padding: 160px 0px;
+}
+
+@mixin m-sectionConfig {
+  width: 300px;
+  padding: 50px 0px;
+}
+
+@mixin h1 {
+  font-size: 40px;
+  font-weight: $bold;
+  letter-spacing: -0.01em;
+  .regular {
+    font-weight: $regular;
+  }
+}
+@mixin h2 {
+  font-size: 28px;
+  font-weight: $regular;
+  letter-spacing: -0.025em;
+  line-height: 46px;
+}
+@mixin h3 {
+  font-size: 20px;
+  font-weight: $bold;
+  letter-spacing: -0.025em;
+  line-height: 34px;
+
+  .regular {
+    font-weight: $regular;
+    color: #484848;
+  }
+}
+@mixin text3 {
+  font-size: 20px;
+  letter-spacing: -0.025em;
+  line-height: 34px;
+  font-weight: $regular;
+  color: #484848;
+}
+
+.mobile-story-wrapper {
+  @include flexColumn;
+  position: relative;
+  overflow-x: hidden;
+  margin-top: 102px;
+  .story-main-section {
+    @include flexColumn;
+    margin-bottom: 50px;
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+    .story-context {
+      @include m-sectionConfig;
+      border-bottom: 1px solid $borderColor;
+      h1 {
+        @include storyH1;
+        margin-bottom: 30px;
+      }
+      h2 {
+        @include storyH2;
+      }
+      p {
+        @include bodyText;
+      }
+      p:nth-of-type(1) {
+        margin-bottom: 20px;
+      }
+    }
+  }
+  .story-container {
+    @include flexColumn;
+    section {
+      @include m-sectionConfig;
+      padding-top: 0px;
+      img {
+        width: 100%;
+        object-fit: cover;
+        box-shadow:  0 3px 6px rgba(0,0,0,0.2);
+      }
+      .story-context {
+        h1 {
+          @include storyH1;
+          margin-bottom: 30px;
+        }
+        h2 {
+          @include storyH2;
+          margin: 35px 0 20px;
+        }
+        p {
+          @include bodyText;
+        }
+        p:nth-of-type(1) {
+          margin-bottom: 20px;
+        }
+      }
+    }
+
+    section:last-of-type {
+      padding-bottom: 0;
+      .story-context {
+        border-bottom: 1px solid $borderColor;
+        padding-bottom: 100px;
+        h2 {
+          margin: 20px 0;
+        }
+        h2:last-of-type {
+        }
+        p:first-of-type {
+          margin-top: 35px;
+        }
+      }
+    }
+  }
+}
+.story-wrapper {
+  display: none;
+}
+@media all and (min-width: 767px) {
+  .mobile-story-wrapper {
+    display: none;
+  }
+  .story-wrapper {
+    @include flexColumn;
+    position: relative;
+    margin-top: 131px;
+    min-height: 100px;
+    .story-main-intro {
+      img {
+        width: 100%;
+      }
+    }
+    .story-container {
+      @include flexColumn;
+      .main-section {
+        @include sectionConfig();
+        border-bottom: 1px solid $borderColor;
+        padding: 100px 0 150px;
+        margin-bottom: 100px;
+        .mainStory-content {
+          width: 1020px;
+          img {
+            width: 42px;
+            height: 26px;
+            object-fit: cover;
+            margin-bottom: 25px;
+          }
+          h1 {
+            @include h1;
+            margin-bottom: 25px;
+          }
+          p {
+            @include text3;
+            margin-bottom: 24px;
+          }
+        }
+      }
+      .story-section {
+        @include flexCenter;
+        width: 1200px;
+        height: 440px;
+        .storyImg-container {
+          @include flexMiddle();
+          width: 420px;
+          img {
+            width: 360px;
+            height: 240px;
+            box-shadow:  0 3px 6px rgba(0,0,0,0.2);
+
+          }
+        }
+        .stroy-content {
+          @include flexColumn;
+          align-items: flex-start;
+          width: 600px;
+          h3 {
+            @include h3;
+            margin-bottom: 25px;
+          }
+          p {
+            @include text3();
+          }
+          p:nth-of-type(1) {
+            margin-bottom: 25px;
+          }
+        }
+      
+      }
+      .text-section{
+        margin:100px 0 200px;
+        .story-text {
+          text-align: center;
+          h2 {
+            @include h2;
+          }
+          h2:first-of-type {
+            margin-bottom: 25px;
+          }
+        }
+      }
+
+    }
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width:1024px) {
+  .mobile-story-wrapper {
+    display: none;
+  }
+  .story-wrapper {
+    @include flexColumn;
+    align-items: center;
+    position: relative;
+    margin-top: 131px;
+    min-height: 100px;
+
+    .story-main-intro {
+      img {
+        width: 100%;
+      }
+    }
+    .story-container {
+      @include flexColumn;
+      .main-section {
+        @include flexCenter();
+        @include sectionConfig();
+        width: 100%;
+        border-bottom: 1px solid $borderColor;
+        padding: 100px 0 150px;
+        margin-bottom: 100px;
+        .mainStory-content {
+          width: 90%;
+          img { 
+            width: 42px;
+            height: 26px;
+            object-fit: cover;
+            margin-bottom: 25px;
+          }
+          h1 {
+            @include h1;
+            margin-bottom: 25px;
+          }
+          p {
+            @include text3;
+            margin-bottom: 24px;
+          }
+        }
+      }
+      .story-section {
+        @include flexColumn;
+        width: 100%;
+        height: 100%;
+        .storyImg-container {
+          @include flexMiddle();
+
+          img {
+            width: 360px;
+            height: 240px;
+            box-shadow:  0 3px 6px rgba(0,0,0,0.2);
+
+          }
+        } 
+        .stroy-content {
+          @include flexColumn;
+          align-items: center;
+          margin: 100px 0;
+          text-align: center;
+          h3 {
+            @include h3;
+            margin-bottom: 25px;
+          }
+          p {
+            @include text3();
+            width: 90%;
+          }
+          p:nth-of-type(1) {
+            margin-bottom: 25px;
+          }
+        }
+      
+      }
+      .text-section{
+        margin:100px 0 200px;
+        .story-text {
+          text-align: center;
+          h2 {
+            @include h2;
+            font-size: 24px;
+          }
+          h2:first-of-type {
+            margin-bottom: 25px;
+          }
+        }
+      }
+
+    }
+  }
+}

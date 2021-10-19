@@ -1,0 +1,257 @@
+{{ define "shared/input-delivery.tmpl" }}
+
+<div class="info_input" id="input-delivery-container">
+  <div class="input_field">
+    <div>배송지명</div>
+    <input type="text" class="width_input delivery-address-label" placeholder="이름을 입력하세요(완성된 한글, 영어 대소문자, 숫자, 공백 허용)" required/>
+  </div>
+  <div class="input_field">
+    <div>수령인</div>
+    <input type="text" class="width_input delivery-user-name" placeholder="이름을 입력하세요(완성된 한글, 영어 대소문자 허용)" required/>
+  </div>
+  <div class="input_field">
+    <div>휴대전화 번호</div>
+    <input type="number" class="width_input delivery-user-phone" placeholder="휴대전화 번호를 입력하세요(숫자만 허용)" required/>
+  </div>
+  <div class="input_field">
+    <div class="address_flex">
+      <div>주소</div>
+      <button class="address_modify_button">주소변경</button>
+    </div>
+      <a href="#search-address-modal" rel="modal:open">
+        <button class="zipcode" type="button">
+          <img src="/contents/survey/images/search_ico_gray.png">
+          <span>우편번호 찾기</span>
+        </button>
+      </a>
+    <div class="address_input">
+      <input class="width_input delivery-jibun" disabled placeholder="지번주소">
+      <input class="width_input delivery-road" disabled placeholder="도로명주소">
+      <input class="width_input delivery-post-no" placeholder="우편번호" disabled />
+      <input class="width_input delivery-detail" placeholder="상세주소" required/>
+    </div>
+  </div>
+</div>
+{{ template "shared/input-delivery-message.tmpl" . }}
+
+<div id="search-address-modal" class="modal">
+  {{ template "shared/search-address.tmpl" . }}
+</div>
+
+<script type="text/javascript">
+  var addressInputElem = document.querySelector("div.address_input") 
+  var labelElem = document.querySelector("input.delivery-address-label")
+  var nameElem = document.querySelector("input.delivery-user-name")
+  var phoneElem = document.querySelector("input.delivery-user-phone")
+  var jibunAddrElem = document.querySelector("input.delivery-jibun")
+  var roadAddrElem = document.querySelector("input.delivery-road")
+  var addrDetailElem = document.querySelector("input.delivery-detail")
+  var postNoElem = document.querySelector("input.delivery-post-no")
+  var messageSelectElem = document.querySelector("#select-delivery-req-msg")
+  var messageInputElem = document.querySelector("#contents-delivery-req-msg")
+
+  function getOptionValues() {
+    var values = []
+    var optionElems = document.querySelectorAll("#select-delivery-req-msg option")
+    for (var i=0; i<optionElems.length; i++) {
+      values.push(optionElems[i].value)
+    }
+
+    return values
+  }
+
+  // 주소 정보를 미리 받을 수 있는 경우 input 창에 값을 받아둠
+  function preloadDeliveryInputs() {
+    var addressInfo = {{ .addressInfo }}
+    if (addressInfo === null) {
+      return
+    }
+    labelElem.value = addressInfo["AddressLabel"]
+    nameElem.value = addressInfo["RcvName"]
+    phoneElem.value = addressInfo["ContactNo"]
+    jibunAddrElem.value = addressInfo["LotAddress"]
+    roadAddrElem.value = addressInfo["RoadAddress"]
+    addrDetailElem.value = addressInfo["SubAddress"]
+    postNoElem.value = addressInfo["PostNo"]
+
+    var optionValues = getOptionValues()
+    if (optionValues.includes(addressInfo["ReqMsg"])) {
+      messageSelectElem.value = addressInfo["ReqMsg"]
+    } else {
+      messageSelectElem.value = "직접 입력하기"
+      messageInputElem.value = addressInfo["ReqMsg"]
+    }
+
+    // 주소 노출
+    addressInputElem.style.display = "block"
+
+    // 배송 요청 사항 disabled 여부 처리
+    if (typeof handleShippingSelect === "function") {
+      handleShippingSelect()
+    }
+  }
+
+  function initDeliveryContents() {
+    jibunAddrElem.value = ""
+    roadAddrElem.value = ""
+    postNoElem.value = ""
+    addressInputElem.style.display = "none"
+  }
+
+  // 주소 검색 모달 결과가 존재할 시 로컬 스토리지에 저장되는데, 이때 주소를 노출함
+  function expressAddress(jibunAddr, roadAddr, postNo) {
+    if (jibunAddr !== null && roadAddr !== null && postNo !== null) {
+      addressInputElem.style.display = "block"
+      jibunAddrElem.value = jibunAddr
+      roadAddrElem.value = roadAddr
+      postNoElem.value = postNo
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", expressAddress())
+  
+  // 모달 이벤트 발생 시
+  $("#search-address-modal").on($.modal.OPEN, function(event, modal){
+    initSearchAddress()
+  })
+
+  function isInputDeliveryValid() {
+    if (!(/^[A-Za-z가-힣0-9 ]+$/.test(labelElem.value))) {
+      Swal.fire("잘못된 배송지명입니다. 허용된 문자: 완성된 한글, 영어 대소문자, 숫자, 공백")
+      return false
+    }
+
+    /*
+    if (!(/^[A-Za-z가-힣]+$/.test(nameElem.value))) {
+      Swal.fire("잘못된 수령인명입니다. 허용된 문자: 완성된 한글, 영어 대소문자")
+      return false
+    }
+    */
+    if (nameElem.value === "") {
+      Swal.fire("수령인명을 입력하지 않으셨습니다.")
+      return false
+    }
+
+    if (!(/^[010|011|016|017|018|019][0-9]{10,11}$/.test(phoneElem.value))) {
+      Swal.fire("잘못된 휴대전화 번호입니다.")
+      return false
+    }
+
+    if (jibunAddrElem.value === "") {
+      Swal.fire("지번 주소를 입력하지 않으셨습니다.")
+      return false
+    }
+
+    if (roadAddrElem.value === "") {
+      Swal.fire("도로명 주소를 입력하지 않으셨습니다.")
+      return false
+    }
+
+    if (addrDetailElem.value === "") {
+      Swal.fire("상세 주소를 입력하지 않으셨습니다.")
+      return false
+    }
+
+    if (messageSelectElem.value === "직접 입력하기" && messageInputElem.value === "") {
+      Swal.fire("배송 요청 사항을 입력하지 않으셨습니다.")
+      return false
+    }
+
+    return true
+  }
+
+  function requestForAddingNewAddress(successFunc, failFunc, isAsync=true) {
+    var url = "/address/add";
+    var method = "POST"
+
+    var hasBasicDelivery = "{{ .basicDelivery }}" === "" ? false : true
+    var isBasic = hasBasicDelivery ? 0 : 1
+    var data = {
+      AddressLabel: labelElem.value,
+      RcvName: nameElem.value,
+      RoadAddress: roadAddrElem.value,
+      LotAddress: jibunAddrElem.value,
+      SubAddress: addrDetailElem.value,
+      ContactNo: phoneElem.value,
+      PostNo: postNoElem.value,
+      ReqMsg: messageSelectElem.value === "직접 입력하기" ? messageInputElem.value : messageSelectElem.value, 
+      IsBasic: isBasic,
+    }
+    console.log("data", data) 
+    customRequest(url, method, data, successFunc, failFunc, isAsync)
+  }
+
+  function requestForModifyingAddress(successFunc, failFunc) {
+    var addressInfo = {{ .addressInfo }}
+    if (addressInfo === null) {
+      return
+    }
+
+    var url = "/address/modify";
+    var method = "POST"
+
+    var data = {
+      AddressNo: addressInfo.AddressNo,
+      AddressLabel: labelElem.value,
+      RcvName: nameElem.value,
+      RoadAddress: roadAddrElem.value,
+      LotAddress: jibunAddrElem.value,
+      SubAddress: addrDetailElem.value,
+      ContactNo: phoneElem.value,
+      PostNo: postNoElem.value,
+      ReqMsg: messageSelectElem.value === "직접 입력하기" ? messageInputElem.value : messageSelectElem.value, 
+      IsBasic: addressInfo.IsBasic,
+    }
+    console.log("data", data) 
+    customRequest(url, method, data, successFunc, failFunc)
+  }
+
+  function requestForDeletingAddress(successFunc, failFunc) {
+    var addressInfo = {{ .addressInfo }}
+    if (addressInfo === null) {
+      return
+    }
+
+    var url = "/address/remove";
+    var method = "POST"
+
+    var data = {
+      AddressNo: addressInfo.AddressNo,
+      IsBasic: addressInfo.IsBasic,
+    }
+    console.log("data", data) 
+    customRequest(url, method, data, successFunc, failFunc)
+  }
+
+  function getAddressInfoFromInput() {
+    var addressInfo = {}
+    addressInfo["RcvName"] = nameElem.value
+    addressInfo["ContactNo"] = phoneElem.value
+    addressInfo["PostNum"] = postNoElem.value
+    addressInfo["MainAddress"] = roadAddrElem.value === "" ? jibunAddrElem.value : roadAddrElem.value
+    addressInfo["SubAddress"] = addrDetailElem.value
+    addressInfo["ReqMsg"] = messageSelectElem.value === "직접 입력하기" ? messageInputElem.value : messageSelectElem.value
+
+    return addressInfo
+  }
+
+  // requestForCheckingAddressDuplicated: 주소 중복 체크 요청
+  function requestForCheckingAddressDuplicated(successFunc, failFunc, isAsync=true) {
+    var url = "/address/duplicated/check";
+    var method = "POST"
+
+    var data = {
+      RcvName: nameElem.value,
+      RoadAddress: roadAddrElem.value,
+      LotAddress: jibunAddrElem.value,
+      SubAddress: addrDetailElem.value,
+      ContactNo: phoneElem.value,
+      PostNo: postNoElem.value
+    }
+    console.log("data", data) 
+    customRequest(url, method, data, successFunc, failFunc, isAsync)
+  }
+
+</script>
+
+{{ end }}

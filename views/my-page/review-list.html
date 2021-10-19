@@ -1,0 +1,116 @@
+{{ define "my-page/review-list.html" }}
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <link rel="stylesheet" href="/contents/mypage/css/mypage.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/contents/css/common.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="/contents/mypage/css/theme.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="/contents/mypage/css/star-rating.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="/contents/mypage/css/sass.css?v={{ .cssRandomVersion }}">
+    {{ template "shared/header.tmpl" . }}
+    <script src="https://kit.fontawesome.com/7e24956d25.js" crossorigin="anonymous"></script>
+    {{ template "shared/title.tmpl" . }}
+  </head>
+  <body class="gray_bg">
+    {{ template "shared/nav.tmpl" . }}
+    {{ template "shared/nav-title.tmpl" . }}
+    
+    <section class="mypage">
+      <section class="container">
+        {{ $length := len .reviewsWithOrder }}
+        <section class="review_top">
+          <img
+            class="review_detail_img"
+            src="/contents/mypage/images/review_detail.png"
+            alt="리뷰사진"
+          />
+          <div>
+            <div>총 리뷰 {{ $length }}개</div>
+            <div>리뷰를 작성할수록 나에게 더 알맞은 상품을 추천해요</div>
+          </div>
+        </section>
+        {{ if eq $length 0 }}
+          <section class="order_wrap">
+            <div>등록된 리뷰가 없습니다.</div>
+          </section>
+        {{ else }}
+          {{ range $i, $elem := .reviewsWithOrder }}
+          <section class="order_wrap">
+            <div class="order_date">{{ $elem.PaymentDate }}</div>
+            <div
+              class="review_box"
+              onclick="handleClickReviewBox({{ $elem }})"
+            >
+              <div>
+                <div class="myreview_round">
+                  {{ $elem.RcvName }} 
+                  {{ if $elem.OrderRound }}
+                    {{ $elem.OrderRound }}회차
+                  {{ end }}
+                </div>
+                <div class="dot_p">
+                  <div class="dot"></div>
+                </div>
+              </div>
+              <div class="product_list_p" id="item-category">
+                {{ range $i, $labelElem := $elem.CateTypeLabels }}
+                  <div class="product_list productmargin">#{{ $labelElem }}</div> 
+                {{ end }}
+              </div>
+              <div class="myreview_point">
+                <div class="myreview_number_point">{{ $elem.MeanScore }}점</div>
+                <div class="star_point">
+                  <input
+                    name="input-4-ltr-star-lg"
+                    class="kv-ltr-theme-svg-star rating-loading"
+                    value="{{ $elem.MeanScore }}"
+                    dir="ltr"
+                    data-size="lg"
+                  /><br />
+                </div>
+              </div>
+            </div>
+          </section>
+          {{ end }}
+        {{ end }}
+      </section>
+    </section>
+    {{ template "shared/footer.tmpl" . }}
+    {{ template "shared/extend-token.tmpl" . }}
+
+    <script src="/contents/mypage/js/star-rating.js?v={{ .cssRandomVersion }}"></script>
+    <script src="/contents/mypage/js/theme.js?v={{ .cssRandomVersion }}"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $(".kv-ltr-theme-svg-star").rating({
+          hoverOnClear: false,
+          theme: "krajee-svg",
+          showCaption: false,
+          readonly: true,
+        });
+      });
+
+      function handleClickReviewBox(orderInfo) {
+        var reviewDetailURL = "/web/my-page/review/detail"
+
+        var orderInfoObject = {
+          OrderNo: orderInfo.OrderNo,
+          CateType: orderInfo.CateType,
+          RcvName: orderInfo.RcvName,
+          OrderRound: orderInfo.OrderRound,
+          PaymentDate: orderInfo.PaymentDate,
+        }
+        var encoded = encodeURIComponent(JSON.stringify(orderInfoObject))
+        setCookie("orderInfo", encoded, "", 3600, reviewDetailURL)
+        setCookie("reviewNo", orderInfo.ReviewNo, "", 3600, reviewDetailURL)
+
+        location.href = reviewDetailURL
+      }
+    </script>
+  </body>
+</html>
+
+{{ end }}

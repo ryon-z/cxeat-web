@@ -1,0 +1,879 @@
+.yello_bg {
+  background: #ffcd27 !important;
+  border: none !important;
+}
+.modify_section {
+  padding: 7rem 2rem;
+}
+.my_box {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: #fff;
+  width: 100%;
+  cursor: pointer;
+  padding: 2rem;
+  border-bottom: 1px solid #eaeaea;
+}
+.wh_box a {
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+  color: #333;
+}
+.product_list_p > div + div {
+  margin-left: 0.2rem;
+}
+.order_box {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: #fff;
+  width: 100%;
+  padding: 2rem;
+  cursor: pointer;
+}
+.home_menu {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: #fff;
+  border-radius: 1rem;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 4rem;
+  padding: 0;
+  color: #333;
+  outline: none;
+}
+.home_menu a {
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+  color: #333;
+}
+.mypage {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 120rem;
+  letter-spacing: -0.1rem;
+  margin: 0 auto;
+}
+.mypage > section:nth-child(1) {
+  justify-content: center;
+}
+.product_modify_page {
+  display: flex;
+  flex-direction: column;
+  max-width: 80rem;
+  margin-bottom: 2rem;
+  letter-spacing: -0.1rem;
+}
+.product_modify_button {
+  margin-bottom: 13rem;
+}
+.modify_hope_date > div:nth-child(1) {
+  margin-top: 4rem;
+  padding: 0 2rem;
+  font-size: 1.6rem;
+  color: #777;
+}
+
+.myname {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem 2.5rem;
+}
+.mypage_modify {
+  padding: 2rem;
+}
+.myname div:nth-child(1) {
+  display: flex;
+  align-items: center;
+}
+.myname div:nth-child(1) > span:nth-child(1) {
+  margin-right: 0.5rem;
+}
+.myname_sub {
+  display: flex;
+  align-items: center;
+}
+.myname_sub > .kakaologin {
+  background: #ffcd27;
+  padding: 0.6rem 0.6rem;
+  display: flex;
+  font-size: 1.4rem;
+  border-radius: 0.5rem;
+  align-items: center;
+  margin-left: 1rem;
+}
+.myname_sub > .naverlogin {
+  background: #01c73c;
+  color: #fff;
+  padding: 0.6rem 0.6rem;
+  display: flex;
+  font-size: 1.4rem;
+  border-radius: 0.5rem;
+  align-items: center;
+  margin-left: 1rem;
+}
+.myname_sub > span:nth-child(2) > span {
+  margin-left: 0.2rem;
+}
+.myname_sub > span > img {
+  width: 1.5rem;
+}
+.myname > img {
+  width: 3%;
+}
+.myinfo {
+  border: 1px solid #d2d2d2;
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  flex-direction: column;
+  padding: 3rem 6rem;
+  font-size: 1.4rem;
+}
+.myinfo > div:nth-child(1) {
+  display: flex;
+  font-weight: 700;
+  color: #333;
+  align-items: center;
+}
+.myinfo > div:nth-child(1) > img {
+  width: 1rem;
+  margin-right: 0.5rem;
+}
+.myinfo > div:nth-child(2) {
+  margin-top: 1rem;
+  font-weight: 400;
+  color: #333;
+  font-size: 1.8rem;
+  letter-spacing: 0;
+}
+.my_manage {
+  display: flex;
+  font-size: 1.4rem;
+  margin-top: 2rem;
+}
+.shipping_manage,
+.card_manage {
+  display: flex;
+  width: 50%;
+}
+.shipping_manage a img,
+.card_manage a img {
+  width: 2rem;
+  margin-right: 1rem;
+}
+.shipping_manage a,
+.card_manage a {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  color: #333;
+  font-weight: 700;
+}
+.mypage_title {
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+  color: #333;
+  font-weight: 400;
+  padding: 1rem 0rem;
+  justify-content: space-between;
+  letter-spacing: -0.1rem;
+}
+.mypage_title > div:nth-child(1) {
+  display: flex;
+  align-items: center;
+}
+.more_button {
+  display: flex;
+  white-space: nowrap;
+  background: #fff;
+  color: #333;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+  border: 1px solid #d2d2d2;
+}
+.mypage_title > div > img {
+  width: 3rem;
+}
+.mypage_title > div:nth-child(1) > div {
+  margin-left: 1rem;
+}
+.myproduct {
+  margin-top: 2rem;
+  padding: 4rem 6rem;
+  display: flex;
+  justify-content: space-between;
+  background: #fafdff;
+  border: 1px solid #e9e9e9;
+  transform: rotate(0.03deg);
+}
+.sub_list > .myproduct {
+  padding: 4rem 6rem;
+}
+.myproduct > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.sub_product img,
+.product_price img,
+.shipping_plan img {
+  width: 2.5rem;
+}
+.product_title {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  color: #999;
+  font-weight: 700;
+}
+.my_button {
+  display: flex;
+  padding: 0.5rem 1rem;
+  color: #333;
+  font-size: 1.4rem;
+  font-weight: 700;
+  background: #eaeaea;
+  border: none;
+  border-radius: 2rem;
+  justify-content: center;
+  letter-spacing: -0.15rem;
+}
+
+.subscribe_button {
+  display: flex;
+  padding: 0.5rem 1rem;
+  color: #333;
+  font-size: 1.6rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 2rem;
+  justify-content: center;
+  letter-spacing: -0.15rem;
+  margin-left: 1rem;
+}
+.sub_history {
+  display: flex;
+}
+.sub_history_btn {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #333;
+  background: #fff;
+  border: 1px solid #d2d2d2;
+}
+.subscribe_toggle {
+  margin-left: 1rem;
+  padding: 0;
+  position: relative;
+  border: none;
+  height: 2.5rem;
+  width: 5rem;
+  border-radius: 2.5rem;
+  background: #bdc1c8;
+}
+.handle {
+  position: absolute;
+  top: 50%;
+  left: 0.4rem;
+  transform: translateY(-50%);
+  width: 2rem;
+  height: 2rem;
+  border-radius: 2rem;
+  background: #fff;
+  transition: all 0.2s linear;
+}
+.subscribe_toggle.active {
+  background: #ffcd27;
+}
+.subscribe_toggle.active > .handle {
+  left: 50%;
+}
+/* .sub_info > div:nth-child(1) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+  padding: 1rem 2rem;
+  color: #999;
+  border-bottom: 1px solid #eaeaea;
+} */
+.subtoggletxt_p {
+  display: flex;
+  font-size: 2rem;
+  font-weight: 700;
+  padding: 2rem;
+  align-items: center;
+  justify-content: space-between;
+}
+.sub_list {
+  padding: 2rem 0;
+  font-size: 2rem;
+  font-weight: 400;
+}
+.sub_list > div > span:nth-child(2) {
+  margin-left: 0.2rem;
+}
+.sub_list > div > span > span {
+  margin-left: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+.sub_list > div:nth-child(3) {
+  padding: 0 6rem;
+  margin-top: 2rem;
+  text-align: right;
+  font-size: 2.6rem;
+  color: #333;
+}
+.sub_list > div:nth-child(3) > span {
+  font-size: 2rem;
+}
+.shipping_request {
+  display: block;
+  margin-top: 1rem;
+  font-size: 1.4rem;
+  color: #999;
+}
+.delivery-contents {
+  padding: 3rem 6rem;
+}
+/* 주문내역 */
+.order_history_info {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0;
+}
+.sub_round {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.order_history_space {
+  margin-top: 2rem;
+  font-size: 1.4rem;
+  display: flex;
+  justify-content: space-between;
+}
+.order_cost {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+.delivery_div {
+  text-align: right;
+  border-top: 1px solid #eaeaea;
+  padding: 2rem 0 0;
+}
+.delivery_tracking {
+  border: 1px solid #ccc;
+  background: #ffe2e2;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 700;
+}
+/* 주문내역 */
+.order_wrap {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+.order_date {
+  padding: 1rem 0;
+}
+.pay_title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+  padding: 1rem 0rem;
+  color: #999;
+  border-bottom: 1px solid #eaeaea;
+}
+/* 배송지 관리 */
+.shipping_manage_modify {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.delivery_add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto 3rem;
+  height: 5rem;
+  border: 1px solid #d2d2d2;
+  border-radius: 1rem;
+  background: #fff;
+  font-size: 1.6rem;
+  font-weight: normal;
+}
+.delivery_modify_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4.5rem;
+  height: 3rem;
+  border: 1px solid #d2d2d2;
+  border-radius: 0.5rem;
+  background: #fff;
+  color: #333;
+  font-size: 1.2rem;
+  padding: 0;
+}
+/* 탈퇴페이지 */
+
+.withdrawal {
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 3rem 0 0;
+  text-align: center;
+  box-sizing: border-box;
+}
+.withdrawal img {
+  width: 20rem;
+}
+.withdrawal {
+  width: 100%;
+  font-size: 1.4rem;
+  word-break: keep-all;
+  line-height: 1.2;
+  color: #666;
+  text-align: left;
+  padding: 2rem 2rem;
+  /* border-bottom: 4px solid #d2d2d2; */
+}
+.withdrawal_title {
+  color: #333;
+  font-size: 2rem;
+  font-weight: 700;
+}
+.withdrawal_notice ul {
+  margin-top: 1rem;
+  font-size: 1.3rem;
+  line-height: 1.5;
+}
+.red_text {
+  color: #ff0000;
+  margin-right: 1rem;
+  font-size: 1.6rem;
+}
+.subscription_confirm {
+  width: 100%;
+  padding: 4rem 2rem;
+}
+.subscription_confirm > div:nth-child(1) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.subscription_confirm > div:nth-child(2) {
+  background: #eaeaea;
+  font-size: 1.4rem;
+  color: #666;
+  margin-top: 2rem;
+  padding: 2rem 0;
+  text-align: center;
+}
+.subscription_confirm > div:nth-child(1) > div:nth-child(1) {
+  color: #333;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+.subscription_confirm > div:nth-child(1) > button {
+  background-color: #fff;
+  color: #999;
+  padding: 0.5rem 1.5rem;
+  border-radius: 3rem;
+  font-weight: 700;
+  border: 2px solid #d2d2d2;
+}
+.withdrawal_agree {
+  width: 100%;
+  font-size: 1.6rem;
+  color: #333;
+}
+.withdrawal_button {
+  margin-top: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.withdrawal_button button {
+  width: 50%;
+  height: 5rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  border: none;
+}
+.withdrawal_button > button:nth-child(1) {
+  background: #04bf55;
+  color: #fff;
+}
+.withdrawal_button > button:nth-child(2) {
+  background: #f24405;
+  color: #fff;
+}
+/* 구독해지 */
+.unsubscribe_title {
+  position: relative;
+  color: #333;
+  font-size: 1.8rem;
+  font-weight: 700;
+  z-index: 1;
+}
+.unsubscribe_title::before {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  content: "";
+  display: block;
+  width: 24rem;
+  height: 1.5rem;
+  background: #ffe48a;
+  z-index: -1;
+}
+.unsubscribe_text {
+  text-align: center;
+  color: #999;
+  padding: 2rem;
+  font-size: 1.4rem;
+  line-height: 1.5;
+}
+.unsubscribe_text > p {
+  margin-top: 2rem;
+}
+.unsubscribe_button {
+  padding: 2rem;
+  width: 100%;
+  text-align: center;
+}
+.unsubscribe_button button {
+  text-align: center;
+}
+.unsubscribe_button > div:nth-child(2) {
+  margin-top: 2rem;
+  font-size: 1.4rem;
+}
+.unsubscribe_button > div:nth-child(2) > a {
+  color: #999;
+}
+input {
+  appearance: none;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+}
+.gender_radio_div {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+}
+.gender_radio_div label {
+  padding: 1rem 2.5rem 1rem 0.5rem;
+}
+.gender_radio_div input {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  border-radius: 20px;
+  border: 2px solid #d2d2d2;
+  margin: 0;
+}
+
+.gender_radio_div input:checked::before {
+  display: block;
+  position: absolute;
+  content: "";
+  border-radius: 100%;
+  height: 12px;
+  width: 12px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: auto;
+  background: #ffcd27;
+}
+.gender_radio_div input:checked {
+  border: 2px solid #ffcd27;
+}
+.select-list {
+  margin-bottom: 3rem;
+}
+.select-input {
+  width: calc(100% - 10rem) !important;
+  border: 1px solid #d2d2d2;
+  height: 3.4rem !important;
+  border-radius: 1rem !important;
+}
+.funnel_div {
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 1.4rem !important;
+  font-weight: 400 !important;
+}
+.funnel_div > div + div {
+  margin-top: 2rem;
+}
+.funnel_input {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+.funnel_input > input {
+  flex-shrink: 0;
+}
+.etc_contents {
+  width: calc(100% - 8.4rem) !important;
+  border-radius: 0 !important;
+  margin: 0 auto;
+  padding: 2rem;
+  border: 1px solid #eaeaea !important;
+}
+.etc_label {
+  flex-shrink: 0;
+  width: 6rem;
+  box-sizing: border-box;
+}
+.funnel_textarea {
+  flex-direction: column;
+}
+.maketing_agree {
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+  font-size: 1.6rem;
+  color: #999;
+}
+.maketing_agree div {
+  display: flex;
+  align-items: center;
+}
+.maketing_agree input {
+  display: none;
+}
+.maketing_agree label {
+  color: #333;
+}
+.maketing_agree input[type="checkbox"] + label span {
+  display: inline-block;
+  width: 2.4rem;
+  height: 2.4rem;
+  margin: -2px 10px 0 0;
+  vertical-align: middle;
+  border-radius: 2.4rem;
+  border: 2px solid #d2d2d2;
+  cursor: pointer;
+}
+.maketing_agree input[type="checkbox"]:checked + label span {
+  background: url(/contents/survey/images/survey_agree_v1.svg) #00b327 no-repeat
+    5px 5px/13px 13px;
+  border: none;
+}
+.secession_button {
+  font-size: 1.8rem;
+  color: #999;
+  padding: 2rem;
+  position: relative;
+}
+.secession_button img {
+  width: 4rem;
+}
+.secession_button > span {
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+.secession_button span > span::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  display: inline-block;
+  width: 62px;
+  height: 1px;
+  background: #d2d2d2;
+}
+#cancel-reason-modal {
+  margin-top: 150px;
+}
+/* 리뷰 */
+.myreview_div {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #d2d2d2;
+  border-radius: 1rem;
+}
+
+.myreview_round {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #333;
+  display: flex;
+}
+.myreview_point {
+  padding: 2rem 0;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+.myreview_number_point {
+  color: #333;
+  font-size: 3rem;
+  font-weight: 900;
+  margin-right: 2rem;
+}
+.star_point {
+  display: flex;
+  margin-top: 0.2rem;
+}
+.order_date {
+  padding: 1rem 2rem;
+  color: #999;
+  font-size: 1.4rem;
+  font-weight: 400;
+  text-align: left;
+}
+.order_wrap {
+  font-size: 1.6rem;
+  font-weight: 700;
+  padding: 2rem 0 0;
+  transform: rotate(0.03deg);
+  text-align: center;
+  color: rgba(0, 0, 0, 0.4);
+}
+.review_top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: #333;
+  padding: 4rem 2rem;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -0.1rem;
+}
+.review_top > div > div:nth-child(1) {
+  position: relative;
+  z-index: 2;
+}
+.review_top > div > div:nth-child(1)::before {
+  content: "";
+  display: block;
+  width: 140px;
+  height: 1.5rem;
+  background: #ffe48a;
+  position: absolute;
+  bottom: 0;
+  z-index: -1;
+}
+.review_top > div > div:nth-child(2) {
+  margin-top: 1rem;
+  font-size: 1.6rem;
+  color: #777;
+  word-break: keep-all;
+  font-weight: 400;
+  line-height: 1.2;
+}
+.review_detail_img {
+  margin-right: 2rem;
+  width: 10rem;
+}
+.manage_section {
+  width: 80rem;
+  margin: 0 auto;
+  padding-top: 5rem;
+  padding-bottom: 30rem;
+}
+.card_manage_section {
+  width: 80rem;
+  margin: 0 auto;
+  padding-top: 5rem;
+}
+.reason_div {
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+.notice_popup_modal {
+  min-height: 559px;
+}
+@media screen and (max-width: 1024px) {
+  html,
+  body {
+    font-size: 16px;
+  }
+  .manage_section {
+    width: 100%;
+    height: calc(100% - 18rem);
+    padding: 2rem 2rem;
+  }
+  .card_manage_section {
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  .myname {
+    padding: 3rem 0rem;
+  }
+  .myproduct {
+    padding: 2rem;
+  }
+  .myinfo {
+    padding: 2rem;
+  }
+  .pay_title {
+    padding: 1rem 0rem;
+  }
+  .sub_list > .myproduct {
+    padding: 2rem;
+  }
+  .sub_list > div:nth-child(3) {
+    padding: 0 2rem;
+  }
+  .delivery_add {
+    width: 100%;
+  }
+  .delivery-contents {
+    padding: 2rem;
+  }
+}
+@media screen and (max-width: 480px) {
+  html,
+  body {
+    font-size: 10px;
+  }
+}

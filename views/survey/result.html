@@ -1,0 +1,553 @@
+{{ define "survey/result.html" }}
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <link rel="stylesheet" href="/contents/css/common.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="/contents/survey/css/survey.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="/contents/survey/css/survey_new.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    {{ template "shared/header.tmpl" . }}
+    <script src="https://kit.fontawesome.com/7e24956d25.js" crossorigin="anonymous"></script>
+    <script src="/contents/js/main.js?v={{ .cssRandomVersion }}" defer></script>
+    <script src="/contents/js/jquery-3.5.1.min.js"></script>
+    {{ template "shared/title.tmpl" . }}
+  </head>
+
+  <body>
+    {{ template "shared/nav.tmpl" . }}
+    
+    <section class="main__result">
+      <div class="content">
+        <div class="recommend">
+          <div><span>{{ .UserName }}</span>님에게<br> 추천해드리는 큐잇</div>
+          <img src="/contents/images/mainchar.png" class="recommend_img" alt="">
+        </div>
+        <div class="recommend_box">
+          <div class="recommendbox_title_p">
+            <div class="recommendbox_title">
+              <span id="box-info-label">싱글</span>
+            </div> 
+          </div>
+          <div class="recommend_text1" id="phrase-about-size">"혼밥 하는 당신을 위한 추천"</div>
+          <div class="recommend_text2">
+            <div class="customer_randombox">고객 맞춤 랜덤박스</div>
+              <div>고객님의 큐레이션 결과에 따라 매주 다르게 구성됩니다</div> 
+              <!-- <span class="inlineblock"></span> -->
+              <div>적정한 비율로 구성하여 보내드릴게요</div>
+          </div>
+        </div>
+        <div>
+          <div class="purchase_tabs">
+            <ul>
+              {{ range $i, $elem := .orderTypeExps }} 
+                {{ if eq $i 0 }}
+                  <li class="tab-link active" data-tab="tab-1" onclick="handleChangeOrderTypeExp({{ $elem.CodeKey }})">{{ $elem.CodeLabel }}</li>
+                {{ else }}
+                  <li class="tab-link" data-tab="tab-2" onclick="handleChangeOrderTypeExp({{ $elem.CodeKey }})">{{ $elem.CodeLabel }}</li>
+                {{ end }} 
+              {{ end }}
+            </ul>
+          </div>
+          <div  class="work__projects active" id="tab-1">
+            <div class="shipping_cycle">
+              <div class="result_title">배송주기</div>
+              <div class="result_radio">
+                {{ range $i, $elem := .deliveryPeriods }} 
+                  <input
+                    id="delivery-period-{{ $i }}"
+                    class="delivery-period"
+                    type="radio"
+                    name="deliveryPeriod"
+                    onchange="handleControlResult()"
+                    value={{ $elem.CodeKey }}
+                    {{ if eq $i 0 }}
+                    checked
+                    {{ end }}
+                  />
+                  <label for="delivery-period-{{ $i }}"><span>{{ $elem.CodeLabel }}</span></label>
+                {{ end }}
+              </div>
+            </div>
+            <div class="shipping_date">
+              <div class="result_title">배송요일</div>
+              <div class="result_radio">
+                {{ range $i, $elem := .deliveryDows }} 
+                  <input
+                    id="delivery-dow-1-{{ $i }}"
+                    type="radio"
+                    name="deliveryDow1"
+                    onchange="handleChangeDow(1)"
+                    value={{ $elem.CodeKey }}
+                    {{ if eq $i 0 }}
+                    checked
+                    {{ end }}
+                  />
+                  <label for="delivery-dow-1-{{ $i }}"><span>{{ $elem.CodeLabel }}</span></label>
+                {{ end }}
+              </div>
+            </div>
+            <div class="desire_div">
+              <div class="result_title">희망배송일</div>
+              <select name="desiredDeliveryDate1" onchange="updatePaymentDate(1)"></select>
+              <div class="payment_date">
+               <img src="/contents/images/check_ico.svg" />
+              <span>결제예정일:</span>
+              <span id="payment-date-1">2020-12-12</span></div>
+              <div class="payment_shipping_notice">*정기 배송일은 공휴일이나 택배사 사정에 따라 변경될 수 있습니다.</div>
+            </div>
+          </div>
+          <div class="work__projects" id="tab-2">
+            <div class="delivery-cost-description">
+              정기구독이 망설여진다면 <br /> 
+              배송비 4,000원만 추가하고 큐잇을 경험해보세요!
+            </div>
+            <div class="shipping_date">
+              <div class="result_title">배송요일</div>
+              <div class="result_radio">
+                {{ range $i, $elem := .deliveryDows }} 
+                  <input
+                    id="delivery-dow-2-{{ $i }}"
+                    type="radio"
+                    name="deliveryDow2"
+                    onchange="handleChangeDow(2)"
+                    value={{ $elem.CodeKey }}
+                    {{ if eq $i 0 }}
+                    checked
+                    {{ end }}
+                  />
+                  <label for="delivery-dow-2-{{ $i }}"><span>{{ $elem.CodeLabel }}</span></label>
+                {{ end }}
+              </div>
+            </div>
+            <div class="desire_div">
+              <div class="desired-delivery-date">희망배송일</div>
+              <select name="desiredDeliveryDate2" onchange="updatePaymentDate(2)"></select>
+              <div class="payment_date">
+               <img src="/contents/images/check_ico.svg" />
+              <span>결제예정일:</span>
+              <span id="payment-date-2">2020-12-12</span></div>
+              <div class="payment_shipping_notice">*정기 배송일은 공휴일이나 택배사 사정에 따라 변경될 수 있습니다.</div>
+            </div>
+          </div>
+        </div>
+        <div class="optional_title">
+          <input type="checkbox" name="chk_info" value="HTML" id="option">
+          <label for="option"> 원하는 금액과 품목으로 옵션을 변경할 수 있습니다</label>
+        </div>
+        <div class="optional_subtitle"> 
+          <div>아래 체크된 옵션은 큐잇이 추천하는 구성입니다<br>
+          품목과 옵션을 변경하실 경우 양이 적거나 많아질 수 있습니다</div>
+        </div>
+        <div class="optional" style="display: none;">
+          <div class="result_size">
+            <div class="result_title">사이즈</div>
+            <!-- <div class="result_radio mfcolumn"> -->
+            {{ range $i, $elem := .boxInfos }} 
+            <div class="result_radio">
+              <input
+                id="box-info-{{ $i }}"
+                type="radio"
+                name="boxInfo"
+                onchange="handleControlResult()"
+                value=0
+                {{ if eq $i 0}}
+                checked
+                {{ end }}
+              />
+              <label for="box-info-{{ $i }}"><span>{{ $elem.CodeLabel }}</span></label>
+            </div>
+            {{ end }}
+          </div>
+          <div class="result_composition">
+            <div class="result_title">구성</div>
+            <div class="preference">
+              {{ range $i, $elem := .itemCategoryExps }} 
+              <div class="agree_check">
+                <input
+                  id="item-category-exp-{{ $i }}"
+                  type="checkbox"
+                  name="itemCategoryExp"
+                  value={{ $elem.CodeKey }}
+                  class="health_check"
+                  {{ if eq $elem.CodeKey "FRUIT"}}
+                  checked
+                  {{ end }}
+                />
+                <label for="item-category-exp-{{ $i }}" class="checkbox float_left"><span>{{ $elem.CodeLabel }}</span></label>
+              </div>
+            {{ end }}
+            </div>
+          </div>
+        </div>
+        <div class="result_cost">
+          <div>총 결제 금액</div>
+          <div class="week_cost result-detail"></div>
+        </div>
+        <div class="yello_div_button pb3rem">
+          <button class="yello_button" onclick="handleClickOrder()">다음</button>
+        </div>
+        <!-- 이벤트 공지 -->
+        <!-- <div class="openevent_notice">
+        <div class="openevent_notice_title">
+         <img src="/contents/survey/images/megaphone.svg" />
+        첫 구독 반값이벤트 진행중
+        </div>
+        <div class="openevent_notice_subtitle">지금 첫 정기구독을 신청하시는 분들께는 1회차 구독료를 50% 할인해 드립니다.</div>
+        <div class="openevent_notice_text">
+        <div>4/30일까지 구독 신청을 완료하고, 5월 29일까지 첫 배송을 받는 건에 한 해 적용됩니다.</div>
+        <div>1계정 당 1회 참여 가능하며,1회차 구독료에 한해 50% 할인이 적용됩니다.</div>
+        <div>첫 구독료 할인은 실 결제 승인 시점에 적용됩니다.</div>
+        </div>
+        </div> -->
+      </div>
+    </section>
+
+    <form id="result-form" action="/web/survey/order-and-delivery/info" method="post" style="display: none;">
+      <input type="text" name="result-param">
+      <button type="submit" id="result-submit"></button>
+    </form>
+
+    {{ template "shared/footer.tmpl" . }}
+  </body>
+  <script src="/contents/survey/js/option.js?v={{ .cssRandomVersion }}"></script>
+
+  <script>
+    // 클래스 변경 시 orderTypeExpElem을 효과적으로 가져오지 못하여 전역변수 사용 
+    var orderTypeExp;
+    // localstorage 대신 form action 방식으로 변경함에 따라 resultParams에 임시로 데이터 저장
+    var resultParams = {};
+
+    // Dom load 직 후 실행
+    document.addEventListener('DOMContentLoaded', function() {
+      updateSize()
+      updateCategory()
+      handleChangeOrderTypeExp("SUBS")
+      handleChangeDow(1)
+      updatePaymentDate(1)
+    })
+
+    // 사이즈 업데이트
+    function updateSize() {
+      {{ if not .size }}
+        return
+      {{ end }}
+
+      var boxInfos = {{ .boxInfos }}
+      var boxInfoElem = null
+      var boxInfoLabelElem = null
+      for (var i=0; i<boxInfos.length; i++) {
+        if (boxInfos[i].CodeKey === {{ .size }}) {
+          boxInfoElem = document.querySelector(`#box-info-${i}`)
+          boxInfoLabelElem = document.querySelector("#box-info-label")
+          break
+        }
+      }
+
+      if (boxInfoElem !== null) {
+        boxInfoElem.checked = true
+      }
+      if (boxInfoLabelElem !== null) {
+        boxInfoLabelElem.innerHTML = `${boxInfos[i].CodeLabel}`
+      }
+
+      // 사이즈 문구 업데이트
+      var phraseElem = document.querySelector("#phrase-about-size")
+      if (phraseElem !== null) {
+        phraseElem.innerHTML = "{{ .phrase }}"
+      }
+    }
+
+    // 카테고리 업데이트
+    function updateCategory() {
+      {{ if not .itemCategoryExp }}
+        return
+      {{ end }}
+
+      var categoryExp = {{ .itemCategoryExp}}
+      var splited = categoryExp.split("|")
+      var itemCategoryExps = {{ .itemCategoryExps }}
+
+      for (var i=0; i<itemCategoryExps.length; i++) {
+        if (splited.includes(itemCategoryExps[i].CodeKey)) {
+          var categoryExpElem = document.querySelector(`#item-category-exp-${i}`)
+          if (categoryExpElem !== null) {
+            categoryExpElem.checked = true
+          }
+        }
+      }
+    }
+
+    // 결제일 업데이트
+    function updatePaymentDate(tabNumer) {
+      var paymentDateElem1 = document.querySelector("#payment-date-1")
+      var paymentDateElem2 = document.querySelector("#payment-date-2")
+      var desiredDeliveryDateElem = document.querySelector(`select[name=desiredDeliveryDate${tabNumer}]`)
+      if (desiredDeliveryDateElem !== null) {
+        var deliveryDate = new Date(desiredDeliveryDateElem.value)
+        var paymentDate = new Date(deliveryDate.getFullYear(), deliveryDate.getMonth(), deliveryDate.getDate()-3, 1);
+        var month = (paymentDate.getMonth()+1).toString().padStart(2, "0")
+        var day = paymentDate.getDate().toString().padStart(2, "0")
+        paymentDateElem1.innerHTML = `${paymentDate.getFullYear()}-${month}-${day}`
+        paymentDateElem2.innerHTML = `${paymentDate.getFullYear()}-${month}-${day}`
+      }
+
+      // 탭1, 탭2의 희망배송일을 하나로 통일
+      var desiredDeliveryDate1Elem = document.querySelector("select[name=desiredDeliveryDate1]")
+      var desiredDeliveryDate2Elem = document.querySelector("select[name=desiredDeliveryDate2]")
+      if (desiredDeliveryDate1Elem !== null & desiredDeliveryDate2Elem !== null) {
+        if (tabNumer === 1) {
+          desiredDeliveryDate2Elem.value = desiredDeliveryDate1Elem.value
+        } else {
+          desiredDeliveryDate1Elem.value = desiredDeliveryDate2Elem.value
+        }
+      }
+    }
+
+    // 구매 유형 선택 시
+    function handleChangeOrderTypeExp(value) {
+      // 클래스 변경 시 orderTypeExpElem을 효과적으로 가져오지 못하여 보류
+      // var orderTypeExpElem = document.querySelector("li.tab-link.active")
+      // if (orderTypeExpElem === null) {
+      //   alert(`선택하지 않은 옵션이 있습니다. orderTypeExp`);
+      //   return false;
+      // }
+      orderTypeExp = value
+      var boxInfos = {{ .boxInfos }}
+
+      // 사이즈 별 가격 변경
+      var boxInfoElems = document.querySelectorAll(`input[name=boxInfo]`);
+      for (var i=0; i<boxInfoElems.length; i++) {
+        var boxInfo = boxInfos[i]
+        var elemID = boxInfoElems[i].id
+        var changedValue = orderTypeExp === "SUBS" ? boxInfo.CodeValue : boxInfo.CodeValue2
+        boxInfoElems[i].value = changedValue
+        
+        var expressedLabelElem = document.querySelector(`input[id=box-info-${i}] + label`);
+
+        var deliveryFee = 4000
+        if (orderTypeExp === "SUBS") {
+          var sepNumber = Number(boxInfo.CodeValue).toLocaleString("en");
+          expressedLabelElem.textContent = `${boxInfo.CodeLabel}(${sepNumber}원)`
+        } else {
+          var subtracted = parseInt(boxInfo.CodeValue2, 10) - deliveryFee
+          var sepSubtracted = Number(subtracted).toLocaleString("en");
+          var sepDeliveryFee = Number(deliveryFee).toLocaleString("en");
+          expressedLabelElem.textContent = `${boxInfo.CodeLabel}(${sepSubtracted}원 + ${sepDeliveryFee}원)`
+        }
+      }
+
+      // 배송주기 노출 금지
+      var deliveryPeriodElem = document.querySelector("div.shipping_cycle")
+      if (orderTypeExp === "ONCE") {
+        deliveryPeriodElem.style.cssText = "display: none;"
+      } else {
+        deliveryPeriodElem.style.cssText = "display: block"
+      }
+
+      handleControlResult()
+    }
+
+    // 배송 요일 변경 시
+    function handleChangeDow(tabNumber) {
+      var dowElem = document.querySelector(`input[type=radio][name=deliveryDow${tabNumber}]:checked`);
+      if (dowElem === null) {
+        Swal.fire("배송요일을 선택하지 않으셨습니다.")
+        return false
+      }
+      var selectedDow = dowElem.value
+      var reverseDowMap = {{ .reverseDowMap }}
+
+      var desiredDeliveryDate1Elem = document.querySelector("select[name=desiredDeliveryDate1]")
+      var desiredDeliveryDate2Elem = document.querySelector("select[name=desiredDeliveryDate2]")
+      desiredDeliveryDate1Elem.innerHTML = null;
+      desiredDeliveryDate2Elem.innerHTML = null;
+
+      {{ range $elem := .desiredDeliveryDates }}
+        var dow = "{{ $elem.Dow }}"
+        var dates = "{{ $elem.Dates }}".split(",")
+        var dowLabel = reverseDowMap[dow]
+
+        if (dow === selectedDow) {
+          for (var i=0; i<dates.length; i++) {
+            var opt = document.createElement("option");
+            opt.value = dates[i];
+            opt.innerHTML = `${dates[i]}(${dowLabel})`;
+            desiredDeliveryDate1Elem.appendChild(opt);
+
+            var opt = document.createElement("option");
+            opt.value = dates[i];
+            opt.innerHTML = `${dates[i]}(${dowLabel})`;
+            desiredDeliveryDate2Elem.appendChild(opt);
+          }
+        }
+      {{ end }}
+    }
+
+    // 총 결제금액에 영향을 주는 boxInfo와 deliveryPeriod 변경 시
+    function handleControlResult() {
+      var inputNames = ["boxInfo", "deliveryPeriod"];
+
+      var boxInfoElem = document.querySelector(`input[name=boxInfo]:checked`);
+      if (boxInfoElem === null) {
+        Swal.fire("사이즈를 선택하지 않으셨습니다.")
+        return false
+      }
+      var price = Number(boxInfoElem.value).toLocaleString("en");
+
+      var deliveryPeriodElem = document.querySelector(`input[name=deliveryPeriod]:checked`);
+      if (deliveryPeriodElem === null) {
+        Swal.fire("배송주기를 선택하지 않으셨습니다.")
+        return false
+      }
+      var deliveryPeriodLabel = getSelectedGoArg({{ .deliveryPeriods }}, deliveryPeriodElem).CodeLabel
+
+      // 클래스 변경 시 orderTypeExpElem을 효과적으로 가져오지 못하여 보류
+      // var orderTypeExpElem = document.querySelector("li.tab-link.active");
+      // if (orderTypeExpElem === null) {
+      //   alert(`선택하지 않은 옵션이 있습니다. orderTypeExp`);
+      //   return false;
+      // }
+      // var orderTypeExp = orderTypeExpElem.getAttribute('value')
+      if (orderTypeExp === "SUBS") {
+        document.querySelector("div.result-detail").innerHTML = `<span>${deliveryPeriodLabel}</span><span>${price}원</span>`;
+        return
+      }
+      
+      document.querySelector("div.result-detail").innerHTML = `${price}원`;
+    }
+
+    // select 값 resultParams 저장
+    function storeSelecToResultParams() {
+      var inputNames = []
+
+      if (orderTypeExp === "SUBS") {
+        inputNames.push({name: "desiredDeliveryDate1", label: "배송희망일"})
+      } else {
+        inputNames.push({name: "desiredDeliveryDate2", label: "배송희망일"})
+      }
+
+      for (var i = 0; i < inputNames.length; i++) {
+        var elem = document.querySelector(`select[name=${inputNames[i].name}]`);
+
+        // 희망배송일 저장
+        if (inputNames[i].name.includes("desiredDeliveryDate")) {
+          resultParams["desiredDeliveryDate"] =  elem.value
+          continue
+        }
+
+        resultParams[`${inputNames[i].name}`] = elem.value
+      }
+
+      return true;
+    }
+
+    // 라디오버튼 값 resultParams에 저장
+    function storeRadioToResultParams() {
+      var inputNames = [
+        {name: "boxInfo", label: "사이즈"},
+        {name: "deliveryPeriod", label: "배송주기"},
+      ];
+
+      if (orderTypeExp === "SUBS") {
+        inputNames.push({name: "deliveryDow1", label: "배송요일"})
+      } else {
+        inputNames.push({name: "deliveryDow2", label: "배송요일"})
+      }
+
+      for (var i = 0; i < inputNames.length; i++) {
+        var elem = document.querySelector(`input[type=radio][name=${inputNames[i].name}]:checked`);
+        if (elem === null) {
+          Swal.fire(`${inputNames[i].label}을 선택하지 않으셨습니다.`)
+          return false
+        }
+
+        // 사이즈 저장
+        if (inputNames[i].name === "boxInfo") {
+          resultParams["size"] = getSelectedGoArg({{ .boxInfos }}, elem).CodeKey
+          resultParams["price"] = elem.value
+          continue
+        }
+
+        // 요일 저장
+        if (inputNames[i].name.includes("deliveryDow")) {
+          resultParams["deliveryDow"] = elem.value
+          continue
+        }
+
+        resultParams[`${inputNames[i].name}`] = elem.value
+      }
+
+      return true;
+    }
+
+    // 체크박스 값 resultParams 저장
+    function storeCheckboxToResultParams() {
+      var inputNames = [
+        {name: "itemCategoryExp", label: "구성"}
+      ];
+
+      for (var i = 0; i < inputNames.length; i++) {
+        var values = [];
+        var elems = document.querySelectorAll(`input[type=checkbox][name=${inputNames[i].name}]:checked`);
+        if (elems.length === 0) {
+          Swal.fire(`${inputNames[i].label}을 선택하지 않으셨습니다.`)
+          return false
+        }
+
+        for (var j = 0; j < elems.length; j++) {
+          values.push(elems[j].value)
+        }
+        var joined = values.join("|")
+        resultParams[`${inputNames[i].name}`] = joined
+      }
+
+      return true
+    }
+
+    // 구매 핸들러
+    function handleClickOrder() {
+      var isSuccess = storeRadioToResultParams();
+      if (!isSuccess) {
+        return false;
+      }
+      var isSuccess = storeCheckboxToResultParams();
+      if (!isSuccess) {
+        return false;
+      }
+      
+      var isSuccess = storeSelecToResultParams();
+      if (!isSuccess) {
+        return false;
+      }
+      
+      // orderTypeExp는 querySelector가 작동하지 않으므로 변수값에서 resultParams에 적재
+      resultParams["orderTypeExp"] = orderTypeExp
+      // tagGroupNo를 쿠키 외의 방법으로 넘겨주기 위해 resultParams에 적재
+      resultParams["tagGroupNo"] = {{ .tagGroupNo }}
+
+      // form action post로 페이지 이동
+      var resultParamElem = document.querySelector("input[name='result-param']")
+      if (resultParamElem === null) {
+        Swal.fire("시스템 에러 발생. result-param input element 없음.").then(function() {
+          location.href = "/web/main";
+        });
+        return;
+      }
+      resultParamElem.value = JSON.stringify(resultParams)
+      var resultSubmitElem = document.querySelector("#result-submit")
+      if (resultParamElem === null) {
+        Swal.fire("시스템 에러 발생. result-param input element 없음.").then(function() {
+          location.href = "/web/main";
+        });
+        return;
+      }
+      resultSubmitElem.click()
+    }
+  </script>
+
+  {{ template "shared/extend-token.tmpl" . }}
+
+</html>
+{{ end }}

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 30.6 27.6" style="enable-background:new 0 0 30.6 27.6;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#1DD8B4;}
+	.st1{clip-path:url(#SVGID_2_);fill:#007C64;}
+	.st2{fill:#FFFFFF;}
+	.st3{display:none;}
+	.st4{display:inline;fill:#4881E7;}
+	.st5{display:inline;}
+	.st6{fill:#A2CEFF;}
+	.st7{fill:#4881E7;}
+	.st8{display:inline;fill:#FFD200;}
+	.st9{display:inline;fill:#7C6400;}
+	.st10{display:inline;fill:#FFEB97;}
+</style>
+<g id="레이어_1">
+	<path class="st0" d="M25.4,23.4H5.1c-1.1,0-2-0.9-2-2V5.3c0-1.1,0.9-2,2-2h20.3c1.1,0,2,0.9,2,2v16.1
+		C27.4,22.5,26.5,23.4,25.4,23.4z"/>
+	<g>
+		<defs>
+			<path id="SVGID_1_" d="M25.4,23.4H5.1c-1.1,0-2-0.9-2-2V5.3c0-1.1,0.9-2,2-2h20.3c1.1,0,2,0.9,2,2v16.1
+				C27.4,22.5,26.5,23.4,25.4,23.4z"/>
+		</defs>
+		<clipPath id="SVGID_2_">
+			<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+		</clipPath>
+		<rect x="0.8" y="1.5" class="st1" width="29.2" height="5"/>
+	</g>
+	<g>
+		<g>
+			<rect x="6.9" y="8.1" class="st2" width="3.3" height="3.3"/>
+			<rect x="13.6" y="8.1" class="st2" width="3.3" height="3.3"/>
+			<rect x="20.3" y="8.1" class="st2" width="3.3" height="3.3"/>
+		</g>
+		<g>
+			<rect x="6.9" y="13.1" class="st2" width="3.3" height="3.3"/>
+			<rect x="13.6" y="13.1" class="st2" width="3.3" height="3.3"/>
+			<rect x="20.3" y="13.1" class="st2" width="3.3" height="3.3"/>
+		</g>
+		<g>
+			<rect x="6.9" y="18.2" class="st2" width="3.3" height="3.3"/>
+			<rect x="13.6" y="18.2" class="st2" width="3.3" height="3.3"/>
+			<rect x="20.3" y="18.2" class="st2" width="3.3" height="3.3"/>
+		</g>
+	</g>
+</g>
+<g id="레이어_2" class="st3">
+	<circle class="st4" cx="15.3" cy="14.3" r="12.6"/>
+	<g class="st5">
+		<ellipse class="st6" cx="15.3" cy="14.3" rx="10.4" ry="11"/>
+	</g>
+	<g class="st5">
+		<g>
+			<path class="st7" d="M7.6,10.7h2.3l2.1,7l2.3-7h1.9l2.3,7l2.1-7H23l-3.1,9.5h-2.5l-2.1-6.3l-2.1,6.3h-2.5L7.6,10.7z"/>
+		</g>
+		<rect x="7.1" y="13.7" class="st7" width="16.4" height="1.6"/>
+	</g>
+</g>
+<g id="레이어_3" class="st3">
+	<rect x="2.8" y="5.3" class="st8" width="25" height="18.7"/>
+	<polygon class="st9" points="27.8,5.3 2.8,5.3 9.5,3.3 21.1,3.3 	"/>
+	<polygon class="st10" points="30.5,10.9 0,10.9 2.8,5.3 27.8,5.3 	"/>
+</g>
+</svg>

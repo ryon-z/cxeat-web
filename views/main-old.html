@@ -1,0 +1,757 @@
+{{ define "main-old.html" }}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css"
+    />
+    <link rel="stylesheet" href="/contents/css/common.css?v={{ .cssRandomVersion }}" />
+    <link rel="stylesheet" href="/contents/css/slick.css?v={{ .cssRandomVersion }}" />
+    <link rel="stylesheet" href="/contents/css/style_renew.css?v={{ .cssRandomVersion }}" />
+    <link rel="stylesheet" href="/contents/css/style.css?v={{ .cssRandomVersion }}" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    {{ template "shared/header.tmpl" . }}
+    <script
+      src="https://kit.fontawesome.com/7e24956d25.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/contents/js/main.js?v={{ .cssRandomVersion }}" defer></script>
+    <script src="/contents/js/slick.min.js?v={{ .cssRandomVersion }}"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    {{ template "shared/title.tmpl" . }}
+    {{ template "shared/kakao-script.tmpl" . }}
+  </head>
+  <body>
+    {{ template "shared/nav.tmpl" . }}
+    <section class="visual">
+      <ul class="slide">
+        <li>
+          <div class="slide_div">
+            <div class="slide_title">
+              <div>
+                나에게 딱 맞는<br />
+                <span class="red_text">농산물 소비의 시작</span>
+              </div>
+              <div>
+                양도, 맛도, 영양도 나에게<br />딱 필요한 농산물만 만나보세요
+              </div>
+              <div class="main__visual">
+                <button
+                  type="button"
+                  onclick="location.href='/web/survey/main'"
+                  class="plus_button"
+                >
+                  큐잇 시작하기
+                </button>
+              </div>
+            </div>
+            <div class="slide_img0"></div>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- photo_review start -->
+    <section class="photo_review">
+      <div class="cueat_title">
+        <div class="cueat_title_en">REVIEW</div>
+        <div class="cueat_title_ko">
+          <span class="cueat_bold">큐잇</span> 실제 후기를 확인하세요</div>
+      </div>
+      <ul class="slide review-slide">
+      {{ range .photoReview }}
+        <li>
+          <div class="photo_review_img">
+            <img src="{{ .ImagePath }}" alt="">
+          </div>
+          <div class="photo_review_title">
+            <div>{{ .Title }}</div>
+            <div>{{ .Round }}회차 구독</div>
+          </div>
+          <div class="photo_review_product">
+            <div class="photo_review_box_size">{{ .BoxSize }}</div>
+            {{ range $elem := .Products }} 
+            <div class="photo_review_product_list">{{ $elem }}</div>
+            {{ end }}
+          </div>
+          <div class="photo_review_text">{{ .TextReview }}</div>
+        </li>
+      {{ end }}
+      </ul>
+    </section>
+    <!-- custom end -->
+
+    <section>
+      <div class="wrapper">
+        <div class="cueat_ver01_title_p">
+          <div class="cueat_ddak"><span class="cueat_ddak_bold">똑!</span> 떨어지기 전에<br><span class="cueat_ddak_bold">딱!</span> 찾아갑니다</div>
+          <div class="cueat_ver01_title_img">
+            <img src="../contents/images/cueatimg_v2.jpg" alt="">
+          </div>
+          <div class="cueat_circle_p">
+            <div class="symbol_ani">
+              <img src="/contents/images/loading.gif">
+            </div>
+            <div class="cueat_ver01_cirlce"><img src="/contents/images/curation_circle.png" alt=""></div>
+          </div>
+          <div class="cueat_ver01_title">
+            큐잇은 고객의 라이프스타일을 분석하여<br>
+            생활 패턴에 맞는 농산물을 추천해 드리는<br>
+            <span class="bold_text">농산물 큐레이션 정기구독</span> 서비스입니다
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="cueat_desc">
+      <ul class="slide">
+        <li>
+          <div class="cueat_desc_img"><img src="../contents/images/benefit01.jpg" alt=""></div>
+          <div class="cueat_desc_title">최소 5가지 이상의 품목으로</div>
+          <p class="cueat_desc_text">쌀, 과일, 채소 등을 합쳐 최소 5가지 이상의
+            농산물을 매주 다르게 구성해요</p>
+        </li>
+        <li>
+          <div class="cueat_desc_img"><img src="../contents/images/benefit02_v1.jpg" alt=""></div>
+          <div class="cueat_desc_title">고객님마다 매주 다르게</div>
+          <p class="cueat_desc_text">큐잇은 개인의 취향과 생활 패턴에 따라
+            개인맞춤 구성으로 매주 다른 추천을 드려요</p>
+        </li>
+        <li>
+          <div class="cueat_desc_img"><img src="../contents/images/benefit03_0714.jpg" alt=""></div>
+          <div class="cueat_desc_title">개인 비서처럼 편하게</div>
+          <p class="cueat_desc_text">큐잇을 이용하시면서 필요한 이야기를해주시면,
+            다음 박스에 즉각적으로 반영됩니다</p>
+        </li>
+      </ul>
+    </section>
+    <section class="cueat_plan">
+      <div class="cueat_title">
+        <div class="cueat_title_en">PLAN</div>
+        <div class="cueat_title_ko">
+          <span class="cueat_bold">큐잇</span> 요금제를 소개할게요</div>
+      </div>
+      <div class="swiper-container snbSwiper" style="max-width: 420px">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide on">
+            <button><span class="text">싱글</span></button>
+          </div>
+          <div class="swiper-slide">
+            <button><span class="text">싱글 +</span></button>
+          </div>
+          <div class="swiper-slide">
+            <button><span class="text">레귤러</span></button>
+          </div>
+          <div class="swiper-slide">
+            <button><span class="text">레귤러 +</span></button>
+          </div>
+          <div class="swiper-slide">
+            <button><span class="text">라지</span></button>
+          </div>
+          <div class="swiper-slide">
+            <button><span class="text">라지 +</span></button>
+          </div>
+        </div>
+      </div>
+      <div class="cueat_subscribe_text cueat_main_subscribe_text">
+        <p>큐잇의 요금제는 주 단위 구독료이며<br/>
+          이용 주기는 1주부터 4주까지 선택할 수 있습니다
+        </p>
+      </div>
+      <div class="swiper-container s1">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide cueat_product_container">
+            <div class="cueat_product_img">
+            <div class="cueat_product_model">싱글</div>
+            <img src="/contents/images/singlebox_n_v6.jpg" alt="">
+          </div>
+          <div class="cueat_product_price main_product_price">
+              <span>주 1회 </span>
+              <span>36,000원</span>
+            </div>
+          </div>
+          <div class="swiper-slide cueat_product_container">
+            <div class="cueat_product_img">
+            <div class="cueat_product_model">싱글 +</div>
+            <img src="/contents/images/singlebox_p_v6.jpg" alt="">
+          </div>
+          <div class="cueat_product_price main_product_price">
+            <span>주 1회 </span>
+            <span>43,200원</span>
+          </div>
+
+          </div>
+          <div class="swiper-slide cueat_product_container">
+            <div class="cueat_product_img">
+            <div class="cueat_product_model">레귤러</div>
+            <img src="/contents/images/double_n_v6.jpg" alt="">
+          </div>
+          <div class="cueat_product_price main_product_price">
+            <span>주 1회 </span>
+            <span>49,000원</span>
+          </div>
+
+          </div>
+          <div class="swiper-slide cueat_product_container">
+            <div class="cueat_product_img">
+            <div class="cueat_product_model">레귤러 +</div>
+            <img src="/contents/images/double_p_v6.jpg" alt="">
+          </div>
+          <div class="cueat_product_price main_product_price">
+            <span>주 1회 </span>
+            <span>56,300원</span>
+          </div>
+
+          </div>
+          <div class="swiper-slide cueat_product_container">
+            <div class="cueat_product_img">
+            <div class="cueat_product_model">라지</div>
+            <img src="/contents/images/large_n_v6.jpg" alt="">
+          </div>
+          <div class="cueat_product_price main_product_price">
+            <span>주 1회 </span>
+            <span>71,000원</span>
+          </div>
+          </div>
+          <div class="swiper-slide cueat_product_container">
+            <div class="cueat_product_img">
+              <div class="cueat_product_model">
+                라지 +</div>
+              <img src="/contents/images/large_p_v6.jpg" alt="">
+            </div>
+            <div class="cueat_product_price main_product_price">
+              <span>주 1회 </span>
+              <span>78,100원</span>
+            </div>
+          </div>
+        </div>
+        <p class="cueat_plan_notice">단순예시(6월 2주차 기준)이며 <br>고객의 라이프스타일에 따라 구성이 변경됩니다</p>
+      </div>
+      <div class="cueat_plan_link"><a href="/web/subs/intro">큐잇 요금제 자세히 보기</a></div>
+    </section>
+    <section class="cueat_event">
+      <div class="cueat_title">
+        <div class="cueat_title_en">EVENT</div>
+        <div class="cueat_title_ko">
+          <span class="cueat_bold">큐잇</span> 이벤트를 소개할게요</div>
+      </div>
+      <div class="cueat_event_div">
+      <div class="cueat_event_info">
+        <div class="cueat_menu">첫 구독 이벤트</div>
+        <div class="cueat_event_title"><span>1회차</span> 20% 할인</div>
+        <div class="cueat_event_text">큐잇 정기구독을 시작하시면 1회 차 구독을 <br>
+          20% 할인된 금액으로 이용하실 수 있어요</div>
+      </div>
+      <div class="cueat_event_img">
+        <img src="../contents/images/coupon_v1.png" alt="">
+      </div>
+      <div class="cueat_evnet_notice">큐잇 정기구독이 궁금하시다면 할인된 금액으로 시작해 보세요</div>
+      </div>
+    </section>
+    <section class="cueat_process_section">
+      <div class="cueat_title">
+        <div class="cueat_title_en">PROCESS</div>
+        <div class="cueat_title_ko">
+          <span class="cueat_bold">큐잇</span> 의 과정을 소개할게요</div>
+        </div>
+
+        <div class="swiper-container snbSwiper2" style="max-width: 420px">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide on">
+              <button><span class="text">1.설문조사</span></button>
+            </div>
+            <div class="swiper-slide">
+              <button><span class="text">2.큐레이션</span></button>
+            </div>
+            <div class="swiper-slide">
+              <button><span class="text">3.정기구독</span></button>
+            </div>
+            <div class="swiper-slide">
+              <button><span class="text">4.박스수령</span></button>
+            </div>
+            <div class="swiper-slide">
+              <button><span class="text">5.큐잇리뷰</span></button>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-container s2">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="cueat_process_div">
+                <div class="cueat_process_1">
+                <div class="cueat_step">
+                  <span class="cueat_step_number">1</span>설문조사</div>
+                <p>
+                  고객님께 꼭 맞는 큐잇을 추천해 드리기 위해<br>간단히 설문을 합니다
+                </p>
+              </div>
+              <div class="cueat_process_2">
+                <img src="/contents/images/process001_m.png" alt="">
+              </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="cueat_process_div">
+                <div class="cueat_process_1">
+                  <div class="cueat_step">
+                    <span class="cueat_step_number">2</span>큐레이션</div>
+                <p>
+                  설문 조사 결과에 따라 고객님께 딱 맞는 구성을 큐잇이 추천합니다
+                </p>
+                </div>
+                <div class="cueat_process_2">
+                <img src="/contents/images/process002_m.png" alt="">
+              </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="cueat_process_div">
+                <div class="cueat_process_1">
+                  <div class="cueat_step">
+                    <span class="cueat_step_number">3</span>정기구독</div>
+                <p>
+                 추천 결과에 따라 정기구독을 신청해 주시면 수령일 3일 전에 결제돼요
+                </p>
+                </div>
+                <div class="cueat_process_2">
+                <img src="/contents/images/process003_m_v2.png" alt="">
+              </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="cueat_process_div">
+                <div class="cueat_process_1">
+                  <div class="cueat_step">
+                    <span class="cueat_step_number">4</span>박스수령</div>
+                    <p>
+                      고객님께 맞춤 구성된 큐잇박스가 매주 목요일, 집 앞으로 찾아갑니다
+                    </p>
+                </div>
+                <div class="cueat_process_2">
+                <img src="/contents/images/process004_m.png" alt="">
+              </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="cueat_process_div">
+                <div class="cueat_process_1">
+                  <div class="cueat_step">
+                    <span class="cueat_step_number">5</span>큐잇리뷰</div>
+                <p>
+                  솔직한 리뷰를 남겨주시면 다음 박스에 반영되어 더 만족스럽게 만날 수
+                  있습니다
+                </p>
+                </div>
+                <div class="cueat_process_2">
+                <img src="/contents/images/process005_m_v2.png" alt="">
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="cueat_process">
+          <div class="cueat_process_div">
+            <img src="/contents/images/process001.png" alt="">
+            <p>
+              고객님께 꼭 맞는 큐잇을<br>추천해 드리기 위해<br>간단히 설문을 합니다
+            </p>
+          </div>
+          <div class="cueat_process_div">
+            <img src="/contents/images/process002.png" alt="">
+            <p>
+              설문 조사 결과에 따라<br>고객님께 딱 맞는 구성을<br>큐잇이 추천합니다
+            </p>
+          </div>
+          <div class="cueat_process_div">
+            <img src="/contents/images/process003.png" alt="">
+            <p>
+              추천 결과에 따라<br>정기구독을 신청해 주시면<br>수령일 3일 전에 결제돼요
+            </p>
+          </div>
+          <div class="cueat_process_div">
+            <img src="/contents/images/process004.png" alt="">
+            <p>
+              일주일에 한 번씩<br>고객님 집 앞에<br>큐잇이 도착합니다
+            </p>
+          </div>
+          <div class="cueat_process_div">
+            <img src="/contents/images/process005.png" alt="">
+            <p>
+              솔직한 리뷰를 남겨주시면<br>다음 박스에 반영되어<br>더 만족스럽게 만날 수 있습니다
+            </p>
+          </div>
+        </div>
+    </section> --></section>
+    <section class="qna_section">
+      <div>
+        <div class="qna_tabs">
+          <ul>
+            <li class="tab-link active" data-tab="tab-1" onclick="">정기구독</li>
+            <li class="tab-link" data-tab="tab-2" onclick="">주문/결제</li>
+            <li class="tab-link" data-tab="tab-3" onclick="">배송</li>
+            <li class="tab-link" data-tab="tab-4" onclick="">교환 및 환불</li>
+            <li class="tab-link" data-tab="tab-5" onclick="">기타</li>
+          </ul>
+        </div>
+        <div class="work__projects active" id="tab-1">
+          <div class="qna_p">
+            <div class="qna_div">
+              <button class="accordion">
+                <span class="qna_ico">Q</span>
+                큐잇은 어떤 농산물을 제공하나요?
+              </button>
+              <div class="panel">
+                <p>
+                  고객 큐레이션 결과에 따라 유기농 쌀을 비롯한 과일, 채소, 구황작물, 특수작물 등을 구성하여 제공합니다. 쌀은 고객의 취식 패턴에 맞추어, 과일은 고객 취향에 맞추어, 채소는 큐잇이 추천하는 채소와 고객의 취식 패턴을 고려하여 구성합니다.
+                </p>
+              </div>
+            </div>
+            <div class="qna_div">
+              <button class="accordion">
+                <span class="qna_ico">Q</span>
+                구독상품을 변경할 수 있나요?
+              </button>
+              <div class="panel">
+                <p>
+                  구독 상품은 고객센터를 통해 변경이 가능합니다. 전화나 카카오톡으로 연락주시면 친절하게 안내를 도와드릴게요. 
+                </p>
+              </div>
+            </div>
+            <div class="qna_div">
+              <button class="accordion">
+                <span class="qna_ico">Q</span>
+                배송일을 변경할 수 있나요?
+              </button>
+              <div class="panel">
+                <p>
+                  그 주의 배송 현황이 '상품 준비 중'으로 표시된다면 고객센터를 통해 언제든 배송일을 변경할 수 있어요. 다만 배송 현황이 '발송 준비 중'으로 표시된다면 이미 고객님의 상품이 준비되어 출고가 완료된 상태라 해당 주는 배송일 변경이 어렵습니다. 더 자세한 내용은 고객센터로 연락주시면 친절하게 처리해 드리겠습니다. 
+                </p>
+                <p class="qna_mt">
+                  <span class="qna_bold_text">마이페이지 > 주문내역</span> 에서 해당 주간의 배송 현황을 확인하실 수 있어요.
+                </p>
+                <p class="qna_mt">
+                  <span class="qna_bold_text">고객센터 <span class="qna_red_text">070-4166-6077</span></span>
+                </p>
+                <p class="qna_mt">
+                  <span class="qna_bold_text">카카오톡 플러스친구</span><span class="qna_bold_text qna_red_text">'큐잇'</span>을 검색하여 친구 추가 
+                </p>
+              </div>
+            </div>
+            <div class="qna_div">
+              <button class="accordion">
+                <span class="qna_ico">Q</span>
+                정기구독을 건너 뛰거나 잠시 중지할 수 있나요?</button>
+              <div class="panel">
+                <p>
+                  고객센터로 연락주시면 배송일 변경을 통해 구독 건너뛰기나 중지를 도와드리겠습니다.
+                </p>
+              </div>
+            </div>
+            <div class="qna_div">
+              <button class="accordion">
+                <span class="qna_ico">Q</span>
+                정기구독을 해지하고 싶어요</button>
+              <div class="panel">
+                <p>마이페이지 > 구독정보 페이지에서 정기구독을 해지하실 수 있습니다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="work__projects" id="tab-2">
+          <div class="qna_p">
+            <div class="qna_div">
+              <button class="accordion">
+                <span class="qna_ico">Q</span>
+                첫 구독 할인은 어떻게 받나요?
+              </button>
+              <div class="panel">
+                <p>
+                  회원 계정 당 1회 가능하며, 구독 신청 후 첫 결제 시에 적용됩니다. 한 번 첫 구독 할인을 받은 회원이 구독을 해지 후, 다시 구독 신청을 하실 경우에는 첫 구독 할인이 적용되지 않으니 참고해 주세요.
+                </p>
+              </div>
+            </div>
+            <div class="qna_div">
+              <button class="accordion">
+                <span class="qna_ico">Q</span>
+                결제는 언제 어떻게 되나요?
+              </button>
+              <div class="panel">
+                <p>
+                  정기결제는 수령일 3일 전에 승인 요청 및 처리됩니다. 
+                </p>
+                <p class="qna_mt">
+                  큐잇의 배송일은 매주 목요일이므로, 월요일에 해당 주간의 구독 상품에 대한 신용카드 승인 요청이 이루어집니다. 다만 공휴일이나 택배사 사정으로 배송일이 변경될 경우 정기결제 일자도 변경될 수 있으니 참고해 주세요.
+                </p>
+              </div>
+            </div>
+            <div class="qna_div">
+              <button class="accordion">
+                <span class="qna_ico">Q</span>
+                주문을 취소하고 싶어요
+              </button>
+              <div class="panel">
+                <p>
+                  정기구독 결제가 완료된 이후, 고객님의 상품이 발송되지 않은 상태라면 고객센터를 통해 주문 취소가 가능합니다. 전화나 카카오톡을 통해 큐잇 고객센터로 연락주시면 친절하게 처리해 드리겠습니다.  
+                </p>
+              </div>
+            </div>
+            <div class="qna_div">
+              <button class="accordion">
+                <span class="qna_ico">Q</span>
+                전화로 주문할 수 있나요?
+              </button>
+              <div class="panel">
+                <p>
+                  큐잇의 모든 서비스는 신용카드 또는 체크카드 등록을 통해 이루어지고 있어서 전화를 통한 주문은 어렵습니다. 내부 개인정보처리방침 상, 결제카드 등록은 고객님께서 큐잇 홈페이지를 통해 직접 진행해 주셔야 합니다. 결제 카드 등록에 어려움이 있으실 경우 고객센터로 연락 주시면 등록 방법을 친절히 안내해 드리겠습니다.  
+                </p>
+              </div>
+            </div>
+            <div class="qna_div">
+              <button class="accordion">
+                <span class="qna_ico">Q</span>
+                결제되는 카드를 변경하고 싶어요</button>
+              <div class="panel">
+                <p><span class="qna_bold_text">마이페이지 > 카드관리</span> 에서 변경하고 싶은 카드를 등록하신 후, 마이페이지 > 구독정보 에서 구독중인 상품을 선택하신 후 결제되는 카드를 변경하실 수 있습니다. </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="work__projects" id="tab-3">
+          <div class="qna_p">
+            <div class="qna_div">
+              <button class="accordion">
+                <span class="qna_ico">Q</span>
+                배송 주기를 선택할 수 있나요?
+              </button>
+              <div class="panel">
+                <p>
+                  큐잇은 신선한 농산물을 제공해 드리기 위해 주1회 배송을 권장드리고 있으나, 소비 습관에 따라 2주에 1회도 배송받으실 수 있습니다. 매주 또는 격주 중에 선택이 가능합니다.  
+                </p>
+              </div>
+            </div>
+            <div class="qna_div">
+              <button class="accordion">
+                <span class="qna_ico">Q</span>
+                배송 현황은 어떻게 확인할 수 있나요?
+              </button>
+              <div class="panel">
+                <p>
+                  <span class="qna_bold_text">마이페이지 > 주문 내역</span> 에서 배송 현황을 확인하실 수 있어요.
+                </p>
+                <p class="qna_mt">
+                  송장번호가 등록되기 전까지는 '배송 준비 중'으로 표시됩니다. 
+                </p>
+              </div>
+            </div>
+            <div class="qna_div">
+              <button class="accordion">
+                <span class="qna_ico">Q</span>
+                배송지를 변경하고 싶어요
+              </button>
+              <div class="panel">
+                <p>
+                  배송지 변경을 원하신다면 큐잇 사이트에서 언제든지 변경할 수 있지만 다음 회차부터 적용됩니다. 
+                </p>
+                <p class="qna_mt">
+                  현재 회차의 배송지 변경을 원하실 경우, 고객센터로 연락주시면 처리해 드리겠습니다.
+                </p>
+                <p class="qna_mt">
+                  <span class="qna_bold_text">마이페이지 > 배송지 관리</span> 에서 배송지를 수정하거나 추가해 주세요.
+                </p>
+              </div>
+            </div>
+            <div class="qna_div">
+              <button class="accordion">
+                <span class="qna_ico">Q</span>
+                배송비가 있나요?</button>
+              <div class="panel">
+                <p>큐잇의 모든 구독 상품은 무료로 배송됩니다. </p>
+              </div>
+            </div>
+            <div class="qna_div">
+              <button class="accordion">
+                <span class="qna_ico">Q</span>
+                배송 당일이 휴무일 경우 어떻게 하나요?</button>
+              <div class="panel">
+                <p>공휴일이나 택배사 사정으로 인해 목요일 배송이 어려울 경우 사전에 변경된 배송 일정을 공지해 드립니다. </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="work__projects" id="tab-4">
+          <div class="qna_p">
+            <div class="qna_div">
+              <button class="accordion">
+                <span class="qna_ico">Q</span>
+                상품에 문제가 있을 경우 어떻게 하나요?
+              </button>
+              <div class="panel">
+                <p>
+                  큐잇은 최대한 신선한 상태로 수령하실 수 있도록 
+                  준비 과정에서 최선의 노력을 다하고 있지만, 
+                  신선식품이라는 특성 상, 
+                  배송 과정에서 문제가 발생할 수 있습니다. 
+                  과일이나 채소의 상태가 좋지 않은 경우, 
+                  해당 내용을 사진 촬영하여 고객센터로 연락주시면 
+                  친절하고 신속하게 상담을 도와 드리겠습니다.  
+                </p>
+              </div>
+            </div>
+            <div class="qna_div">
+              <button class="accordion">
+                <span class="qna_ico">Q</span>
+                이미 수령한 상품을 반품할 수 있나요?
+              </button>
+              <div class="panel">
+                <p>
+                  신선식품인 큐잇의 상품 특성 상, 수령하신 후에 반품은 
+                  불가합니다. 상품에 문제가 있을 경우 고객센터로 연락주시면 
+                  상담을 통해 재발송 또는 환불 처리를 도와 드릴게요. 
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="work__projects" id="tab-5">
+          <div class="qna_p">
+            <div class="qna_div">
+              <button class="accordion">
+                <span class="qna_ico">Q</span>
+                아이디 비밀번호가 생각나지 않아요
+              </button>
+              <div class="panel">
+                <p>
+                  큐잇은 고객님의 편의를 위해 카카오톡 로그인 서비스를 제공하고 있습니다. 
+                  큐잇의 계정 정보는 카카오톡 계정 정보를 확인하시면 
+                  언제든 로그인이 가능합니다. 
+                </p>
+              </div>
+            </div>
+            <div class="qna_div">
+              <button class="accordion">
+                <span class="qna_ico">Q</span>
+                회원을 탈퇴하고 싶어요
+              </button>
+              <div class="panel">
+                <p>
+                  큐잇은 고객센터를 통해 회원 탈퇴가 가능합니다. 
+                  전화나 카카오톡으로 연락주시면 친절하게 처리를 도와드릴게요.
+                </p>
+              </div>
+            </div>
+            <div class="qna_div">
+              <button class="accordion">
+                <span class="qna_ico">Q</span>
+                탈퇴 후 재가입이 가능한가요?
+              </button>
+              <div class="panel">
+                <p>
+                  큐잇은 탈퇴하신 후, 3개월 동안 재가입이 불가합니다. 
+                  탈퇴하실 때는 신중하게 고려해 주세요. 
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="cunstomer_center_section">
+      <div class="cueat_title">
+        <div class="cueat_title_en">CONTACT</div>
+        <div class="cueat_title_ko">
+          <span class="cueat_bold">큐잇</span> 에 문의하세요</div>
+      </div>
+      <div class="customer_center_contents">
+      <div>
+        <span>
+          <img src="/contents/images/customer_time.svg" alt=""></span>
+          운영시간 : <span class="qna_bold_text">&nbsp오전10시 ~ 6시</span></div>
+      <div><span><img src="/contents/images/customer_human.svg" alt=""></span>고객센터 :<a href="tel:07041666077">&nbsp070 - 4166 - 6077</a></div>
+      <div><a href="https://pf.kakao.com/_nstYK" target="_blank"><span><img src="/contents/images/customer_talk.svg" alt=""></span>카카오톡 플러스친구 <span class="qna_bold_text">&nbsp큐잇</span></a></div>
+    </div>
+    </section>
+    <div id="notice-popup-modal" class="modal notice_popup_modal" style="width: 100%">
+      <img src="/contents/images/notice_modal.jpg" alt="notice-pop-up">
+    </div>
+    <section class="yello_banner_p main_mt0">
+      <div class="yello_banner">
+        <div class="wrapper">
+          <div class="yello_banner_text">
+            <div>나에게 딱 맞는 농산물을 만나보세요</div>
+            <button onclick="location.href='/web/survey/main'">
+              큐잇 시작하기
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    {{ template "shared/footer.tmpl" . }}
+    <script type="text/javascript">
+      const acc = document.getElementsByClassName("accordion");
+      let i;
+
+      for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+          this.classList.toggle("active");
+          const panel = this.nextElementSibling;
+          if (panel.style.display === "block") {
+            panel.style.display = "none";
+          } else {
+            panel.style.display = "block";
+          }
+        });
+      }
+    </script>
+    <!-- <script src="/contents/js/scroll_animation.js"></script> -->
+    <script>
+      // 모바일 화면에서 슬라이드로 전환
+      var mobileWidth = 600;
+      var delay = 300;
+      var timer = null;
+
+      document.addEventListener("DOMContentLoaded", function() {
+        $.modal.defaults = {
+          closeExisting: true,
+          escapeClose: true,
+          showClose: true,
+          clickClose: false,
+        }
+        
+        /*
+        // 하루에 처음 사이트 접속 시 공시 팝업 노출
+        if (getCookie("alreadyNoticed") === null) {
+          $("#notice-popup-modal").modal();
+        }
+        */
+
+        resizeCueatProcess()
+      })
+
+      $("#notice-popup-modal").on($.modal.AFTER_CLOSE, function(event, modal) {
+        setCookie("alreadyNoticed", "1", "", 86400, "/") 
+      })
+
+      // 큐잇 과정
+      window.addEventListener("resize", resizeCueatProcess);
+
+      function resizeCueatProcess() {
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+          if (window.innerWidth < mobileWidth) {
+            $(".cueat_process").not(".slick-initialized").slick({
+              //   dots: true,
+            });
+          } else {
+            $(".cueat_process").filter(".slick-initialized").slick("unslick");
+          }
+        }, delay);
+      }
+      
+    </script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="/contents/js/swiper.js"></script>
+  </body>
+</html>
+
+{{ end }}

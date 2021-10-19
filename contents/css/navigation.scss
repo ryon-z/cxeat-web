@@ -1,0 +1,337 @@
+//변수 선언
+$bold: 700;
+$medium: 500;
+$regular: 400;
+
+//mixin 선언
+@mixin flexMiddle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+@mixin flexCenter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+@mixin pTagConfig {
+  font-size: 20px;
+  font-weight: $medium;
+  letter-spacing: -0.025em;
+  line-height: 28px;
+}
+@mixin headeTitle {
+  letter-spacing: -0.025em;
+  line-height: 58px;
+  color: #232323;
+  font-weight: $bold;
+  font-size: 48px;
+}
+
+.cueat-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  .cueat-header-event {
+    @include flexMiddle;
+    width: 100%;
+    height: 47px;
+    background-color: #ffe54d;
+    img {
+      padding-top: 3px;
+      margin-right: 10px;
+    }
+    a {
+      color: #532c00;
+      font-size: 16px;
+      font-weight: $medium;
+      text-decoration: none;
+      line-height: 30px;
+      span {
+        font-weight: $bold;
+        color: #532c00;
+      }
+    }
+  }
+  .cueat-header-nav {
+    @include flexMiddle();
+    width: 100%;
+    height: 84px;
+    background-color: #fefefe;
+    z-index: 2;
+    .cueat-mobileMenu-list {
+      display: none;
+    }
+    .cueat-nav-container {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      width: 1200px;
+      .cueat-mobile-menu {
+        display: none;
+      }
+      .cueat-logo {
+        @include flexMiddle();
+
+        a {
+          cursor: pointer;
+          img {
+            width: 114px;
+            height: 21px;
+            object-fit: contain;
+            object-position: left;
+          }
+        }
+      }
+      .cueat-menu-list {
+        .cueat-menu-group {
+          @include flexMiddle();
+          .cueat-menu {
+            margin-left: 60px;
+            font-size: 20px;
+            font-weight: $medium;
+            line-height: 29px;
+            letter-spacing: -0.005em;
+            cursor: pointer;
+            a {
+              text-decoration: none;
+              color: #232323;
+            }
+            a:hover,
+            span:hover {
+              position: relative;
+              color: #ff9800;
+            }
+            a:hover:after,
+            span:hover:after {
+              content: "";
+              position: absolute;
+              left: 0;
+              bottom: -5.25px;
+              background-color: #ff9800;
+              width: 0;
+              height: 2px;
+              -webkit-animation: menuHoverEffect 0.4s ease-in-out forwards;
+              animation: menuHoverEffect 0.4s ease-in-out forwards;
+            }
+            @-webkit-keyframes menuHoverEffect {
+              from {
+                width: 0;
+              }
+              to {
+                width: 100%;
+              }
+            }
+            @keyframes menuHoverEffect {
+              from {
+                width: 0;
+              }
+              to {
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .cueat-header {
+    .cueat-header-event {
+      img {
+        width: 24px;
+        height: 21px;
+        padding-top:6px;
+        box-sizing:content-box;
+      }
+      div {
+        a {
+          font-size: 14px;
+          letter-spacing: 0;
+          line-height: 30px;
+        }
+      }
+    }
+    .cueat-header-nav {
+      position: relative;
+      height: 55px;
+      .cueat-mobileMenu-list {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        position: fixed;
+        top: 102px;
+        left: 0;
+        -webkit-transform: translate(100%, 0);
+        -ms-transform: translate(100%, 0);
+        transform: translate(100%, 0);
+        -webkit-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+        z-index: 9999;
+        background-color: #fefefe;
+        width: 100vw;
+        height: 100vh;
+        padding-top: 30%;
+        text-align: center;
+        .cueat-menu-group {
+          .cueat-menu {
+            margin-bottom: 20px;
+            a,
+            span {
+              font-size: 20px;
+              font-weight: $medium;
+              letter-spacing: -0.025em;
+              line-height: 28px;
+              text-decoration: none;
+              color: #232323;
+            }
+          }
+        }
+      }
+      .cueat-nav-container {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        width: 90%;
+        .cueat-logo {
+          a {
+            img {
+              width: 100px;
+              height: 18px;
+            }
+          }
+        }
+        .cueat-mobile-menu {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-pack: end;
+          -ms-flex-pack: end;
+          justify-content: flex-end;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          align-items: center;
+          width: 50%;
+          a {
+            font-size: 16px;
+            font-weight: $medium;
+            line-height: 24px;
+            letter-spacing: -0.005em;
+            margin-right: 25px;
+            text-decoration: none;
+            color: #232323;
+          }
+          img {
+            width: 20px;
+            height: 20px;
+            margin-right: 0px;
+            -o-object-fit: cover;
+            object-fit: cover;
+            cursor: pointer;
+          }
+        }
+        .cueat-menu-list {
+          display: none;
+          .cueat-menu-group {
+            .cueat-menu {
+              a {
+                text-decoration: none;
+                color: #232323;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media all and (min-width: 768px) and (max-width: 1320px) {
+  .cueat-header-event {
+    img {
+      width: 24px;
+      height: 21px;
+    }
+    a {
+      font-size: 14px;
+      letter-spacing: 0;
+      line-height: 30px;
+    }
+  }
+  .cueat-header {
+    .cueat-header-nav {
+      position: relative;
+
+      .cueat-mobileMenu-list {
+        .cueat-menu-group {
+          .cueat-menu {
+            a,
+            span {
+            }
+          }
+        }
+      }
+      .cueat-nav-container {
+        width: 90%;
+        .cueat-logo {
+          a {
+            img {
+            }
+          }
+        }
+        .cueat-mobile-menu {
+          a {
+          }
+          img {
+          }
+        }
+        .cueat-menu-list {
+          .cueat-menu-group {
+            .cueat-menu {
+              margin-left: 40px;
+              a,
+              span {
+                font-size: 18px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

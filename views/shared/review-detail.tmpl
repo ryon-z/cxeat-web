@@ -1,0 +1,162 @@
+{{ define "shared/review-detail.tmpl" }}
+
+<section class="mypage">
+  <div class="review_detail">
+    <div>
+      <div>
+        {{ .orderInfo.RcvName }} 
+        {{ if .orderInfo.OrderRound }}
+          {{ .orderInfo.OrderRound }}회차
+        {{ end }}
+      </div>
+      <div>{{ .orderInfo.PaymentDate }}</div>
+    </div>
+    <button id="edit-review-button" onclick="location.href='/web/my-page/review/detail/edit'">
+      리뷰 수정하기
+    </button>
+  </div>
+  <div class="review_point">
+      <div class="product_list_p">
+        {{ range $i, $elem := .orderInfo.CateTypeLabels }}
+          <div class="product_list">#{{ $elem }}</div> 
+        {{ end }}
+      </div>
+    <div>
+      <img id="score-image" src="/contents/mypage/images/star2.svg" />
+      <span id="mean-score">3.0</span><span>점</span>
+    </div>
+    <div class="review_div">
+      {{ range $i, $elem := .reviewItems }}
+      <div class="review_starpoint_div">
+        <div class="review_product">
+          <div>{{ $elem.DpName }}</div>
+        </div>
+        <div class="star_point">
+          <input
+            name="stars"
+            class="kv-ltr-theme-svg-star rating-loading"
+            {{ if $elem.ReviewScore }}
+              value="{{ $elem.ReviewScore }}"
+            {{ else }}
+              value="3"
+            {{ end }}
+            dir="ltr"
+            data-size="lg"
+            onchange="updateMeanScore()"
+          /><br />
+        </div>
+        <div id="item-no-{{ $i }}" style="display: none;">{{ $elem.ItemNo }}</div>
+      </div>
+      {{ end }}
+    </div>
+    <div class="review_input">
+      <div>더 남기실 리뷰를 적어주세요 참고하겠습니다</div>
+      <form novalidate>
+        <textarea id="review-desc" cols="30" rows="8"></textarea>
+      </form>
+    </div>
+    <div class="yello_div_button">
+      <button id="save-review-button" class="yello_button">저장하기</button>
+    </div>
+  </div>
+</section>
+{{ template "shared/footer.tmpl" . }}
+<script src="/contents/mypage/js/star-rating.js"></script>
+<script src="/contents/mypage/js/theme.js"></script>
+
+<script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    updateMeanScore()
+    loadReviewDesc()
+  });
+
+  var scoreElem = document.querySelector("#mean-score");
+  var starsElems = document.querySelectorAll("input[name=stars]");
+  var descElem = document.querySelector("#review-desc");
+  
+  function isReviewDescCorrect(minLength) {
+    return descElem.value.length > minLength
+  }
+
+  function updateMeanScore() {
+    var meanScore = 0;
+    for (var i = 0; i < starsElems.length; i++) {
+      var starValue = starsElems[i].value
+      if (starsElems[i].value === "") {
+        starValue = 0
+      }
+      meanScore += parseFloat(starValue, 10);
+    }
+    meanScore = meanScore / starsElems.length;
+    scoreElem.innerHTML = meanScore.toFixed(1);
+
+    var scoreImageElem = document.querySelector("#score-image")
+    var scoreImageDirPath = "/contents/mypage/images"
+    if (scoreImageElem !== null) {
+      scoreImageElem.src = `${scoreImageDirPath}/star${meanScore.toFixed(0)}.svg`
+    }
+  }
+
+  function loadReviewDesc() {
+    {{ if .reviewDesc }}
+      descElem.value = "{{ .reviewDesc }}"
+    {{ else }}
+      descElem.value = ""
+    {{ end }}
+  }
+
+  function requestForManipulateReview(successFunc, failFunc, isAsync=true, action="create") {
+    if (action !== "create" && action !== "edit") {
+      console.log("requestForManipulateReview::action is wrong, allowed action = [create, edit]")
+      return
+    }
+
+    var url = `/review/${action}`;
+    var method = "POST"
+
+    var data = {
+      Review: {
+        OrderNo: {{ .orderInfo.OrderNo }},
+        ReviewDesc: descElem.value
+      },
+      UserNo: {{ .userNo }}
+    }
+    console.log("data", data) 
+    customRequest(url, method, data, successFunc, failFunc, isAsync)
+  }
+
+  function requestForManipulateItemReview(reviewNo, successFunc, failFunc, isAsync=true, action="create") {
+    if (action !== "create" && action !== "edit") {
+      console.log("requestForManipulateItemReview::action is wrong. allowed action = [create, edit]")
+      return
+    }
+
+    var url = `/review/item/${action}`;
+    var method = "POST"
+
+    console.log("reviewNo", reviewNo)
+
+    var data = {
+      ItemReviews: [],
+      UserNo: {{ .userNo }}
+    }
+    for (var i = 0; i < starsElems.length; i++) {
+      var score = parseFloat(starsElems[i].value, 10) 
+      var itemNoElem = document.querySelector(`#item-no-${i}`)
+      var itemNo = parseInt(itemNoElem.innerHTML, 10)
+
+      var row = {
+        ReviewNo: reviewNo,
+        OrderNo: {{ .orderInfo.OrderNo }},
+        ItemNo: itemNo,
+        ReviewScore: score,
+        ReviewDesc: "",  
+      }
+      data["ItemReviews"].push(row)
+    }
+    console.log("data", data) 
+    customRequest(url, method, data, successFunc, failFunc, isAsync)
+  }
+</script>
+
+{{ end }}

@@ -1,0 +1,102 @@
+{{ define "my-page/subs-list.html" }}
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <link rel="stylesheet" href="/contents/css/common.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="/contents/mypage/css/mypage.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    {{ template "shared/header.tmpl" . }}
+    <script src="https://kit.fontawesome.com/7e24956d25.js" crossorigin="anonymous"></script>
+    {{ template "shared/title.tmpl" . }}
+  </head>
+  <body class="gray_bg">
+    {{ template "shared/nav.tmpl" . }}
+    {{ template "shared/nav-title.tmpl" . }}
+
+    <section class="mypage">
+      {{ range .subsList }}
+        <section class="wh_box">
+            <a href="#">
+                <div class="myname">
+                    <div>
+                        <span>{{ .RcvName }}</span>
+                        {{ if eq .StatusCode "normal"}}
+                          <span class="my_button yello_bg">구독중</span> 
+                        {{ else }}
+                          <span class="my_button gray_bg">구독종료</span>
+                        {{ end }}
+                    </div>
+                    <div><div class="more_button" onclick="handleSelectSubs({{ .SubsNo }})">더보기</div></div>
+                </div>
+                {{ if eq .StatusCode "normal"}}
+                  <div class="product_list_p">
+                {{ else }}
+                  <div class="product_list_p gray_style">
+                {{ end }}
+                  <div class="product_list_p" id="item-category">
+                    {{ range $i, $elem := .CateTypeLabels }}
+                      <div class="product_list">#{{ $elem }}</div> 
+                    {{ end }}
+                  </div>
+                </div>
+                
+                {{ if eq .StatusCode "normal"}}
+                  <div class="myproduct">
+                {{ else }}
+                  <div class="myproduct gray_style">
+                {{ end }}
+                    <div class="sub_product">
+                        <img src="/contents/mypage/images/product_style.svg" alt="">
+                        <div class="product_title">구독상품</div>
+                        <div class="mt1rem">{{ .BoxLabel }}</div>
+                    </div>
+                    <div class="product_price">
+                        <img src="/contents/mypage/images/product_cost_icon.svg" alt="">
+                        <div class="product_title">상품금액</div>
+                        <div class="mt1rem subs-price">{{ .SubsPrice }}</div>
+                    </div>
+                    <div class="shipping_plan">
+                        <img src="/contents/mypage/images/calendar_icon.svg" alt="">
+                        <div class="product_title">배송주기</div>
+                        <div class="mt1rem"><span>{{ .PeriodLabel }}</span><span> ({{ .DayOfWeek }})</span></div>
+                    </div>
+                </div>
+            </a>
+        </section>
+      {{ end }}
+      <section class="yello_div_button mt3rem">
+          <button class="yello_button" onclick = "location.href='/web/survey/main'">
+              <img src="/contents/mypage/images/plusbox.svg" alt="">구독 추가하기
+          </button>
+        </section>
+    </section>
+    {{ template "shared/footer.tmpl" . }}
+
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", function() {
+        // 가격에 소수점 3자리 콤마 붙이기
+        var subsPriceElems = document.querySelectorAll(".subs-price")
+        for (var i=0; i<subsPriceElems.length; i++) {
+          var subsPrice = subsPriceElems[i].innerHTML
+          subsPriceElems[i].innerHTML = Number(subsPrice).toLocaleString("en")
+        }
+      })
+    
+      function handleBack() {
+        location.href = "/web/my-page/main"
+      }
+    
+      function handleSelectSubs(subscriptionID) {
+        setCookie("subscriptionNo", subscriptionID, "", 3600, "/web/my-page/subs")
+    
+        location.href = "/web/my-page/subs/info"
+      }
+    </script>
+    
+    {{ template "shared/extend-token.tmpl" . }}
+  </body>
+</html>
+
+{{ end }}

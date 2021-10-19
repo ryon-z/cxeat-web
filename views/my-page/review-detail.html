@@ -1,0 +1,56 @@
+{{ define "my-page/review-detail.html" }}
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <link rel="stylesheet" href="/contents/css/common.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="/contents/mypage/css/mypage.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/contents/mypage/css/sass.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="/contents/mypage/css/theme.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="/contents/mypage/css/star-rating.css?v={{ .cssRandomVersion }}">
+    {{ template "shared/header.tmpl" . }}
+    <script src="https://kit.fontawesome.com/7e24956d25.js" crossorigin="anonymous"></script>
+    {{ template "shared/title.tmpl" . }}
+  </head>
+  <body>
+    {{ template "shared/nav.tmpl" . }}
+    {{ template "shared/nav-title.tmpl" . }}
+
+    {{ template "shared/review-detail.tmpl" . }}
+    {{ template "shared/extend-token.tmpl" . }}
+
+    <script type="text/javascript">
+      var editElem = document.querySelector("#edit-review-button")
+      var saveElem = document.querySelector("#save-review-button")
+      var descElem = document.querySelector("#review-desc")
+
+      $(document).ready(function () {
+        $(".kv-ltr-theme-svg-star").rating({
+          hoverOnClear: false,
+          theme: "krajee-svg",
+          showCaption: false,
+          displayOnly: true,
+        });
+
+        // 수정하기 버튼 숨기기
+        if (editElem !== null) {
+          editElem.style.display = ""
+        }
+
+        // 저장하기 버튼 드러내기
+        if (saveElem !== null) {
+          saveElem.style.display = "none"
+        }
+
+        // 글 리뷰 수정 금지
+        if (descElem !== null) {
+          descElem.disabled = true
+        }
+      });
+    </script>
+  </body>
+</html>
+
+{{ end }}

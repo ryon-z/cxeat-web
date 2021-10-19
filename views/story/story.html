@@ -1,0 +1,264 @@
+{{ define "story.html" }}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      href="/contents/css/navigation.css?v{{ .cssRandomVersion}}"
+    />
+    <link
+      rel="stylesheet"
+      href="/contents/css/story/story.css?v{{ .cssRandomVersion}}"
+    />
+    <link
+      rel="stylesheet"
+      href="/contents/css/css_reset.css?v={{ .cssRandomVersion }}"
+    />
+    <link
+      rel="stylesheet"
+      href="/contents/css/footer.css?v={{ .cssRandomVersion }}"
+    />
+    {{ template "shared/header.tmpl" . }}
+    {{ template "shared/title.tmpl" . }}
+  </head>
+  <body>
+    {{ template "shared/nav.tmpl" . }}
+    <div class="mobile-story-wrapper">
+      <section class="story-main-section">
+        <img
+          src="/contents/newMain_image/story/m_cueat_story.jpg"
+          alt="큐잇스토리"
+        />
+        <div class="story-context">
+          <h1>큐잇<span class="regular">은</span></h1>
+          <p>
+            많은 사람들이 농산물을 합리적으로 구매하고 소비하는 습관을 통해
+            더욱더 편리하고 건강한 라이프스타일을 누리기 원합니다.
+          </p>
+          <p>
+            나아가서 이 땅에 태어나 버려지고 낭비되는 농산물이 제로가 되길
+            원합니다.
+          </p>
+        </div>
+      </section>
+      <main class="story-container">
+        <section class="story-section">
+          <img
+            src="/contents/newMain_image/story/m_cueat_story_2.jpg"
+            alt="큐잇스토리"
+          />
+          <div class="story-context">
+            <h2>사과는 왜 한 개씩 팔지 않을까요?</h2>
+            <p>
+              집 앞 슈퍼마켓이나 대형마트에 가도, 온라인으로 주문을 할 때도 항상
+              대량으로밖에 팔지 않아서 구매를 망설이게 됩니다.
+            </p>
+            <p>
+              '혼자 먹기에는 방울토마토 양이 많아 이번에도 버리게 되면
+              어쩌지...'<br />
+              '골고루 조금씩 맛보고 싶은데 포도는 3송이씩 사야하네...'<br />
+              '10키로 짜리 쌀은 너무 커서 보관할 곳도 없고, 벌레가 생기면
+              어쩌지...'<br />
+              '시금치도 싱싱할 때 조금씩 요리를 해먹고 싶은데 한 단 밖에 안
+              파니...'
+            </p>
+          </div>
+        </section>
+        <section class="story-section">
+          <img
+            src="/contents/newMain_image/story/m_cueat_story_3.jpg"
+            alt="큐잇스토리"
+          />
+          <div class="story-context">
+            <h2>
+              우리는 식재료를 구매할 때<br />
+              가장 기본이 되는 쌀, 과일, 채소와 같은<br />
+              농산물부터 조금씩 다양하게 합리적으로<br />
+              구매를 할 수 있어야 한다고 생각했습니다.
+            </h2>
+            <p>
+              농산물들이 가장 품질이 좋을 때, 내가 가장 선호하는 것 위주로,
+              필요한 만큼만 조금씩 나눠서, 매주 같은 날 배송해서 먹어보기
+              시작했습니다.<br />
+              몇 주 뒤, 우리의 몸은 항상 알맞게 에너지가 채워지는데 오히려
+              냉장고는 가벼워졌고, 조금씩 건강한 소비습관이 자리잡기 시작했다는
+              점을 발견하고 깨달았습니다.
+            </p>
+          </div>
+        </section>
+        <section class="story-section">
+          <img
+            src="/contents/newMain_image/story/m_cueat_story_4.jpg"
+            alt="큐잇스토리"
+          />
+          <div class="story-context">
+            <h2>
+              더 이상 나에게 맞는 농산물이 무엇일까 검색하며 고민하지 않아도
+              되고
+            </h2>
+            <p>
+              더 이상 밤늦게 피곤한데 내일 먹을 농산물을 주문하느라 시간을
+              보내지 않아도 되고, 더 이상 다 먹지도 못할 많은 양을 구매하여
+              남기거나 버리지 않아도 된다는 것을.
+            </p>
+          </div>
+        </section>
+        <section class="story-section">
+          <img
+            src="/contents/newMain_image/story/m_cueat_story_5.jpg"
+            alt="큐잇스토리"
+          />
+          <div class="story-context">
+            <p>
+              혼자 자취를 하며 밥을 챙겨 먹어야하는 직장인 <br />아이키우랴,
+              장보랴, 요리하랴 정신없이 바쁜 워킹맘<br />직접 장보기에는 무겁고,
+              온라인 쇼핑은 어려운 부모님
+            </p>
+            <p>
+              반복적인 농산물 구매의 크고 작은 문제를 해결해 드리고 새로운 삶의
+              모습을 찾아 드리고 싶습니다.
+            </p>
+            <h2>
+              농산물에 있어 맛과 영양, 좋은 품질은<br />
+              기본이자 본질이라고 생각합니다.
+            </h2>
+            <h2>
+              좋은 상품을 넘어 더욱더 많은 사람들에게<br />
+              저희가 경험한 건강한 소비습관을<br />
+              만들어 드리고 싶습니다.
+            </h2>
+          </div>
+        </section>
+      </main>
+    </div>
+    <div class="story-wrapper">
+      <div class="story-main-intro">
+        <img
+          src="/contents/newMain_image/story/cueat_story.jpg"
+          alt="스토리페이지 메인이미지"
+        />
+      </div>
+      <div class="story-container">
+        <div class="main-section">
+          <div class="mainStory-content">
+            <img
+              src="/contents/newMain_image/story/brand-story.png"
+              alt="큐잇 따옴표아이콘"
+            />
+            <h1>큐잇<span class="regular">은</span></h1>
+            <p>
+              많은 사람들이 농산물을 합리적으로 구매하고 소비하는 습관을 통해
+              더욱더 편리하고 건강한 라이프스타일을 누리기 원합니다.
+            </p>
+            <p>
+              나아가서 이 땅에 태어나 버려지고 낭비되는 농산물이 제로가 되길
+              원합니다.
+            </p>
+          </div>
+        </div>
+        <div class="story-section">
+          <div class="storyImg-container">
+            <img
+              src="/contents/newMain_image/story/cueat_story_1.jpg"
+              alt="스토리페이지 메인이미지"
+            />
+          </div>
+          <div class="stroy-content">
+            <h3>사과는 왜 한 개씩 팔지 않을까요?</h3>
+            <p>
+              집 앞 슈퍼마켓이나 대형마트에 가도, 온라인으로 주문을 할 때도 항상
+              대량으로밖에 팔지 않아서 구매를 망설이게 됩니다.
+            </p>
+            <p>
+              '혼자 먹기에는 방울토마토 양이 많아 이번에도 버리게 되면
+              어쩌지...'<br />
+              '골고루 조금씩 맛보고 싶은데 포도는 3송이씩 사야하네...'<br />
+              '10키로 짜리 쌀은 너무 커서 보관할 곳도 없고, 벌레가 생기면
+              어쩌지...'<br />
+              '시금치도 싱싱할 때 조금씩 요리를 해먹고 싶은데 한 단 밖에 안
+              파니...'
+            </p>
+          </div>
+        </div>
+        <div class="story-section">
+          <div class="storyImg-container">
+            <img
+              src="/contents/newMain_image/story/cueat_story_2.jpg"
+              alt="스토리페이지 메인이미지"
+            />
+          </div>
+          <div class="stroy-content">
+            <h3>
+              우리는 식재료를 구매할 때<br />
+              가장 기본이 되는 쌀, 과일, 채소와 같은 농산물부터<br />
+              조금씩 다양하게 합리적으로 구매를 할 수 있어야 한다고
+              생각했습니다.
+            </h3>
+            <p>
+              농산물들이 가장 품질이 좋을 때, 내가 가장 선호하는 것 위주로,
+              필요한 만큼만 조금씩 나눠서, 매주 같은 날 배송해서 먹어보기
+              시작했습니다.<br />
+              몇 주 뒤, 우리의 몸은 항상 알맞게 에너지가 채워지는데 오히려
+              냉장고는 가벼워졌고, 조금씩 건강한 소비습관이 자리잡기 시작했다는
+              점을 발견하고 깨달았습니다.
+            </p>
+          </div>
+        </div>
+        <div class="story-section">
+          <div class="storyImg-container">
+            <img
+              src="/contents/newMain_image/story/cueat_story_3.jpg"
+              alt="스토리페이지 메인이미지"
+            />
+          </div>
+          <div class="stroy-content">
+            <h3>
+              더 이상 나에게 맞는 농산물이 무엇일까 검색하며 고민하지 않아도
+              되고
+            </h3>
+            <p>
+              더 이상 밤늦게 피곤한데 내일 먹을 농산물을 주문하느라 시간을
+              보내지 않아도 되고, 더 이상 다 먹지도 못할 많은 양을 구매하여
+              남기거나 버리지 않아도 된다는 것을.
+            </p>
+          </div>
+        </div>
+        <div class="story-section">
+          <div class="storyImg-container">
+            <img
+              src="/contents/newMain_image/story/cueat_story_4.jpg"
+              alt="스토리페이지 메인이미지"
+            />
+          </div>
+          <div class="stroy-content">
+            <p>
+              혼자 자취를 하며 밥을 챙겨 먹어야하는 직장인<br />
+              아이키우랴, 장보랴, 요리하랴 정신없이 바쁜 워킹맘<br />
+              직접 장보기에는 무겁고, 온라인 쇼핑은 어려운 부모님
+            </p>
+            <p>
+              반복적인 농산물 구매의 크고 작은 문제를 해결해 드리고 새로운 삶의
+              모습을 찾아 드리고 싶습니다.
+            </p>
+          </div>
+        </div>
+        <div class="text-section">
+          <div class="story-text">
+            <h2>
+              농산물에 있어 맛과 영양, 좋은 품질은 기본이자 본질이라고
+              생각합니다.
+            </h2>
+            <h2>
+              좋은 상품을 넘어 더욱더 많은 사람들에게<br />
+              저희가 경험한 건강한 소비습관을 만들어 드리고 싶습니다.
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{ template "shared/footer.tmpl" }}
+  </body>
+</html>
+
+{{ end }}

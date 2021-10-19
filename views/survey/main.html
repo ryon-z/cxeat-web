@@ -1,0 +1,1146 @@
+{{ define "survey/main.html" }}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/contents/survey/css/survey.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="/contents/survey/css/survey_new.css?v={{ .cssRandomVersion }}">
+    <!-- CSS -->
+    <link
+      href="/contents/survey/css/smart_wizard_all.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    {{ template "shared/header.tmpl" . }}
+    <!-- JavaScript -->
+    <script
+      src="/contents/survey/js/jquery.smartWizard.min.js"
+      type="text/javascript"
+    ></script>
+    {{ template "shared/title.tmpl" . }}
+  </head>
+  <body>
+    <div id="smartwizard">
+      <ul class="nav" style="display: none">
+        <li>
+          <a class="nav-link" href="#step-1"> Step 1 </a>
+        </li>
+        <li>
+          <a class="nav-link" href="#step-2"> Step 2 </a>
+        </li>
+        <li>
+          <a class="nav-link" href="#step-3"> Step 3 </a>
+        </li>
+        <li>
+          <a class="nav-link" href="#step-4"> Step 4 </a>
+        </li>
+        <li>
+          <a class="nav-link" href="#step-5"> Step 5 </a>
+        </li>
+        <li>
+          <a class="nav-link" href="#step-6"> Step 6 </a>
+        </li>
+      </ul>
+
+      <div class="tab-content main__survey">
+        <section class="survey_nav">
+          <div class="gray_bar">
+            <div class="yellow_bar" id="progress-bar"></div>
+          </div>
+          <div class="questions_num">질문<span id="questions-num">1</span></div>
+        </section>
+        <div id="step-1" class="tab-pane content" role="tabpanel">
+          <div class="survey_char"><img src="/contents/survey/images/survey_char.png"></div>
+          <!--<div class="box_config_category">
+            <img class="category_image" src="/contents/survey/images/family_image.png">
+            기본정보
+          </div>-->
+          <div class="survey__title">
+            <span class="survey__title_emphasis">가족 구성원</span>은 몇 명인가요?<span class="survey__title__size">(본인 포함)</span>
+          </div>
+          <div class="desc">가족 구성원 수에 맞는 농산물과 적절한 양을 추천해 드려요.</div>
+          <div>
+            <div class="survey_select_title">성인(만19세 이상)</div>
+          <select name="numFamily" id="num-family-adult" class="form_select" onchange="handleChangeNumFamily()">
+            <option value="1">1명</option>
+            <option value="2">2명</option>
+            <option value="3">3명</option>
+            <option value="4">4명이상</option>
+          </select>
+          </div>
+          <div>
+            <div class="survey_select_title">청소년 및 어린이 (만 7세 ~ 만 18세)</div>
+          <select name="numFamily" id="num-family-youth" class="form_select" onchange="handleChangeNumFamily()">
+            <option value="0">0명</option>
+            <option value="1">1명</option>
+            <option value="2">2명</option>
+            <option value="3">3명</option>
+            <option value="4">4명이상</option>
+          </select>
+          </div>
+          <div>
+            <div class="survey_select_title">미취학 아동 및 유아 (0세 ~ 만 6세)</div>
+          <select name="numFamily" id="num-family-child" class="form_select" onchange="handleChangeNumFamily()">
+            <option value="0">0명</option>
+            <option value="1">1명</option>
+            <option value="2">2명</option>
+            <option value="3">3명</option>
+            <option value="4">4명이상</option>
+          </select>
+          </div>
+          <div class="survey_total_familymember" id="num-family-total">총 1명</div>
+          <div class="survey__button__div">
+            <button class="survey__next__btn" onclick="next()">다음</button>
+          </div>
+        </div>
+
+        
+        <div id="step-2" class="tab-pane content" role="tabpanel">
+          <div class="survey_char"><img src="/contents/survey/images/survey_char.png" /></div>
+          <!--
+          <div class="box_config_category">
+            <img class="category_image" src="/contents/survey/images/health_image.png" />
+            건강정보
+          </div>-->
+          <div class="survey__title">평소에 관심있는 <span class="survey__title_emphasis">건강정보</span>를 골라주세요!</div>
+          <div class="desc">
+            특별히 도움이 되는 농산물이 있을 때 잊지 않고 꼭 챙길게요
+          </div>
+          <div class="health_survey_div">
+            {{ $lastIndex := minus (len .healthInfo) 1}}
+            {{ range $i, $elem := .healthInfo }}
+            {{ if and (eq $i 0) (modZero $i 2) }}
+              <div class="health_survey">
+            {{ else if (modZero $i 2)}}
+              </div>
+              <div class="health_survey">
+            {{ end }}
+              <div class="health_div">
+                <img 
+                  class="health_img" 
+                  {{ if eq $elem.Label "체중관리" }}
+                    src="/contents/survey/images/weight.svg" 
+                  {{ else if eq $elem.Label "고혈압 및 당뇨" }}
+                    src="/contents/survey/images/high_blood.svg" 
+                  {{ else if eq $elem.Label "소화" }}
+                    src="/contents/survey/images/digestion.svg" 
+                  {{ else if eq $elem.Label "배변" }}
+                    src="/contents/survey/images/rest.svg" 
+                  {{ else if eq $elem.Label "탈모" }}
+                    src="/contents/survey/images/hair_loss.svg" 
+                  {{ else if eq $elem.Label "갱년기" }}
+                    src="/contents/survey/images/climacteric.svg" 
+                  {{ else }}
+                    src="/contents/survey/images/climacteric.svg" 
+                  {{ end }}
+                  alt=""
+                />
+                <div class="health_check">
+                  <input 
+                    type="checkbox" 
+                    name="healthInfo" 
+                    value="{{ $elem.Value }}"
+                    id="health-info-{{ $i }}"
+                  >
+                  <label for="health-info-{{ $i }}">
+                    <span>{{ $elem.ExposedLabel }}</span>
+                  </label>
+                </div>
+              </div>
+            {{ if eq $i $lastIndex}}
+              </div>
+            {{ end }}
+            {{ end }}
+          </div>
+          <div class="survey__button__div">
+            <button class="survey__prev__btn btn_right" onclick="prev()">이전</button>
+            <button class="survey__next__btn" onclick="next()">다음</button>
+          </div>
+        </div>
+
+
+        <div id="step-3" class="tab-pane content" role="tabpanel">
+          <div class="survey_char"><img src="/contents/survey/images/survey_char.png"></div>
+          <!--
+          <div class="box_config_category">
+            <img class="category_image"src="/contents/survey/images/fruit_image.png">
+            과일류
+          </div>-->
+          <div class="survey__title">우리 가족의 <span class="survey__title_emphasis">과일 취향</span>을 알려주세요</div>
+          <div class="desc">제철에 가장 맛있는 과일들을 고객님께 맞게 선별해서 보내드릴게요</div>
+          <div class="preferenceFruits_div">
+            <div class="survey_sub_title">우리 가족은 집에서 과일을 즐겨 먹나요?</div>
+
+            {{ $lastIndex := minus (len .typeFruits) 1}}
+            {{ range $i, $elem := .typeFruits }}
+            <div class="result_radio">
+              <input 
+                type="radio" 
+                name="typeFruits"
+                value="{{ $elem.Value }}"
+                {{ if eq $elem.Label "과일X" }}
+                  onclick="(function() {
+                    handleDisplayNone('selectable-fruits-questions', true)
+                    handleRequiredSelects(['typeFruits'], 'step-3-next')
+                  })()"
+                {{ else }}
+                  onclick="(function() {
+                    handleDisplayNone('selectable-fruits-questions', false)
+                    handleRequiredSelects(['typeFruits'], 'step-3-next')
+                  })()"
+                {{ end }}
+                id="type-fruits-{{ $i }}"
+              >
+              <label for="type-fruits-{{ $i }}">{{ $elem.ExposedLabel }}</label>
+            </div>
+            {{ end }}
+          </div>
+          
+          <div id="selectable-fruits-questions">
+            <div class="tastesweet_div">
+              <div class="survey_sub_title">우리 가족은 어떤 맛을 선호할까요?</div>
+              <div class="tastesweet_margin_div">
+                <div class="tastesweet_margin">
+                  <label for="taste-sweet" class="tastetitle">달콤</label>
+                  <input id="taste-sweet" type="range" min=1 max=5 step=1 value=3 class="tasterange"/>     
+                </div>
+                <div class="tastesour_margin">
+                  <label for="taste-sour" class="tastetitle">새콤</label>
+                  <input id="taste-sour" type="range" min=1 max=5 step=1 value=3  class="tasterange"/>     
+                </div>
+              </div>
+            </div>
+            <div class="hateFruits_div">
+              <div class="survey_sub_title">좋아하지 않는 과일을 모두 골라주세요</div>
+              <div class="desc">해당 과일을 제외하고 가장 맛있는 과일을 다양하게 보내드릴게요</div>
+              <div class="survey_list">
+                <div class="flex_row_m_column">
+                  {{ $lastIndex := minus (len .hateFruits) 1}}
+                  {{ range $i, $elem := .hateFruits }}
+                  {{ if and (eq $i 0) (modZero $i 3) }}
+                    <div class="flex_row">
+                  {{ else if (modZero $i 3)}}
+                    </div>
+                    <div class="flex_row">
+                  {{ end }}
+                      <div class="none_check">
+                        <input 
+                          type="checkbox" 
+                          name="hateFruits"
+                          value="{{ $elem.Value }}"
+                          id="hate-fruits-{{ $i }}"
+                        >
+                        <label 
+                          for="hate-fruits-{{ $i }}"
+                          {{ if $elem.CustomClass }}
+                            class={{ $elem.CustomClass }}
+                          {{ end }}
+                        >
+                          {{ $elem.ExposedLabel }}
+                        </label>
+                      </div>
+                  {{ if eq $i $lastIndex}}
+                    </div>
+                  {{ end }}
+                  {{ end }}
+                </div>
+              </div>
+            </div>
+            <div class="alergy_fruits_div">
+              <div class="survey_sub_title">알레르기가 있는 과일이나 꼭 제외해야 하는 과일이 있다면 알려주세요</div>
+              <input type="text" name="alergyFruits" class="alergy_fruits_input" maxlength="100" placeholder="최대 100자까지 입력 가능합니다"/>
+            </div>
+            <div class="needed_div">
+              <div class="survey_sub_title">매주 필요한 과일이 있다면 알려주세요</div>
+              <div class="needed_list">
+                <div class="flex_row_m_column">
+                  {{ $lastIndex := minus (len .preferenceFruits) 1}}
+                  {{ range $i, $elem := .preferenceFruits }}
+                  {{ if and (eq $i 0) (modZero $i 3) }}
+                    <div class="flex_row">
+                  {{ else if (modZero $i 3)}}
+                    </div>
+                    <div class="flex_row">
+                  {{ end }}
+                      <div class="used_check">
+                        <input 
+                          type="checkbox" 
+                          name="preferenceFruits"
+                          value="{{ $elem.Value }}" 
+                          id="preference-fruits-{{ $i }}"
+                        >
+                        <label 
+                          for="preference-fruits-{{ $i }}"
+                          {{ if $elem.CustomClass }}
+                            class={{ $elem.CustomClass }}
+                          {{ end }}
+                        >
+                          {{ $elem.ExposedLabel }}
+                        </label>
+                      </div>
+                  {{ if eq $i $lastIndex}}
+                    </div>
+                  {{ end }}
+                  {{ end }}
+                  <div class="vegetable_notice">
+                    필수 과일을 선택하시면 해당 과일이 매회 포함되나, 수급 상황에 따라 사전 공지 없이 제외될 수 있어요
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="survey__button__div">
+            <button class="survey__prev__btn btn_right" onclick="prev()">이전</button>
+            <button id="step-3-next" class="survey__prev__btn" onclick="(function() {
+              if (isRequiredSelected('typeFruits', '우리 가족은 집에서 과일을 즐겨먹나요?')) {
+                next()
+              }
+            })()">다음</button>
+          </div>
+        </div>
+
+
+        <div id="step-4" class="tab-pane content" role="tabpanel">
+          <div class="survey_char"><img src="/contents/survey/images/survey_char.png"></div>
+          <!--
+          <div class="box_config_category">
+            <img class="category_image"src="/contents/survey/images/rice_image.png">
+            쌀·잡곡류</div>-->
+          <div class="survey__title">우리집의 <span class="survey__title_emphasis">밥 먹는 습관</span>을 알려주세요</div>
+          <div class="desc">우리 나라의 여러 가지 좋은 쌀을 다양하게 보내드릴게요</div>
+          <div class="questions_section">
+            <div class="survey_sub_title">집에서 밥을 직접 지어 드시나요?</div>
+            {{ range $i, $elem := .typeMeal }}
+              <div class="result_radio">
+                <input 
+                  type="radio" 
+                  name="typeMeal"
+                  value="{{ $elem.Value }}" 
+                  {{ if eq $elem.Label "취식X" }}
+                    onclick="(function() {
+                      handleDisplayNone('selectable-rice-questions', true)
+                      handleStep4RequiredSelects()
+                    })()"
+                  {{ else if eq $elem.Label "즉석밥" }}
+                    onclick="(function() {
+                      handleDisplayNone('selectable-rice-questions', false)
+                      handleDisplayNone('selectable-rice-type-question', true)
+                      handleStep4RequiredSelects()
+                    })()"
+                  {{ else }}
+                    onclick="(function() {
+                      handleDisplayNone('selectable-rice-questions', false)
+                      handleDisplayNone('selectable-rice-type-question', false)
+                      handleStep4RequiredSelects()
+                    })()"
+                  {{ end }}
+                  id="type-meal-{{ $i }}"
+                >
+                <label for="type-meal-{{ $i }}">{{ $elem.ExposedLabel }}</label>
+              </div>
+            {{ end }}
+          </div>
+
+          <div id="selectable-rice-questions">
+            <div class="questions_section">
+              <div class="survey_sub_title">우리 가족은 일주일동안 집에서 밥을 몇 끼 정도 먹나요? </div>
+              <div class="desc">대략적으로 응답해 주세요</div>
+                {{ range $i, $elem := .numMeal }}
+                  <div class="result_radio numMeal">
+                    <input 
+                      type="radio" 
+                      name="numMeal"
+                      value="{{ $elem.Value }}" 
+                      id="num-meal-{{ $i }}"
+                      onclick="handleStep4RequiredSelects()"
+                    >
+                    <label for="num-meal-{{ $i }}">{{ $elem.ExposedLabel }}</label>
+                  </div>
+                {{ end }}
+            </div>
+
+            <div id="selectable-rice-type-question">
+              <div class="questions_section">
+                <div class="survey_sub_title">어떤 밥을 좋아하세요?</div>
+                {{ range $i, $elem := .preferenceMeal }}
+                  <div class="result_radio">
+                    <input 
+                      type="radio" 
+                      name="preferenceMeal"
+                      value="{{ $elem.Value }}" 
+                      id="preference-meal-{{ $i }}"
+                      onclick="handleStep4RequiredSelects()"
+                    >
+                    <label for="preference-meal-{{ $i }}">{{ $elem.ExposedLabel }}</label>
+                  </div>
+                {{ end }}
+              </div>
+            </div>
+          </div>
+
+          <div class="survey__button__div">
+            <button class="survey__prev__btn btn_right" onclick="prev()">이전</button>
+            <button id="step-4-next" class="survey__prev__btn" onclick="(function () {
+              if (isStep4RequiredSelected()) {
+                next()
+              }
+            })()">다음</button>
+          </div>
+        </div>
+
+
+        <div id="step-5" class="tab-pane content" role="tabpanel">
+          <div class="survey_char"><img src="/contents/survey/images/survey_char.png"></div>
+          <!--
+          <div class="box_config_category">
+            <img class="category_image"src="/contents/survey/images/vegetable_image.png">
+            채소류
+          </div>-->
+          <div class="survey__title">우리 가족의 <span class="survey__title_emphasis">채소 취향</span>을 알려주세요</div>
+          <div class="desc">제철에 가장 맛있는 채소들을 고객님께 맞게 선별해서 보내드릴게요</div>
+
+          <div class="questions_section">
+            <div class="survey_sub_title">매주 추천하는 제철 채소를 받고 싶으신가요?</div>
+            {{ range $i, $elem := .typeVegetable }}
+              <div class="result_radio">
+                <input 
+                  type="radio" 
+                  name="typeVegetable"
+                  value="{{ $elem.Value }}" 
+                  {{ if eq $elem.Label "채소X" }}
+                    onclick="(function() {
+                      handleDisplayNone('selectable-vegetable-questions', true)
+                      handleRequiredSelects(['typeVegetable'], 'step-5-next')
+                    })()"
+                  {{ else }}
+                    onclick="(function() {
+                      handleDisplayNone('selectable-vegetable-questions', false)
+                      handleRequiredSelects(['typeVegetable'], 'step-5-next')
+                    })()"
+                  {{ end }}
+                  id="type-vegetable-{{ $i }}"
+                >
+                <label for="type-vegetable-{{ $i }}">{{ $elem.ExposedLabel }}</label>
+              </div>
+            {{ end }}
+          </div>
+          
+          <div id="selectable-vegetable-questions">
+            <div class="questions_section">
+              <div class="survey_sub_title">추천 받고 싶은 채소 타입을 선택해 주세요</div>
+              {{ range $i, $elem := .preferenceCategoryVegetable }}
+                <div class="used_check">
+                  <input 
+                    type="checkbox" 
+                    name="preferenceCategoryVegetable"
+                    value="{{ $elem.Value }}" 
+                    id="preference-category-vegetable-{{ $i }}"
+                  >
+                  <label for="preference-category-vegetable-{{ $i }}">{{ $elem.ExposedLabel }}</label>
+                </div>
+              {{ end }}
+            </div>
+
+            <div class="questions_section">
+              <div class="survey_sub_title">좋아하지 않는 채소를 모두 골라주세요</div>
+              <div class="desc">해당 채소는 제외하고 추천해드릴게요</div>
+              <div class="survey_list">
+                <div class="flex_row_m_column">
+                  {{ $lastIndex := minus (len .hateVegetable) 1}}
+                  {{ range $i, $elem := .hateVegetable }}
+                  {{ if and (eq $i 0) (modZero $i 3) }}
+                    <div class="flex_row">
+                  {{ else if (modZero $i 3)}}
+                    </div>
+                    <div class="flex_row">
+                  {{ end }}
+                      <div class="none_check">
+                        <input 
+                          type="checkbox" 
+                          name="hateVegetable"
+                          value="{{ $elem.Value }}"
+                          id="hate-vegetable-{{ $i }}"
+                        >
+                        <label 
+                          for="hate-vegetable-{{ $i }}"
+                          {{ if $elem.CustomClass }}
+                            class={{ $elem.CustomClass }}
+                          {{ end }}
+                        >
+                          {{ $elem.ExposedLabel }}
+                        </label>
+                      </div>
+                  {{ if eq $i $lastIndex}}
+                    </div>
+                  {{ end }}
+                  {{ end }}
+                </div>
+              </div>
+            </div>
+
+            <div class="alergy_vegetable_div">
+              <div class="survey_sub_title">알레르기가 있거나 꼭 제외해야 하는 채소가 있다면 알려주세요</div>
+              <input type="text" name="alergyVegetable" class="alergy_fruits_input" maxlength="100" placeholder="최대 100자까지 입력 가능합니다"/>
+            </div>
+
+            <div class="questions_section">
+              <div class="survey_sub_title">매주 필요한 채소가 있으면 골라주세요</div>
+              {{ $lastIndex := minus (len .preferenceVegetable) 1}}
+              {{ range $i, $elem := .preferenceVegetable }}
+              {{ if and (eq $i 0) (modZero $i 3) }}
+                <div class="flex_row">
+              {{ else if (modZero $i 3)}}
+                </div>
+                <div class="flex_row">
+              {{ end }}
+                <div class="used_check">
+                  <input 
+                    type="checkbox" 
+                    name="preferenceVegetable"
+                    value="{{ $elem.Value }}" 
+                    id="preference-vegetable-{{ $i }}"
+                  >
+                  <label 
+                    for="preference-vegetable-{{ $i }}"
+                    {{ if $elem.CustomClass }}
+                      class={{ $elem.CustomClass }}
+                    {{ end }}
+                  >
+                    {{ $elem.ExposedLabel }}
+                  </label>
+                </div>
+              {{ if eq $i $lastIndex}}
+                </div>
+              {{ end }}
+              {{ end }}
+              <div class="vegetable_notice">
+                필수 채소를 선택하시면 해당 채소가 매회 포함되나, 수급 상황에 따라 사전 공지 없이 제외될 수 있어요
+                <br>
+                필수 채소가 많아지면 추천 채소가 없거나 적어질 수 있어요
+              </div>
+            </div>
+
+          </div>
+
+          <div class="survey__button__div">
+            <button class="survey__prev__btn btn_right" onclick="prev()">이전</button>
+            <button id="step-5-next" class="survey__prev__btn" onclick="(function () {
+              if (isRequiredSelected('typeVegetable', '매주 추천하는 제철 채소를 받고 싶으신가요?')) {
+                next()
+              }
+            })()">다음</button>
+          </div>
+        </div>
+
+        <div id="step-6" class="tab-pane content" role="tabpanel">
+          <div class="survey_char"><img src="/contents/survey/images/survey_char.png"></div>
+          <!--
+          <div class="box_config_category">
+            <img class="category_image"src="/contents/survey/images/lifestyle_image.png">  
+            라이프 스타일
+          </div>-->
+          <div class="survey__title">먹거리를 이용하는 <span class="survey__title_emphasis">생활 패턴</span>을 알려주세요</div>
+          <div class="questions_section">
+            <div class="survey_sub_title">마트나 시장에서 새로운 농산물을 보면 어떻게 하나요?</div>          
+            {{ range $i, $elem := .newAgriFood }}
+              <div class="result_radio">
+                <input 
+                  type="radio" 
+                  name="newAgriFood"
+                  value="{{ $elem.Value }}" 
+                  id="new-agri-food-{{ $i }}"
+                    onclick="handleRequiredSelects(['newAgriFood'], 'step-6-submit', true)"
+                >
+                <label for="new-agri-food-{{ $i }}">{{ $elem.ExposedLabel }}</label>
+              </div>
+            {{ end }}
+          </div>
+          <div class="questions_section">
+            <div class="survey_sub_title">고객님께 해당되는 것을 모두 선택해 주세요</div>
+            {{ range $i, $elem := .lifeStyle }}
+              <div class="used_check">
+                <input 
+                  type="checkbox" 
+                  name="lifeStyle"
+                  value="{{ $elem.Value }}" 
+                  id="life-style-{{ $i }}"
+                >
+                <label for="life-style-{{ $i }}">{{ $elem.ExposedLabel }}</label>
+              </div>
+            {{ end }}
+
+            <div class="survey__button__div">
+              <button class="survey__prev__btn btn_right" onclick="prev()">이전</button>
+              <button id="step-6-submit" class="survey__prev__btn" onclick="(function () {
+                if (isRequiredSelected('newAgriFood', '마트나 시장에서 새로운 농산물을 보면 어떻게 하나요?')) {
+                  submitSurvey()
+                }
+              })()">제출</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="/contents/survey/js/survey.js?v={{ .cssRandomVersion }}"></script>
+
+    {{ template "shared/extend-token.tmpl" . }}
+    
+    <script>
+      // 모든 작업 완료하고 이탈
+      var isFinished = false
+
+      // 새로고침, 뒤로가기 시 alert 띄워주기
+      window.addEventListener('beforeunload', function(e) {
+        // 마지막 제출 시에는 경고창 띄우지 않음
+        if (isFinished) {
+          return;
+        }
+
+        if (e.preventDefault) {
+            // 표준에 따라 기본 동작 방지
+            e.preventDefault();
+            // Chrome에서는 returnValue 설정이 필요함
+            e.returnValue = '';
+        } else {
+            e.returnValue = false;
+        }
+      });
+
+      // 가족 구성원 수 변경 시 처리
+      function handleChangeNumFamily() {
+        var adultElem = document.querySelector("#num-family-adult")
+        var youthElem = document.querySelector("#num-family-youth")
+        var childElem = document.querySelector("#num-family-child")
+        var totalElem = document.querySelector("#num-family-total")
+        var numFamily = 0
+        var isMore = ""
+        var maxNumFamily = 4
+
+        var targets = [adultElem.value, youthElem.value, childElem.value]
+        for (var i=0; i<targets.length; i++) {
+          var target = parseInt(targets[i], 10)
+          numFamily += target
+
+          if (isMore === "" && target === maxNumFamily) {
+            isMore = "이상"
+          }
+        }
+
+        totalElem.innerHTML = `총 ${numFamily}명 ${isMore}`
+      }
+
+      // 필수 선택지 초기화
+      function initRequiredSelects() {
+        var inputNames = ["typeFruits", "typeMeal", "typeVegetable"]
+        var disableIds = ["type-fruits-2", "type-meal-2", "type-vegetable-1"]
+        var selectableIds = ["selectable-fruits-questions", "selectable-rice-questions", "selectable-vegetable-questions"]
+
+        for (var i=0; i<inputNames.length; i++) {
+          var elem = document.querySelector(`input[name=${inputNames[i]}]:checked`)
+          var display = ""
+          if (elem === null || elem.id === disableIds[i]) {
+            display = "none"
+          }
+          
+          var selectableElem = document.querySelector(`#${selectableIds[i]}`)
+          if (selectableElem !== null) {
+            selectableElem.style.display = display
+          }
+        }
+      }
+
+      // 변수 초기화
+      var typeMap = {}
+      var numSteps = 0
+      var tagGroupNo = 0;
+      var finishButton = $("<button></button>").text("제출")
+                          .attr("id", "finish-button")
+                          .attr("class", "btn btn-info")
+                          .on("click", submitSurvey)
+      var options = {
+        justified: true,
+        theme: "progress",
+        autoAdjustHeight: true,
+        enableURLhash: false,
+        transition: {
+          animation: "slide-horizontal",
+          speed: "500",
+          easing: "",
+        },
+        toolbarSettings: {
+          // 버튼 숨김
+          toolbarPosition: "none",
+          // toolbarPosition: "bottom",
+          toolbarExtraButtons: [finishButton],
+        },
+        lang: {
+            next: '다음',
+            previous: '이전',
+        },
+        keyboardSettings: {
+          keyNavigation: false,
+        },
+      }
+
+      $(document).ready(function () {
+        // SmartWizard initialize
+        $("#smartwizard").smartWizard(options);
+        handleChangeNumFamily()
+        setTypeMap()
+        setNumSteps()
+        initRequiredSelects()
+
+        // 뒤로가기로 접근 시 버튼 초기화
+        handleRequiredSelects(['typeFruits'], 'step-3-next')
+        handleStep4RequiredSelects()
+        handleRequiredSelects(['typeVegetable'], 'step-5-next')
+        handleRequiredSelects(['newAgriFood'], 'step-6-submit', true)
+
+        // input label에 개행 적용
+        applyNewLines()
+      });
+
+      $("#smartwizard").on("showStep", function(e, anchorObject, stepIndex, stepDirection) {
+        var stepNum = anchorObject[0].hash.split("#step-")[1]
+        if (parseInt(stepNum, 10) === 6) {
+          $("#finish-button").show()
+        } else {
+          $("#finish-button").hide()
+        }
+
+        var hash = "#step-1"
+        if (anchorObject.length > 0) {
+          hash = anchorObject[0].hash
+        }
+          updateQuestionsNum(hash)
+          updateProgressBar(hash)
+      });
+
+      function updateQuestionsNum(hash) {
+        var qNumElem = document.querySelector("#questions-num")
+        var stepNum = hash.split("#step-")[1]
+        if (qNumElem !== null) {
+          qNumElem.innerHTML = stepNum
+        }
+      }
+
+      function updateProgressBar(hash) {
+        var progressBarElem = document.querySelector("#progress-bar")
+        // showStep 이벤트가 DOMContentLoaded 보다 빨리 작동해서 초기화 안되는 경우 대처
+        if (numSteps === 0) {
+          setNumSteps()
+        }
+        var stepNum = parseInt(hash.split("#step-")[1], 10)
+        if (progressBarElem !== null) {
+          progressBarElem.style.width = `${stepNum / numSteps * 100}%`
+        }
+      }
+
+      function next() {
+        $('#smartwizard').smartWizard("next");
+        window.scrollTo(0, 0)
+      }
+
+      function prev() {
+        $('#smartwizard').smartWizard("prev");
+        window.scrollTo(0, 0)
+      }
+
+      // handleDisplayNone : 과일 선택지 일부 가림
+      function handleDisplayNone(id, isDisplayNone) {
+        var elem = document.querySelector(`#${id}`)
+        if (elem === null) {
+          return;
+        }
+
+        if (isDisplayNone) {
+          elem.style.display = "none"
+        } else {
+          elem.style.display = "block"
+        }
+      }
+
+      // 필수 선택 항목이 있는 경우 다음 버튼 스타일 변경
+      function handleActiveNext(nextButtonID, isSubmit=false) {
+        var nextElem = document.querySelector(`#${nextButtonID}`)
+        if (nextElem !== null) {
+          if (isSubmit) {
+            nextElem.className = "survey__submit__btn"
+          } else {
+            nextElem.className = "survey__next__btn"
+          }
+        }
+      }
+
+      // 필수 선택 항목이 없는 경우 다음 버튼 스타일 변경
+      function handleInactiveNext(nextButtonID) {
+        var nextElem = document.querySelector(`#${nextButtonID}`)
+        if (nextElem !== null) {
+          nextElem.className = "survey__prev__btn"
+        }
+      }
+
+      // step-4의 필수 선택지 선택 시 버튼 색 변경
+      function handleStep4RequiredSelects() {
+        var nextButtonID = "step-4-next"
+        // 밥을 안 먹는 경우
+        var denyElem = document.querySelector(`#type-meal-2:checked`)
+        if (denyElem) {
+          handleActiveNext(nextButtonID)
+          return
+        }
+
+        // 즉석밥을 먹는 경우
+        var dominantElem = document.querySelector(`input[type=radio][name="typeMeal"]:checked + label`)
+        var usePreferenceMeal = true
+        if (dominantElem === null || dominantElem.innerHTML.includes("즉석밥")) {
+          var usePreferenceMeal = false
+        }
+
+        if (usePreferenceMeal) {
+          handleRequiredSelects(["typeMeal", "numMeal", "preferenceMeal"], nextButtonID)
+        } else {
+          handleRequiredSelects(["typeMeal", "numMeal"], nextButtonID)
+        }
+      }
+
+      // step-4에서 다음 버튼 클릭 시 필수 선택지 체크 여부 확인
+      function isStep4RequiredSelected() {
+        var denyElem = document.querySelector(`#type-meal-2:checked`)
+        if (denyElem) {
+          return true
+        }
+
+        var names = ["typeMeal", "numMeal"]
+        var questions = [
+          "집에서 밥을 직접 지어 드시나요?", 
+          "우리 가족은 일주일동안 집에서 밥을 몇 끼 정도 먹나요?",
+        ]
+
+        // 즉석밥을 먹는 경우
+        var dominantElem = document.querySelector(`input[type=radio][name="typeMeal"]:checked + label`)
+        var usePreferenceMeal = true
+        if (dominantElem.innerHTML.includes("즉석밥")) {
+          var usePreferenceMeal = false
+        }
+
+        if (usePreferenceMeal) {
+          names.push("preferenceMeal")
+          questions.push("어떤 밥을 좋아하세요?")
+        }
+
+        for (var i=0; i<names.length; i++) {
+          if (!isRequiredSelected(names[i], questions[i])) {
+            return false
+          }
+        }
+        
+        return true
+      }
+
+      // 필수 선택지가 포함된 지문 처리
+      function handleRequiredSelects(requiredInputNames, nextButtonID, isSubmit=false) {
+        for (var i=0; i<requiredInputNames.length; i++) {
+          var elem = document.querySelector(`input[name='${requiredInputNames[i]}']:checked`)
+          if (elem === null) {
+            handleInactiveNext(nextButtonID)
+            return;
+          }
+        }
+        handleActiveNext(nextButtonID, isSubmit)
+      }
+
+      // 필수 선택 항목 체크
+      function isRequiredSelected(name, exposed) {
+        var elem = document.querySelector(`input[name='${name}']:checked`)
+        if (elem === null) {
+          swal.fire({
+            title: `${exposed}의 답변이 선택되지 않았습니다.`,
+            customClass: "alert_button"
+          })
+          return false
+        }
+
+        return true
+      }
+
+      function setTypeMap() {
+        var typeInfo = {{ .typeInfo }}
+        for (var i=0; i<typeInfo.length; i++) {
+          var row = typeInfo[i]
+          typeMap[row.Name] = row.Type
+        }
+      }
+
+      function setNumSteps() {
+        var setpElems = document.querySelectorAll("div.tab-pane")
+        numSteps = setpElems.length
+      }
+
+      // ID로부터 index 추출
+      function getIndex(id) {
+        var splited = id.split("-")
+
+        return parseInt(splited[splited.length -1], 10)
+      }
+
+      // 선택된 가족 구성원 수 획득
+      function getSelectedNumFamily() {
+        var result = []
+        var adultElem = document.querySelector("#num-family-adult")
+        var youthElem = document.querySelector("#num-family-youth")
+        var childElem = document.querySelector("#num-family-child")
+
+        var labels = ["성인", "청소년", "유아"]
+        var targets = [adultElem, youthElem, childElem]
+        for (var i=0; i<targets.length; i++) {
+          var elem = targets[i]
+          if (parseInt(elem.value, 10) === 0) {
+            continue
+          }
+          var row = {}
+          row["TagType"] = typeMap["numFamily"]
+          row["TagLabel"] = labels[i]
+          row["TagValue"] = elem.value
+          result.push(row)
+        }
+
+        return result
+      }
+
+      // 알러지 과일 추출
+      function getAlergyFruits() {
+        var result = []
+        var alergyElem = document.querySelector("input[name='alergyFruits']")
+        var tagType = typeMap["alergyFruits"]
+        if (alergyElem.value !== "") {
+          result.push({"TagType": tagType, "TagLabel": "알러지", "TagValue": alergyElem.value})
+        }
+        
+        return result
+      }
+
+      // 알러지 채소 추출
+      function getAlergyVegetable() {
+        var result = []
+        var alergyElem = document.querySelector("input[name='alergyVegetable']")
+        var tagType = typeMap["alergyVegetable"]
+        if (alergyElem.value !== "") {
+          result.push({"TagType": tagType, "TagLabel": "알러지", "TagValue": alergyElem.value})
+        }
+        
+        return result
+      }
+
+      // 과일 맛 추출
+      function getTaste() {
+        var result = []
+        var sweetElem = document.querySelector("#taste-sweet")
+        var sweetLabel = document.querySelector(`label[for='${sweetElem.id}']`)
+        var tagType = typeMap["taste"]
+        result.push({"TagType": tagType, "TagLabel": sweetLabel.innerHTML, "TagValue": sweetElem.value})
+        
+        var sourElem = document.querySelector("#taste-sour")
+        var sourLabel = document.querySelector(`label[for='${sourElem.id}']`)
+        result.push({"TagType": tagType, "TagLabel": sourLabel.innerHTML, "TagValue": sourElem.value})
+
+        return result
+      }
+
+      // 체크박스 선택 값 추출
+      function getSelectedCheckbox(name) {
+        var result = []
+        var elems = document.querySelectorAll(`input[type='checkbox'][name='${name}']:checked`)
+        for (var i=0; i<elems.length; i++) {
+          var label = document.querySelector(`label[for='${elems[i].id}']`)
+          var row = {}
+          row["TagType"] = typeMap[name]
+          var index = getIndex(elems[i].id)
+          row["TagLabel"] = {{ . }}[name][index].Label
+          row["TagValue"] = elems[i].value
+          result.push(row)
+        }
+
+        return result
+      }
+      
+      // 라디오버튼 선택 값 추출
+      function getSelectedRadio(name) {
+        var result = []
+        var elem = document.querySelector(`input[type='radio'][name='${name}']:checked`)
+        if (elem !== null) {
+          var label = document.querySelector(`label[for='${elem.id}']`)
+          var row = {}
+          row["TagType"] = typeMap[name]
+          var index = getIndex(elem.id)
+          row["TagLabel"] = {{ . }}[name][index].Label
+          row["TagValue"] = elem.value
+          result.push(row)
+        }
+
+        return result
+      }
+
+      // 태그 그룹 추가
+      function requestAddNewTagGroup() {
+        var url = "/tag/group/create"
+        var method = "POST"
+        var data = {
+          TagGroupType: "",
+        }
+
+        function successFunc(responseText) {
+          var data = JSON.parse(responseText)["data"];
+          tagGroupNo = data
+          return
+        }
+
+        function failFunc(responseText) {
+          var parsed = JSON.parse(responseText)
+          if ("code" in parsed && parsed["code"] === 401) {
+            Swal.fire("로그인이 만료되었습니다. \n메인으로 이동합니다.")
+            .then(function() {
+              location.href = "/web/main"
+            })
+            return
+          }
+
+          Swal.fire("설문조사 등록 실패")
+          .then(function() {
+            location.href = "/web/main"  
+          })
+          return
+        }
+
+        customRequest(url, method, data, successFunc, failFunc, false)
+      }
+
+      // 태그 추가
+      function requestAddNewTag(surveys) {
+        var url = "/tag/create"
+        var method = "POST"
+        var data = surveys
+
+        function successFunc(responseText) {
+          setCookie("tagGroupNo", tagGroupNo, "", 3600, "/web/survey")
+          isFinished = true
+          location.href = "/web/survey/result"
+          return
+        }
+
+        function failFunc() {
+          Swal.fire(
+            "설문조사 등록 실패. 메인페이지로 이동합니다."
+          ).then(function() {
+            location.href = "/web/main"  
+          })
+
+          return
+        }
+
+        customRequest(url, method, data, successFunc, failFunc, false)
+      }
+
+      // 설문조사 등록
+      function submitSurvey() {
+        var numFamily = getSelectedNumFamily()
+        var healthInfo = getSelectedCheckbox("healthInfo")
+
+        var typeFruits = getSelectedRadio("typeFruits")
+        var taste = []
+        var hateFruits = []
+        var alergyFruits = []
+        var preferenceFruits = []
+        var isNotWantedFruits = typeFruits.filter(type => type.TagLabel === "과일X").length
+        if (isNotWantedFruits === 0) {
+          taste = getTaste()
+          hateFruits = getSelectedCheckbox("hateFruits")
+          alergyFruits = getAlergyFruits()
+          preferenceFruits = getSelectedCheckbox("preferenceFruits")
+        }
+
+        var typeMeal = getSelectedRadio("typeMeal")
+        var numMeal = []
+        var preferenceMeal = []
+        var isNotWantedMeal = typeMeal.filter(type => type.TagLabel === "취식X").length
+        if (isNotWantedMeal === 0) {
+          numMeal = getSelectedRadio("numMeal")
+          preferenceMeal = getSelectedRadio("preferenceMeal")
+        }
+
+        var typeVegetable = getSelectedRadio("typeVegetable")
+        var preferenceVegetable = []
+        var preferenceCategoryVegetable = []
+        var hateVegetable = []
+        var alergyVegetable = []
+        var isNotWantedVegetable = typeVegetable.filter(type => type.TagLabel === "채소X").length
+        if (isNotWantedVegetable === 0) {
+          preferenceCategoryVegetable = getSelectedCheckbox("preferenceCategoryVegetable")
+          preferenceVegetable = getSelectedCheckbox("preferenceVegetable")
+          hateVegetable = getSelectedCheckbox("hateVegetable")
+          alergyVegetable = getAlergyVegetable()
+        }
+        
+        var newAgriFood = getSelectedRadio("newAgriFood", "newAgriFood")
+        var lifeStyle = getSelectedCheckbox("lifeStyle", "lifeStyle")
+
+        var surveys = [].concat.apply(
+            [], [numFamily, healthInfo, typeFruits, taste, hateFruits, 
+            alergyFruits, preferenceFruits, typeMeal, numMeal, preferenceMeal,
+            typeVegetable, preferenceCategoryVegetable, preferenceVegetable, 
+            hateVegetable, alergyVegetable, newAgriFood, lifeStyle]
+        )
+        
+        // 새 tagGroup ID 획득
+        requestAddNewTagGroup()
+        if (tagGroupNo !== 0) {
+          // surveyes 업데이트
+          surveys = surveys.map(function (row) {
+            row["IsUse"] = 1
+            row["TagGroupNo"] = tagGroupNo
+            return row
+          });
+          requestAddNewTag(surveys)
+        }
+      }
+
+    // unCheckedAll 모든 체크박스 unchecked
+    function unCheckedAll(name) {
+      var clearElem = document.querySelector(`input[name='${name}Clear']`)
+      if (clearElem !== null) {
+        clearElem.checked = true
+      }
+
+      var elems = document.querySelectorAll(`input[type='checkbox'][name='${name}']:checked`)
+      for (var i=0; i<elems.length; i++) {
+        elems[i].checked = !elems[i].checked
+      }
+    }
+
+    // clear 체크박스 unchecked
+    function unCheckClear(name) {
+      var clearElem = document.querySelector(`input[name='${name}Clear']`)
+      if (clearElem !== null) {
+        clearElem.checked = false
+      }
+    }
+
+    // 개행 적용
+    function applyNewLines() {
+      // preference-category-vegetable
+      var elems = document.querySelectorAll("input[name=preferenceCategoryVegetable]")
+      for (var i=0; i<elems.length; i++) {
+        var labelElem = document.querySelector(`#${elems[i].id} + label`)
+        var rawString = labelElem.innerText
+        labelElem.innerHTML = ""
+        applyNewLine(labelElem, rawString, {{ .newLineSymbol }}, true)
+      }
+    }
+    </script>
+    
+    {{ template "shared/naver-script.tmpl" . }}
+  </body>
+</html>
+
+{{ end }}

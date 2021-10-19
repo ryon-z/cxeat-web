@@ -1,0 +1,39 @@
+{{ define "benefits.html" }}
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <link
+      rel="stylesheet"
+      href="/contents/css/navigation.css?v{{ .cssRandomVersion}}"
+    />
+    <link
+      rel="stylesheet"
+      href="/contents/css/footer.css?v{{ .cssRandomVersion}}"
+    />
+    <link
+      rel="stylesheet"
+      href="/contents/css/css_reset.css?v={{ .cssRandomVersion }}"
+    />
+    {{ template "shared/header.tmpl" . }}
+    <script
+      src="https://kit.fontawesome.com/7e24956d25.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- {{ template "shared/title.tmpl" . }} -->
+    <title>큐잇</title>
+  </head>
+  <body>
+    {{ template "shared/nav.tmpl" . }}
+    <div class="mobile-benefit-wrapper">
+      <main class="benefit-container">
+		  
+	  </main>
+    </div>
+
+    {{ template "shared/footer.tmpl" }}
+  </body>
+</html>
+
+{{ end }}

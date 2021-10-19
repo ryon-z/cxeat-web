@@ -1,0 +1,336 @@
+{{ define "my-page/cancel-subs.html" }}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+  <link rel="stylesheet" href="/contents/survey/css/survey_new.css?v={{ .cssRandomVersion }}">
+  <link rel="stylesheet" href="/contents/css/common.css?v={{ .cssRandomVersion }}">
+  <link rel="stylesheet" href="/contents/mypage/css/mypage.css?v={{ .cssRandomVersion }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  {{ template "shared/header.tmpl" . }}
+  <script src="https://kit.fontawesome.com/7e24956d25.js" crossorigin="anonymous"></script>
+  {{ template "shared/title.tmpl" . }}
+</head>
+<body>
+  {{ template "shared/nav.tmpl" . }}
+  {{ template "shared/nav-title.tmpl" . }}
+
+  <section class="withdrawal">
+  <img src="/contents/images/unsub_img.png">
+  <div class="unsubscribe_text">
+    <div class="unsubscribe_title">건강한 식생활을 멈추지 마세요!<br /> 구독을 잠시 중단하실 수도 있어요</div>
+    <p>지금 정기구독을 해지하시면 모든 혜택이 사라져요! </p>
+    <ul>
+      <li>신선한 농산물로 쌓아온 건강한 시간</li>
+      <li>
+        구독 10회 차에 받을 수 있는 50% 할인 혜택
+      </li>
+    </ul>
+    <div>(구독을 해지하시고 다시 시작하시면 회차가 새롭게 시작됩니다)</div>
+  </div>
+  <div class="unsubscribe_button">
+    <button class="yello_button" onclick="handleMaintainSubs()">구독하고 혜택 유지</button>
+    <div><a href="#cancel-reason-modal" rel="modal:open">구독해지</a></div>
+  </div>
+  </section>
+  {{ template "shared/footer.tmpl" . }}
+
+  <div id="cancel-reason-modal" class="modal notice_popup_modal" style="width: 100%">
+    <div class="input_field">
+      <div>
+        <div>큐잇을 해지하시는 이유가 무엇인가요?</div>
+        <div>다음에 다시 이용하실 땐 더 만족하실 수 있는 큐잇이 되겠습니다.</div>
+        <span style="font-weight: 400; font-size: 1.4rem;">(복수선택)</span>
+      </div>
+      <div class="funnel_div select-list">
+        <div class="used_check">
+          <input
+            name="reason"
+            type="checkbox"
+            id="cost-effectiveness"
+            value="가성비"
+          /><label for="cost-effectiveness">
+            가격에 비해 양과 구성이 적어요
+          </label>
+        </div>
+        <div class="used_check">
+          <input
+            name="reason"
+            type="checkbox"
+            id="quality"
+            value="품질"
+          /><label for="quality">
+            농산물의 당도나 신선도가 불만족스러워요
+          </label>
+        </div>
+        <div class="used_check">
+          <input
+            name="reason"
+            type="checkbox"
+            id="curation"
+            value="큐레이션"
+          /><label for="curation">
+            구성 상품이 내 취향과 맞지 않아요
+          </label>
+        </div>
+        <div class="used_check">
+          <input
+            name="reason"
+            type="checkbox"
+            id="delivery-quality"
+            value="배송품질"
+          /><label for="delivery-quality">
+            배송이 불만족스러워요 (포장재, 택배 등 불만족)
+          </label>
+        </div>
+        <div class="used_check">
+          <input
+            name="reason"
+            type="checkbox"
+            id="delivery-schedule"
+            value="배송일정"
+          /><label for="delivery-schedule">
+            배송 요일과 시간을 선택할 수 없어서 아쉬워요
+          </label>
+        </div>
+        <div class="used_check">
+          <input
+            name="reason"
+            type="checkbox"
+            id="amount"
+            value="양이많음"
+          /><label for="amount">
+            주기에 비해 양이 너무 많아요
+          </label>
+        </div>
+        <div class="used_check">
+          <input
+            name="reason"
+            type="checkbox"
+            id="direct-purchase"
+            value="직접구매"
+          /><label for="direct-purchase">
+            직접 구매하는 게 더 편리해요
+          </label>
+        </div>
+        <div class="used_check">
+          <input
+            name="reason"
+            type="checkbox"
+            id="other-service"
+            value="타서비스이용"
+          /><label for="other-service">
+            다른 과일/채소 구독서비스로 변경해요
+          </label>
+        </div>
+        <div class="used_check">
+          <input
+            name="reason"
+            type="checkbox"
+            id="option-change"
+            value="옵션변경"
+          /><label for="option-change">
+            옵션을 변경할 수 없어서 해지하고 다시 신청해요
+          </label>
+        </div>
+        <div class="used_check">
+          <input
+            name="reason"
+            type="checkbox"
+            id="subscription-pause"
+            value="구독일시중지"
+          /><label for="subscription-pause">
+            구독 일시 정지가 없어서 잠시 해지해요
+          </label>
+        </div>
+        <div class="used_check">
+          <input
+            name="reason"
+            type="checkbox"
+            id="cs-uncomfortable"
+            value="상담불만족"
+          /><label for="cs-uncomfortable">
+            고객 상담이 불만족스러워요 (불친절, 무대응, 상담지연 등)
+          </label>
+        </div>
+        <div class="used_check">
+          <input
+            name="reason"
+            type="checkbox"
+            id="etc"
+            placeholder="기타"
+            maxlength="100"
+            value="기타"
+          /><label for="etc" class="etc_label">기타</label>
+          <input
+            id="etc-contents"
+            class="select-input"
+            type="text"
+            value=""
+            placeholder="10자 이상 입력해주세요."
+            disabled
+          >
+        </div>
+      </div>
+      <button id="cancel-button" class="yello_button gray_style" onclick="handleCancelSubs()" disabled>
+        해지하기
+      </button>
+  </div>
+
+  <script type="text/javascript">
+    var ETC_LIMIT_LENGTH = 10
+
+    document.addEventListener("DOMContentLoaded", function() {
+      var subsID = getCookie("subscriptionNo")
+      if (subsID === null) {
+        Swal.fire(
+          "잘못된 접근입니다!"
+        ).then(function() {
+          location.href = "/web/main"  
+        })
+        return;
+      }
+
+      var reasonElems = document.querySelectorAll("input[name=reason]")
+      for (var i=0; i<reasonElems.length; i++) {
+        reasonElems[i].addEventListener("change", handleReasonChange)
+      }
+
+      var reasonETCContentsElem = document.querySelector("#etc-contents")
+      reasonETCContentsElem.addEventListener("input", handleETCLengthLimit)
+
+
+      $.modal.defaults = {
+        closeExisting: true,
+        escapeClose: true,
+        showClose: true,
+        clickClose: false,
+      }
+
+      $("#cancel-reason-modal").on($.modal.CLOSE, function(event, modal){
+        var reasonElems = document.querySelectorAll("input[name=reason]:checked")
+        var cancelButtonElem = document.querySelector("#cancel-button")
+        if (reasonElems !== null) {
+          for (var j=0; j<reasonElems.length; j++) {
+            console.log("come in?")
+            reasonElems[j].checked = false
+          }
+          cancelButtonElem.disabled = true
+          cancelButtonElem.className = "yello_button gray_style"
+        }
+
+        reasonETCContentsElem.value = ""
+      })
+    })
+    
+
+    function handleReasonChange() {
+      // 해지 사유 etc disabled 관리
+      var reasonETCElem = document.querySelector("#etc")
+      var reasonETCContentsElem = document.querySelector("#etc-contents")
+      if (reasonETCElem.checked) {
+        reasonETCContentsElem.disabled = false
+        reasonETCContentsElem.focus()
+      } else {
+        reasonETCContentsElem.disabled = true
+      }
+
+
+      // 해지 버튼 disabled 관리
+      var reasonElem = document.querySelector("input[name=reason]:checked")
+      var cancelButtonElem = document.querySelector("#cancel-button")
+      if (cancelButtonElem === null) {
+        console.log("cancelButton not exists")
+        return;
+      }
+
+      var satisfiedETCLimit = (reasonETCElem.checked === true && reasonETCContentsElem.value.length < ETC_LIMIT_LENGTH)
+      if (reasonElem === null || satisfiedETCLimit) {
+        cancelButtonElem.disabled = true
+        cancelButtonElem.className = "yello_button gray_style"
+      } else {
+        cancelButtonElem.disabled = false
+        cancelButtonElem.className = "yello_button"
+      }
+    }
+
+    // etc input 길이에 따른 해지 버튼 disabled 관리
+    function handleETCLengthLimit() {
+      var reasonETCElem = document.querySelector("#etc")
+      var reasonETCContentsElem = document.querySelector("#etc-contents")
+      var cancelButtonElem = document.querySelector("#cancel-button")
+      if (reasonETCElem === null || reasonETCContentsElem === null) {
+        return;
+      }
+
+      if (reasonETCElem.checked === false) {
+        return;
+      }
+
+      if (reasonETCContentsElem.value.length < ETC_LIMIT_LENGTH) {
+        cancelButtonElem.disabled = true
+        cancelButtonElem.className = "yello_button gray_style"
+      } else {
+        cancelButtonElem.disabled = false
+        cancelButtonElem.className = "yello_button"
+      }
+    }
+        
+    function handleCancelSubs() {
+      var url = "/subs/cancel"
+      var method = "POST"
+  
+      var subsID = getCookie("subscriptionNo")
+      var data = {
+        SubsNo: parseInt(subsID, 10)
+      }
+
+      var reasonElems = document.querySelectorAll("input[name=reason]:checked")
+      var reasonETCContentsElem = document.querySelector("#etc-contents")
+      var cancelReasons = []
+      if (reasonElems !== null) {
+        for (var i=0; i<reasonElems.length; i++) {
+          var reasonElem = reasonElems[i]
+          var reasonValue = ""
+          if (reasonElem.value === "기타") {
+            reasonValue = `기타:${reasonETCContentsElem.value}`
+          } else {
+            reasonValue = reasonElem.value
+          }
+          cancelReasons.push(reasonValue)
+        }
+        data["CnlReason"] = cancelReasons.join("/")
+      }
+  
+      function successFunc() {
+        // 취소 알람 발송
+        var alramUrl = "/alarm/subs/cancel"
+        customRequest(alramUrl, "GET", {}, function(success) {console.log("success", success)}, function(failed) {console.log("failed", failed)})
+
+        Swal.fire(
+          "구독 해지 정상 완료"
+        ).then(function() {
+          location.href = "/web/my-page/subs/list"
+        })
+        return;
+      }
+  
+      function failFunc() {
+        Swal.fire("시스템 에러 구독 해지 실패")
+      }
+      customRequest(url, method, data, successFunc, failFunc)
+    }
+  
+    function handleMaintainSubs() {
+      location.href = "/web/my-page/subs/info"
+    }
+  
+  </script>
+
+  {{ template "shared/extend-token.tmpl" . }}
+
+</body>
+</html>
+
+{{ end }}

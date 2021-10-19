@@ -1,0 +1,351 @@
+{{ define "signup.html" }}
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css"
+    />
+    <link rel="stylesheet" href="/contents/css/common.css?v={{ .cssRandomVersion }}" />
+    <link rel="stylesheet" href="/contents/mypage/css/mypage.css?v={{ .cssRandomVersion }}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    {{ template "shared/header.tmpl" . }}
+    <script
+      src="https://kit.fontawesome.com/7e24956d25.js"
+      crossorigin="anonymous"
+    ></script>
+    {{ template "shared/title.tmpl" . }}
+    {{ template "shared/kakao-script.tmpl" . }}
+  </head>
+  <body>
+    {{ template "shared/nav.tmpl" . }}
+    {{ template "shared/nav-title.tmpl" . }}
+
+    <section class="mypage">
+      <section>
+        <div class="input_title">
+          <div>내 정보</div>
+        </div>
+        <div class="mypage_modify">
+          <div class="input_field">
+            <div>닉네임</div>
+            <input
+              name="userName"
+              type="text"
+              class="width_input"
+              placeholder="이름을 입력하세요"
+              oninput="handleUserNameInput(event)"
+              required=""
+              value="{{ .userInfo.UserName }}"
+            />
+          </div>
+        {{ if not .userInfo.UserEmail }}
+          <div class="input_field">
+            <div>이메일</div>
+            <input
+              name="email"
+              type="email"
+              class="width_input"
+              placeholder="예)id@google.com"
+              required=""
+              value=""
+            />
+          </div>
+        {{ end }}
+        {{ if not .userInfo.BirthDay }}
+          <div class="input_field">
+            <div>생년월일(yyyymmdd)</div>
+            <input
+              name="birth"
+              type="number"
+              inputmode="numeric"
+              pattern="[0-9]*"
+              class="width_input"
+              onInput="handleLimitedInput(event, 8)"
+              placeholder="예)19901212"
+              required=""
+              value=""
+            />
+          </div>
+        {{ end }}
+        {{ if not .userInfo.UserGender }}
+          <div class="input_field">
+            <div>성별</div>
+            <div class="gender_radio_div">
+              <input
+                name="gender"
+                type="radio"
+                id="male"
+                class="gender_radio"
+                value="male"
+              /><label for="male">남</label>
+              <input
+                name="gender"
+                type="radio"
+                id="female"
+                class="gender_radio"
+                value="female"
+              /><label for="female">여</label>
+              <input
+                name="gender"
+                type="radio"
+                id="unknown"
+                class="gender_radio"
+                value="unknown"
+                checked
+              /><label for="unknown">알리고 싶지 않음</label>
+            </div>
+          </div>
+        {{ end }}
+          <div class="input_field">
+            <div>큐잇을 처음 알게 되신 경로는 무엇인가요?</div>
+            <div class="gender_radio_div funnel_div">
+              <div class="funnel_input">
+                <input
+                  name="funnel"
+                  type="radio"
+                  id="friend"
+                  class="gender_radio"
+                  value="지인"
+                /><label for="friend">지인 추천</label>
+              </div>
+              <div class="funnel_input">
+                <input
+                  name="funnel"
+                  type="radio"
+                  id="insta-facebook"
+                  class="gender_radio"
+                  value="인스타페북광고"
+                /><label for="insta-facebook">
+                  인스타그램/페이스북 광고
+                </label>
+              </div>
+              <div class="funnel_input">
+                <input
+                  name="funnel"
+                  type="radio"
+                  id="kakaotalk"
+                  class="gender_radio"
+                  value="카카오톡광고"
+                /><label for="kakaotalk">
+                  카카오톡 광고
+                </label>
+              </div>
+              <div class="funnel_input">
+                <input
+                  name="funnel"
+                  type="radio"
+                  id="naver-search"
+                  class="gender_radio"
+                  value="네이버검색"
+                /><label for="naver-search">
+                  네이버 검색
+                </label>
+              </div>
+              <div class="funnel_input">
+                <input
+                  name="funnel"
+                  type="radio"
+                  id="blog"
+                  class="gender_radio"
+                  value="블로그"
+                /><label for="blog">
+                  블로그 (큐잇, 블로거 등)
+                </label>
+              </div>
+              <div class="funnel_input">
+                <input
+                  name="funnel"
+                  type="radio"
+                  id="news"
+                  class="gender_radio"
+                  value="뉴스기사"
+                /><label for="news">뉴스기사</label>
+              </div>
+              <div class="funnel_input">
+                <input
+                  name="funnel"
+                  type="radio"
+                  id="mart-banner"
+                  class="gender_radio"
+                  value="마트배너광고"
+                /><label for="mart-banner">마트배너광고</label>
+              </div>
+              <div class="funnel_input">
+                <input
+                  name="funnel"
+                  type="radio"
+                  id="apart"
+                  class="gender_radio"
+                  value="아파트광고"
+                /><label for="apart">아파트광고</label>
+              </div>
+              <div class="funnel_input">
+                <input
+                  name="funnel"
+                  type="radio"
+                  id="kakao-on"
+                  class="gender_radio"
+                  value="카카오구독ON"
+                /><label for="kakao-on">카카오 구독ON</label>
+              </div>
+              <div class="funnel_input">
+                <input
+                  name="funnel"
+                  type="radio"
+                  id="yelloment"
+                  class="gender_radio"
+                  value="옐로먼트"
+                /><label for="yelloment">옐로먼트</label>
+              </div>
+              <div class="funnel_input">
+                <input
+                  name="funnel"
+                  type="radio"
+                  id="etc"
+                  class="gender_radio"
+                  placeholder="기타"
+                  value="기타"
+                /><label for="etc" class="etc_label">기타</label>
+                <input
+                  id="etc-contents"
+                  class="etc_contents"
+                  type="text"
+                  value=""
+                  disabled
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {{ if eq .userInfo.StatusCode "first" }}
+        <div class="maketing_agree">
+          <div>
+            마케팅 수신동의
+            <button class="subscribe_toggle active">
+              <div class="handle"></div>
+            </button>
+          </div>
+        </div>
+        {{ end }}
+      </section>
+      <section class="yello_div_button mt3rem">
+        <button class="yello_button" onclick="handleChangeUserInfo()">
+          저장하기
+        </button>
+      </section>
+    </section>
+    {{ template "shared/footer.tmpl" . }}
+    {{ template "shared/extend-token.tmpl" . }}
+
+    <script src="/contents/mypage/js/toggle.js?v={{ .cssRandomVersion }}"></script>
+
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", function() {
+        var funnelETCElem = document.querySelector("#etc")
+        var funnelETCContentsElem = document.querySelector("#etc-contents")
+
+        var funnelElems = document.querySelectorAll("input[name=funnel]")
+        for (var i=0; i<funnelElems.length; i++) {
+          funnelElems[i].addEventListener("change", handleETCLabelDisabled)
+        }
+      })
+
+      // 4 byte emoji 입력 금지
+      function handleUserNameInput(event) {
+        event.target.value = remove4byteEmoji(event.target.value)
+      }
+
+      function handleETCLabelDisabled() {
+        var funnelETCElem = document.querySelector("#etc")
+        var funnelETCContentsElem = document.querySelector("#etc-contents")
+        if (funnelETCElem.checked) {
+          funnelETCContentsElem.disabled = false
+          funnelETCContentsElem.focus()
+        } else {
+          funnelETCContentsElem.disabled = true
+        }
+      }
+
+      function handleChangeUserInfo() {
+        var nameElem = document.querySelector("input[name=userName]")
+        var emailElem = document.querySelector("input[name=email]")
+        var birthElem = document.querySelector("input[name=birth]")
+        var genderElem = document.querySelector("input[name=gender]:checked")
+        var isMktAgreeElem = document.querySelector("button.subscribe_toggle.active")
+        var isMktAgree = isMktAgreeElem === null ? 0 : 1
+        var funnelElem = document.querySelector("input[name=funnel]:checked")
+        var funnelETCContentsElem = document.querySelector("#etc-contents")
+
+        var url = "/user/edit"
+        var method = "POST"
+        var data = {}
+
+        if (nameElem !== null) {
+          if (nameElem.value === "") {
+            Swal.fire("닉네임을 입력하지 않으셨습니다.")
+            return;
+          }
+
+          data["UserName"] = nameElem.value
+        }
+
+        if (birthElem !== null && birthElem.value !== "") {
+          if (!checkBirthDateValid(birthElem.value)) {
+            Swal.fire("잘못된 생년월일을 입력하셨습니다.")
+            return;
+          }
+
+          if (birthElem.value !== "") {
+            var year = birthElem.value.slice(0,4)
+            var month = birthElem.value.slice(4,6)
+            var day = birthElem.value.slice(6,8)
+            data["BirthDay"] = `${year}-${month}-${day}`
+          }
+        }
+        if (genderElem !== null) {
+          data["UserGender"] = genderElem.value
+        }
+        if (emailElem !== null) {
+          var re = /^[^\s@]+@([^\s@.,]+\.)+[^\s@.,]{2,}$/
+          if (!re.test(emailElem.value)) {
+            Swal.fire("잘못된 이메일을 입력하셨습니다.")
+            return
+          }
+          data["UserEmail"] = emailElem.value
+        }
+        data["IsMktAgree"] = isMktAgree
+
+        if (funnelElem !== null) {
+          var funnelValue = funnelElem.value
+          if (funnelElem.value === "기타") {
+            funnelValue = `기타:${funnelETCContentsElem.value}`
+          }
+          data["Funnel"] = funnelValue
+        }
+
+        data["StatusCode"] = "normal"
+        console.log("data", data)
+
+        function successFunc() {
+          location.href = "/web/my-page/main"
+          return;
+        }
+
+        function failFunc() {
+          Swal.fire("시스템 에러로 내 정보 수정 실패")
+          return;
+        }
+
+        customRequest(url, method, data, successFunc, failFunc)
+      }
+    </script>
+  </body>
+</html>
+
+{{ end }}

@@ -1,0 +1,51 @@
+{{ define "insert-delivery.html" }}
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <link rel="stylesheet" href="/contents/css/common.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="/contents/mypage/css/mypage.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="/contents/survey/css/survey.css?v={{ .cssRandomVersion }}">
+    {{ template "shared/header.tmpl" . }}
+    <script src="https://kit.fontawesome.com/7e24956d25.js" crossorigin="anonymous"></script>
+    {{ template "shared/title.tmpl" . }}
+  </head>
+  <body>
+    {{ template "shared/nav.tmpl" . }}
+    {{ template "shared/nav-title.tmpl" . }}
+    
+    <section class="mypage">
+      <form onsubmit="handleInsertDeliverySubmit(event)" novalidate>
+        {{ template "shared/input-delivery.tmpl" . }}
+        <section class="yello_div_button mt3rem">
+          <input class="yello_button" type="submit" value="+추가하기" />
+        </section>
+      </form>
+    </section>
+    {{ template "shared/footer.tmpl" . }}
+
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", initDeliveryContents())
+
+      function handleInsertDeliverySubmit(e) {
+        e.preventDefault()
+        if (!(isInputDeliveryValid())) {
+          return
+        }
+        
+        function successFunc() {
+          // 뒤로가기
+          location.href = document.referrer
+        }
+    
+        requestForAddingNewAddress(successFunc, function(){})
+      }
+    </script>
+    
+    {{ template "shared/extend-token.tmpl" . }}
+  </body>
+</html>
+
+{{ end }}

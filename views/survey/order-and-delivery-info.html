@@ -1,0 +1,725 @@
+{{ define "survey/order-and-delivery-info.html" }}
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <link rel="stylesheet" href="/contents/survey/css/survey.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="/contents/css/common.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    {{ template "shared/header.tmpl" . }}
+    <script src="/contents/survey/js/tab.js?v={{ .cssRandomVersion }}" defer></script>
+    <script src="https://kit.fontawesome.com/7e24956d25.js" crossorigin="anonymous"></script>
+    {{ template "shared/title.tmpl" . }}
+  </head>
+  <body>
+    {{ template "shared/nav.tmpl" . }}
+    
+    <section class="order">
+      <!-- <div>2021년 1월 2주 주문내역</div> -->
+      <section class="box_final">
+      <div class="box_final_title">
+        <img src="/contents/survey/images/megaphone.svg" />
+        최종 구독 내역을 확인해 주세요!</div>
+      <div class="order_and_delivery_info_flex_p">
+        <div class="order_and_delivery_info_flex">
+          <div class="order_and_delivery_info_title">구독상품</div>
+          <div class="box_select">
+            <img src="/contents/images/orderBoxImg.png" alt="">
+            <span id="box-select"></span>
+          </div>
+        </div>
+        <div class="order_and_delivery_info_flex">
+          <div class="order_and_delivery_info_title">구독 품목</div>
+          <div class="product_list_p" id="item-category">
+            <!-- js에서 아래 항목이 추가됨 -->
+            <!-- <div class="product_list"></div> -->
+          </div>
+        </div>
+        <div class="order_and_delivery_info_flex">
+          <div class="order_and_delivery_info_title">첫 배송일</div>
+          <div class="order_and_delivery_info_contents">
+            <span id="desired-delivery-date"></span>
+          </div>
+        </div>
+        <div class="order_and_delivery_info_flex">
+          <div class="order_and_delivery_info_title">구독상품</div>
+          <div class="order_and_delivery_info_contents">
+            <span>
+            <span id="delivery-period"></span>
+            <span id="delivery-dow"></span>
+            <span>요일</span>
+          </span></div>
+        </div>
+        <div class="order_and_delivery_info_flex">
+          <div class="order_and_delivery_info_title">구독 금액</div>
+          <div class="order_and_delivery_info_contents"><span id="price" ></span></div>
+        </div>
+      </div>
+        <div class="order_and_delivery_button"><button class="modify_button" onclick="window.history.back()">상품 수정하기</button></div>
+        <label for="additional-description" class="additional_desc">큐잇과 관련하여 
+          더 들려줄 이야기가 있으시면 자유롭게 적어주세요!
+          </label>
+        <textarea 
+          id="additional-description" 
+          class="additional_textarea"
+          name="additionalDescription" 
+          rows=33
+          cols=200
+          placeholder="예시)
+- 당뇨가 있어서 혈당이 오르지 않는 농산물로 추천해 주시면 좋아요.
+- 이유식에 필요한 채소를 많이 추천해 주세요.
+- 혼자 지내시는 어머니를 위해 신청합니다.
+- 아이 식사만 요리하는 편입니다. 과일보다는 채소를 더 많이 보내주세요.
+- 집에서 고기를 자주 구워 먹어요. 채소는 선택하지 않았지만 고기에 어울리는 채소는 추천해 주어도 좋아요. 
+        "></textarea>
+      </section>
+
+      <!-- 배송지 헤드라인 시작 -->
+      <section class="bg_gray_bar"></section>
+      <div class="order_title_flex">
+        <div class="order_title">
+          <a href="/web/delivery/manage">
+            <img src="/contents/mypage/images/address_ico.svg" alt="">
+          </a>
+          <span>배송 정보</span>
+        </div>
+      </div>
+      <!-- 배송지 헤드라인 끝 -->
+      <!-- 배송지 탭 시작-->
+      <div class="delivery_tabs">
+        <ul>
+          <li class="tab-link" data-tab="delivery-insert-tab" onclick="handleChangeDeliveryType('insert')">신규배송지</li>
+          <li class="tab-link" data-tab="delivery-select-tab" onclick="handleChangeDeliveryType('select')">배송지선택</li>
+        </ul>
+      </div>
+      <!-- 배송지 탭 끝-->
+      <section class="box_final tab_box">
+        <div class="work__projects" id="delivery-insert-tab">
+          {{ template "shared/input-delivery.tmpl" . }}
+        </div>
+        <div class="work__projects" id="delivery-select-tab">
+          {{ if .basicDelivery  }}
+            <div class="shipping_info">
+              <div class="name_div">
+                <span class="name" id="delivery-rcv">{{ .basicDelivery.RcvName }}</span>
+                <div class="delivery-edit-container"></div>
+              </div>
+              <div class="phone pb1rem" id="delivery-contact-no">
+              <span><img src="/contents/mypage/images/mobile_ico.svg"></span>
+              {{ .basicDelivery.ContactNo }}
+              </div>
+              <div class="address"><span class="post_number" id="delivery-post-number">{{ .basicDelivery.PostNo }}</span></div>
+              <div class="address" id="delivery-lot-address">{{ .basicDelivery.LotAddress }}</div>
+              <div class="address" id="delivery-road-address">{{ .basicDelivery.RoadAddress }}</div>
+              <div class="address" id="delivery-sub-address">{{ .basicDelivery.SubAddress }}</div>
+            </div>
+            <div class="order_subtitle padding2rem">배송 요청 사항</div>
+            <div class="shipping_option" id="delivery-req-msg">{{ .basicDelivery.ReqMsg }}</div>
+          {{ else }}
+            <div>등록된 배송지가 없습니다.</div>
+          {{ end }}
+        </div>
+      </section>
+
+      <!-- 카드 헤드라인 시작 -->
+      <section class="bg_gray_bar"></section>
+      <div class="order_title_flex">
+        <div class="order_title">
+          <div>
+            <img src="/contents/mypage/images/card_info.svg">
+            <span>결제정보</span>
+          </div>
+        </div>
+      </div>
+      <div class="payinfo">
+        <ul>
+          <li>결제정보를 등록하여 구독서비스를 이용하실 수 있습니다</li>
+          <li>입력하신 정보는 큐잇에 저장하지 않고 암호화하여 결제사에 전달합니다</li>
+          <li>정기구독 서비스는 언제든 종료가 가능하며 종료후에는 결제가 되지 않습니다.</li>
+        </ul>
+      </div>
+      <!-- 카드 헤드라인 끝 -->
+
+      <!-- 카드 탭 시작-->
+      <div class="card_tabs">
+        <ul>
+          <li class="tab-link" data-tab="card-insert-tab" onclick="handleChangeCardType('insert')">신규카드</li>
+          <li class="tab-link" data-tab="card-select-tab" onclick="handleChangeCardType('select')">카드선택</li>
+        </ul>
+      </div>
+      <!-- 카드 탭 끝-->
+
+      <section class="pay_final box_final">
+        <div class="work__projects2" id="card-select-tab">
+          {{ if .basicCard }}
+            <div class="card-edit-container"></div>
+            <div class="swiper-container">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <div class="card_design shinhan">
+                    <div>
+                      <span id="card-title">{{ .basicCard.CardName }}({{ .basicCard.CardNickName }})</span>
+                      <span id="card-number">{{ .basicCard.CardNumber }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Add Pagination -->
+              <div class="swiper-pagination"></div>
+            </div>
+          {{ else }}
+            <div class="not_registered_card">등록된 카드가 없습니다.</div>
+          {{ end }}
+        </div>
+        <div class="work__projects2" id="card-insert-tab">
+          <div class="pay_collection">
+            <div class="card">
+              <!--<input type="radio" name="chk_info" value="HTML" class="cardinput" id="cardselect">-->
+              <!--<label for="cardselect"> 신용ㅣ체크카드</label>-->
+              <img src="/contents/mypage/images/card_icon.svg">
+              신용ㅣ체크카드
+            </div>
+            {{ template "shared/input-card.tmpl" . }}
+          </div>
+        </div>
+
+        <!-- 추천 코드 시작 -->
+        <section class="bg_gray_bar"></section>
+        <div id="ref-code-wrapper" class="ref_code_wrapper">
+          <label for="ref-code" class="ref_code_label">추천코드 </label>
+          <input type="text" id="ref-code" class="width_input" placeholder="추천코드를 입력해주세요." maxlength="10">
+        </div>
+        <!-- 추천 코드 끝 -->
+
+        <div class="agree_check flex_start mt3rem">
+          <input id="agreement" type="checkbox" class="health_check" onchange="handleChangeAgree()" />
+          <label for="agreement" class="checkbox float_left"><span>본인은 서비스 <a href="https://www.notion.so/54aee656fdd949cb9f820690a1e71cbd" target="_blank">이용약관</a>을 읽었으며 이에 동의합니다.</span></label>
+        </div>
+
+        <section class="yello_div_button mt3rem">
+          <button id="submit-order-button" class="yello_button gray_style" onclick="handleRequestOrder()" disabled>
+            신청하기
+          </button>
+        </section>
+    </section>
+
+    <div id="select-address-modal" class="modal">
+      {{ template "shared/delivery-info.tmpl" . }}
+    </div>
+    <div id="select-card-modal" class="modal">
+      {{ template "shared/card-info.tmpl" . }}
+    </div>
+
+    {{ template "shared/footer.tmpl" . }}
+
+  <!--<script src="/contents/survey/js/cardopen.js"></script>-->
+  <script src="/contents/survey/js/survey.js?v={{ .cssRandomVersion }}"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script>
+  var swiper = new Swiper('.swiper-container', {
+    pagination: {
+      el: '.swiper-pagination',
+    },
+  });
+  </script>
+
+  <script>
+    // 탭에서 클래스 변경 시 해당 element을 효과적으로 가져오지 못하여 전역변수 사용 
+    var deliveryType;
+    var cardyType;
+
+    // Dom load 직 후 실행
+    document.addEventListener('DOMContentLoaded', function() {
+      initDeliveryContents()
+      setKeysLabelMap()
+      updateOrderTitle()
+      updateOrderInfo()
+      updateChangeButton()
+
+      var deliverySelectElem = document.querySelector(".delivery_tabs > ul > li[data-tab=delivery-select-tab]")
+      {{ if .basicDelivery }}
+        if (getCookie("addressNo") === null) {
+          setCookie("addressNo", {{ .basicDelivery.AddressNo }}, "", 3600, currentPath)
+        }
+        deliverySelectElem.click()
+      {{ else }}
+        deliverySelectElem.classList.add("disabled")
+        var insertElem = document.querySelector(".delivery_tabs > ul > li[data-tab=delivery-insert-tab]")
+        insertElem.click()
+      {{ end }}
+
+      var cardSelectElem = document.querySelector(".card_tabs > ul > li[data-tab=card-select-tab]")
+      {{ if .basicCard }}
+        if (getCookie("cardRegNo") === null) {
+          setCookie("cardRegNo", {{ .basicCard.CardRegNo }}, "", 3600, currentPath)
+        }
+        cardSelectElem.click()
+      {{ else }}
+        cardSelectElem.classList.add("disabled")
+        var insertElem = document.querySelector(".card_tabs > ul > li[data-tab=card-insert-tab]")
+        insertElem.click()
+      {{ end }}
+    })
+
+    // 배송지 탭 선택 시
+    function handleChangeDeliveryType(value) {
+      deliveryType = value
+    }
+
+    // 카드 탭 선택 시
+    function handleChangeCardType(value) {
+      cardType = value
+    }
+
+    // 약관 동의 선택 시
+    function handleChangeAgree() {
+      var agreeElem = document.querySelector("#agreement")
+      var submitOrderButton = document.querySelector("#submit-order-button")
+      if (agreeElem.checked) {
+        submitOrderButton.disabled = false
+        submitOrderButton.classList.remove("gray_style")
+      } else {
+        submitOrderButton.disabled = true
+        submitOrderButton.classList.add("gray_style")
+      }
+    }
+
+    var currentPath = window.location.pathname+window.location.search
+    var resultParams = JSON.parse("{{ .resultParams }}")
+    var keysClassNameMap = {
+      "deliveryPeriod": "delivery-period",
+      "price": "price",
+      "deliveryDow": "delivery-dow",
+      "orderTypeExp": "order-type",
+      "itemCategoryExp": "item-category",
+      "desiredDeliveryDate": "desired-delivery-date",
+      "size": "size",
+    }
+
+    var keysLabelMap = {
+      "deliveryPeriod": "",
+      "price": "",
+      "deliveryDow": "",
+      "orderTypeExp": "",
+      "itemCategoryExp": "",
+      "desiredDeliveryDate": "",
+      "size": "",
+    }
+
+    function initKeysLabelMap() {
+      var keys = Object.keys(keysLabelMap)
+      for (var i=0; i<keys.length; i++) {
+        keysLabelMap[keys[i]] = resultParams[keys[i]]
+      }
+    }
+
+    // localStorage 키와 화면에 노출하는 라벨 밸류 맵
+    function setKeysLabelMap() {
+      initKeysLabelMap()
+      var labelKeys = ["deliveryPeriod", "deliveryDow", "orderTypeExp", "itemCategoryExp", "size"]
+      var codeTypes = ["DELIVERY_PERIOD", "DELIVERY_DOW", "ORDER_TYPE", "ITEM_CATEGORY", "BOX_TYPE"]
+      var goArgs = {{ .codeLabels }}
+
+      for (var i=0; i<labelKeys.length; i++) {
+        var key = labelKeys[i]
+        var stored = resultParams[key]
+        var label;
+
+        if (key === "itemCategoryExp") {
+          label = getItemCategoryLabel(stored, goArgs, "|")
+        } else {
+          label = getLabel(goArgs, codeTypes[i], stored)
+        }
+        keysLabelMap[key] = label
+      }
+    }
+
+    // 설문조사 결과를 화면에 적용
+    function updateOrderInfo() {
+      var keys = Object.keys(keysClassNameMap)
+      for (var i=0; i<keys.length; i++) {
+        var className = keysClassNameMap[keys[i]]
+
+        // 구매유형이 once 인 경우, 배송주기 및 추천코드 노출 방지
+        if (className === "delivery-period") {
+          var orderType = resultParams["orderTypeExp"]
+          if (orderType === "ONCE") {
+            var deliveryPeriodElem = document.querySelector(`#delivery-period`)
+            deliveryPeriodElem.style.cssText = "display: none;"
+
+            var refCodeElem = document.querySelector(`#ref-code-wrapper`)
+            refCodeElem.style.cssText = "display: none;"
+          }
+        }
+
+        var elem = document.querySelector(`#${className}`)
+        if (elem === null) {
+          continue
+        }
+
+        var label = keysLabelMap[keys[i]]
+        // 가격에 콤마 붙이기
+        if (className === "price") {
+          elem.innerHTML = Number(label).toLocaleString("en") + " 원"
+        // 구독품목 생성
+        } else if (className === "item-category"){
+          appendItemCategoryLabel(label, elem)
+        } else {
+          elem.innerHTML = label
+        }
+      }
+    }
+
+    function updateOrderTitle() {
+      var elem = document.querySelector(`#box-select`)
+
+      elem.innerHTML = `${keysLabelMap["size"]}박스`
+    }
+
+    // 기본 주소 또는 기본 카드가 있다면 변경하기 버튼 생성
+    function updateChangeButton() {
+      // 배송정보
+      hasBasicDelivery = "{{ .basicDelivery }}" === "" ? false : true
+      if (hasBasicDelivery) {
+        var elem = document.querySelector(".delivery-edit-container")
+        var a = document.createElement("a")
+        a.id = "select-address-modal-button"
+        a.href="#select-address-modal"
+        a.rel="modal:open"
+        a.className = "gray_modify_button"
+        a.innerHTML = "변경하기"
+        elem.appendChild(a)
+      }
+
+      // 결제정보
+      hasBasicCard = "{{ .basicCard }}" === "" ? false : true
+      if (hasBasicCard) {
+        var elem = document.querySelector(".card-edit-container")
+        var a = document.createElement("a")
+        a.id = "select-card-modal-button"
+        a.href="#select-card-modal"
+        a.rel="modal:open"
+        a.className = "gray_modify_button"
+        a.innerHTML = "변경하기"
+        elem.appendChild(a)
+      }
+    }
+
+    // 주소 선택 시
+    function handleSelectAddress() {
+      var addressID = getCookie("addressNo")
+      var url = "/address/retrieve/" + addressID
+      var method = "GET"
+
+      function successFunc(responseText) {
+        var parsed = JSON.parse(responseText)
+        var address = parsed["data"][0]
+
+        var rcvElem = document.querySelector("#delivery-rcv")
+        rcvElem.innerHTML = address["RcvName"]
+        var contactNoElem = document.querySelector("#delivery-contact-no")
+        contactNoElem.innerHTML = address["ContactNo"]
+        var postNumElem = document.querySelector("#delivery-post-number")
+        postNumElem.innerHTML = address["PostNo"]
+        var lotAddressElem = document.querySelector("#delivery-lot-address")
+        lotAddressElem.innerHTML = address["LotAddress"]
+        var roadAddressElem = document.querySelector("#delivery-road-address")
+        roadAddressElem.innerHTML = address["RoadAddress"]
+        var subAddressElem = document.querySelector("#delivery-sub-address")
+        subAddressElem.innerHTML = address["SubAddress"]
+        var reqMsgElem = document.querySelector("#delivery-req-msg")
+        reqMsgElem.innerHTML = address["ReqMsg"]
+
+        // 주소지 모듈 끄기
+        handleCloseAddressModal()
+      }
+      function failFunc() {
+        Swal.fire("시스템 오류로 변경 실패")
+        return
+      }
+
+      customRequest(url, method, {}, successFunc, failFunc)
+    }
+
+    // 카드 선택 시
+    function handleSelectCard() {
+      var cardID = getCookie("cardRegNo")
+      var url = "/card/retrieve/" + cardID
+      var method = "GET"
+
+      function successFunc(responseText) {
+        var parsed = JSON.parse(responseText)
+        var card = parsed["data"][0]
+
+        var titleElem = document.querySelector("#card-title")
+        titleElem.innerHTML = `${card["CardName"]}(${card["CardNickName"]})`
+        var cardTitle = document.querySelector("#card-number")
+        cardTitle.innerHTML = card["CardNumber"]
+      }
+
+      customRequest(url, method, {}, successFunc, function(){})
+    }
+
+    // 새 주소 추가
+    function addNewAddress() {
+      var result;
+
+      function successFunc(responseText) {
+        var parsed = JSON.parse(responseText)
+        addressNo = parsed["data"]
+        result = parseInt(addressNo, 10)
+        setCookie("addressNo", addressNo, "", 3600, currentPath)
+      }
+
+      function failFunc() {
+        Swal.fire("시스템 오류로 배송지 등록 실패")
+          .then(function() {
+            result = new Error("Adding new address is failed")
+          })
+      }
+
+      requestForAddingNewAddress(successFunc, failFunc, false)
+      return result
+    }
+
+    // 주소 정보 획득
+    function getAddressInfo() {
+      var addressInfo = {}
+
+      // 배송지 선택 시
+      if (deliveryType === "select") {
+        var rcvElem = document.querySelector("#delivery-rcv")
+        addressInfo["RcvName"] = rcvElem.innerText
+        var contactNoElem = document.querySelector("#delivery-contact-no")
+        addressInfo["ContactNo"] = contactNoElem.innerText
+        var postNumElem = document.querySelector("#delivery-post-number")
+        addressInfo["PostNum"] = postNumElem.innerText
+        var lotAddressElem = document.querySelector("#delivery-lot-address")
+        var roadAddressElem = document.querySelector("#delivery-road-address")
+        addressInfo["MainAddress"] = roadAddressElem.innerText === "" ? lotAddressElem.innerText : roadAddressElem.innerText
+        var subAddressElem = document.querySelector("#delivery-sub-address")
+        addressInfo["SubAddress"] = subAddressElem.innerText
+        var reqMsgElem = document.querySelector("#delivery-req-msg")
+        addressInfo["ReqMsg"] = reqMsgElem.innerText
+
+        // addressInfo 유효성 검사
+        var infoKeys = Object.keys(addressInfo)
+        for (var i=0; i<infoKeys.length; i++) {
+          var key = infoKeys[i]
+          if (key === "ReqMsg") {
+            continue
+          }
+          if (addressInfo[key] === "") {
+            Swal.fire("선택해주신 주소의 필수값이 누락되어있습니다. 새 배송지를 입력해주세요.")
+            return
+          }
+        }
+
+        return addressInfo
+      }
+
+      // 배송지 등록 시
+      if (!(isInputDeliveryValid())) {
+        return
+      }
+
+      addressInfo = getAddressInfoFromInput()
+      return addressInfo
+    }
+
+    // 새 카드 추가
+    function addNewCard() {
+      var result;
+
+      function successFunc(responseText) {
+        var parsed = JSON.parse(responseText)
+        cardRegNo = parsed["data"]
+
+        result = parseInt(cardRegNo, 10);
+        setCookie("cardRegNo", cardRegNo, "", 3600, currentPath)
+      }
+
+      function failFunc(responseText) {
+          failToInsertCardFunc(responseText, true)
+      }
+
+      requestForAddingNewCard(successFunc, failFunc, false)
+      return result
+    }
+
+    // 카드 ID 획득
+    function getCardRegNo() {
+      var cardRegNo;
+
+      // 카드 선택 시
+      if (cardType === "select") {
+        cardRegNo = getCookie("cardRegNo")
+        if (cardRegNo !== null) {
+          return parseInt(cardRegNo, 10)
+        }
+
+        // 카드가 있음에도 쿠기 만료
+        Swal.fire("장기간 자리를 비워 새로고침합니다.")
+          .then(function(confirmed) {
+            window.location.reload()
+          })
+        return
+      }
+
+      // 카드 등록 시
+      if (!(isInputCardValid())) {
+        return
+      }
+      cardRegNo = addNewCard()
+      return cardRegNo
+    }
+
+    // 부가 정보 값 획득
+    function getAdditionalDescription() {
+      var result = ""
+      var additionalDescriptionElem = document.querySelector("#additional-description")
+      if (additionalDescriptionElem !== null) {
+        result = additionalDescriptionElem.value
+      }
+
+      return result
+    }
+
+    // 구독 또는 1회주문 신청
+    function handleRequestOrder() {
+      var url;
+      var method = "POST"
+      var data;
+
+      // 카드 등록 시
+      var cardRegNo = getCardRegNo()
+      if (typeof cardRegNo !== "number") {
+        return;
+      }
+      var addressInfo = getAddressInfo()
+      var additionalDescription = getAdditionalDescription()
+
+      // 신규 배송지 선택 시 새 주소 추가
+      if (deliveryType === "insert") {
+        if (!(isInputDeliveryValid())) {
+          return
+        }
+
+        addressNo = addNewAddress()
+        if (typeof addressNo !== "number") {
+          return;
+        }
+      }
+
+      data = {
+        CardRegNo: cardRegNo,
+        CateType: resultParams["itemCategoryExp"],
+        BoxType: resultParams["size"],
+        TagGroupNo: parseInt(resultParams["tagGroupNo"], 10),
+        SubsType: "",
+        PeriodDay: parseInt(resultParams["deliveryPeriod"], 10),
+        AddnlDesc: additionalDescription,
+        RcvName: addressInfo["RcvName"],
+        ContactNo: addressInfo["ContactNo"],
+        PostNo: addressInfo["PostNum"],
+        MainAddress: addressInfo["MainAddress"],
+        SubAddress: addressInfo["SubAddress"],
+        ReqMsg: addressInfo["ReqMsg"],
+      }
+
+      var orderType = resultParams["orderTypeExp"]
+      if (orderType === "ONCE") {
+        url = "/order/request/once"
+        data["OrderType"] = "ONCE"
+        data["OrderPrice"] = parseInt(resultParams["price"], 10),
+        data["ReqDelivDate"] = resultParams["desiredDeliveryDate"]
+      } else {
+        url = "/subs/request"
+        data["SubsPrice"] = parseInt(resultParams["price"], 10)
+        data["FirstDate"] = resultParams["desiredDeliveryDate"]
+        data["NextDate"] = resultParams["desiredDeliveryDate"]
+
+        var refCodeElem = document.querySelector("#ref-code")
+        if (refCodeElem !== null) {  
+          data["RefCode"] = refCodeElem.value
+        }
+      }
+
+      function successFunc(responseText) {
+        // 성공하면 관련 쿠키 초기화
+        removeCookie("addressNo", "")
+        removeCookie("cardRegNo", "")
+        removeCookie("tagGroupNo", "", "/web/survey")
+
+        // 알림톡 정보 쿠키 설정
+        var parsed = JSON.parse(responseText)
+        var infoID = parseInt(parsed["data"], 10)
+        setCookie("orderType", orderType, "", 3600, "/web/survey/completed")
+        setCookie("infoID", infoID, "", 3600, "/web/survey/completed")
+
+        // 주문 기록
+        if (orderType === "ONCE") {
+          var orderHistURL = "/order-hist/create"
+          var orderHistData = {
+            OrderNo: infoID,
+            StatusCode: "init",
+            HistDesc: "주문생성"
+          }
+          customRequest(orderHistURL, "POST", orderHistData, function(){}, function(){})
+        } else {
+          var subsHistURL = "/subs-hist/create"
+          var subsHistData = {
+            SubsNo: infoID,
+            StatusCode: "init",
+            HistDesc: "구독생성"
+          }
+          customRequest(subsHistURL, "POST", subsHistData, function(){}, function(){})
+        }
+        
+        location.href = "/web/survey/completed"
+      }
+
+      function failFunc() {
+        Swal.fire("시스템 오류로 주문 생성 실패")
+        return;
+      }
+
+      customRequest(url, method, data, successFunc, failFunc)
+    }
+
+    // 최초 모달 오픈 시 기본 값 설정
+    $("#select-address-modal").on($.modal.OPEN, function(event, modal) {
+      var cookieAddressNo = parseInt(getCookie("addressNo"), 10)
+      var userAddresses = {{ .userAddresses }}
+      for (var i=0; i<userAddresses.length; i++) {
+        if (userAddresses[i].AddressNo === cookieAddressNo) {
+          checkedDefaultDelivery(i)
+          break
+        }
+      }
+    })
+    $("#select-card-modal").on($.modal.OPEN, function(event, modal) {
+      var cookieCardRegNo = parseInt(getCookie("cardRegNo"), 10)
+      var userCards = {{ .userCards }}
+      for (var i=0; i<userCards.length; i++) {
+        if (userCards[i].CardRegNo === cookieCardRegNo) {
+          checkedDefaultCard(i)
+          break
+        }
+      }
+    })
+
+    $("#select-card-modal").on($.modal.CLOSE, function(event, modal){
+      if (getCookie("cardRegNo")) {
+        handleSelectCard()
+      }
+    })
+  </script>
+
+  {{ template "shared/extend-token.tmpl" . }}
+</body>
+</html>
+
+{{ end }}

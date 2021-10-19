@@ -1,0 +1,1260 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+body {
+  font-family: "Noto Sans KR";
+  width: 100%;
+  height: 100%;
+  color: #232323;
+  box-sizing: border-box;
+}
+
+body .ratePlan-wrapper {
+  width: 100%;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 131px;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanMain-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-image: url("/contents/newMain_image/subs_intro/subs_introMain.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  width: 100%;
+  min-height: 800px;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanMain-container .ratePlanMain-title {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  text-align: center;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanMain-container .ratePlanMain-title h2 {
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 58px;
+  margin-bottom: 15px;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanMain-container .ratePlanMain-title h2 .medium {
+  font-weight: 500;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanMain-container .ratePlanMain-title h2 .regular {
+  font-weight: 400;
+}
+
+@media all and (min-width: 768px) and (max-width: 1320px) {
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanMain-container .ratePlanMain-title h2 {
+    font-size: 42px;
+  }
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanMain-container .ratePlanMain-title p {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 28px;
+  margin-bottom: 30px;
+}
+
+@media all and (min-width: 768px) and (max-width: 1320px) {
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanMain-container .ratePlanMain-title p {
+    font-size: 16px;
+  }
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanMain-container .ratePlanMain-title .mainBtn-container {
+  display: flex;
+  justify-content: center;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanMain-container .ratePlanMain-title .mainBtn-container a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 253px;
+  height: 64px;
+  background-color: #ff9800;
+  color: #fefefe;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  line-height: 29px;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 1200px;
+  padding-bottom: 200px;
+  margin-top: 200px;
+  border-bottom: 1px solid #b7b7b7;
+}
+
+@media all and (min-width: 768px) and (max-width: 1320px) {
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container {
+    width: 100%;
+  }
+}
+
+@media all and (max-width: 768px) {
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container {
+    width: 90%;
+    margin-top: 95px;
+    padding-bottom: 100px;
+  }
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-title {
+  margin-bottom: 40px;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-title h2 {
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 58px;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-title h2 .medium {
+  font-weight: 500;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-title h2 .regular {
+  font-weight: 400;
+}
+
+@media all and (min-width: 768px) and (max-width: 1320px) {
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-title h2 {
+    font-size: 42px;
+  }
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-subtitle {
+  text-align: center;
+  margin-bottom: 95px;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-subtitle h3 {
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 34px;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-subtitle h3 .bold {
+  font-weight: 700;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-subtitle h3 .point-color {
+  color: #ff9800;
+  font-weight: 700;
+}
+
+@media all and (min-width: 768px) and (max-width: 1320px) {
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-subtitle h3 {
+    font-size: 18px;
+    line-height: 28px;
+  }
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-body {
+  width: 790px;
+  margin-bottom: 60px;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-body .ratePlan-table {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-body .ratePlan-table thead {
+  width: 100%;
+  height: 70px;
+  background-color: #ffe54d;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-body .ratePlan-table thead tr th {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 28px;
+  vertical-align: middle;
+  line-height: 55px;
+}
+
+@media all and (min-width: 768px) and (max-width: 1320px) {
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-body .ratePlan-table thead tr th {
+    font-size: 16px;
+  }
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-body .ratePlan-table thead tr th span {
+  width: 75px;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-body .ratePlan-table tbody tr td {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 28px;
+  text-align: center;
+  padding-bottom: 35px;
+  color: #6d6d6d;
+}
+
+@media all and (min-width: 768px) and (max-width: 1320px) {
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-body .ratePlan-table tbody tr td {
+    font-size: 16px;
+  }
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-body .ratePlan-table tbody tr td:nth-of-type(1) {
+  display: flex;
+  justify-content: center;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-body .ratePlan-table tbody tr td:nth-of-type(1) span {
+  width: 75px;
+  text-align: start;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-body .ratePlan-table tbody tr td:nth-of-type(2) {
+  color: #232323;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-body .ratePlan-table tbody tr td:nth-of-type(3) {
+  color: #ff9800;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-body .ratePlan-table tbody tr:nth-of-type(1) td {
+  padding-top: 45px;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-notice {
+  text-align: center;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-notice h3 {
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 34px;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-notice h3 .bold {
+  font-weight: 700;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-notice h3 .point-color {
+  color: #ff9800;
+  font-weight: 700;
+}
+
+@media all and (min-width: 768px) and (max-width: 1320px) {
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-notice h3 {
+    font-size: 18px;
+    line-height: 28px;
+  }
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 1200px;
+  padding-bottom: 200px;
+  margin-top: 200px;
+  border-bottom: 1px solid #b7b7b7;
+}
+
+@media all and (min-width: 768px) and (max-width: 1320px) {
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container {
+    width: 100%;
+  }
+}
+
+@media all and (max-width: 768px) {
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container {
+    width: 90%;
+    margin-top: 95px;
+    padding-bottom: 100px;
+  }
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container .ratePlanRecommend-title {
+  text-align: center;
+  margin-bottom: 115px;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container .ratePlanRecommend-title h2 {
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 58px;
+  margin-bottom: 40px;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container .ratePlanRecommend-title h2 .medium {
+  font-weight: 500;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container .ratePlanRecommend-title h2 .regular {
+  font-weight: 400;
+}
+
+@media all and (min-width: 768px) and (max-width: 1320px) {
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container .ratePlanRecommend-title h2 {
+    font-size: 42px;
+  }
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container .ratePlanRecommend-title h2 .mobile-newline {
+  display: none;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container .ratePlanRecommend-title p {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 28px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #6d6d6d;
+}
+
+@media all and (min-width: 768px) and (max-width: 1320px) {
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container .ratePlanRecommend-title p {
+    font-size: 16px;
+  }
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container .ratePlanRecommend-title h3 {
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 34px;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container .ratePlanRecommend-title h3 .bold {
+  font-weight: 700;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container .ratePlanRecommend-title h3 .point-color {
+  color: #ff9800;
+  font-weight: 700;
+}
+
+@media all and (min-width: 768px) and (max-width: 1320px) {
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container .ratePlanRecommend-title h3 {
+    font-size: 18px;
+    line-height: 28px;
+  }
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container .ratePlanRecommend-title .mobile-newline {
+  display: none;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container .ratePlanRecommend-body {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 180px;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container .ratePlanRecommend-body .ratePlanRecommend-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-content: flex-start;
+  width: 50%;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container .ratePlanRecommend-body .ratePlanRecommend-box img {
+  margin-bottom: 20px;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container .ratePlanRecommend-body .ratePlanRecommend-box h4 {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 55px;
+  color: #ff9800;
+  margin-bottom: 40px;
+}
+
+@media all and (min-width: 768px) and (max-width: 1320px) {
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container .ratePlanRecommend-body .ratePlanRecommend-box h4 {
+    font-size: 34px;
+  }
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container .ratePlanRecommend-body .ratePlanRecommend-box .ratePlanRecommend-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  text-align: center;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container .ratePlanRecommend-body .ratePlanRecommend-box .ratePlanRecommend-text p {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 28px;
+}
+
+@media all and (min-width: 768px) and (max-width: 1320px) {
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container .ratePlanRecommend-body .ratePlanRecommend-box .ratePlanRecommend-text p {
+    font-size: 16px;
+  }
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container .surveyBtn-container a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 253px;
+  height: 64px;
+  background-color: #ffe54d;
+  font-size: 20px;
+  font-weight: 500;
+  text-decoration: none;
+  color: #464646;
+  border-radius: 10px;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container .surveyBtn-container a:hover {
+  background-color: #ffeb4f;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 1200px;
+  padding-bottom: 200px;
+  margin-top: 200px;
+  border-bottom: 1px solid #b7b7b7;
+}
+
+@media all and (min-width: 768px) and (max-width: 1320px) {
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container {
+    width: 100%;
+  }
+}
+
+@media all and (max-width: 768px) {
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container {
+    width: 90%;
+    margin-top: 95px;
+    padding-bottom: 100px;
+  }
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-title {
+  margin-bottom: 95px;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-title h2 {
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 58px;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-title h2 .medium {
+  font-weight: 500;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-title h2 .regular {
+  font-weight: 400;
+}
+
+@media all and (min-width: 768px) and (max-width: 1320px) {
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-title h2 {
+    font-size: 42px;
+  }
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-body .ratePlanExample-boxGroup {
+  display: flex;
+  justify-content: center;
+  justify-content: space-around;
+  width: 875px;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-body .ratePlanExample-boxGroup .ratePlanExample-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 350px;
+  margin-bottom: 95px;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-body .ratePlanExample-boxGroup .ratePlanExample-box > span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 65px;
+  height: 65px;
+  background-color: #ffe54d;
+  border-radius: 50%;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 41px;
+  margin-bottom: 15px;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-body .ratePlanExample-boxGroup .ratePlanExample-box .ratePlanExample-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-body .ratePlanExample-boxGroup .ratePlanExample-box .ratePlanExample-info .ratePlan-hash span {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 28px;
+  font-size: 16px;
+  color: #ff9800;
+  background-color: #fefefe;
+  border: 1px solid #ff9800;
+  border-radius: 20px;
+  padding: 0px 10px;
+  margin-right: 4px;
+}
+
+@media all and (min-width: 768px) and (max-width: 1320px) {
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-body .ratePlanExample-boxGroup .ratePlanExample-box .ratePlanExample-info .ratePlan-hash span {
+    font-size: 16px;
+  }
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-body .ratePlanExample-boxGroup .ratePlanExample-box .ratePlanExample-info h3 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-body .ratePlan-select-wrapper {
+  display: none;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-body .ratePlan-slide-wrapper {
+  display: none;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-notice p {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 24px;
+  color: #6d6d6d;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-notice p .mobile-newline {
+  display: none;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanLifestyle-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 1200px;
+  padding-bottom: 200px;
+  margin-top: 200px;
+  border-bottom: 1px solid #b7b7b7;
+  border-bottom: none;
+}
+
+@media all and (min-width: 768px) and (max-width: 1320px) {
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanLifestyle-container {
+    width: 100%;
+  }
+}
+
+@media all and (max-width: 768px) {
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanLifestyle-container {
+    width: 90%;
+    margin-top: 95px;
+    padding-bottom: 100px;
+  }
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanLifestyle-container .ratePlanLifestyle-title {
+  text-align: center;
+  margin-bottom: 115px;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanLifestyle-container .ratePlanLifestyle-title h2 {
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 58px;
+  margin-bottom: 95px;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanLifestyle-container .ratePlanLifestyle-title h2 .medium {
+  font-weight: 500;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanLifestyle-container .ratePlanLifestyle-title h2 .regular {
+  font-weight: 400;
+}
+
+@media all and (min-width: 768px) and (max-width: 1320px) {
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanLifestyle-container .ratePlanLifestyle-title h2 {
+    font-size: 42px;
+  }
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanLifestyle-container .ratePlanLifestyle-title h3 {
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 34px;
+  font-size: 40px;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanLifestyle-container .ratePlanLifestyle-title h3 .bold {
+  font-weight: 700;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanLifestyle-container .ratePlanLifestyle-title h3 .point-color {
+  color: #ff9800;
+  font-weight: 700;
+}
+
+@media all and (min-width: 768px) and (max-width: 1320px) {
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanLifestyle-container .ratePlanLifestyle-title h3 {
+    font-size: 18px;
+    line-height: 28px;
+  }
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanLifestyle-container .ratePlanLifestyle-title h3 .mobile-newline {
+  display: none;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanLifestyle-container .ratePlanLifestyle-title:nth-of-type(2) {
+  margin: 115px 0 115px;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanLifestyle-container .ratePlanLifestyle-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanLifestyle-container .ratePlanLifestyle-body .ratePlanLifestyle-boxGroup {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanLifestyle-container .ratePlanLifestyle-body .ratePlanLifestyle-boxGroup .ratePlanLifestyle-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanLifestyle-container .ratePlanLifestyle-body .ratePlanLifestyle-boxGroup .ratePlanLifestyle-box .ratePlanLifestyle-img {
+  height: 100px;
+  margin-bottom: 20px;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanLifestyle-container .ratePlanLifestyle-body .ratePlanLifestyle-boxGroup .ratePlanLifestyle-box h4 {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 55px;
+  color: #ff9800;
+  margin-bottom: 40px;
+}
+
+@media all and (min-width: 768px) and (max-width: 1320px) {
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanLifestyle-container .ratePlanLifestyle-body .ratePlanLifestyle-boxGroup .ratePlanLifestyle-box h4 {
+    font-size: 34px;
+  }
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanLifestyle-container .ratePlanLifestyle-body .ratePlanLifestyle-boxGroup .ratePlanLifestyle-box .ratPlanLifestyle-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanLifestyle-container .ratePlanLifestyle-body .ratePlanLifestyle-boxGroup .ratePlanLifestyle-box .ratPlanLifestyle-text p {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 28px;
+  text-align: center;
+}
+
+@media all and (min-width: 768px) and (max-width: 1320px) {
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanLifestyle-container .ratePlanLifestyle-body .ratePlanLifestyle-boxGroup .ratePlanLifestyle-box .ratPlanLifestyle-text p {
+    font-size: 16px;
+  }
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanLifestyle-container .ratePlanLifestyle-body .ratePlanLifestyle-boxGroup .ratePlanLifestyle-box .ratPlanLifestyle-text p:nth-of-type(1) {
+  margin-bottom: 10px;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanCueat-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #ffe54d;
+  padding: 185px 0 200px;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanCueat-container .ratePlanCueat-title {
+  text-align: center;
+  margin-bottom: 105px;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanCueat-container .ratePlanCueat-title h2 {
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 58px;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanCueat-container .ratePlanCueat-title h2 .medium {
+  font-weight: 500;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanCueat-container .ratePlanCueat-title h2 .regular {
+  font-weight: 400;
+}
+
+@media all and (min-width: 768px) and (max-width: 1320px) {
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanCueat-container .ratePlanCueat-title h2 {
+    font-size: 42px;
+  }
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanCueat-container .ratePlanCueat-title h2 span {
+  display: block;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanCueat-container .ratePlanCueat-title h2 .mobile-newline {
+  display: none;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanCueat-container .ratePlanCueat-title h2:nth-of-type(2) {
+  margin-bottom: 20px;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanCueat-container .ratePlanCueat-title h3 {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 55px;
+  color: #ff7800;
+}
+
+body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanCueat-container .surveyWhiteBtn-container a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 253px;
+  height: 64px;
+  background-color: #fefefe;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 29px;
+  text-decoration: none;
+  border-radius: 10px;
+  color: #606060;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1320px) {
+  body {
+    font-family: "Noto Sans KR";
+    width: 100%;
+    height: 100%;
+    color: #232323;
+    box-sizing: border-box;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body {
+    width: 100%;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-body {
+    width: 70%;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-notice h3 {
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: -0.025em;
+    line-height: 34px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-notice h3 .bold {
+    font-weight: 700;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-notice h3 .point-color {
+    color: #ff9800;
+    font-weight: 700;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container {
+    width: 95%;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-body .ratePlanExample-boxGroup {
+    width: 100%;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanLifestyle-container .ratePlanLifestyle-title h3 {
+    font-size: 28px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanLifestyle-container .ratePlanLifestyle-body .ratePlanLifestyle-boxGroup .ratePlanLifestyle-box h4 {
+    font-size: 28px;
+  }
+}
+
+@media all and (max-width: 768px) {
+  body {
+    font-family: "Noto Sans KR";
+    width: 100%;
+    height: 100%;
+    color: #232323;
+    box-sizing: border-box;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body {
+    width: 100%;
+    margin-top: 102px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanMain-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url("/contents/newMain_image/subs_intro/m_subs_introMain.jpg");
+    min-height: 569px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanMain-container .ratePlanMain-title {
+    position: absolute;
+    top: 55px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    text-align: center;
+    width: 100%;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanMain-container .ratePlanMain-title h2 {
+    font-size: 32px;
+    line-height: 40px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanMain-container .ratePlanMain-title p {
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    line-height: 28px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+@media all and (max-width: 768px) and (min-width: 768px) and (max-width: 1320px) {
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanMain-container .ratePlanMain-title p {
+    font-size: 16px;
+  }
+}
+
+@media all and (max-width: 768px) {
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanMain-container .ratePlanMain-title .mainBtn-container a {
+    width: 180px;
+    height: 46px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-title {
+    margin-bottom: 25px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-title h2 {
+    font-size: 28px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-subtitle {
+    margin-bottom: 55px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-subtitle h3 {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-body {
+    width: 90%;
+    margin-bottom: 30px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-body .ratePlan-table thead tr th {
+    font-size: 14px;
+    line-height: 55px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-body .ratePlan-table tbody tr td {
+    font-size: 14px;
+    line-height: 28px;
+    padding-bottom: 20px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-body .ratePlan-table tbody tr td:nth-of-type(1) span {
+    width: 50px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-body .ratePlan-table tbody tr:nth-of-type(1) td {
+    padding-top: 25px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container .ratePlanInfo-notice h3 {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container .ratePlanRecommend-title {
+    margin-bottom: 55px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container .ratePlanRecommend-title h2 {
+    font-size: 28px;
+    line-height: 38px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container .ratePlanRecommend-title h2 .mobile-newline {
+    display: block;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container .ratePlanRecommend-title h3 {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container .ratePlanRecommend-title p {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container .ratePlanRecommend-title .mobile-newline {
+    display: block;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container .ratePlanRecommend-body {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container .ratePlanRecommend-body .ratePlanRecommend-box {
+    width: 100%;
+    margin-bottom: 55px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container .ratePlanRecommend-body .ratePlanRecommend-box img {
+    margin-bottom: 24px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container .ratePlanRecommend-body .ratePlanRecommend-box h4 {
+    font-size: 24px;
+    line-height: 1;
+    margin-bottom: 24px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container .ratePlanRecommend-body .ratePlanRecommend-box .ratePlanRecommend-text {
+    text-align: center;
+    height: 100%;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container .ratePlanRecommend-body .ratePlanRecommend-box .ratePlanRecommend-text p {
+    font-size: 14px;
+    line-height: 20px;
+    font-size: 14px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container .surveyBtn-container a {
+    width: 180px;
+    height: 46px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-title {
+    margin-bottom: 45px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-title h2 {
+    font-size: 28px;
+    line-height: 58px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-body .ratePlanExample-boxGroup {
+    display: none;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-body .ratePlan-select-wrapper {
+    display: block;
+    width: 90%;
+    margin-bottom: 45px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-body .ratePlan-select-wrapper .ratePlan-select-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-body .ratePlan-select-wrapper .ratePlan-select-container .ratePlanSelect-slide span {
+    position: relative;
+    font-size: 14px;
+    line-height: 28px;
+    width: 100%;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-body .ratePlan-select-wrapper .ratePlan-select-container .ratePlanSelect-active span {
+    color: #ff9800;
+    font-weight: 700;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-body .ratePlan-select-wrapper .ratePlan-select-container .ratePlanSelect-active span:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -7.5px;
+    transform: translate(-50%, 0);
+    width: 48px;
+    height: 2px;
+    background-color: #ff9800;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-body .ratePlan-slide-wrapper {
+    display: block;
+    width: 100%;
+    position: relative;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-body .ratePlan-slide-wrapper .ratePlan-swiper .swiper-wrapper .ratePlan-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    margin-right: 0px;
+    margin-bottom: 50px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-body .ratePlan-slide-wrapper .ratePlan-swiper .swiper-wrapper .ratePlan-slide .ratePlan-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 65px;
+    height: 65px;
+    background-color: #ffe54d;
+    border-radius: 50%;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    line-height: 41px;
+    margin-bottom: 15px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-body .ratePlan-slide-wrapper .ratePlan-swiper .swiper-wrapper .ratePlan-slide .ratePlan-label.label-active {
+    background-color: #ff9800;
+    color: #fefefe;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-body .ratePlan-slide-wrapper .ratePlan-swiper .swiper-wrapper .ratePlan-slide img {
+    width: 250px;
+    height: 250px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-body .ratePlan-slide-wrapper .ratePlan-swiper .swiper-wrapper .ratePlan-slide .ratePlanExample-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-body .ratePlan-slide-wrapper .ratePlan-swiper .swiper-wrapper .ratePlan-slide .ratePlanExample-info .ratePlan-hash span {
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    line-height: 28px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #ff9800;
+    background-color: #fefefe;
+    border: 1px solid #ff9800;
+    border-radius: 20px;
+    padding: 0px 10px;
+    margin-right: 4px;
+  }
+}
+
+@media all and (max-width: 768px) and (min-width: 768px) and (max-width: 1320px) {
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-body .ratePlan-slide-wrapper .ratePlan-swiper .swiper-wrapper .ratePlan-slide .ratePlanExample-info .ratePlan-hash span {
+    font-size: 16px;
+  }
+}
+
+@media all and (max-width: 768px) {
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-body .ratePlan-slide-wrapper .ratePlan-swiper .swiper-wrapper .ratePlan-slide .ratePlanExample-info h3 {
+    font-size: 14px;
+    font-weight: 700;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-body .ratePlan-slide-wrapper .swiper-button-next:after {
+    color: transparent;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-body .ratePlan-slide-wrapper .swiper-button-next:focus {
+    user-select: none;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-body .ratePlan-slide-wrapper .swiper-button-prev:after {
+    color: transparent;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-body .ratePlan-slide-wrapper .ratePlan-swiper-next {
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    display: block;
+    background: url("/contents/newMain_image/m_swiper_next.png") no-repeat;
+    width: 18px;
+    height: 34px;
+    z-index: 1;
+    user-select: none;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-body .ratePlan-slide-wrapper .ratePlan-swiper-prev {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    display: block;
+    background: url("/contents/newMain_image/m_swiper_prev.png") no-repeat;
+    width: 18px;
+    height: 34px;
+    z-index: 1;
+    user-select: none;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-notice p {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container .ratePlanExample-notice p .mobile-newline {
+    display: block;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanLifestyle-container .ratePlanLifestyle-title {
+    margin-bottom: 55px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanLifestyle-container .ratePlanLifestyle-title h2 {
+    font-size: 27px;
+    line-height: 38px;
+    margin-bottom: 55px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanLifestyle-container .ratePlanLifestyle-title h3 {
+    font-size: 24px;
+    line-height: 34px;
+    color: #6d6d6d;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanLifestyle-container .ratePlanLifestyle-title h3 .mobile-newline {
+    display: block;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanLifestyle-container .ratePlanLifestyle-title:nth-of-type(2) {
+    margin: 0 0 55px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanLifestyle-container .ratePlanLifestyle-body .ratePlanLifestyle-boxGroup {
+    flex-direction: column;
+    align-items: center;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanLifestyle-container .ratePlanLifestyle-body .ratePlanLifestyle-boxGroup .ratePlanLifestyle-box {
+    width: 100%;
+    margin-bottom: 55px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanLifestyle-container .ratePlanLifestyle-body .ratePlanLifestyle-boxGroup .ratePlanLifestyle-box .ratePlanLifestyle-img {
+    margin-bottom: 24px;
+    height: auto;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanLifestyle-container .ratePlanLifestyle-body .ratePlanLifestyle-boxGroup .ratePlanLifestyle-box h4 {
+    font-size: 24px;
+    line-height: 24px;
+    margin-bottom: 24px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanLifestyle-container .ratePlanLifestyle-body .ratePlanLifestyle-boxGroup .ratePlanLifestyle-box .ratPlanLifestyle-text {
+    height: auto;
+    margin-bottom: 0px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanLifestyle-container .ratePlanLifestyle-body .ratePlanLifestyle-boxGroup .ratePlanLifestyle-box .ratPlanLifestyle-text p {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanLifestyle-container .ratePlanLifestyle-body .ratePlanLifestyle-boxGroup .ratePlanLifestyle-box .ratPlanLifestyle-text p:nth-of-type(1) {
+    margin-bottom: 15px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanCueat-container {
+    padding: 93px 0 100px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanCueat-container .ratePlanCueat-title {
+    margin-bottom: 76px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanCueat-container .ratePlanCueat-title h2 {
+    font-size: 28px;
+    line-height: 38px;
+    margin-bottom: 0;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanCueat-container .ratePlanCueat-title h2 .mobile-newline {
+    display: block;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanCueat-container .ratePlanCueat-title h2:nth-of-type(1) {
+    margin-bottom: 67px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanCueat-container .ratePlanCueat-title h2:nth-of-type(2) {
+    margin-bottom: 67px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanCueat-container .ratePlanCueat-title h3 {
+    font-size: 24px;
+    line-height: 24px;
+  }
+}
+
+@media all and (max-width: 360px) {
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanInfo-container {
+    width: 95%;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container {
+    width: 95%;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container .ratePlanRecommend-title h3 {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanRecommend-container .ratePlanRecommend-title p {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanExample-container {
+    width: 95%;
+  }
+  body .ratePlan-wrapper .ratePlan-container .ratePlan-body .ratePlanLifestyle-container {
+    width: 95%;
+  }
+}
+/*# sourceMappingURL=sub_intro.css.map */

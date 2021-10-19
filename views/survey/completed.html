@@ -1,0 +1,269 @@
+{{ define "survey/completed.html" }}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <link rel="stylesheet" href="/contents/mypage/css/mypage.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="/contents/survey/css/login.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="/contents/css/common.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="/contents/css/style_renew.css?v={{ .cssRandomVersion }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    {{ template "shared/header.tmpl" . }}
+    <script src="https://kit.fontawesome.com/7e24956d25.js" crossorigin="anonymous"></script>
+    <script src="/contents/survey/js/celebration.js?v={{ .cssRandomVersion }}"></script>
+    {{ template "shared/title.tmpl" . }}
+    {{ template "shared/kakao-script.tmpl" . }}
+  </head>
+  <body>
+    {{ template "shared/nav.tmpl" . }}
+
+    <section class="celebration">
+      <div class="cel_title"><span>{{ .UserName }}</span><span>님</span></div>
+      <div class="cel_title">고맙습니다</div>
+      <div class="cel_p">
+        우리 농산물과 함께 하는<br />
+        건강한 식생활이 시작됩니다
+      </div>
+    <section class="yello_div_button cel_mt0">
+      <button class="yello_button" onclick="handleClickSubsConfirm()">
+        구독 확인
+      </button>
+    </section>
+     </section>
+    <canvas id="confetti"></canvas>
+    {{ template "shared/footer.tmpl" . }}
+    {{ template "shared/extend-token.tmpl" . }}
+
+    <!-- 구독 이유 -->
+    <div id="subs-reason-modal" class="modal notice_popup_modal" style="width: 100%">
+      <div class="input_field">
+        <div>
+          <div>큐잇을 구독하시는 이유가 무엇인가요?</div>
+          <div>큐잇이 더 나은 서비스를 제공해 드리는 데에 큰 도움이 됩니다.</div>
+        </div>
+        <div class="gender_radio_div funnel_div reason_div">
+          <div class="funnel_input">
+            <input
+              name="reason"
+              type="radio"
+              id="eat-item"
+              class="gender_radio"
+              value="잇템선호"
+            /><label for="eat-item">
+              잇템(Eat Item)을 받아보고 싶어요
+            </label>
+          </div>
+          <div class="funnel_input">
+            <input
+              name="reason"
+              type="radio"
+              id="small-and-many"
+              class="gender_radio"
+              value="다품종소량선호"
+            /><label for="small-and-many">
+              조금씩 다양하게 이용할 수 있어서 좋아요
+            </label>
+          </div>
+          <div class="funnel_input">
+            <input
+              name="reason"
+              type="radio"
+              id="quality"
+              class="gender_radio"
+              value="농산물품질선호"
+            /><label for="quality">
+              농산물을 믿고 살 수 있어요
+            </label>
+          </div>
+          <div class="funnel_input">
+            <input
+              name="reason"
+              type="radio"
+              id="curation"
+              class="gender_radio"
+              value="큐레이션선호"
+            /><label for="curation">알아서 보내주니까 고민하지 않아도 돼요</label>
+          </div>
+          <div class="funnel_input">
+            <input
+              name="reason"
+              type="radio"
+              id="present"
+              class="gender_radio"
+              value="선물용"
+            /><label for="present">
+              따로 사는 부모님(가족, 지인)에세 보내 드려요
+            </label>
+          </div>
+          <div class="funnel_input">
+            <input
+              name="reason"
+              type="radio"
+              id="delivery-options"
+              class="gender_radio"
+              value="저렴한가격"
+            /><label for="delivery-options">
+              직접 구매하는 것보다 가격이 합리적인 것 같아요
+            </label>
+          </div>
+          <div class="funnel_input">
+            <input
+              name="reason"
+              type="radio"
+              id="etc"
+              class="gender_radio"
+              placeholder="기타"
+              value="기타"
+            /><label for="etc" class="etc_label">기타</label>
+            <input
+              id="etc-contents"
+              class="etc_contents"
+              type="text"
+              value=""
+              placeholder="기타"
+              disabled
+            >
+          </div>
+        </div>
+        <button id="subs-button" class="yello_button gray_style" onclick="handleSubmitSubsReason()" disabled>
+          제출하기
+        </button>
+    </div>
+
+    <script type="text/javascript">
+      var ETC_LIMIT_LENGTH = 1
+      var orderType;
+      var infoID;
+
+      document.addEventListener("DOMContentLoaded", function() {
+        orderType = getCookie("orderType")
+        infoID = getCookie("infoID")
+        removeCookie("orderType", "")
+        removeCookie("infoID", "")
+
+        if (orderType === "ONCE") {
+          return
+        }
+
+        $('#subs-reason-modal').modal();
+
+        // subs-reason-modal은 구독 취소 모달과 거의 유사
+        // 만약 한 번 더 추가로 사용되는 경우가 발생하면 모듈화함
+
+        // 구독 항목에 handleChange 함수 추가
+        var reasonElems = document.querySelectorAll("input[name=reason]")
+        for (var i=0; i<reasonElems.length; i++) {
+          reasonElems[i].addEventListener("change", handleReasonChange)
+        }
+
+        // etc 수기 작성 input 제어
+        var reasonETCContentsElem = document.querySelector("#etc-contents")
+        reasonETCContentsElem.addEventListener("input", handleETCLengthLimit)
+
+        $("#subs-reason-modal").on($.modal.CLOSE, function(event, modal){
+          var reasonElem = document.querySelector("input[name=reason]:checked")
+          var subsButtonElem = document.querySelector("#subs-button")
+          if (reasonElem !== null) {
+            reasonElem.checked = false
+            subsButtonElem.disabled = true
+            subsButtonElem.className = "yello_button gray_style"
+          }
+
+          reasonETCContentsElem.value = ""
+        })
+
+      })
+
+      function handleReasonChange() {
+        // 해지 사유 etc disabled 관리
+        var reasonETCElem = document.querySelector("#etc")
+        var reasonETCContentsElem = document.querySelector("#etc-contents")
+        if (reasonETCElem.checked) {
+          reasonETCContentsElem.disabled = false
+          reasonETCContentsElem.focus()
+        } else {
+          reasonETCContentsElem.disabled = true
+        }
+
+
+        // 해지 버튼 disabled 관리
+        var reasonElem = document.querySelector("input[name=reason]:checked")
+        var subsButtonElem = document.querySelector("#subs-button")
+        if (subsButtonElem === null) {
+          console.log("subsButton not exists")
+          return;
+        }
+
+        var satisfiedETCLimit = (reasonETCElem.checked === true && reasonETCContentsElem.value.length < ETC_LIMIT_LENGTH)
+        if (reasonElem === null || satisfiedETCLimit) {
+          subsButtonElem.disabled = true
+          subsButtonElem.className = "yello_button gray_style"
+        } else {
+          subsButtonElem.disabled = false
+          subsButtonElem.className = "yello_button"
+        }
+      }
+
+      // etc input 길이에 따른 해지 버튼 disabled 관리
+      function handleETCLengthLimit() {
+        var reasonETCElem = document.querySelector("#etc")
+        var reasonETCContentsElem = document.querySelector("#etc-contents")
+        var subsButtonElem = document.querySelector("#subs-button")
+        if (reasonETCElem === null || reasonETCContentsElem === null) {
+          return;
+        }
+
+        if (reasonETCElem.checked === false) {
+          return;
+        }
+
+        if (reasonETCContentsElem.value.length < ETC_LIMIT_LENGTH) {
+          subsButtonElem.disabled = true
+          subsButtonElem.className = "yello_button gray_style"
+        } else {
+          subsButtonElem.disabled = false
+          subsButtonElem.className = "yello_button"
+        }
+      }
+
+      function handleSubmitSubsReason() {
+        var url = "/subs/edit"
+        var method = "POST"
+    
+        var data = {
+          SubsNo: parseInt(infoID, 10)
+        }
+
+        var reasonElem = document.querySelector("input[name=reason]:checked")
+        var reasonETCContentsElem = document.querySelector("#etc-contents")
+        if (reasonElem !== null) {
+          var reasonValue = reasonElem.value
+          if (reasonElem.value === "기타") {
+            reasonValue = `기타:${reasonETCContentsElem.value}`
+          }
+          data["SubsReason"] = reasonValue
+        }
+    
+        function successFunc() {
+          var closeModal = document.querySelector("a.close-modal")
+          if (closeModal !== null) {
+            closeModal.click();
+          }
+        }
+    
+        function failFunc() {
+          return;
+        }
+        
+        customRequest(url, method, data, successFunc, failFunc)
+      }
+
+      function handleClickSubsConfirm() {
+        location.href='/web/my-page/subs/list'
+      }
+    </script>
+  </body>
+</html>
+
+{{ end }}

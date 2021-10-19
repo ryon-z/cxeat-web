@@ -1,0 +1,2216 @@
+{{ define "main.html" }}
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/contents/css/slick.css?v={{ .cssRandomVersion }}"
+    />
+    <link
+      rel="stylesheet"
+      href="/contents/css/main.css?v={{ .cssRandomVersion }}"
+    />
+    <link
+      rel="stylesheet"
+      href="/contents/css/main_mediaQuery.css?v={{ .cssRandomVersion }}"
+    />
+    <link
+      rel="stylesheet"
+      href="/contents/css/navigation.css?v{{ .cssRandomVersion}}"
+    />
+    <link
+      rel="stylesheet"
+      href="/contents/css/css_reset.css?v={{ .cssRandomVersion }}"
+    />
+    <!-- <link
+      rel="stylesheet"
+      href="/contents/css/style.css?v={{ .cssRandomVersion }}"
+    /> -->
+    {{ template "shared/header.tmpl" . }}
+    <script
+      src="https://kit.fontawesome.com/7e24956d25.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/contents/js/slick.min.js?v={{ .cssRandomVersion }}"></script>
+    <script
+      id=main-func
+      src="/contents/js/main_func.js?v={{ .cssRandomVersion }}"
+      userCount={{ .userCount }}
+      defer
+    ></script>
+    <link
+      rel="stylesheet"
+      href="/contents/css/cueatSwiper.css"
+    />
+    <script src="/contents/js/cueatSwiper.min.js"></script>
+    <!-- {{ template "shared/title.tmpl" . }} -->
+    <title>큐잇</title>
+  </head>
+  <body>
+    {{ template "shared/nav.tmpl" . }}
+
+    <div class="cueat-wrapper">
+      <main class="cueat-main-container">
+        <div class="cueat-body">
+          <section class="cueat-main-wrapper">
+            <div class="cueat-main-title">
+              <div class="cueat-title-head">
+                <h2>나에게 딱 맞는</h2>
+                <h2>농산물 소비의 시작</h2>
+              </div>
+              <div class="cueat-title-text">
+                <p>양도, 맛도, 영양도<br />나에게 딱 맞는 농산물을 만나보세요</p>
+              </div>
+              <div class="cueat-main-link">
+                <a href="/web/survey/main">나만의 큐잇 시작하기</a>
+              </div>
+            </div>
+          </section>
+          <section class="cueat-event-wrapper"  data-starttime="2021-09-06 12:00" data-timeout="2021-09-15 12:00">
+            <div class="event-container"> 
+            <a href="https://yelloment.co.kr/product/list.html?cate_no=160&cafe_mkt=ue_cueat_chu_gift&cafe_mkt=ue_cueat_chu_gift" target="_blank">
+              <img class="event-image" src="/contents/newMain_image/cueat_event.jpg" alt="큐잇 이벤트" >
+              <img class="mobileEvent-image" src="/contents/newMain_image/m_cueat_event.jpg" alt="큐잇 이벤트" >
+            </a>
+          </div>
+          </section>
+          <section class="cueat-item-wrapper">
+            <div class="cueat-item-container">
+              <div class="cueat-item-title">
+                <span>Eat Item</span>
+                <h3>큐잇의 잇템을 확인하세요!</h3>
+              </div>
+              <div class="item-slide-wrapper">
+                <div class="swiper-container item-swiper">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item43_황금 사과 (시나노 골드).jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>10월 2주차</span>
+                      <p>황금 사과 (시나노 골드)</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item42_땅콩 호박.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>10월 2주차</span>
+                      <p>땅콩 호박</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item41_레드키위.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>10월 1주차</span>
+                      <p>레드키위</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item40_가지고추.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>10월 1주차</span>
+                      <p>가지고추</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item39_머쉬마루 버섯.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>10월 1주차</span>
+                      <p>머쉬마루 버섯</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item38_태추단감.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>9월 5주차</span>
+                      <p>태추단감</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item37_황금 팽이버섯.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>9월 5주차</span>
+                      <p>황금 팽이버섯</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item36_흑토마토.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>9월 5주차</span>
+                      <p>흑토마토</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item35_당근 고구마.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>9월 3주차</span>
+                      <p>당근 고구마</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item34_루비에스 사과.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>9월 2주차</span>
+                      <p>루비에스 사과</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item33_스테이크용 채소.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>9월 2주차</span>
+                      <p>스테이크용 채소</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item32_허니듀 멜론.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>9월 1주차</span>
+                      <p>허니듀 멜론</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item31_애플 망고.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>9월 1주차</span>
+                      <p>애플 망고</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item30_모둠 버섯.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>9월 1주차</span>
+                      <p>모둠 버섯</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item29_거봉.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>9월 1주차</span>
+                      <p>거봉</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item28_레드멜론.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>8월 4주차</span>
+                      <p>레드멜론</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item27_쥬키니 호박.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>8월 4주차</span>
+                      <p>쥬키니 호박</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item26_햇사과 홍로.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>8월 4주차</span>
+                      <p>햇사과 홍로</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item25_황도 복숭아.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>8월 4주차</span>
+                      <p>황도 복숭아</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item24_캔디하트포도.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>8월 3주차</span>
+                      <p>캔디하트 포도</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item23_카라바오망고.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>8월 3주차</span>
+                      <p>카라바오 망고</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item22_청경채.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>8월 3주차</span>
+                      <p>청경채</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item21_블랙사파이어포도.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>8월 2주차</span>
+                      <p>블랙사파이어포도</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item20_애플멜론.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>8월 2주차</span>
+                      <p>애플멜론</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item19_천도복숭아.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>8월 2주차</span>
+                      <p>천도복숭아</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item18_풋호박.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>8월 2주차</span>
+                      <p>풋호박</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item17_무화과.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>8월 1주차</span>
+                      <p>무화과</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item16_애플청포도.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>8월 1주차</span>
+                      <p>애플청포도</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item15_애호박.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>8월 1주차</span>
+                      <p>애호박</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item14_홍감자.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>8월 1주차</span>
+                      <p>홍감자</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item01_샬롯.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>7월 4주차</span>
+                      <p>샬롯</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item02_스낵당근.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>7월 4주차</span>
+                      <p>스낵당근</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item03_워싱턴 빙체리.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>7월 4주차</span>
+                      <p>워싱턴 빙체리</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item04_베이비 브로컬리.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>7월 3주차</span>
+                      <p>베이비 브로컬리</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item05_샤인머스캣.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>7월 3주차</span>
+                      <p>샤인머스켓</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item06_햇사레 복숭아.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>7월 3주차</span>
+                      <p>햇사레 복숭아</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item07_미니 단호박.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>7월 2주차</span>
+                      <p>미니 단호박</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item08_천도복숭아.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>7월 2주차</span>
+                      <p>천도복숭아</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item09_컬러청양고추.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>7월 2주차</span>
+                      <p>컬러청양고추</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item10_대만 애플망고.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>7월 1주차</span>
+                      <p>대만 애플망고</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item11_미니 양배추.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>7월 1주차</span>
+                      <p>미니 양배추</p>
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="/contents/newMain_image/eat_item/eat_item12_스낵오이.jpg"
+                        alt="큐잇 잇템"
+                      />
+                      <span>7월 1주차</span>
+                      <p>스낵오이</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-button-next item-swiper-next"></div>
+                <div class="swiper-button-prev item-swiper-prev"></div>
+              </div>
+              <div class="cueat-main-link">
+                <a href="https://blog.naver.com/pandacorp" target="_blank">잇템 자세히 보러 가기</a>
+              </div>
+            </div>
+          </section>
+          <section class="cueat-curation-wrapper">
+            <div class="cueat-curation-container">
+              <div class="cueat-curation-content">
+                <div class="curation-context">
+                  <div class="curation-context-img">
+                    <img
+                      src="/contents/newMain_image/curation_title_icon.png"
+                      alt="큐잇 큐레이션 제목 아이콘"
+                    />
+                  </div>
+                  <div class="curation-context-header">
+                    <h2>Curation & Eat</h2>
+                    <h3>식생활을 큐레이션 합니다</h3>
+                  </div>
+                  <div class="curation-context-text">
+                    <p>
+                      고객의 라이프스타일을 분석하여<br />
+                      농산물을 추천해 드리는<br />
+                      농산물 큐레이션 정기구독 서비스입니다
+                    </p>
+                    <p>
+                      쌀, 잡곡, 과일, 채소<br />
+                      필요하고 좋아하는 것만 담아<br />
+                      매주 목요일 찾아 갑니다
+                    </p>
+                  </div>
+                </div>
+                <div class="curation-img-container">
+                  <img
+                    src="/contents/newMain_image/cueat_curation.jpg"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="cueat-main-link">
+                <a href="/web/survey/main">더 알아보기</a>
+              </div>
+            </div>
+          </section>
+          <section class="cueat-feature-wrapper">
+            <div class="cueat-feature-container">
+              <div class="cueat-feature-header">
+                <h2>큐잇의 4가지 큐레이션</h2>
+                <h3>하늘 아래 같은 큐잇박스는 없다!</h3>
+                <h3>고객님마다 모두 다르게 구성됩니다</h3>
+              </div>
+              <div class="cueat-feature">
+                <div class="feature-box-group">
+                  <div class="feature-box">
+                    <img
+                      src="/contents/newMain_image/main_feature01.jpg"
+                      alt="큐잇 큐레이션 특징"
+                    />
+                    <div class="feature-box-title">
+                      <span class="feature-box-num">1</span>
+                      <h2>소비량</h2>
+                    </div>
+                    <p>
+                      고객님의 라이프 스타일에 맞게<br />
+                      일주일 간 소비할 적정한 양을 추천해 드려요
+                    </p>
+                  </div>
+                  <div class="feature-box">
+                    <img
+                      src="/contents/newMain_image/main_feature02.jpg"
+                      alt="큐잇 큐레이션 특징"
+                    />
+                    <div class="feature-box-title">
+                      <span class="feature-box-num">2</span>
+                      <h2>취향</h2>
+                    </div>
+                    <p>
+                      싫어하는 것까지 담긴 랜덤박스가 아니라<br />
+                      미세한 입맛까지 고려한 나만의 맞춤박스로 구성돼요
+                    </p>
+                  </div>
+                </div>
+                <div class="feature-box-group">
+                  <div class="feature-box">
+                    <img
+                      src="/contents/newMain_image/main_feature03.jpg"
+                      alt="큐잇 큐레이션 특징"
+                    />
+                    <div class="feature-box-title">
+                      <span class="feature-box-num">3</span>
+                      <h2>품종</h2>
+                    </div>
+                    <p>
+                      큐잇이 매주 추천하는 잇템(Eat Item)으로<br />
+                      먹거리의 새로운 즐거움을 경험해 보세요
+                    </p>
+                  </div>
+                  <div class="feature-box">
+                    <img
+                      src="/contents/newMain_image/main_feature04.jpg"
+                      alt="큐잇 큐레이션 특징"
+                    />
+                    <div class="feature-box-title">
+                      <span class="feature-box-num">4</span>
+                      <h2>영양</h2>
+                    </div>
+                    <p>
+                      관심있는 건강정보나 알레르기까지<br />
+                      개인 맞춤 케어 서비스를 받으세요
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="cueat-count-wrapper">
+            <div class="cueat-count-container">
+              <div class="cueat-count-title">
+                <h2>
+                  <span class="cueat-count">0</span>명이<br />
+                  큐잇의 큐레이션을 받았어요
+                </h2>
+                <h3>
+                  나에게 꼭 맞는<br />
+                  큐잇박스를 알아보세요!
+                </h3>
+              </div>
+              <div class="cueat-white-btn">
+                <a href="/web/survey/main">지금 큐레이션 받기</a>
+              </div>
+            </div>
+          </section>
+          <section class="cueat-merit-wrapper">
+            <div class="cueat-merit-container">
+              <div class="cueat-merit-title">
+                <h2>
+                  좋은 농산물 구매는 <br />
+                  <span>큐잇에게 맡기고</span>
+                </h2>
+                <h2>
+                  삶의 또 다른<br />
+                  <span>즐거움을 찾아보세요</span>
+                </h2>
+              </div>
+              <div class="cueat-merit-content">
+                <div class="cueat-merit-img">
+                  <img
+                    src="/contents/newMain_image/cueat_life.jpg"
+                    alt="큐잇 장점 특징 사진"
+                  />
+                </div>
+                <div class="mobile-merit-title">
+                  <h2>
+                    삶의 또 다른<br />
+                    <span class="gray">즐거움을 찾아보세요</span>
+                  </h2>
+                </div>
+                <div class="cueat-merit-context">
+                  <div class="merit-context-img">
+                    <img
+                      src="/contents/newMain_image/cueat_merit_icon.png"
+                      alt="큐잇 장점 특징 아이콘"
+                    />
+                  </div>
+                  <div class="merit-context">
+                    <p>
+                      불필요한 양까지 구매하는 것,<br />
+                      품질 좋은 상품을 탐색하는 것,<br />
+                      늘 필요한 것을 매번 구매하는 번거로움
+                    </p>
+                    <p>
+                      우리가 늘 먹는 농산물 소비하는 일에는<br />
+                      생각보다 많은 에너지가 필요해요
+                    </p>
+                    <p>
+                      농산물 구매에 대한 여러 가지 고민은<br />
+                      모두 큐잇에게 맡기고<br />
+                      여유로운 삶을 누리세요
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="cueat-main-link">
+                <a href="/web/survey/main">편리한 정기구독 신청하기</a>
+              </div>
+            </div>
+          </section>
+          <section class="cueat-ratePlan-wrapper">
+            <div class="cueat-ratePlan-container">
+              <div class="cueat-ratePlan-header">
+                <h2>큐잇 요금제</h2>
+              </div>
+              <div class="cueat-ratePlan-explanation">
+                <div class="ratePlan-explanation">
+                  <div class="ratePlan-check">
+                    <img
+                      src="/contents/newMain_image/main_ratePlan_checkIcon.png"
+                      alt=""
+                    />
+                  </div>
+                  <h4>
+                    큐잇은 최소 5~6가지의 종류로<br />
+                    취향과 소비량에 맞추어<br />
+                    <span>고객님마다 모두 다르게 구성돼요</span>
+                  </h4>
+                </div>
+                <div class="ratePlan-explanation">
+                  <div class="ratePlan-check">
+                    <img
+                      src="/contents/newMain_image/main_ratePlan_checkIcon.png"
+                      alt=""
+                    />
+                  </div>
+                  <h4>
+                    1주~4주 단위로<br />
+                    <span>배송 주기를 선택할 수 있어요</span>
+                  </h4>
+                </div>
+              </div>
+              <div class="ratePlan-select-wrapper">
+                <div class="ratePlan-select-container">
+                  <div class="ratePlanSelect-slide ratePlanSelect-active">
+                    <span id="ratePlanBtn1">싱글</span>
+                  </div>
+                  <div class="ratePlanSelect-slide">
+                    <span id="ratePlanBtn2">싱글 +</span>
+                  </div>
+                  <div class="ratePlanSelect-slide">
+                    <span id="ratePlanBtn3">레귤러</span>
+                  </div>
+                  <div class="ratePlanSelect-slide">
+                    <span id="ratePlanBtn4">레귤러 +</span>
+                  </div>
+                  <div class="ratePlanSelect-slide">
+                    <span id="ratePlanBtn5">라지</span>
+                  </div>
+                  <div class="ratePlanSelect-slide">
+                    <span id="ratePlanBtn6">라지 +</span>
+                  </div>
+                </div>
+              </div>
+              <div class="cueat-ratePlan-notice">
+                <p>
+                  요금제별 금액은 회당 요금이며<br />
+                  이용 주기는 1주부터 4주까지 선택할 수 있습니다
+                </p>
+              </div>
+              <div class="ratePlan-slide-wrapper">
+                <div class="swiper-container ratePlan-swiper">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide ratePlan-slide">
+                      <span class="ratePlan-label label-active" id="ratePlan-label1">싱글</span>
+                      <img
+                        src="/contents/newMain_image/main_singlebox_n.jpg"
+                        alt="큐잇 요금제"
+                      />
+                      <p>36,000원</p>
+                    </div>
+                    <div class="swiper-slide ratePlan-slide">
+                      <span class="ratePlan-label" id="ratePlan-label2">싱글+</span>
+                      <img
+                        src="/contents/newMain_image/main_singlebox_p.jpg"
+                        alt="큐잇 요금제"
+                      />
+                      <p>43,200원</p>
+                    </div>
+                    <div class="swiper-slide ratePlan-slide">
+                      <span class="ratePlan-label" id="ratePlan-label3">레귤러</span>
+                      <img
+                        src="/contents/newMain_image/main_double_n.jpg"
+                        alt="큐잇 요금제"
+                      />
+                      <p>49,000원</p>
+                    </div>
+                    <div class="swiper-slide ratePlan-slide">
+                      <span class="ratePlan-label" id="ratePlan-label4">레귤러+</span>
+                      <img
+                        src="/contents/newMain_image/main_double_p.jpg"
+                        alt="큐잇 요금제"
+                      />
+                      <p>56,300원</p>
+                    </div>
+                    <div class="swiper-slide ratePlan-slide">
+                      <span class="ratePlan-label" id="ratePlan-label5">라지</span>
+                      <img
+                        src="/contents/newMain_image/main_large_n.jpg"
+                        alt="큐잇 요금제"
+                      />
+                      <p>71,000원</p>
+                    </div>
+                    <div class="swiper-slide ratePlan-slide">
+                      <span class="ratePlan-label" id="ratePlan-label6">라지+</span>
+                      <img
+                        src="/contents/newMain_image/main_large_p.jpg"
+                        alt="큐잇 요금제"
+                      />
+                      <p>78,100원</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-button-next ratePlan-swiper-next"></div>
+                <div class="swiper-button-prev ratePlan-swiper-prev"></div>
+              </div>
+
+              <div class="cueat-ratePlan-notice">
+                <p>이미지는 6월 2주차 기준 단순 예시입니다</p>
+              </div>
+              <div class="cueat-ratePlan-notice02">
+                <p>
+                  <span>큐레이션 결과에 따라</span> <br />
+                  큐잇박스는 모두 다르게 구성됩니다
+                </p>
+              </div>
+              <div class="cueat-main-link">
+                <a href="/web/subs/intro">요금제 자세히 보기</a>
+              </div>
+            </div>
+          </section>
+          <section class="cueat-benefit-wrapper">
+            <div class="cueat-benefit-container">
+              <div class="cueat-benefit-header">
+                <span>구독회원에게만 드려요!</span>
+                <h2>큐잇 6가지 혜택</h2>
+              </div>
+              <div class="cueat-benefit-first">
+                <div class="benefit-first-title">
+                  <h3>첫 배송 혜택</h3>
+                </div>
+                <div class="benefit-first-content">
+                  <div class="benefit-box">
+                    <div class="benefit-box-img">
+                      <div>
+                        <span class="benefit-box-num">1</span>
+                      </div>
+                      <div>
+                        <img
+                          src="/contents/newMain_image/main_benefit_icon01.jpg"
+                          alt="큐잇 혜택 아이콘"
+                        />
+                      </div>
+                    </div>
+                    <div class="benefit-box-text">
+                    <h3>첫 배송 20% 할인</h3>
+                    </div>
+                    <p>
+                      첫 구독, 1회 차 배송을<br> 20% 할인된 금액으로<br />
+                      부담없이 시작해 보세요
+                    </p>
+                  </div>
+                  <div class="benefit-box">
+                    <div class="benefit-box-img">
+                      <div>
+                        <span class="benefit-box-num">2</span>
+                      </div>
+                      <div>
+                        <img
+                          src="/contents/newMain_image/main_benefit_icon02.jpg"
+                          alt="큐잇 혜택 아이콘"
+                        />
+                      </div>
+                    </div>
+                    <div class="benefit-box-text">
+                    <h3>건강쉐이크 3종 증정</h3>
+                    </div>
+                    <p>
+                      큐잇 정기구독을 시작하시는 모든 분들께<br />
+                      저항전분 쌀로 만든 <br/>예쁨미 쉐이크 3종 세트를 드려요
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="cueat-benefits">
+                <div class="benefit-box-group">
+                  <div class="benefit-box">
+                    <div class="benefit-box-img">
+                      <div>
+                        <span class="benefit-box-num">3</span>
+                      </div>
+                      <div>
+                        <img
+                          src="/contents/newMain_image/main_benefit_icon03.jpg"
+                          alt="큐잇 혜택 아이콘"
+                        />
+                      </div>
+                    </div>
+                    <div class="benefit-box-text">
+                    <h3>
+                      매 10회 차 <span>배송마다</span><br/>50% 할인</h3>
+                    </h3>
+                  </div>
+                  </div>
+                  <div class="benefit-box">
+                    <div class="benefit-box-img">
+                      <div>
+                        <span class="benefit-box-num">4</span>
+                      </div>
+                      <div>
+                        <img
+                          src="/contents/newMain_image/main_benefit_icon04.jpg"
+                          alt="큐잇 혜택 아이콘"
+                        />
+                      </div>
+                    </div>
+                    <div class="benefit-box-text">
+                    <h3>
+                      구독을 <span>추가할 때마다</span><br />
+                      <span>상시</span> 5% 추가 할인
+                    </h3>
+                  </div>
+                  </div>
+                </div>
+                <div class="benefit-box-group">
+                  <div class="benefit-box">
+                    <div class="benefit-box-img">
+                      <div>
+                        <span class="benefit-box-num">5</span>
+                      </div>
+                      <div>
+                        <img
+                          src="/contents/newMain_image/main_benefit_icon05.jpg"
+                          alt="큐잇 혜택 아이콘"
+                        />
+                      </div>
+                    </div>
+                    <div class="benefit-box-text">
+                    <h3><span>전지역</span> 배송비 0원<br><span>(제주도,도서산간 포함)<span></h3>
+                  </div>
+                  </div>
+                  <div class="benefit-box">
+                    <div class="benefit-box-img">
+                      <div>
+                        <span class="benefit-box-num">6</span>
+                      </div>
+                      <div>
+                        <img
+                          src="/contents/newMain_image/main_benefit_icon06.jpg"
+                          alt="큐잇 혜택 아이콘"
+                        />
+                      </div>
+                    </div>
+                    <div class="benefit-box-text">
+                    <h3>
+                     <span>프리미엄 농산물스토어</span><br />
+                      옐로먼트 10% 할인
+                    </h3>
+                  </div>
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="cueat-main-link">
+                <a>혜택 자세히 보기</a>
+              </div> -->
+            </div>
+          </section>
+          <section class="cueat-review-wrapper">
+            <div class="cueat-review-container">
+              <div class="cueat-review-header">
+                <h2>큐잇 고객 이야기</h2>
+              </div>
+              <div class="review-slide-wrapper">
+                <div class="swiper-container review-swiper">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide review-slide">
+                      <img
+                        src="/contents/newMain_image/mainReviewImg_20.png"
+                        alt="큐잇 메인리뷰"
+                      />
+                      <div class="review-user-info">
+                        <p>20대, 여성, 2인가구, 2주</p>
+                        <p>1회차 구독</p>
+                      </div>
+                      <div class="review-product-info">
+                        <h3>레귤러 </h3>
+                        <span>#과일</span>
+                        <span>#잡곡</span>
+                        <span>#채소</span>
+                      </div>
+                      <div class="review-text">
+                        <p>
+                          채소를 소분해서 파는 곳이 은근 많아졌지만 여전히 과일은 소용량이라도 1~2인 가구에게는 너무 큰 용량으로 팔아요. 과일 정말 좋아하는데 다 먹기전에 무르고 상해서 버린 적이 한두번이 아니거든요ㅠㅠ 근데 큐잇은 다양한 과일을 한 번에 먹을 만큼만 보내주는게 너무 좋아요!
+                        </p>
+                      </div>
+                    </div>
+                    <div class="swiper-slide review-slide">
+                      <img
+                        src="/contents/newMain_image/mainReviewImg_19.png"
+                        alt="큐잇 메인리뷰"
+                      />
+                      <div class="review-user-info">
+                        <p>20대, 여, 1인가구, 3주</p>
+                        <p>1회차 구독</p>
+                      </div>
+                      <div class="review-product-info">
+                        <h3>싱글</h3>
+                        <span>#과일</span>
+                        <span>#채소</span>
+                      </div>
+                      <div class="review-text">
+                        <p>
+                          제철 과일이 먹고 싶은데 매번 사먹자니 과일값이 감당 안 되고 또 사두면 양이 많아 먹어치우기 바빠 과일 먹기를 포기하고 있던 중 적당한 시기에 큐잇을 알게 되어 고민이 한방에 해결되었어요. 야호홋!!! 매번 적당한 양의 제철과일과 채소를 받아보고 재료가 주어지니 자연스럽게 요리해 먹는 횟수도 늘어나는 중입니다~
+                        </p>
+                      </div>
+                    </div>
+                    <div class="swiper-slide review-slide">
+                      <img
+                        src="/contents/newMain_image/mainReviewImg_18.png"
+                        alt="큐잇 메인리뷰"
+                      />
+                      <div class="review-user-info">
+                        <p>20대, 여, 2인가구, 4주</p>
+                        <p>1회차 구독</p>
+                      </div>
+                      <div class="review-product-info">
+                        <h3>싱글</h3>
+                        <span>#과일</span>
+                        <span>#채소</span>
+                      </div>
+                      <div class="review-text">
+                        <p>
+                          내가 안 먹는게 오면 어쩌나 걱정이었는데, 언박싱하자마자 입맛에 맞는 것만 와서 매우 만족했어요! 구성이 전부 마음에 들어서 신기해 하는 중이에요. 채소랑 과일은 늘 많이 사서 질리거나 남아서 버리기 일쑤였는데 소분되어 오니 다양한 종류를 먹을 수 있다는 게 제일 맘에 들어요. 큐레이션이 상당히 전문적이시네요~
+                        </p>
+                      </div>
+                    </div>
+                    <div class="swiper-slide review-slide">
+                      <img
+                        src="/contents/newMain_image/mainReviewImg_17.png"
+                        alt="큐잇 메인리뷰"
+                      />
+                      <div class="review-user-info">
+                        <p>40대, 남, 4인가구, 매주</p>
+                        <p>13회차 구독</p>
+                      </div>
+                      <div class="review-product-info">
+                        <h3>레귤러</h3>
+                        <span>#과일</span>
+                        <span>#채소</span>
+                      </div>
+                      <div class="review-text">
+                        <p>
+                          벌써 3달째 이용하고 있는데 장 보는 횟수가 줄어서 생각보다 편해졌어요. 품질도 좋고 매주 들어있는 잇템이 새롭고 다 맛있습니다. 아이들이 잘 먹으니까 만족스럽고 파, 마늘, 양파 같은 것도 조금씩 매주 받아서 편리합니다.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="swiper-slide review-slide">
+                      <img
+                        src="/contents/newMain_image/mainReviewImg_16.png"
+                        alt="큐잇 메인리뷰"
+                      />
+                      <div class="review-user-info">
+                        <p>30대, 여, 1인가구, 2주</p>
+                        <p>3회차 구독</p>
+                      </div>
+                      <div class="review-product-info">
+                        <h3>싱글</h3>
+                        <span>#과일</span>
+                        <span>#채소</span>
+                      </div>
+                      <div class="review-text">
+                        <p>
+                          레드용과는 처음 먹어보는데 색이 넘 예뻐서 기분이 좋았어요<br/>
+                          한국에서 먹기 힘든 망고스틴도 넘 좋고 혼자서도 조금씩 다양하게 먹을 수 있어서 참 좋네요~
+                        </p>
+                      </div>
+                    </div>
+                    <div class="swiper-slide review-slide">
+                      <img
+                        src="/contents/newMain_image/mainReviewImg_14.jpg"
+                        alt="큐잇 메인리뷰"
+                      />
+                      <div class="review-user-info">
+                        <p>20대, 여, 1인가구, 2주</p>
+                        <p>2회차 구독</p>
+                      </div>
+                      <div class="review-product-info">
+                        <h3>싱글</h3>
+                        <span>#과일</span>
+                        <span>#채소</span>
+                      </div>
+                      <div class="review-text">
+                        <p>
+                          #토마토샐러드<br/>
+                          스테비아토마토 처음 먹어보는데 엄청 달고 맛있어요! 토마토가 워낙 달아서 씁쓸한 채소도 거뜬히 먹을 수 있음ㅋㅋ
+                        </p>
+                      </div>
+                    </div>
+                    <div class="swiper-slide review-slide">
+                      <img
+                        src="/contents/newMain_image/mainReviewImg_15.jpg"
+                        alt="큐잇 메인리뷰"
+                      />
+                      <div class="review-user-info">
+                        <p>20대, 여, 1인가구, 2주</p>
+                        <p>2회차 구독</p>
+                      </div>
+                      <div class="review-product-info">
+                        <h3>싱글</h3>
+                        <span>#과일</span>
+                      </div>
+                      <div class="review-text">
+                        <p>
+                          요즘 요거트에 꽂혀 있어서 청포도요거트 만들어 먹었어요. 애플청포도는 며칠 냉장고에 두니까 더 달아지고 포도에서 진짜 사과처럼 아삭한 맛이 나네요. 신기해요~
+                        </p>
+                      </div>
+                    </div>
+                    <div class="swiper-slide review-slide">
+                      <img
+                        src="/contents/newMain_image/mainReviewImg_01.jpg"
+                        alt="큐잇 메인리뷰"
+                      />
+                      <div class="review-user-info">
+                        <p>30대, 여, 3인가구, 매주</p>
+                        <p>2회차 구독</p>
+                      </div>
+                      <div class="review-product-info">
+                        <h3>레귤러+</h3>
+                        <span>#쌀</span>
+                        <span>#과일</span>
+                        <span>#채소</span>
+                      </div>
+                      <div class="review-text">
+                        <p>
+                          일하랴 애들 키우랴, 몸이 두개여도 모자란 워킹맘이에요.
+                          매주 장보는 것도 저한테는 일이었는데 우리가족에게
+                          필요한 쌀, 과일, 야채들을 알아서 보내주니 너무
+                          편하네요.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="swiper-slide review-slide">
+                      <img
+                        src="/contents/newMain_image/mainReviewImg_02.jpg"
+                        alt="큐잇 메인리뷰"
+                      />
+                      <div class="review-user-info">
+                        <p>40대, 여, 3인가구, 매주</p>
+                        <p>2회차 구독</p>
+                      </div>
+                      <div class="review-product-info">
+                        <h3>레귤러</h3>
+                        <span>#과일</span>
+                        <span>#채소</span>
+                      </div>
+                      <div class="review-text">
+                        <p>
+                          항상 먹던 것만 먹고 살았는데 큐잇 덕분에 새로운 입맛을
+                          찾은 것 같아요. 남편도 아들도 처음 맛보는 과일들이
+                          신기한지 다음주에 뭐가 오냐고 계속 물어보네요.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="swiper-slide review-slide">
+                      <img
+                        src="/contents/newMain_image/mainReviewImg_03.jpg"
+                        alt="큐잇 메인리뷰"
+                      />
+                      <div class="review-user-info">
+                        <p>60대, 여, 1인가구, 매주</p>
+                        <p>4회차 구독</p>
+                      </div>
+                      <div class="review-product-info">
+                        <h3>레귤러+</h3>
+                        <span>#쌀</span>
+                        <span>#잡곡</span>
+                        <span>#과일</span>
+                        <span>#채소</span>
+                      </div>
+                      <div class="review-text">
+                        <p>
+                          지방에 혼자 계신 어머니가 잘 챙겨 드시는지 항상 마음에
+                          걸렸는데 큐잇 덕분에 마음이 좀 놓이네요. 특히 과일을
+                          좋아하시는데 전부 맛있다고 하셔서 안심이에요.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="swiper-slide review-slide">
+                      <img
+                        src="/contents/newMain_image/mainReviewImg_04.jpg"
+                        alt="큐잇 메인리뷰"
+                      />
+                      <div class="review-user-info">
+                        <p>30대, 남, 3인가구, 격주</p>
+                        <p>7회차 구독</p>
+                      </div>
+                      <div class="review-product-info">
+                        <h3>싱글</h3>
+                        <span>#즉석밥</span>
+                        <span>#과일</span>
+                        <span>#채소</span>
+                      </div>
+                      <div class="review-text">
+                        <p>
+                          항상 마트에 가면 대용량만 팔아서 몇 가지 과일을 오래
+                          두고 먹었는데 더 저렴한 비용으로 다양하게 맛볼 수
+                          있어서 좋아요.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="swiper-slide review-slide">
+                      <img
+                        src="/contents/newMain_image/mainReviewImg_05.jpg"
+                        alt="큐잇 메인리뷰"
+                      />
+                      <div class="review-user-info">
+                        <p>40대, 여, 4인가구, 매주</p>
+                        <p>3회차 구독</p>
+                      </div>
+                      <div class="review-product-info">
+                        <h3>싱글</h3>
+                        <span>#과일</span>
+                        <span>#채소</span>
+                      </div>
+                      <div class="review-text">
+                        <p>
+                          정기구독한 이후로 오히려 장보는 비용이 줄었어요. 그
+                          동안 다 먹지도 못할 식재료들을 습관처럼 얼마나
+                          냉장고에 쟁여 두고 있었는지 후회가 되네요. 감사합니다.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="swiper-slide review-slide">
+                      <img
+                        src="/contents/newMain_image/mainReviewImg_06.jpg"
+                        alt="큐잇 메인리뷰"
+                      />
+                      <div class="review-user-info">
+                        <p>30대, 여, 3인가구, 매주</p>
+                        <p>1회차 구독</p>
+                      </div>
+                      <div class="review-product-info">
+                        <h3>싱글+</h3>
+                        <span>#쌀</span>
+                        <span>#과일</span>
+                        <span>#채소</span>
+                      </div>
+                      <div class="review-text">
+                        <p>
+                          과일을 정말 좋아하지만 맛없는 건 먹지 않는 까다로운
+                          28개월 아이가 집에 있습니다ㅋㅋㅋ 그런데 전반적으로
+                          과일을 정말 잘 먹어서 놀랐어요. 체리, 블루베리, 심지어
+                          바나 나도 맛없다 느끼면 안 먹는데 끝까지 다
+                          먹더라구요~ 제 입맛엔 스테비아 방울 토마토도 굉장히
+                          맛있었어요! 아쉬운 점은 애플수박 안쪽에 약간 과질이
+                          무른 부분이 있었다는 거에요. 처음으로 받아봤는데
+                          만족스러웠어요~
+                        </p>
+                      </div>
+                    </div>
+                    <div class="swiper-slide review-slide">
+                      <img
+                        src="/contents/newMain_image/mainReviewImg_07.jpg"
+                        alt="큐잇 메인리뷰"
+                      />
+                      <div class="review-user-info">
+                        <p>30대, 여, 4인가구, 매주</p>
+                        <p>4회차 구독</p>
+                      </div>
+                      <div class="review-product-info">
+                        <h3>싱글+</h3>
+                        <span>#쌀</span>
+                        <span>#과일</span>
+                        <span>#채소</span>
+                      </div>
+                      <div class="review-text">
+                        <p>
+                          갓난아이 키우면서 초등학생도 키우려니 장보기 힘든
+                          요즘. 다양한 과일을 배송해주니 과일편식 없이 다양하게
+                          먹을 수 있다. 이번에 양구 노란 멜론이나 미니 수박
+                          같은건 집 앞 과일가게에선 못 본 거라 큐잇 구독으로
+                          먹어보니 좋음.특히 애플수박은 맛도 있고 양도 딱 한번
+                          먹기적당해서 보관 걱정, 상할 걱정 같은 거 안 하는 것도
+                          완전 👍
+                        </p>
+                      </div>
+                    </div>
+                    <div class="swiper-slide review-slide">
+                      <img
+                        src="/contents/newMain_image/mainReviewImg_08.jpg"
+                        alt="큐잇 메인리뷰"
+                      />
+                      <div class="review-user-info">
+                        <p>30대, 여, 4인가구, 매주</p>
+                        <p>3회차 구독</p>
+                      </div>
+                      <div class="review-product-info">
+                        <h3>싱글+</h3>
+                        <span>#쌀</span>
+                        <span>#과일</span>
+                        <span>#채소</span>
+                      </div>
+                      <div class="review-text">
+                        <p>
+                          쌀, 과일, 채소 신청했는데 정해진 요일에 딱 일주일치가
+                          오네요. 신기하게 은근히 양이 딱 맞아요 ㅎㅎ매주 알아서
+                          오는 게 생각보다 편하더라구요. 먹을 만큼만 오니까
+                          음식물 쓰레기 양도 줄고 장 보는 번거로움도 줄고,,
+                          맞벌이 부부에게 강추에요. 스테비아 방토는 처음
+                          먹어봤는데 진짜 달고 맛있어요! 와 진짜사탕 먹는
+                          줄~~~~~ 과일 취향을 새콤보다는 달콤으로 조절했더니
+                          진짜 그렇게 왔어요. 신기방기~ 멀리 계신 부모님께도
+                          보내드리는 것도 좋을 것 같아요.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="swiper-slide review-slide">
+                      <img
+                        src="/contents/newMain_image/mainReviewImg_09.jpg"
+                        alt="큐잇 메인리뷰"
+                      />
+                      <div class="review-user-info">
+                        <p>30대, 여, 2인가구, 매주</p>
+                        <p>2회차 구독</p>
+                      </div>
+                      <div class="review-product-info">
+                        <h3>싱글</h3>
+                        <span>#과일</span>
+                      </div>
+                      <div class="review-text">
+                        <p>
+                          매주 싱싱한 과일들이 이것저것 와서 좋아요. 와인을 즐겨
+                          마시는데 와인이랑 어울리는 과일들이 자꾸 와서 와인을
+                          더 사게 되네요………ㅋㅋ 다음 박스 오기 전까지 아껴
+                          먹어야 됩니다 ㅎㅎ
+                        </p>
+                      </div>
+                    </div>
+                    <div class="swiper-slide review-slide">
+                      <img
+                        src="/contents/newMain_image/mainReviewImg_10.jpg"
+                        alt="큐잇 메인리뷰"
+                      />
+                      <div class="review-user-info">
+                        <p>40대, 여, 4인가구, 매주</p>
+                        <p>1회차 구독</p>
+                      </div>
+                      <div class="review-product-info">
+                        <h3>레귤러</h3>
+                        <span>#쌀</span>
+                        <span>#과일</span>
+                        <span>#채소</span>
+                      </div>
+                      <div class="review-text">
+                        <p>
+                          최근 써 본 정기구독 서비스 중 은근히 유용해요!
+                          라이프스타일에 맞춰서 적정량을 보내주는데 저희집식구
+                          여자 4명이 한번씩 먹기에 딱좋네요~ 근데 다 그렇다 쳐도
+                          진짜맛있어요. 초당옥수수랑 체리, 스테비아 토마토 다
+                          엄청 맛있어서 놀랐다는 ~~~~~ 우리집 여자들
+                          과일킬러라서 과일 많이 먹는데 전부 다 합격이네요ㅎㅎ
+                        </p>
+                      </div>
+                    </div>
+                    <div class="swiper-slide review-slide">
+                      <img
+                        src="/contents/newMain_image/mainReviewImg_11.jpg"
+                        alt="큐잇 메인리뷰"
+                      />
+                      <div class="review-user-info">
+                        <p>30대, 여, 4인가구, 매주</p>
+                        <p>1회차 구독</p>
+                      </div>
+                      <div class="review-product-info">
+                        <h3>레귤러+</h3>
+                        <span>#쌀</span>
+                        <span>#과일</span>
+                      </div>
+                      <div class="review-text">
+                        <p>
+                          저희 아이도 밥을 잘 안 먹어서 늘 걱정인데 지인 애기가
+                          큐잇 과일은 잘 먹는다고 해서 시작해 봤어요. 큐잇에
+                          들어있는 과일은 다 배송 온 첫날 순삭이에요. 아이가
+                          좋아하는 과일 위주로 들어있는 것 같아요! 애플수박도
+                          보더니 아기 수박이냐면서 넘 좋아하면서 먹네요. 아들 때
+                          문에 계속 잘 이용하게 될 것 같아요~
+                        </p>
+                      </div>
+                    </div>
+                    <div class="swiper-slide review-slide">
+                      <img
+                        src="/contents/newMain_image/mainReviewImg_12.jpg"
+                        alt="큐잇 메인리뷰"
+                      />
+                      <div class="review-user-info">
+                        <p>30대, 여, 4인가구, 매주</p>
+                        <p>1회차 구독</p>
+                      </div>
+                      <div class="review-product-info">
+                        <h3>싱글+</h3>
+                        <span>#쌀</span>
+                        <span>#과일</span>
+                      </div>
+                      <div class="review-text">
+                        <p>
+                          같은 배속에서 나왔지만 어쩜 이렇게 먹는 취향이
+                          다른지..애들부터 남편까지 식성이 가지각색인데 뭐 하나
+                          사려면 양이 많아서 결국 나혼자 다 먹거나 아쉽게도
+                          곰팡이 펴서 버리는 게 반이었는데 우리 가족이 다양하게
+                          먹을 수 있게 여러가지로 오니까 정말 좋아요. 요즘 마트
+                          가는 것도 부담스러운데 정기적으로 오니까 은근 제
+                          시간이 많이 남네요?? 생각보다 생활이 편해져서 앞으로
+                          쭉 애용할 느낌~❤
+                        </p>
+                      </div>
+                    </div>
+                    <div class="swiper-slide review-slide">
+                      <img
+                        src="/contents/newMain_image/mainReviewImg_13.jpg"
+                        alt="큐잇 메인리뷰"
+                      />
+                      <div class="review-user-info">
+                        <p>20대, 여, 1인가구, 매주</p>
+                        <p>1회차 구독</p>
+                      </div>
+                      <div class="review-product-info">
+                        <h3>싱글</h3>
+                        <span>#쌀</span>
+                        <span>#과일</span>
+                      </div>
+                      <div class="review-text">
+                        <p>
+                          과일 좋아해서 랜덤박스 많이 이용해 봤는데 다른 데보다
+                          훨씬 실속 있어요. 내가 필요했던 것들, 시도해 보고
+                          싶었던 것들만 소량으로 들어있어서 좋음#가성비템
+                          #1인가구추천
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-button-next review-swiper-next"></div>
+                <div class="swiper-button-prev review-swiper-prev"></div>
+              </div>
+              <!-- <div class="cueat-main-link">
+                <a>더 보기</a>
+              </div> -->
+            </div>
+          </section>
+          <section class="cueat-usage-wrapper">
+            <div class="cueat-usage-container">
+              <div class="cueat-usage-header">
+                <h2>큐잇 이용 방법</h2>
+              </div>
+              <!-- 모바일 -->
+              <div class="cueat-usage-mobile">
+                <div class="usage-select-wrapper">
+                  <div class="usage-select-container">
+                    <div class="usageSelect-slide usageSelect-active">
+                      <span id="m_usageBtn1">1</span>
+                    </div>
+                    <div class="usageSelect-slide">
+                      <span id="m_usageBtn2">2</span>
+                    </div>
+                    <div class="usageSelect-slide">
+                      <span id="m_usageBtn3">3</span>
+                    </div>
+                    <div class="usageSelect-slide">
+                      <span id="m_usageBtn4">4</span>
+                    </div>
+                    <div class="usageSelect-slide">
+                      <span id="m_usageBtn5">5</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="usage-slide-wrapper">
+                  <div class="swiper-container mobile-usage-swiper">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide usage-slide">
+                        <h2>설문조사 하기</h2>
+                        <p>
+                          고객님께 꼭 맞는 큐잇박스를 구성해 드리기 위해<br />
+                          간단한 설문을 합니다
+                        </p>
+                        <img
+                          class="usageImg-active"
+                          id="m_usageImg1"
+                          src="/contents/newMain_image/cueat_process1.png"
+                          alt="큐잇 이용방법"
+                        />
+                      </div>
+                      <div class="swiper-slide usage-slide">
+                        <h2>큐잇 추천 받기</h2>
+                        <p>
+                          설문 조사를 바탕으로<br />
+                          고객님께 맞는 요금제와 구성을 추천합니다
+                        </p>
+                        <img
+                          class="usageImg-active"
+                          id="m_usageImg2"
+                          src="/contents/newMain_image/cueat_process2.png"
+                          alt="큐잇 이용방법"
+                        />
+                      </div>
+                      <div class="swiper-slide usage-slide">
+                        <h2>정기구독 신청하기</h2>
+                        <p>
+                          추천 결과에 따라 정기구독을 신청하시면<br />
+                          수령 3일 전에 결제됩니다
+                        </p>
+                        <img
+                          class="usageImg-active"
+                          id="m_usageImg3"
+                          src="/contents/newMain_image/cueat_process3.png"
+                          alt="큐잇 이용방법"
+                        />
+                      </div>
+                      <div class="swiper-slide usage-slide">
+                        <h2>큐잇박스 받아 보기</h2>
+                        <p>
+                          고객님께 맞춤 구성된 큐잇박스가<br />
+                          매주 목요일, 집 앞으로 찾아갑니다
+                        </p>
+                        <img
+                          class="usageImg-active"
+                          id="m_usageImg4"
+                          src="/contents/newMain_image/cueat_process4.png"
+                          alt="큐잇 이용방법"
+                        />
+                      </div>
+                      <div class="swiper-slide usage-slide">
+                        <h2>리뷰 및 피드백 남기기</h2>
+                        <p>
+                          받아본 큐잇박스에 대해 솔직한 리뷰를 남겨 주시면<br />
+                          다음 박스에 반영되어 점점 더 만족스러운 큐잇이 되어
+                          갑니다
+                        </p>
+                        <img
+                          class="usageImg-active"
+                          id="m_usageImg5"
+                          src="/contents/newMain_image/cueat_process5.png"
+                          alt="큐잇 이용방법"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-button-next usage-swiper-next"></div>
+                  <div class="swiper-button-prev usage-swiper-prev"></div>
+                </div>
+              </div>
+              <!-- 홈페이지 -->
+              <div class="cueat-usage-content">
+                <div class="cueat-usage-list">
+                  <div class="cueat-usage">
+                    <span class="cueat-usage-num usage-active" id="usageNum1"
+                      >1</span
+                    >
+                    <h2>설문조사 하기</h2>
+                    <p>
+                      고객님께 꼭 맞는 큐잇박스를 구성해 드리기 위해<br />
+                      간단한 설문을 합니다
+                    </p>
+                  </div>
+                  <div class="cueat-usage">
+                    <span class="cueat-usage-num" id="usageNum2">2</span>
+                    <h2>큐잇 추천 받기</h2>
+                    <p>
+                      설문 조사를 바탕으로<br />
+                      고객님께 맞는 요금제와 구성을 추천합니다
+                    </p>
+                  </div>
+                  <div class="cueat-usage">
+                    <span class="cueat-usage-num" id="usageNum3">3</span>
+                    <h2>정기구독 신청하기</h2>
+                    <p>
+                      추천 결과에 따라 정기구독을 신청하시면<br />
+                      수령 3일 전에 결제됩니다
+                    </p>
+                  </div>
+                  <div class="cueat-usage">
+                    <span class="cueat-usage-num" id="usageNum4">4</span>
+                    <h2>큐잇박스 받아 보기</h2>
+                    <p>
+                      고객님께 맞춤 구성된 큐잇박스가<br />
+                      매주 목요일, 집 앞으로 찾아갑니다
+                    </p>
+                  </div>
+                  <div class="cueat-usage">
+                    <span class="cueat-usage-num" id="usageNum5">5</span>
+                    <h2>리뷰 및 피드백 남기기</h2>
+                    <p>
+                      받아본 큐잇박스에 대해 솔직한 리뷰를 남겨 주시면<br />
+                      다음 박스에 반영되어 점점 더 만족스러운 큐잇이 되어 갑니다
+                    </p>
+                  </div>
+                </div>
+                <div class="usage-swiper-container">
+                  <div class="swiper-container usage-swiper">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide">
+                        <img
+                          class="usageImg-active"
+                          id="usageImg1"
+                          src="/contents/newMain_image/cueat_process1.png"
+                          alt="큐잇 이용방법"
+                        />
+                      </div>
+                      <div class="swiper-slide">
+                        <img
+                          class="usageImg-active"
+                          id="usageImg2"
+                          src="/contents/newMain_image/cueat_process2.png"
+                          alt="큐잇 이용방법"
+                        />
+                      </div>
+                      <div class="swiper-slide">
+                        <img
+                          class="usageImg-active"
+                          id="usageImg3"
+                          src="/contents/newMain_image/cueat_process3.png"
+                          alt="큐잇 이용방법"
+                        />
+                      </div>
+                      <div class="swiper-slide">
+                        <img
+                          class="usageImg-active"
+                          id="usageImg4"
+                          src="/contents/newMain_image/cueat_process4.png"
+                          alt="큐잇 이용방법"
+                        />
+                      </div>
+                      <div class="swiper-slide">
+                        <img
+                          class="usageImg-active"
+                          id="usageImg5"
+                          src="/contents/newMain_image/cueat_process5.png"
+                          alt="큐잇 이용방법"
+                        />
+                      </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                  </div>
+                </div>
+
+                <!-- <div class="cueat-usage-imgList">
+                  <img
+                    class="usageImg-active"
+                    id="usageImg1"
+                    src="/contents/newMain_image/process001_m.png"
+                    alt="큐잇 이용방법"
+                  />
+                  <img
+                    id="usageImg2"
+                    src="/contents/newMain_image/process002_m.png"
+                    alt="큐잇 이용방법"
+                  />
+                  <img
+                    id="usageImg3"
+                    src="/contents/newMain_image/process003_m.png"
+                    alt="큐잇 이용방법"
+                  />
+                  <img
+                    id="usageImg4"
+                    src="/contents/newMain_image/process004_m.png"
+                    alt="큐잇 이용방법"
+                  />
+                  <img
+                    id="usageImg5"
+                    src="/contents/newMain_image/process005_m.png"
+                    alt="큐잇 이용방법"
+                  />
+                </div> -->
+              </div>
+            </div>
+          </section>
+          <section class="cueat-quality-wrapper">
+            <div class="cueat-quality-container">
+              <div class="cueat-quality-header">
+                <h2>큐잇의 품질 관리</h2>
+                <h3>세상에 싸고 좋은 농산물은 없어요</h3>
+                <h3>농산물에도 로열 등급이 있습니다</h3>
+              </div>
+              <div class="quality-speechBubble-container">
+                <div class="quality-speech-bubble">
+                  <img
+                    src="/contents/newMain_image/main_quality_star.png"
+                    alt="큐잇 품질 별"
+                  />
+                  <p>
+                    비교해 보셔도 좋아요<br />
+                    분명히 다를 거예요
+                  </p>
+                  <p>
+                    건강한 삶을 위해 늘 먹는 농산물,<br />
+                    믿고 드실 수 있도록
+                  </p>
+                  <p>
+                    전문가가 엄선한<br />
+                    보장된 품질의 농산물로만 구성합니다
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="cueat-story-wrapper">
+            <div class="cueat-story-container">
+              <div class="cueat-story-content">
+                <div class="cueat-story">
+                  <img
+                    src="/contents/newMain_image/cueat_story1.jpg"
+                    alt="큐잇 스토리"
+                  />
+                  <h4>20년이상 경력의</h4>
+                  <h4>농산물 전문가</h4>
+                </div>
+                <div class="cueat-story">
+                  <img
+                    src="/contents/newMain_image/cueat_story2.jpg"
+                    alt="큐잇 스토리"
+                  />
+                  <h4>맛의 절정인 순간에만!</h4>
+                  <h4>제철 엄수</h4>
+                </div>
+                <div class="cueat-story">
+                  <img
+                    src="/contents/newMain_image/cueat_story3.jpg"
+                    alt="큐잇 스토리"
+                  />
+                  <h4>마지막까지</h4>
+                  <h4>꼼꼼한 품질 체크</h4>
+                </div>
+              </div>
+              <div class="cueat-main-link">
+                <a href="/web/story">큐잇 브랜드 스토리</a>
+              </div>
+            </div>
+          </section>
+          <section class="cueat-yellowment-wrapper">
+            <div class="cueat-yellowment-container">
+              <div class="cueat-yellowment-header">
+                <p><span>큐잇</span> 구독자들에게 드리는 또 하나의 혜택!</p>
+                <h2>
+                  농산물이 가장 빛나는 <br/>
+                  순간을 선사합니다
+                </h2>
+              </div>
+              <div class="cueat-yellowment-content">
+                <p>프리미엄 농산물 푸드 스토어<span>옐로먼트</span></p>
+              </div>
+              <div class="cueat-main-link">
+                <a
+                  href="https://yelloment.co.kr/?cafe_mkt=ue_cueat_footer"
+                  target="_blank"
+                  >옐로먼트 가기
+                </a>
+              </div>
+            </div>
+          </section>
+          <section class="cueat-FAQ-wrapper">
+            <div class="cueat-FAQ-container">
+              <div class="cueat-FAQ-header">
+                <h2>FAQ</h2>
+              </div>
+              <div class="cueat-FAQ-content">
+                <div class="cueat-FAQ-menuList">
+                  <ul class="cueat-FAQ-menuGroup">
+                    <li class="cueat-FAQ-menu FAQmenu-active" id="FAQ-menu1">
+                      정기구독
+                    </li>
+                    <li class="cueat-FAQ-menu" id="FAQ-menu2">주문/결제</li>
+                    <li class="cueat-FAQ-menu" id="FAQ-menu3">배송</li>
+                    <li class="cueat-FAQ-menu" id="FAQ-menu4">교환 및 환불</li>
+                    <li class="cueat-FAQ-menu" id="FAQ-menu5">기타</li>
+                  </ul>
+                </div>
+                <div
+                  class="cueat-FAQ-list FAQ-list-active"
+                  id="cueat-FAQ-list1"
+                >
+                  <div class="cueat-FAQ">
+                    <div class="FAQ-header FAQ-active" id="FAQ-header11">
+                      <img
+                        src="/contents/newMain_image/main_FAQ_icon.png"
+                        alt="큐잇 FAQ 아이콘"
+                      />
+                      <h3>큐잇은 어떤 농산물을 제공하나요?</h3>
+                      <img
+                        src="/contents/newMain_image/cueat_minus.png"
+                        alt=""
+                      />
+                    </div>
+                    <div class="FAQ-answer">
+                      <p>
+                        고객 큐레이션 결과에 따라 유기농 쌀을 비롯한 과일, 채소, 구황작물, 특수작물 등을 구성하여 제공합니다. <br>쌀은 고객의 취식 패턴에 맞추어, 과일은 고객 취향에 맞추어, 채소는 큐잇이 추천하는 채소와 고객의 취식 패턴을 고려하여 구성합니다.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="cueat-FAQ">
+                    <div class="FAQ-header" id="FAQ-header12">
+                      <img
+                        src="/contents/newMain_image/main_FAQ_icon.png"
+                        alt="큐잇 FAQ 아이콘"
+                      />
+                      <h3>구독상품을 변경할 수 있나요?</h3>
+                      <img
+                        src="/contents/newMain_image/cueat_plus.png"
+                        alt=""
+                      />
+                    </div>
+                    <div class="FAQ-answer">
+                      <p>
+                        구독 상품은 고객센터를 통해 변경이 가능합니다. 전화나
+                        카카오톡으로 연락주시면 친절하게 안내를 도와드릴게요.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="cueat-FAQ">
+                    <div class="FAQ-header" id="FAQ-header13">
+                      <img
+                        src="/contents/newMain_image/main_FAQ_icon.png"
+                        alt="큐잇 FAQ 아이콘"
+                      />
+                      <h3>배송일을 변경할 수 있나요?</h3>
+                      <img
+                        src="/contents/newMain_image/cueat_plus.png"
+                        alt=""
+                      />
+                    </div>
+                    <div class="FAQ-answer">
+                      <p>
+                        그 주의 배송 현황이 '상품 준비 중'으로 표시된다면
+                        고객센터를 통해 언제든 배송일을 변경할 수 있어요. 다만
+                        배송 현황이 '발송 준비 중'으로 표시된다면 이미 고객님의
+                        상품이 준비되어 출고가 완료된 상태라 해당 주는 배송일
+                        변경이 어렵습니다. 더 자세한 내용은 고객센터로
+                        연락주시면 친절하게 처리해 드리겠습니다.<br />
+                        마이페이지 > 주문내역 에서 해당 주간의 배송 현황을
+                        확인하실 수 있어요.<br />
+                        고객센터 <span>070-4166-6077</span><br />
+                        카카오톡 플러스친구<span>'큐잇'</span>을 검색하여 친구
+                        추가
+                      </p>
+                    </div>
+                  </div>
+                  <div class="cueat-FAQ">
+                    <div class="FAQ-header" id="FAQ-header14">
+                      <img
+                        src="/contents/newMain_image/main_FAQ_icon.png"
+                        alt="큐잇 FAQ 아이콘"
+                      />
+                      <h3>정기구독을 건너 뛰거나 잠시 중지할 수 있나요?</h3>
+                      <img
+                        src="/contents/newMain_image/cueat_plus.png"
+                        alt=""
+                      />
+                    </div>
+                    <div class="FAQ-answer">
+                      <p>
+                        고객센터로 연락주시면 배송일 변경을 통해 구독 건너뛰기나
+                        중지를 도와드리겠습니다.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="cueat-FAQ">
+                    <div class="FAQ-header" id="FAQ-header15">
+                      <img
+                        src="/contents/newMain_image/main_FAQ_icon.png"
+                        alt="큐잇 FAQ 아이콘"
+                      />
+                      <h3>정기구독을 해지하고 싶어요</h3>
+                      <img
+                        src="/contents/newMain_image/cueat_plus.png"
+                        alt=""
+                      />
+                    </div>
+                    <div class="FAQ-answer">
+                      <p>
+                        마이페이지 > 구독정보 페이지에서 정기구독을 해지하실 수
+                        있습니다.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="cueat-FAQ-list" id="cueat-FAQ-list2">
+                  <div class="cueat-FAQ">
+                    <div class="FAQ-header FAQ-active" id="FAQ-header21">
+                      <img
+                        src="/contents/newMain_image/main_FAQ_icon.png"
+                        alt="큐잇 FAQ 아이콘"
+                      />
+                      <h3>첫 구독 할인은 어떻게 받나요?</h3>
+                      <img
+                        src="/contents/newMain_image/cueat_minus.png"
+                        alt=""
+                      />
+                    </div>
+                    <div class="FAQ-answer">
+                      <p>
+                        회원 계정 당 1회 가능하며 첫 구독, 첫 회차 배송에
+                        적용됩니다. 한 번 첫 구독 할인을 받은 회원이 구독을 해지
+                        후, 다시 구독 신청을 하실 경우에는 첫 구독 할인이
+                        적용되지 않으니 참고해 주세요.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="cueat-FAQ">
+                    <div class="FAQ-header" id="FAQ-header22">
+                      <img
+                        src="/contents/newMain_image/main_FAQ_icon.png"
+                        alt="큐잇 FAQ 아이콘"
+                      />
+                      <h3>결제는 언제 어떻게 되나요?</h3>
+                      <img
+                        src="/contents/newMain_image/cueat_plus.png"
+                        alt=""
+                      />
+                    </div>
+                    <div class="FAQ-answer">
+                      <p>
+                        정기결제는 수령일 3일 전에 승인 요청 및 처리됩니다.
+                        큐잇의 배송일은 매주 목요일이므로, 월요일에 해당 주간의
+                        구독 상품에 대한 신용카드 승인 요청이 이루어집니다. 다만
+                        공휴일이나 택배사 사정으로 배송일이 변경될 경우 정기결제
+                        일자도 변경될 수 있으니 참고해 주세요.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="cueat-FAQ">
+                    <div class="FAQ-header" id="FAQ-header23">
+                      <img
+                        src="/contents/newMain_image/main_FAQ_icon.png"
+                        alt="큐잇 FAQ 아이콘"
+                      />
+                      <h3>주문을 취소하고 싶어요</h3>
+                      <img
+                        src="/contents/newMain_image/cueat_plus.png"
+                        alt=""
+                      />
+                    </div>
+                    <div class="FAQ-answer">
+                      <p>
+                        정기구독 결제가 완료된 이후, 고객님의 상품이 발송되지
+                        않은 상태라면 고객센터를 통해 주문 취소가 가능합니다.
+                        전화나 카카오톡을 통해 큐잇 고객센터로 연락주시면
+                        친절하게 처리해 드리겠습니다.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="cueat-FAQ">
+                    <div class="FAQ-header" id="FAQ-header24">
+                      <img
+                        src="/contents/newMain_image/main_FAQ_icon.png"
+                        alt="큐잇 FAQ 아이콘"
+                      />
+                      <h3>전화로 주문할 수 있나요?</h3>
+                      <img
+                        src="/contents/newMain_image/cueat_plus.png"
+                        alt=""
+                      />
+                    </div>
+                    <div class="FAQ-answer">
+                      <p>
+                        큐잇의 모든 서비스는 신용카드 또는 체크카드 등록을 통해
+                        이루어지고 있어서 전화를 통한 주문은 어렵습니다. 내부
+                        개인정보처리방침 상, 결제카드 등록은 고객님께서 큐잇
+                        홈페이지를 통해 직접 진행해 주셔야 합니다. 결제 카드
+                        등록에 어려움이 있으실 경우 고객센터로 연락 주시면 등록
+                        방법을 친절히 안내해 드리겠습니다.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="cueat-FAQ">
+                    <div class="FAQ-header" id="FAQ-header25">
+                      <img
+                        src="/contents/newMain_image/main_FAQ_icon.png"
+                        alt="큐잇 FAQ 아이콘"
+                      />
+                      <h3>결제되는 카드를 변경하고 싶어요</h3>
+                      <img
+                        src="/contents/newMain_image/cueat_plus.png"
+                        alt=""
+                      />
+                    </div>
+                    <div class="FAQ-answer">
+                      <p>
+                        마이페이지 > 카드관리 에서 변경하고 싶은 카드를 등록하신
+                        후, 마이페이지 > 구독정보 에서 구독중인 상품을 선택하신
+                        후 결제되는 카드를 변경하실 수 있습니다.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="cueat-FAQ-list" id="cueat-FAQ-list3">
+                  <div class="cueat-FAQ">
+                    <div class="FAQ-header FAQ-active" id="FAQ-header31">
+                      <img
+                        src="/contents/newMain_image/main_FAQ_icon.png"
+                        alt="큐잇 FAQ 아이콘"
+                      />
+                      <h3>배송 주기를 선택할 수 있나요?</h3>
+                      <img
+                        src="/contents/newMain_image/cueat_minus.png"
+                        alt=""
+                      />
+                    </div>
+                    <div class="FAQ-answer">
+                      <p>
+                        큐잇은 신선한 농산물을 제공해 드리기 위해 주1회 배송을
+                        권장드리고 있으나, 소비 습관에 따라 2주에 1회도
+                        배송받으실 수 있습니다. 매주 또는 격주 중에 선택이
+                        가능합니다.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="cueat-FAQ">
+                    <div class="FAQ-header" id="FAQ-header32">
+                      <img
+                        src="/contents/newMain_image/main_FAQ_icon.png"
+                        alt="큐잇 FAQ 아이콘"
+                      />
+                      <h3>배송 현황은 어떻게 확인할 수 있나요?</h3>
+                      <img
+                        src="/contents/newMain_image/cueat_plus.png"
+                        alt=""
+                      />
+                    </div>
+                    <div class="FAQ-answer">
+                      <p>
+                        마이페이지 > 주문 내역 에서 배송 현황을 확인하실 수
+                        있어요. 송장번호가 등록되기 전까지는 '배송 준비 중'으로
+                        표시됩니다.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="cueat-FAQ">
+                    <div class="FAQ-header" id="FAQ-header33">
+                      <img
+                        src="/contents/newMain_image/main_FAQ_icon.png"
+                        alt="큐잇 FAQ 아이콘"
+                      />
+                      <h3>배송지를 변경하고 싶어요</h3>
+                      <img
+                        src="/contents/newMain_image/cueat_plus.png"
+                        alt=""
+                      />
+                    </div>
+                    <div class="FAQ-answer">
+                      <p>
+                        배송지 변경을 원하신다면 큐잇 사이트에서 언제든지 변경할
+                        수 있지만 다음 회차부터 적용됩니다. 현재 회차의 배송지
+                        변경을 원하실 경우, 고객센터로 연락주시면 처리해
+                        드리겠습니다. 마이페이지 > 배송지 관리 에서 배송지를
+                        수정하거나 추가해 주세요.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="cueat-FAQ">
+                    <div class="FAQ-header" id="FAQ-header34">
+                      <img
+                        src="/contents/newMain_image/main_FAQ_icon.png"
+                        alt="큐잇 FAQ 아이콘"
+                      />
+                      <h3>배송비가 있나요?</h3>
+                      <img
+                        src="/contents/newMain_image/cueat_plus.png"
+                        alt=""
+                      />
+                    </div>
+                    <div class="FAQ-answer">
+                      <p>큐잇의 모든 구독 상품은 무료로 배송됩니다.</p>
+                    </div>
+                  </div>
+                  <div class="cueat-FAQ">
+                    <div class="FAQ-header" id="FAQ-header35">
+                      <img
+                        src="/contents/newMain_image/main_FAQ_icon.png"
+                        alt="큐잇 FAQ 아이콘"
+                      />
+                      <h3>배송 당일이 휴무일 경우 어떻게 하나요?</h3>
+                      <img
+                        src="/contents/newMain_image/cueat_plus.png"
+                        alt=""
+                      />
+                    </div>
+                    <div class="FAQ-answer">
+                      <p>
+                        공휴일이나 택배사 사정으로 인해 목요일 배송이 어려울
+                        경우 사전에 변경된 배송 일정을 공지해 드립니다.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="cueat-FAQ-list" id="cueat-FAQ-list4">
+                  <div class="cueat-FAQ">
+                    <div class="FAQ-header FAQ-active" id="FAQ-header41">
+                      <img
+                        src="/contents/newMain_image/main_FAQ_icon.png"
+                        alt="큐잇 FAQ 아이콘"
+                      />
+                      <h3>상품에 문제가 있을 경우 어떻게 하나요?</h3>
+                      <img
+                        src="/contents/newMain_image/cueat_minus.png"
+                        alt=""
+                      />
+                    </div>
+                    <div class="FAQ-answer">
+                      <p>
+                        큐잇은 최대한 신선한 상태로 수령하실 수 있도록 준비
+                        과정에서 최선의 노력을 다하고 있지만, 신선식품이라는
+                        특성 상, 배송 과정에서 문제가 발생할 수 있습니다.
+                        과일이나 채소의 상태가 좋지 않은 경우, 해당 내용을 사진
+                        촬영하여 고객센터로 연락주시면 친절하고 신속하게 상담을
+                        도와 드리겠습니다.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="cueat-FAQ">
+                    <div class="FAQ-header" id="FAQ-header42">
+                      <img
+                        src="/contents/newMain_image/main_FAQ_icon.png"
+                        alt="큐잇 FAQ 아이콘"
+                      />
+                      <h3>이미 수령한 상품을 반품할 수 있나요?</h3>
+                      <img
+                        src="/contents/newMain_image/cueat_plus.png"
+                        alt=""
+                      />
+                    </div>
+                    <div class="FAQ-answer">
+                      <p>
+                        신선식품인 큐잇의 상품 특성 상, 수령하신 후에 반품은
+                        불가합니다. 상품에 문제가 있을 경우 고객센터로
+                        연락주시면 상담을 통해 재발송 또는 환불 처리를 도와
+                        드릴게요.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="cueat-FAQ-list" id="cueat-FAQ-list5">
+                  <div class="cueat-FAQ">
+                    <div class="FAQ-header FAQ-active" id="FAQ-header51">
+                      <img
+                        src="/contents/newMain_image/main_FAQ_icon.png"
+                        alt="큐잇 FAQ 아이콘"
+                      />
+                      <h3>아이디 비밀번호가 생각나지 않아요</h3>
+                      <img
+                        src="/contents/newMain_image/cueat_minus.png"
+                        alt=""
+                      />
+                    </div>
+                    <div class="FAQ-answer">
+                      <p>
+                        큐잇은 고객님의 편의를 위해 카카오톡 로그인 서비스를
+                        제공하고 있습니다. 큐잇의 계정 정보는 카카오톡 계정
+                        정보를 확인하시면 언제든 로그인이 가능합니다.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="cueat-FAQ">
+                    <div class="FAQ-header" id="FAQ-header52">
+                      <img
+                        src="/contents/newMain_image/main_FAQ_icon.png"
+                        alt="큐잇 FAQ 아이콘"
+                      />
+                      <h3>회원을 탈퇴하고 싶어요</h3>
+                      <img
+                        src="/contents/newMain_image/cueat_plus.png"
+                        alt=""
+                      />
+                    </div>
+                    <div class="FAQ-answer">
+                      <p>
+                        큐잇은 고객센터를 통해 회원 탈퇴가 가능합니다. 전화나
+                        카카오톡으로 연락주시면 친절하게 처리를 도와드릴게요.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="cueat-FAQ">
+                    <div class="FAQ-header" id="FAQ-header53">
+                      <img
+                        src="/contents/newMain_image/main_FAQ_icon.png"
+                        alt="큐잇 FAQ 아이콘"
+                      />
+                      <h3>탈퇴 후 재가입이 가능한가요?</h3>
+                      <img
+                        src="/contents/newMain_image/cueat_plus.png"
+                        alt=""
+                      />
+                    </div>
+                    <div class="FAQ-answer">
+                      <p>
+                        큐잇은 탈퇴하신 후, 3개월 동안 재가입이 불가합니다.
+                        탈퇴하실 때는 신중하게 고려해 주세요.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="cueat-help-wrapper">
+            <div class="cueat-help-container">
+              <div class="cueat-help-header">
+                <h2>
+                  도움이 필요하시면 <br />
+                  문의해 주세요!
+                </h2>
+                <p>운영시간 10:00 ~ 18:00</p>
+              </div>
+              <div class="cueat-help-linkGroup">
+                <div class="cueat-help-link">
+                  <img
+                    src="/contents/newMain_image/main_help_icon.png"
+                    alt="큐잇 고객센터 아이콘"
+                  />
+                  <h3><span>고객센터</span> 070 - 4166 - 6077</h3>
+                </div>
+                <div class="cueat-help-link">
+                  <img
+                    src="/contents/newMain_image/2021_KAKAO_Ch.png"
+                    alt="큐잇 카카오채널 아이콘"
+                  />
+                  <h3><span>카카오톡 플러스친구</span> 큐잇</h3>
+                </div>
+              </div>
+            </div>
+          </section>
+          {{ template "shared/footer.tmpl" }}
+        </div>
+      </main>
+      <div class="eventModal-wrapper" data-starttime="2021-09-09 12:00" data-timeout="2021-09-23 23:58" id="eventModal-wrapper">
+        <div class="eventModal-container">
+        <div class="close-btn">
+          <img src="/contents/newMain_image/close.png" id="eventCloseBtn" alt="닫기">
+        </div>
+        <img src="/contents/newMain_image/cueat_popup_20210909.jpg" alt="이벤트">
+        <div class="eventModalBtn-container">
+          <button class="eventModalBtn" id="eventModalBtn">닫기</button>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <script>
+      // 모바일 화면에서 슬라이드로 전환
+      var mobileWidth = 600;
+      var delay = 300;
+      var timer = null;
+
+      document.addEventListener("DOMContentLoaded", function () {
+        $.modal.defaults = {
+          closeExisting: true,
+          escapeClose: true,
+          showClose: true,
+          clickClose: false,
+        };
+
+        /*
+      // 하루에 처음 사이트 접속 시 공시 팝업 노출
+      if (getCookie("alreadyNoticed") === null) {
+        $("#notice-popup-modal").modal();
+      }
+      */
+
+        resizeCueatProcess();
+      });
+
+    $("#notice-popup-modal").on($.modal.AFTER_CLOSE, function(event, modal) {
+      setCookie("alreadyNoticed", "1", "", 86400, "/")
+    })
+
+      // 큐잇 과정
+      window.addEventListener("resize", resizeCueatProcess);
+
+      function resizeCueatProcess() {
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+          if (window.innerWidth < mobileWidth) {
+            $(".cueat_process").not(".slick-initialized").slick({
+              //   dots: true,
+            });
+          } else {
+            $(".cueat_process").filter(".slick-initialized").slick("unslick");
+          }
+        }, delay);
+      }
+    </script>
+    <!-- <script src="/contents/js/swiper.js"></script> -->
+    <!-- <script src="/contents/js/v2scrollanimation.js"></script> -->
+  </body>
+</html>
+
+{{ end }}

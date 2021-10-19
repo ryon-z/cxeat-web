@@ -1,0 +1,37 @@
+{{ define "shared/survey_button.tmpl" }}
+
+{{ if .beforePageName }}
+<button type="button" onclick="handleBeforeButton()">
+  {{ .beforeButtonName }}
+</button>
+{{ end }}
+
+{{ if .nextPageName }}
+<button type="button" onclick="handleNextButton()">
+  {{ .nextButtonName }}
+</button>
+{{ end }}
+
+{{ if .useSkip }}
+<button type="button" onclick="handleSkipButton()">
+  건너뛰기
+</button>
+{{ end }}
+
+<script type="text/javascript">
+  function handleBeforeButton() {
+    location.href='{{ .beforePageName }}'
+  }
+
+  function handleNextButton() {
+    if (typeof handleInput === "function") {
+      if (!(isSuccess = handleInput())) {
+        return;
+      }
+    }
+
+    location.href='{{ .nextPageName }}'
+  }
+</script>
+
+{{ end }}
